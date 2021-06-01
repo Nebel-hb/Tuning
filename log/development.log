@@ -3230,3 +3230,180 @@ Processing by Public::HomesController#top as HTML
 Completed 200 OK in 98ms (Views: 97.1ms | ActiveRecord: 0.1ms)
 
 
+Started GET "/" for 114.172.229.148 at 2021-06-01 06:30:37 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Public::HomesController#top as HTML
+  Rendering public/homes/top.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/homes/top.html.erb:3
+  Rendered public/homes/top.html.erb within layouts/application (24.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 533ms (Views: 527.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:30:49 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (414.4ms)
+Completed 500 Internal Server Error in 420ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `customer_path' for #<#<Class:0x00007f0be404b360>:0x00007f0be4049880>):
+    1: <h1>Public::Users#edit</h1>
+    2: <p>Find me in app/views/public/users/edit.html.erb</p>
+    3: <%= form_with(model:@customer, url:customer_path, local: true, method: :put) do |f| %>
+    4:   <%= render 'shaerd/error_messages', object: f.object %>
+    5:   <div class="form-group row">
+    6:       <%= f.label :name, '氏名', class: 'col-sm-3 col-form-label page-title ' %>
+  
+app/views/public/users/edit.html.erb:3:in `_app_views_public_users_edit_html_erb___2455556378688892276_69844523441520'
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:31:12 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Missing partial shaerd/_error_messages with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/ec2-user/environment/Tuning/app/views"
+  * "/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/kaminari-0.17.0/app/views"
+  * "/home/ec2-user/.rvm/gems/ruby-2.6.3/gems/devise-4.8.0/app/views"
+):
+    1: <h1>Public::Users#edit</h1>
+    2: <p>Find me in app/views/public/users/edit.html.erb</p>
+    3: <%= form_with(model:@user, url:user_path, local: true, method: :put) do |f| %>
+    4:   <%= render 'shaerd/error_messages', object: f.object %>
+    5:   <div class="form-group row">
+    6:       <%= f.label :name, '氏名', class: 'col-sm-3 col-form-label page-title ' %>
+    7: 
+  
+app/views/public/users/edit.html.erb:4:in `block in _app_views_public_users_edit_html_erb___2455556378688892276_69844568743980'
+app/views/public/users/edit.html.erb:3:in `_app_views_public_users_edit_html_erb___2455556378688892276_69844568743980'
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:31:27 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (13.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `profile_image_attachment_definition' for nil:NilClass):
+    16:     </div>
+    17:   </div>
+    18:   <div class="ml-5 pl-3">
+    19:     <%= f.attachment_field :profile_image %>
+    20:   </div>
+    21:   <div class="form-group row">
+    22:       <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
+  
+app/views/public/users/edit.html.erb:19:in `block in _app_views_public_users_edit_html_erb___2455556378688892276_69844568538560'
+app/views/public/users/edit.html.erb:3:in `_app_views_public_users_edit_html_erb___2455556378688892276_69844568538560'
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:31:48 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (10.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (7.5ms)
+Completed 200 OK in 132ms (Views: 131.4ms | ActiveRecord: 0.1ms)
+
+
+Started PUT "/users/1" for 114.172.229.148 at 2021-06-01 06:32:12 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r9JkwRvIr4PUHZwxfR5l1I69q0VrSGa/3HRumb9Rm4MNaNJCsmmvc3Kdmirj5+C7Wnf22xStaaPw4Rp3CLxUoA==", "name"=>"", "email"=>"", "introduction"=>"", "commit"=>"Save ", "id"=>"1"}
+  Rendering public/users/update.html.erb within layouts/application
+  Rendered public/users/update.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (7.1ms)
+Completed 200 OK in 85ms (Views: 82.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:32:35 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `profile_image_attachment_definition' for nil:NilClass):
+    16:     </div>
+    17:   </div>
+    18:   <div class="ml-5 pl-3">
+    19:     <%= f.attachment_field :profile_image %>
+    20:   </div>
+    21:   <div class="form-group row">
+    22:       <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
+  
+app/views/public/users/edit.html.erb:19:in `block in _app_views_public_users_edit_html_erb___2455556378688892276_69844570533240'
+app/views/public/users/edit.html.erb:3:in `_app_views_public_users_edit_html_erb___2455556378688892276_69844570533240'
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:34:01 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `image_attachment_definition' for nil:NilClass):
+    17:   </div>
+    18:   <div class="ml-5 pl-3">
+    19:     %= f.attachment_field :profile_image %>
+    20:     <%= f.attachment_field :image %>
+    21:   </div>
+    22:   <div class="form-group row">
+    23:       <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
+  
+app/views/public/users/edit.html.erb:20:in `block in _app_views_public_users_edit_html_erb___2455556378688892276_69844566163680'
+app/views/public/users/edit.html.erb:3:in `_app_views_public_users_edit_html_erb___2455556378688892276_69844566163680'
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:34:51 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (4.2ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `profile_image_attachment_definition' for nil:NilClass):
+    17:   </div>
+    18:   <div class="ml-5 pl-3">
+    19:     %= f.attachment_field :profile_image %>
+    20:     <%= f.attachment_field :profile_image %>
+    21:   </div>
+    22:   <div class="form-group row">
+    23:       <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
+  
+app/views/public/users/edit.html.erb:20:in `block in _app_views_public_users_edit_html_erb___2455556378688892276_69844524070860'
+app/views/public/users/edit.html.erb:3:in `_app_views_public_users_edit_html_erb___2455556378688892276_69844524070860'
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-01 06:35:21 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  Rendered public/users/edit.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.7ms)
+Completed 200 OK in 83ms (Views: 82.4ms | ActiveRecord: 0.1ms)
+
+
