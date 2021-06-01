@@ -1,26 +1,21 @@
 Rails.application.routes.draw do
-  
+
   # ========= 管理者(admin)のルーティング ================
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
   registrations: 'admins/registrations'
   }
-  
+
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :orchestras, only: [:edit, :update]
     get '/' => 'orchestras#index', as: 'top'
   end
   # ========= 利用者(user)のルーティング ================
-  
-  devise_for :users, controllers: {
-  sessions:      'sessions',
-  passwords:     'passwords',
-  registrations: 'registrations'
-  }
-  
-  
+
+  devise_for :users
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
@@ -30,7 +25,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :tags, only: [:create, :destroy]
-    resources :recruitements, only: [:index, :show, :edit, :update, :create, :destroy, :confirm] 
+    resources :recruitments, only: [:index, :show, :edit, :update, :create, :destroy, :confirm]
     resources :recruit_users, only: [:create, :index]
     resources :rooms, only: [:create, :index, :new]
     resources :chats, only: [:create, :index]
