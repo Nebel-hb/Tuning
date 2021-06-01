@@ -1,6 +1,10 @@
 <% if user_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "top", root_path %>
+        <%= link_to "users", users_path %>
+        <%= link_to "events", events_path %>
+        <%= link_to "recruitments", recruitments_path %>
       </li>
     <% else %>
       <li>
@@ -8,5 +12,11 @@
       </li>
       <li>
         <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "top", root_path %>
+      </li>
+      <li>
+        <%= link_to "about", about_path %>
       </li>
     <% end %>

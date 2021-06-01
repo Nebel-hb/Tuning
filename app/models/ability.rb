@@ -2,8 +2,18 @@
 
 class Ability
   include CanCan::Ability
+  
+  # can :manage, :session#ログイン、ログアウト全員許可
 
   def initialize(user)
+    user ||= User.new
+    if user.orchestra?
+      can :manage, :all
+    else
+      can :read, :all
+      # can :manage, :all
+    end
+  
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

@@ -1,0 +1,6 @@
+<% if can? :update, current_user %>
+   <h1>You can update</h1>
+ <% end %>
+<% if can? :read, current_user %>
+   <h1>You can read member</h1>
+ <% end %>
