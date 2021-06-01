@@ -1,0 +1,2 @@
+class RecruitUser < ApplicationRecord
+end
