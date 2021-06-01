@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  enum role: { general: 1, admin: 99 }#cancancan
+  enum role: { general: 1, orchestra: 2 }#cancancan
   
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
