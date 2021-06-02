@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   enum role: { general: 1, orchestra: 2 }#cancancan
-  
+
   has_many :comments, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
@@ -16,7 +16,8 @@ class User < ApplicationRecord
   has_many :orchestras
   has_many :recruit_users
   has_many :recruitments, through: :recruit_users
-  
-       
-  
+  belongs_to :instrument, optional: true
+  belongs_to :area, optional: true
+
+
 end

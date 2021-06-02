@@ -1,2 +1,16 @@
 <h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+
+  <div class="col-sm-2">会員ID</div>
+  <div><%= @user.id %></div>
+
+  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
+
+  <div class="col"><%= @user.name %> </div>
+  <div class="col"><%= @user.area.area_name %> </div>
+  <div class="col"><%= @user.instrument.instrument_name %> </div>
+  <div class="col"><%= @user.introduction %> </div>
+  <%= link_to edit_user_path(@user.id) do %>
+   <p> 編集 </p>
+  <% end %>
+
+

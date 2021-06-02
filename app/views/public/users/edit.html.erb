@@ -1,33 +1,29 @@
 <h1>Public::Users#edit</h1>
 <p>Find me in app/views/public/users/edit.html.erb</p>
-<%= form_with(model:@user, url:user_path, local: true, method: :put) do |f| %>
-  <!--%= render 'shaerd/error_messages', object: f.object %>-->
-  <div class="form-group row">
-      <%= f.label :name, '氏名', class: 'col-sm-3 col-form-label page-title ' %>
 
-    <div class="col-sm-3">
-      <%= f.text_field :name, class: 'form-control last_name page-title' %>
-    </div>
-  </div>
-  <div class="form-group row">
-      <%= f.label :email, 'メールアドレス', class: 'col-sm-3 col-form-label page-title' %>
-    <div class="col-sm-3">
-      <%= f.text_field :email, class: 'form-control email page-title' %>
-    </div>
-  </div>
-  <div class="ml-5 pl-3">
-    <!--%= f.attachment_field :profile_image %>-->
-  </div>
-  <div class="form-group row">
-      <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
-    <div class="col-sm-3">
-      <%= f.text_area :introduction, class: 'form-control email page-title' %>
-    </div>
-  </div>
+<%= form_with(model: @user, url: user_path, local: true, method: :put) do |f| %>
+  
+  <%= f.label :name, '氏名', class: 'col-sm-3 col-form-label page-title ' %>
+  <%= f.text_field :name, class: 'form-control last_name page-title' %>
+  
+  <%= f.label :email, 'メールアドレス', class: 'col-sm-3 col-form-label page-title' %>
+  <%= f.text_field :email, class: 'form-control email page-title' %>
 
-  <div class="form-group row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3">
-      <%= f.submit %>
-      <% end %>
-    </div>
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
+
+  <label for="inputImage">ProfileImage</label>
+  <!--%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %> -->
+  
+  <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
+  <%= f.text_area :introduction, class: 'form-control email page-title' %>
+ 
+  <%= f.label :area_id, 'エリア' %>
+  <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+ 
+  <%= f.label :instrument_id, 'メイン楽器' %>
+  <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
+ 
+  <%= f.submit %>
+  <% end %>
+ 
+ 
