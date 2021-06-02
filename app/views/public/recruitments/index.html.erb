@@ -1,5 +1,10 @@
 
 <h2>Recruitments</h2>
+
+<% if current_user.role == "orchestra" %>
+
+            <%= link_to new_recruitment_path do %>New<% end %>
+ <% end %>
         <table class="table">
           <thead>
             <tr>
@@ -14,7 +19,6 @@
             </tr>
           </thead>
           <tbody><% @recruitments.each do |recruit| %>
-          <% if recruit.user.role == "orchestra" %>
             <tr>
               <td>
                 <!--%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "40x40" %>-->
@@ -26,7 +30,7 @@
                 <%= recruit.area.area_name %>
               </td>
               <td>
-                <%= recruit.user.name %>
+                <%= recruit.user_id %>
               </td>
               <td>
                 <%= recruit.recruit_introduction %>
@@ -38,13 +42,13 @@
                 <%= recruit.recruit_end %>
               </td>
               <td>
-                <!--%= link_to recruitment_path(recruitement.id) do %>Show% end %>-->
+                <%= link_to recruitment_path(recruit.id) do %>Show<% end %>
               </td>
             </tr>
            </div>
           </tbody>
           <% end %>
-        <% end %>
+
         </table>
     </div>
   </div>

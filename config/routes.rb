@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :tags, only: [:create, :destroy]
-    resources :recruitments, only: [:index, :show, :edit, :update, :create, :destroy, :confirm]
+    resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy, :confirm]
     resources :recruit_users, only: [:create, :index]
     resources :rooms, only: [:create, :index, :new]
     resources :chats, only: [:create, :index]

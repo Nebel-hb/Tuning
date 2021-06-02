@@ -1,2 +1,31 @@
 <h1>Public::Recruitments#show</h1>
-<p>Find me in app/views/public/recruitments/show.html.erb</p>
+
+  <!--%= attachment_image_tag @recruitment, :profile_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>-->
+
+              <td>
+                <%= @recruitment.title %>
+              </td>
+              <td>
+                <%= @recruitment.area.area_name %>
+              </td>
+              <td>
+                <%= @recruitment.user.name %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_introduction %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_start %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_end %>
+              </td>
+              <td>
+                <!--%= link_to recruitment_path(recruitement.id) do %>Show% end %>-->
+              </td>
+
+  <%= link_to edit_recruitment_path(@recruitment.id) do %>
+   edit
+  <% end %>
+
+

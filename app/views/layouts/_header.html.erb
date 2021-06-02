@@ -2,6 +2,7 @@
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         <%= link_to "top", root_path %>
+        <%= link_to 'mypage', user_path(current_user.id) %>
         <%= link_to "users", users_path %>
         <%= link_to "events", events_path %>
         <%= link_to "recruitments", recruitments_path %>
