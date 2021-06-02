@@ -1,0 +1,17 @@
+<h1>Public::Events#edit</h1>
+
+
+<%= form_with(model: @event, url: event_path, local: true, method: :put) do |f| %>
+
+  <%= f.label :title, 'タイトル', class: 'col-sm-3 col-form-label page-title ' %>
+  <%= f.text_field :title, class: 'form-control last_name page-title' %>
+
+  <%= f.label :area_id, 'エリア' %>
+  <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+
+  <%= f.label :event_introduction, '説明文', class: 'col-sm-3 col-form-label page-title' %>
+  <%= f.text_area :event_introduction, class: 'form-control email page-title' %>
+
+  <%= f.submit %>
+  <% end %>
+

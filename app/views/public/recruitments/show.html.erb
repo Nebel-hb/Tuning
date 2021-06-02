@@ -1,0 +1,31 @@
+<h1>Public::Recruitments#show</h1>
+
+              <td>
+                <%= @recruitment.title %>
+              </td>
+              <td>
+                <%= @recruitment.area.area_name %>
+              </td>
+              <td>
+                <%= @recruitment.user.name %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_introduction %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_start %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_end %>
+              </td>
+
+            <% if @recruitment.user == current_user %>
+              <td>
+               <%= link_to edit_recruitment_path(@recruitment.id) do %>edit<% end %>
+              </td>
+              <td>
+                <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
+              </td>
+            <% end %>
+
+

@@ -1,0 +1,52 @@
+
+<h2>Recruitments</h2>
+
+<% if current_user.role == "orchestra" %>
+
+            <%= link_to new_recruitment_path do %>New<% end %>
+ <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>title</th>
+              <th>area</th>
+              <th>user_name</th>
+              <th>recruit_introduction</th>
+              <th>recruit_start</th>
+              <th>recruit_end</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody><% @recruitments.each do |recruit| %>
+            <tr>
+              
+              <td>
+                <%= recruit.title %>
+              </td>
+              <td>
+                <%= recruit.area.area_name %>
+              </td>
+              <td>
+                <%= recruit.user_id %>
+              </td>
+              <td>
+                <%= recruit.recruit_introduction %>
+              </td>
+              <td>
+                <%= recruit.recruit_start %>
+              </td>
+              <td>
+                <%= recruit.recruit_end %>
+              </td>
+              <td>
+                <%= link_to recruitment_path(recruit.id) do %>Show<% end %>
+              </td>
+            </tr>
+           </div>
+          </tbody>
+          <% end %>
+
+        </table>
+    </div>
+  </div>

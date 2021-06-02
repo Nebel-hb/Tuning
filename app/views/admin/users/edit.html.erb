@@ -1,0 +1,32 @@
+<h1>Admin::Users#edit</h1>
+<p>Find me in app/views/admin/users/edit.html.erb</p>
+<h1>Admin::Users#show</h1>
+
+  <div class="col-sm-2">会員ID</div>
+  <div><%= @user.id %></div>
+
+  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
+
+  <div class="col"><%= @user.name %> </div>
+  <div class="col"><%= @user.area.area_name %> </div>
+  <div class="col"><%= @user.instrument.instrument_name %> </div>
+  <div class="col"><%= @user.introduction %> </div>
+  
+   <%= form_with(model: @user, local: true)  do |f| %>
+  
+  <!--%= f.label :role, 'エリア' %>-->
+  <!--%= f.collection_select :role, User.all, :id, :role, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>-->
+ 
+            <%= f.radio_button :role, :general %>
+          　<%= f.label :role, "general"  %>
+          　<%= f.radio_button :role, :orchestra %>
+          　<%= f.label :role, "orchestra" %>
+    <%= f.submit %>
+  <% end %>
+    
+    <%= link_to admin_orchestras_path do %>
+     <p> 一覧 </p>
+
+  <% end %>
+
+
