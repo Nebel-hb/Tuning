@@ -23,6 +23,11 @@ Event.create!(user_id: 3, area_id: 2, title: "演奏会2", event_introduction: "
 Event.create!(user_id: 4, area_id: 3, title: "演奏会3", event_introduction: "３回目の演奏会です。")
 Event.create!(user_id: 4, area_id: 4, title: "演奏会4", event_introduction: "４回目の演奏会です。")
 
+Orchestra.create!(user_id: 1, application_comment: "８回目の演奏会です。")
+Orchestra.create!(user_id: 2, application_comment: "９回目の演奏会です。")
+
+
+
 ["関東","関西","中部","北陸","北海道","東北","中国","四国","九州"].each do |name|
   Area.create!({area_name: name})
 end

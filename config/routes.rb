@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :orchestras, only: [:edit, :update]
-    get '/' => 'orchestras#index', as: 'top'
+    resources :orchestras, only: [:edit, :update, :index]
+    # get '/' => 'orchestras#index', as: 'top'
   end
+    post 'admin/users/:id' => 'admin/users#update'
   # ========= 利用者(user)のルーティング ================
 
   devise_for :users
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :orchestras, only: [:show, :create]
+    resources :orchestras, only: [:new, :create]
     resources :events, only: [:index, :show, :new, :edit, :update, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
