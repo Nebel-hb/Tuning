@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :orchestras
   has_many :recruit_users
-  has_many :recruitments, through: :recruit_users
+  has_many :recruitments
   belongs_to :instrument, optional: true
   belongs_to :area, optional: true
 
