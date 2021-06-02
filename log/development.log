@@ -6637,3 +6637,1602 @@ Processing by Public::UsersController#edit as HTML
 Completed 200 OK in 99ms (Views: 97.7ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/users/1/edit" for 114.172.229.148 at 2021-06-02 01:35:22 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Public::UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering public/users/edit.html.erb within layouts/application
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT "areas".* FROM "areas"[0m
+  ↳ app/views/public/users/edit.html.erb:21
+  [1m[36mInstrument Load (0.2ms)[0m  [1m[34mSELECT "instruments".* FROM "instruments"[0m
+  ↳ app/views/public/users/edit.html.erb:24
+  Rendered public/users/edit.html.erb within layouts/application (26.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 423ms (Views: 414.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/about" for 114.172.229.148 at 2021-06-02 01:35:28 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::HomesController#about as HTML
+  Rendering public/homes/about.html.erb within layouts/application
+  Rendered public/homes/about.html.erb within layouts/application (20.3ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 122ms (Views: 120.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for 114.172.229.148 at 2021-06-02 01:35:32 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.9ms)
+  Rendered users/sessions/new.html.erb within layouts/application (10.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 99ms (Views: 97.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 114.172.229.148 at 2021-06-02 01:35:37 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"euofxfY8zvT73mBfYnxLOzJzr0T/xPLLYB8tfmKZHo6vdDUXSB9J05mbBOuB3xVm+2ozIBR9yKjxCXE/2XQ3Hw==", "user"=>{"email"=>"a@a", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "a@a"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"euofxfY8zvT73mBfYnxLOzJzr0T/xPLLYB8tfmKZHo6vdDUXSB9J05mbBOuB3xVm+2ozIBR9yKjxCXE/2XQ3Hw==", "user"=>{"email"=>"a@a", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.8ms)
+  Rendered users/sessions/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_header.html.erb (4.5ms)
+Completed 200 OK in 397ms (Views: 90.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 114.172.229.148 at 2021-06-02 01:35:42 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C605s6NJg97X5Jh8TYl6+66IfH4BXLRKkOB6Mz3PoS6pF48wCuiDLnFknmfTcP+UekIh4H65u1a8dQ7diiJuDQ==", "user"=>{"email"=>"a@a", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "a@a"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.1ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C605s6NJg97X5Jh8TYl6+66IfH4BXLRKkOB6Mz3PoS6pF48wCuiDLnFknmfTcP+UekIh4H65u1a8dQ7diiJuDQ==", "user"=>{"email"=>"a@a", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.8ms)
+  Rendered users/sessions/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 388ms (Views: 74.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 114.172.229.148 at 2021-06-02 01:35:47 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AQzwhUjXEwgXpXKv5hpXhp6Zx9n1KGXR8NhNoYLIXMujtkYG4XYT+LEldLR449LpSlOaR4rNas3cTTlPNSWT6A==", "user"=>{"email"=>"a@a", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "a@a"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.1ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AQzwhUjXEwgXpXKv5hpXhp6Zx9n1KGXR8NhNoYLIXMujtkYG4XYT+LEldLR449LpSlOaR4rNas3cTTlPNSWT6A==", "user"=>{"email"=>"a@a", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.8ms)
+  Rendered users/sessions/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 402ms (Views: 97.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 114.172.229.148 at 2021-06-02 01:36:06 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4AHiKhIOIDDdyIlA0zFBoL1Z1KZa1OrAaJPw2Ec/STtCu1Spu68gwHtIj1tNyMTPaZOJOCUx5dxEBoQ28NKGGA==", "user"=>{"email"=>"musician1@music.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "musician1@music.com"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://71e0e4e49b9d481cbc8a954525edc625.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 319ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 114.172.229.148 at 2021-06-02 01:36:06 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::HomesController#top as HTML
+  Rendering public/homes/top.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/homes/top.html.erb:3
+  Rendered public/homes/top.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+Completed 200 OK in 88ms (Views: 85.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:36:09 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (2.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.7ms)
+Completed 200 OK in 77ms (Views: 75.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events" for 114.172.229.148 at 2021-06-02 01:36:16 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::EventsController#index as HTML
+  Rendering public/events/index.html.erb within layouts/application
+  Rendered public/events/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.2ms)
+Completed 200 OK in 79ms (Views: 77.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:36:17 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  Rendered public/recruitments/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (7.3ms)
+Completed 200 OK in 165ms (Views: 163.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:36:18 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.7ms)
+Completed 200 OK in 85ms (Views: 84.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:36:39 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.7ms)
+Completed 200 OK in 86ms (Views: 85.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:39:18 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (388.0ms)
+Completed 500 Internal Server Error in 394ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `general' for #<#<Class:0x00000000066b3400>:0x00007f4e09b9a7b8>):
+    11:             </tr>
+    12:           </thead>
+    13:           <tbody><% @users.each do |user| %>
+    14:           <% if user.role == general %>
+    15:             <tr>
+    16:               <td>
+    17:                 <%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "40x40" %>
+  
+app/views/public/users/index.html.erb:14:in `block in _app_views_public_users_index_html_erb__3813040263606009076_69986573670400'
+app/views/public/users/index.html.erb:13:in `_app_views_public_users_index_html_erb__3813040263606009076_69986573670400'
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:39:31 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.4ms)
+Completed 200 OK in 190ms (Views: 188.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:41:36 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  Rendered public/users/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ec2-user/environment/Tuning/app/views/public/users/index.html.erb:30: syntax error, unexpected elsif, expecting end
+'.freeze;           elsif user.role == "orchestra" 
+                    ^~~~~
+/home/ec2-user/environment/Tuning/app/views/public/users/index.html.erb:44: syntax error, unexpected end, expecting end-of-input
+'.freeze;           end 
+                    ^~~):
+  
+app/views/public/users/index.html.erb:30: syntax error, unexpected elsif, expecting end
+app/views/public/users/index.html.erb:44: syntax error, unexpected end, expecting end-of-input
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:42:13 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.9ms)
+Completed 200 OK in 99ms (Views: 98.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:42:42 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.7ms)
+Completed 200 OK in 92ms (Views: 90.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:43:12 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (6.3ms)
+Completed 200 OK in 87ms (Views: 85.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:43:34 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.7ms)
+Completed 200 OK in 73ms (Views: 72.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:43:35 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.6ms)
+Completed 200 OK in 85ms (Views: 83.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:43:52 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (8.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (5.1ms)
+Completed 200 OK in 161ms (Views: 159.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:44:47 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.7ms)
+Completed 200 OK in 75ms (Views: 73.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:45:23 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (3.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (6.7ms)
+Completed 200 OK in 91ms (Views: 89.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:45:59 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:13
+  Rendered public/users/index.html.erb within layouts/application (4.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (5.5ms)
+Completed 200 OK in 92ms (Views: 91.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 114.172.229.148 at 2021-06-02 01:47:14 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::UsersController#index as HTML
+  Rendering public/users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/public/users/index.html.erb:11
+  Rendered public/users/index.html.erb within layouts/application (15.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.9ms)
+Completed 200 OK in 92ms (Views: 90.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:47:15 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  Rendered public/recruitments/index.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    11:               <th colspan="3"></th>
+    12:             </tr>
+    13:           </thead>
+    14:           <tbody><% @users.each do |user| %>
+    15:           <% if user.role == "general" %>
+    16:             <tr>
+    17:               <td>
+  
+app/views/public/recruitments/index.html.erb:14:in `_app_views_public_recruitments_index_html_erb___68985098466172066_69986626387540'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:50:20 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.2ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:14
+  Rendered public/recruitments/index.html.erb within layouts/application (3.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.1ms)
+Completed 200 OK in 77ms (Views: 75.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:50:36 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:14
+  Rendered public/recruitments/index.html.erb within layouts/application (4.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (6.5ms)
+Completed 200 OK in 87ms (Views: 85.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:50:42 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:14
+  Rendered public/recruitments/index.html.erb within layouts/application (2.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (6.9ms)
+Completed 200 OK in 91ms (Views: 90.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:51:37 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:19
+  Rendered public/recruitments/index.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.8ms)
+Completed 200 OK in 74ms (Views: 73.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 01:53:59 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.3ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  Rendered public/recruitments/index.html.erb within layouts/application (4.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (21.5ms)
+Completed 200 OK in 117ms (Views: 112.1ms | ActiveRecord: 1.4ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mAdmin Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "music@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "areas"[0m
+  ↳ db/schema.rb:27
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "areas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "area_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "chats"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "chats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "message" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  ↳ db/schema.rb:41
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "user_id" integer, "comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_tags"[0m
+  ↳ db/schema.rb:49
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "event_tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "event_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "area_id" integer, "title" varchar, "event_introduction" text, "start" datetime, "end" datetime, "event_image" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "instruments"[0m
+  ↳ db/schema.rb:68
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "instruments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "instrument_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:68
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "notifications"[0m
+  ↳ db/schema.rb:74
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "room_id" integer, "chat_id" integer, "visitor_id" integer, "visited_id" integer, "action" varchar, "checked" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:74
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orchestras"[0m
+  ↳ db/schema.rb:85
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "orchestras" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "application_comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recruit_users"[0m
+  ↳ db/schema.rb:92
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "recruit_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "recruitement_id" integer, "join" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:92
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recruitments"[0m
+  ↳ db/schema.rb:100
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "recruitments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "area_id" integer, "title" varchar, "recruit_introduction" text, "recruit_start" datetime, "recruit_end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:100
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms"[0m
+  ↳ db/schema.rb:111
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "room_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:111
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags"[0m
+  ↳ db/schema.rb:117
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:117
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_rooms"[0m
+  ↳ db/schema.rb:123
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "user_rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "activation" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:123
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:131
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "instrument_id" integer, "area_id" integer, "name" varchar, "profile_image" integer, "introduction" text, "role" integer DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:131
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/schema.rb:131
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/schema.rb:131
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210601034224)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210601021853),
+(20210601021903),
+(20210601031022),
+(20210601031253),
+(20210601031719),
+(20210601032129),
+(20210601032442),
+(20210601032626),
+(20210601033210),
+(20210601033338),
+(20210601033443),
+(20210601033627),
+(20210601033815),
+(20210601034136);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (2.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-06-02 02:26:17.256535"], ["updated_at", "2021-06-02 02:26:17.256535"]]
+  ↳ db/schema.rb:13
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "admins"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "areas"[0m
+  ↳ db/schema.rb:27
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "areas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "area_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "chats"[0m
+  ↳ db/schema.rb:33
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "chats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "message" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  ↳ db/schema.rb:41
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "user_id" integer, "comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_tags"[0m
+  ↳ db/schema.rb:49
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "event_tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "event_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  ↳ db/schema.rb:56
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "area_id" integer, "title" varchar, "event_introduction" text, "start" datetime, "end" datetime, "event_image" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:56
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "instruments"[0m
+  ↳ db/schema.rb:68
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "instruments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "instrument_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:68
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "notifications"[0m
+  ↳ db/schema.rb:74
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "room_id" integer, "chat_id" integer, "visitor_id" integer, "visited_id" integer, "action" varchar, "checked" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:74
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "orchestras"[0m
+  ↳ db/schema.rb:85
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "orchestras" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "application_comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recruit_users"[0m
+  ↳ db/schema.rb:92
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "recruit_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "recruitement_id" integer, "join" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:92
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "recruitments"[0m
+  ↳ db/schema.rb:100
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "recruitments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "area_id" integer, "title" varchar, "recruit_introduction" text, "recruit_start" datetime, "recruit_end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:100
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms"[0m
+  ↳ db/schema.rb:111
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "room_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:111
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tags"[0m
+  ↳ db/schema.rb:117
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:117
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_rooms"[0m
+  ↳ db/schema.rb:123
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "user_rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "activation" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:123
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  ↳ db/schema.rb:131
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "instrument_id" integer, "area_id" integer, "name" varchar, "profile_image" integer, "introduction" text, "role" integer DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:131
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/schema.rb:131
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/schema.rb:131
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210601034224)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210601021853),
+(20210601021903),
+(20210601031022),
+(20210601031253),
+(20210601031719),
+(20210601032129),
+(20210601032442),
+(20210601032626),
+(20210601033210),
+(20210601033338),
+(20210601033443),
+(20210601033627),
+(20210601033815),
+(20210601034136);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-06-02 02:26:17.426416"], ["updated_at", "2021-06-02 02:26:17.426416"]]
+  ↳ db/schema.rb:13
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Update (0.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-06-02 02:26:17.436163"], ["key", "environment"]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mAdmin Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "music@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mAdmin Create (3.1ms)[0m  [1m[32mINSERT INTO "admins" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "music@music.com"], ["encrypted_password", "$2a$12$VTHQMxar1DRlcs3KsuhsHe7sty1svWlm.s7s2KhwDUSPgSB6mKaJ2"], ["created_at", "2021-06-02 02:26:24.855438"], ["updated_at", "2021-06-02 02:26:24.855438"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "musician1@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (4.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "musician1@music.com"], ["encrypted_password", "$2a$12$KWRrTW4Qdct2FhNmR4.x6eWpCi161WE5iBECKCFNTZbS3GHJgZM9e"], ["instrument_id", 2], ["area_id", 1], ["name", "user1"], ["created_at", "2021-06-02 02:26:25.190585"], ["updated_at", "2021-06-02 02:26:25.190585"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "musician2@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "musician2@music.com"], ["encrypted_password", "$2a$12$MLKMira5TTvo.GfCpydmYugr.gisRQJ5GSX5aNHs4aFFSldXkqQbG"], ["instrument_id", 20], ["area_id", 1], ["name", "user2"], ["created_at", "2021-06-02 02:26:25.523004"], ["updated_at", "2021-06-02 02:26:25.523004"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "orchestra1@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "orchestra1@music.com"], ["encrypted_password", "$2a$12$8a100o6UzothHiU3uqCnm.RHnVyjIkBckLnnug4osFm5WN.DFossm"], ["instrument_id", 1], ["area_id", 3], ["name", "orchestra1"], ["role", 2], ["created_at", "2021-06-02 02:26:25.858141"], ["updated_at", "2021-06-02 02:26:25.858141"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "orchestra2@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "orchestra2@music.com"], ["encrypted_password", "$2a$12$Nwg/JHbBElV6Ub/TMO5Jl.rxB7HmkbxJmJ1qiCeCXntut3N0HnQ0G"], ["instrument_id", 1], ["area_id", 4], ["name", "orchestra2"], ["role", 2], ["created_at", "2021-06-02 02:26:26.181866"], ["updated_at", "2021-06-02 02:26:26.181866"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20210601021853)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "instrument_id" integer, "area_id" integer, "name" varchar, "profile_image" integer, "introduction" text, "role" integer DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601021853_devise_create_users.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20210601021853_devise_create_users.rb:46
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20210601021853_devise_create_users.rb:47
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601021853"]]
+  ↳ bin/rails:9
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateAdmins (20210601021903)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601021903_devise_create_admins.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  ↳ db/migrate/20210601021903_devise_create_admins.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  ↳ db/migrate/20210601021903_devise_create_admins.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601021903"]]
+  ↳ bin/rails:9
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateOrchestras (20210601031022)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "orchestras" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "application_comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601031022_create_orchestras.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601031022"]]
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateEvents (20210601031253)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "area_id" integer, "title" varchar, "event_introduction" text, "start" datetime, "end" datetime, "event_image" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601031253_create_events.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601031253"]]
+  ↳ bin/rails:9
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateTags (20210601031719)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601031719_create_tags.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601031719"]]
+  ↳ bin/rails:9
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateEventTags (20210601032129)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "event_tags" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "event_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601032129_create_event_tags.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601032129"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20210601032442)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "user_id" integer, "comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601032442_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601032442"]]
+  ↳ bin/rails:9
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateRecruitments (20210601032626)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "recruitments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "area_id" integer, "title" varchar, "recruit_introduction" text, "recruit_start" datetime, "recruit_end" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601032626_create_recruitments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601032626"]]
+  ↳ bin/rails:9
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateRecruitUsers (20210601033210)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "recruit_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "recruitement_id" integer, "join" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601033210_create_recruit_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601033210"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateRooms (20210601033338)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "room_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601033338_create_rooms.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601033338"]]
+  ↳ bin/rails:9
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateChats (20210601033443)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "chats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "message" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601033443_create_chats.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601033443"]]
+  ↳ bin/rails:9
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateUserRooms (20210601033627)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_rooms" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "activation" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601033627_create_user_rooms.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601033627"]]
+  ↳ bin/rails:9
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateNotifications (20210601033815)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "room_id" integer, "chat_id" integer, "visitor_id" integer, "visited_id" integer, "action" varchar, "checked" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601033815_create_notifications.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601033815"]]
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateAreas (20210601034136)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "areas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "area_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601034136_create_areas.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601034136"]]
+  ↳ bin/rails:9
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateInstruments (20210601034224)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "instruments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "instrument_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20210601034224_create_instruments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210601034224"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (2.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-06-02 02:31:14.225754"], ["updated_at", "2021-06-02 02:31:14.225754"]]
+  ↳ bin/rails:9
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mAdmin Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "music@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mAdmin Create (4.2ms)[0m  [1m[32mINSERT INTO "admins" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "music@music.com"], ["encrypted_password", "$2a$12$0ubUUiA55Qbk.8.LakvrP.uKNKhi7NpX..xjwHZbCt0xBkRaOlPGy"], ["created_at", "2021-06-02 02:31:23.737513"], ["updated_at", "2021-06-02 02:31:23.737513"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "musician1@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "musician1@music.com"], ["encrypted_password", "$2a$12$wldTfgy1c1Dk8QJMrIVS1eOSKDzV/XpuCH2I8U8QgTTrAwOt4e18q"], ["instrument_id", 2], ["area_id", 1], ["name", "user1"], ["created_at", "2021-06-02 02:31:24.074404"], ["updated_at", "2021-06-02 02:31:24.074404"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "musician2@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "musician2@music.com"], ["encrypted_password", "$2a$12$HJ0cGoVyIGExPjpkFDbUbendAi3FaLhHvt2rsfTSGWYCjNZvASjsG"], ["instrument_id", 20], ["area_id", 1], ["name", "user2"], ["created_at", "2021-06-02 02:31:24.399416"], ["updated_at", "2021-06-02 02:31:24.399416"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "orchestra1@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "orchestra1@music.com"], ["encrypted_password", "$2a$12$Yjmb8rhUuEC2vmbQgE2JyOYrzCd/iGhqhB7zuEHCLaXaiYKRD6lBO"], ["instrument_id", 1], ["area_id", 3], ["name", "orchestra1"], ["role", 2], ["created_at", "2021-06-02 02:31:24.723952"], ["updated_at", "2021-06-02 02:31:24.723952"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "orchestra2@music.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (7.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "instrument_id", "area_id", "name", "role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "orchestra2@music.com"], ["encrypted_password", "$2a$12$EKTh1qbYXst.Nm2W0r2mS.LRFWzVAArxVh775Dvh4UXpnQJIlYO3K"], ["instrument_id", 1], ["area_id", 4], ["name", "orchestra2"], ["role", 2], ["created_at", "2021-06-02 02:31:25.044761"], ["updated_at", "2021-06-02 02:31:25.044761"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[36mRecruitment Create (0.7ms)[0m  [1m[32mINSERT INTO "recruitments" ("user_id", "area_id", "title", "recruit_introduction", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 3], ["area_id", 1], ["title", "演奏会1"], ["recruit_introduction", "初めての演奏会です。"], ["created_at", "2021-06-02 02:31:25.082176"], ["updated_at", "2021-06-02 02:31:25.082176"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mRecruitment Create (0.2ms)[0m  [1m[32mINSERT INTO "recruitments" ("user_id", "area_id", "title", "recruit_introduction", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 3], ["area_id", 2], ["title", "演奏会2"], ["recruit_introduction", "２回目の演奏会です。"], ["created_at", "2021-06-02 02:31:25.089241"], ["updated_at", "2021-06-02 02:31:25.089241"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:18
+  [1m[36mRecruitment Create (0.2ms)[0m  [1m[32mINSERT INTO "recruitments" ("user_id", "area_id", "title", "recruit_introduction", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 4], ["area_id", 3], ["title", "演奏会3"], ["recruit_introduction", "３回目の演奏会です。"], ["created_at", "2021-06-02 02:31:25.097923"], ["updated_at", "2021-06-02 02:31:25.097923"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[36mRecruitment Create (0.2ms)[0m  [1m[32mINSERT INTO "recruitments" ("user_id", "area_id", "title", "recruit_introduction", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 4], ["area_id", 4], ["title", "演奏会4"], ["recruit_introduction", "４回目の演奏会です。"], ["created_at", "2021-06-02 02:31:25.107371"], ["updated_at", "2021-06-02 02:31:25.107371"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (1.7ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "関東"], ["created_at", "2021-06-02 02:31:25.122589"], ["updated_at", "2021-06-02 02:31:25.122589"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "関西"], ["created_at", "2021-06-02 02:31:25.132628"], ["updated_at", "2021-06-02 02:31:25.132628"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "中部"], ["created_at", "2021-06-02 02:31:25.139594"], ["updated_at", "2021-06-02 02:31:25.139594"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "北陸"], ["created_at", "2021-06-02 02:31:25.147072"], ["updated_at", "2021-06-02 02:31:25.147072"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "北海道"], ["created_at", "2021-06-02 02:31:25.153429"], ["updated_at", "2021-06-02 02:31:25.153429"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.1ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "東北"], ["created_at", "2021-06-02 02:31:25.161464"], ["updated_at", "2021-06-02 02:31:25.161464"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "中国"], ["created_at", "2021-06-02 02:31:25.168215"], ["updated_at", "2021-06-02 02:31:25.168215"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "四国"], ["created_at", "2021-06-02 02:31:25.177198"], ["updated_at", "2021-06-02 02:31:25.177198"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[36mArea Create (0.2ms)[0m  [1m[32mINSERT INTO "areas" ("area_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["area_name", "九州"], ["created_at", "2021-06-02 02:31:25.183422"], ["updated_at", "2021-06-02 02:31:25.183422"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (3.3ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "オーケストラ"], ["created_at", "2021-06-02 02:31:25.196743"], ["updated_at", "2021-06-02 02:31:25.196743"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "フルート"], ["created_at", "2021-06-02 02:31:25.207921"], ["updated_at", "2021-06-02 02:31:25.207921"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "オーボエ"], ["created_at", "2021-06-02 02:31:25.214817"], ["updated_at", "2021-06-02 02:31:25.214817"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "クラリネット"], ["created_at", "2021-06-02 02:31:25.220187"], ["updated_at", "2021-06-02 02:31:25.220187"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "ファゴット"], ["created_at", "2021-06-02 02:31:25.228305"], ["updated_at", "2021-06-02 02:31:25.228305"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "トランペット"], ["created_at", "2021-06-02 02:31:25.233459"], ["updated_at", "2021-06-02 02:31:25.233459"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "トロンボーン"], ["created_at", "2021-06-02 02:31:25.241761"], ["updated_at", "2021-06-02 02:31:25.241761"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (2.3ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "ホルン"], ["created_at", "2021-06-02 02:31:25.277759"], ["updated_at", "2021-06-02 02:31:25.277759"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.6ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "チューバ"], ["created_at", "2021-06-02 02:31:25.288839"], ["updated_at", "2021-06-02 02:31:25.288839"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "バイオリン"], ["created_at", "2021-06-02 02:31:25.296053"], ["updated_at", "2021-06-02 02:31:25.296053"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (2.0ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "ヴィオラ"], ["created_at", "2021-06-02 02:31:25.302371"], ["updated_at", "2021-06-02 02:31:25.302371"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "チェロ"], ["created_at", "2021-06-02 02:31:25.311863"], ["updated_at", "2021-06-02 02:31:25.311863"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "コントラバス"], ["created_at", "2021-06-02 02:31:25.319132"], ["updated_at", "2021-06-02 02:31:25.319132"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "パーカッション"], ["created_at", "2021-06-02 02:31:25.325049"], ["updated_at", "2021-06-02 02:31:25.325049"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "ティンパニ"], ["created_at", "2021-06-02 02:31:25.333639"], ["updated_at", "2021-06-02 02:31:25.333639"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "ドラム"], ["created_at", "2021-06-02 02:31:25.339996"], ["updated_at", "2021-06-02 02:31:25.339996"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "チェレスタ"], ["created_at", "2021-06-02 02:31:25.347273"], ["updated_at", "2021-06-02 02:31:25.347273"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "ピアノ"], ["created_at", "2021-06-02 02:31:25.352735"], ["updated_at", "2021-06-02 02:31:25.352735"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "クラヴィコード"], ["created_at", "2021-06-02 02:31:25.360996"], ["updated_at", "2021-06-02 02:31:25.360996"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:28
+  [1m[36mInstrument Create (0.2ms)[0m  [1m[32mINSERT INTO "instruments" ("instrument_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["instrument_name", "チェンバロ"], ["created_at", "2021-06-02 02:31:25.367553"], ["updated_at", "2021-06-02 02:31:25.367553"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:28
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:37:39 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.2ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  Rendered public/recruitments/index.html.erb within layouts/application (38.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.5ms)
+Completed 200 OK in 470ms (Views: 458.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/sign_in" for 114.172.229.148 at 2021-06-02 02:37:45 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (2.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (18.2ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 130ms (Views: 128.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 114.172.229.148 at 2021-06-02 02:38:05 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FmbmWy7kEBJdKImuHPWvV/h4Gdmcda9FCx0r50tJI2oioWV3XkD5hrfOcrRkEGhOiDxlIW6atVPlJdZu0m7kTQ==", "user"=>{"email"=>"musician1@music.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "musician1@music.com"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://71e0e4e49b9d481cbc8a954525edc625.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 302 Found in 323ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 114.172.229.148 at 2021-06-02 02:38:06 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::HomesController#top as HTML
+  Rendering public/homes/top.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/homes/top.html.erb:3
+  Rendered public/homes/top.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+Completed 200 OK in 70ms (Views: 68.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:38:08 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  Rendered public/recruitments/index.html.erb within layouts/application (11.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (7.5ms)
+Completed 200 OK in 87ms (Views: 84.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:38:58 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  Rendered public/recruitments/index.html.erb within layouts/application (385.2ms)
+Completed 500 Internal Server Error in 390ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x000000000629d258>:0x00007ff881b9bcd0>
+Did you mean?  super):
+    17:           % if recruit.user.role == "general" %>
+    18:             <tr>
+    19:               <td>
+    20:                 <%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "40x40" %>
+    21:               </td>
+    22:               <td>
+    23:                 <%= recruit.title %>
+  
+app/views/public/recruitments/index.html.erb:20:in `block in _app_views_public_recruitments_index_html_erb__1239023689534227311_70352652501640'
+app/views/public/recruitments/index.html.erb:16:in `_app_views_public_recruitments_index_html_erb__1239023689534227311_70352652501640'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:39:08 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (34.4ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_name' for #<Recruitment:0x00007ff881d05af8>
+Did you mean?  user_id_change):
+    26:                 <%= recruit.area %>
+    27:               </td>
+    28:               <td>
+    29:                 <%= recruit.user_name %>
+    30:               </td>
+    31:               <td>
+    32:                 <%= recruit.recruit_introduction %>
+  
+app/views/public/recruitments/index.html.erb:29:in `block in _app_views_public_recruitments_index_html_erb__1239023689534227311_70352653195640'
+app/views/public/recruitments/index.html.erb:16:in `_app_views_public_recruitments_index_html_erb__1239023689534227311_70352653195640'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:39:18 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (301.8ms)
+Completed 500 Internal Server Error in 307ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x000000000629d258>:0x00007ff881ab2828>
+Did you mean?  super):
+    38:                 <%= recruit.recruit_end %>
+    39:               </td>
+    40:               <td>
+    41:                 <%= link_to user_path(user.id) do %>Show<% end %>
+    42:               </td>
+    43:             </tr>
+    44:            </div>
+  
+app/views/public/recruitments/index.html.erb:41:in `block in _app_views_public_recruitments_index_html_erb__1239023689534227311_70352652048440'
+app/views/public/recruitments/index.html.erb:16:in `_app_views_public_recruitments_index_html_erb__1239023689534227311_70352652048440'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:39:33 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  Rendered public/recruitments/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ec2-user/environment/Tuning/app/views/public/recruitments/index.html.erb:53: syntax error, unexpected ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/public/recruitments/index.html.erb:53: syntax error, unexpected ensure, expecting end-of-input
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:39:39 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (11.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.8ms)
+Completed 200 OK in 98ms (Views: 96.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:40:01 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (13.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.6ms)
+Completed 200 OK in 94ms (Views: 92.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:40:46 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (10.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.6ms)
+Completed 200 OK in 81ms (Views: 79.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:40:59 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  Rendered public/recruitments/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ec2-user/environment/Tuning/app/views/public/recruitments/index.html.erb:55: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/public/recruitments/index.html.erb:55: syntax error, unexpected end-of-input, expecting end
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:41:14 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.2ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (299.4ms)
+Completed 500 Internal Server Error in 305ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `recruitement' for #<#<Class:0x000000000629d258>:0x00007ff88157a4c8>
+Did you mean?  @recruitments):
+    38:                 <%= recruit.recruit_end %>
+    39:               </td>
+    40:               <td>
+    41:                 <%= link_to recruitment_path(recruitement.id) do %>Show<% end %>
+    42:               </td>
+    43:             </tr>
+    44:            </div>
+  
+app/views/public/recruitments/index.html.erb:41:in `block in _app_views_public_recruitments_index_html_erb__1239023689534227311_70352649313500'
+app/views/public/recruitments/index.html.erb:16:in `_app_views_public_recruitments_index_html_erb__1239023689534227311_70352649313500'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:41:36 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.5ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (14.0ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (5.7ms)
+Completed 200 OK in 123ms (Views: 120.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:42:15 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (12.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `area' for #<Area:0x00007ff8842ab000>):
+    23:                 <%= recruit.title %>
+    24:               </td>
+    25:               <td>
+    26:                 <%= recruit.area.area %>
+    27:               </td>
+    28:               <td>
+    29:                 <%= recruit.user.user_name %>
+  
+app/views/public/recruitments/index.html.erb:26:in `block in _app_views_public_recruitments_index_html_erb__1239023689534227311_70352672872040'
+app/views/public/recruitments/index.html.erb:16:in `_app_views_public_recruitments_index_html_erb__1239023689534227311_70352672872040'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:42:25 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  Rendered public/recruitments/index.html.erb within layouts/application (19.1ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_name' for #<User:0x00007ff881be85a8>
+Did you mean?  user_rooms):
+    26:                 <%= recruit.area.area_name %>
+    27:               </td>
+    28:               <td>
+    29:                 <%= recruit.user.user_name %>
+    30:               </td>
+    31:               <td>
+    32:                 <%= recruit.recruit_introduction %>
+  
+app/views/public/recruitments/index.html.erb:29:in `block in _app_views_public_recruitments_index_html_erb__1239023689534227311_70352652598860'
+app/views/public/recruitments/index.html.erb:16:in `_app_views_public_recruitments_index_html_erb__1239023689534227311_70352652598860'
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:42:59 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  Rendered public/recruitments/index.html.erb within layouts/application (18.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (4.7ms)
+Completed 200 OK in 94ms (Views: 92.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:44:51 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.1ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (10.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (3.8ms)
+Completed 200 OK in 87ms (Views: 85.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:46:02 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (1.2ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mArea Load (4.0ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  [1m[36mArea Load (0.6ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  [1m[36mArea Load (0.2ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:29
+  Rendered public/recruitments/index.html.erb within layouts/application (26.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (7.6ms)
+Completed 200 OK in 170ms (Views: 161.7ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:48:08 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  Rendered public/recruitments/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/ec2-user/environment/Tuning/app/views/public/recruitments/index.html.erb:55: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/public/recruitments/index.html.erb:55: syntax error, unexpected end-of-input, expecting end
+Started GET "/recruitments" for 114.172.229.148 at 2021-06-02 02:48:24 +0000
+Cannot render console from 114.172.229.148! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Public::RecruitmentsController#index as HTML
+  Rendering public/recruitments/index.html.erb within layouts/application
+  [1m[36mRecruitment Load (0.2ms)[0m  [1m[34mSELECT "recruitments".* FROM "recruitments"[0m
+  ↳ app/views/public/recruitments/index.html.erb:16
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:17
+  [1m[36mArea Load (0.1ms)[0m  [1m[34mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/public/recruitments/index.html.erb:26
+  Rendered public/recruitments/index.html.erb within layouts/application (64.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_header.html.erb:1
+  Rendered layouts/_header.html.erb (5.0ms)
+Completed 200 OK in 469ms (Views: 464.5ms | ActiveRecord: 3.3ms)
+
+
