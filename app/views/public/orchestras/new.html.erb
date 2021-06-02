@@ -1,0 +1,11 @@
+<h1>Public::Orchestras#new</h1>
+
+<div>
+<%= form_with(model: @orchestra, local: true) do |f| %>
+  <%= f.text_area :application_comment, rows: '5',placeholder: "コメントをここに" %>
+  <!--%= f.hidden_field :user_id  %>-->
+  <%= f.submit "応募する" %>
+<% end %>
+</div>
+
+ 

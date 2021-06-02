@@ -1,5 +1,10 @@
 class Admin::OrchestrasController < ApplicationController
+
   def index
+    @orchestras = Orchestra.all
+    application_user = Orchestra.pluck(:user_id)
+    @sum = User.where(id: application_user, role: "general")
+    
   end
   def edit
   end
@@ -7,5 +12,5 @@ class Admin::OrchestrasController < ApplicationController
   def update
   end
 
-  
+
 end

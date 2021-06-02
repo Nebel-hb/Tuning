@@ -1,2 +1,38 @@
-<h1>Admin::Orchestras#index</h1>
-<p>Find me in app/views/admin/orchestras/index.html.erb</p>
+
+          <h2>Orchestras</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>申請コメント</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+                 
+                 
+
+               <p>新規申請  <%= @sum.count %>  件</p>
+
+            <% @orchestras.each do |orchestra| %>
+              <% if orchestra.user.role == "general" %>
+              <tr>
+
+                <td>
+                  <%= orchestra.user.name %>
+                </td>
+                <td>
+                  <%= orchestra.application_comment %>
+                </td>
+                <td>
+                  <%= link_to admin_user_path(orchestra.user_id) do %>Show<% end %>
+                </td>
+              </tr>
+
+             </div>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>

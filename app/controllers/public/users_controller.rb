@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @orchestra = Orchestra.find_by(user_id: @user)
 
   end
 
@@ -24,7 +25,7 @@ class Public::UsersController < ApplicationController
 
   def user_params
 
-    params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image)
+    params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
 
   end
 end
