@@ -1,2 +1,32 @@
 <h1>Public::Events#show</h1>
-<p>Find me in app/views/public/events/show.html.erb</p>
+
+  <%= attachment_image_tag @event, :event_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
+
+              <td>
+                <%= @event.title %>
+              </td>
+              <td>
+                <%= @event.area.area_name %>
+              </td>
+              <td>
+                <%= @event.user.name %>
+              </td>
+              <td>
+                <%= @event.event_introduction %>
+              </td>
+              <td>
+                <%= @event.start %>
+              </td>
+              <td>
+                <%= @event.end %>
+              </td>
+              <% if @event.user == current_user %>
+              <td>
+                <%= link_to edit_event_path(@event.id) do %>Edit<% end %>
+              </td>
+              <td>
+                <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
+              </td>
+            <% end %>
+
+

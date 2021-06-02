@@ -1,7 +1,5 @@
 <h1>Public::Recruitments#show</h1>
 
-  <!--%= attachment_image_tag @recruitment, :profile_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>-->
-
               <td>
                 <%= @recruitment.title %>
               </td>
@@ -20,12 +18,14 @@
               <td>
                 <%= @recruitment.recruit_end %>
               </td>
-              <td>
-                <!--%= link_to recruitment_path(recruitement.id) do %>Show% end %>-->
-              </td>
 
-  <%= link_to edit_recruitment_path(@recruitment.id) do %>
-   edit
-  <% end %>
+            <% if @recruitment.user == current_user %>
+              <td>
+               <%= link_to edit_recruitment_path(@recruitment.id) do %>edit<% end %>
+              </td>
+              <td>
+                <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
+              </td>
+            <% end %>
 
 

@@ -18,6 +18,11 @@ Recruitment.create!(user_id: 3, area_id: 2, title: "演奏会2", recruit_introdu
 Recruitment.create!(user_id: 4, area_id: 3, title: "演奏会3", recruit_introduction: "３回目の演奏会です。")
 Recruitment.create!(user_id: 4, area_id: 4, title: "演奏会4", recruit_introduction: "４回目の演奏会です。")
 
+Event.create!(user_id: 3, area_id: 1, title: "演奏会1", event_introduction: "初めての演奏会です。")
+Event.create!(user_id: 3, area_id: 2, title: "演奏会2", event_introduction: "２回目の演奏会です。")
+Event.create!(user_id: 4, area_id: 3, title: "演奏会3", event_introduction: "３回目の演奏会です。")
+Event.create!(user_id: 4, area_id: 4, title: "演奏会4", event_introduction: "４回目の演奏会です。")
+
 ["関東","関西","中部","北陸","北海道","東北","中国","四国","九州"].each do |name|
   Area.create!({area_name: name})
 end

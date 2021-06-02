@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :users, only: [:index, :show, :edit, :update]
     resources :orchestras, only: [:show, :create]
-    resources :events, only: [:index, :show, :edit, :update, :create, :destroy] do
+    resources :events, only: [:index, :show, :new, :edit, :update, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
     resources :tags, only: [:create, :destroy]
