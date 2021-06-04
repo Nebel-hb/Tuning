@@ -8,7 +8,12 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def show
-     @recruitment = Recruitment.find(params[:id])
+    @recruitment = Recruitment.find(params[:id])
+    @recruit_users = RecruitUser.all
+    @recruit_user = RecruitUser.where(recruitment_id: @recruitment.id )
+    @count = RecruitUser.where(recruitment_id: @recruitment.id , join: false).count
+    @recruitment_user = RecruitUser.find_by(recruitment_id: @recruitment.id, user_id: current_user.id)
+   
   end
 
   def edit
@@ -41,7 +46,7 @@ class Public::RecruitmentsController < ApplicationController
 
   def confirm
     @recruitment = Recruitment.find(params[:id])
-    @recruit_user = Recruit_user.new
+    @recruit_user = RecruitUser.new
   end
 
   def recruitment_params

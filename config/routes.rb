@@ -26,9 +26,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :tags, only: [:create, :destroy]
-    resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy]
-    get 'recruitments/confirm/:id' => 'recruitments#confirm'
-    resources :recruit_users, only: [:create, :index]
+    get 'recruitments/confirm/:id' => 'recruitments#confirm', as: 'recruitments_confirm'
+    resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy] 
+    resources :recruit_users, only: [:create, :index, :destroy, :update]
     resources :rooms, only: [:create, :index, :new]
     resources :chats, only: [:create, :index]
     resources :notifications, only: [:index]
