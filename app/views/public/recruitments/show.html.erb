@@ -24,7 +24,12 @@
                <%= link_to edit_recruitment_path(@recruitment.id) do %>edit<% end %>
               </td>
               <td>
-                <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
+                <%= link_to  event_path(@recruitment.id), remote: true, method: :delete do %>Delete<% end %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to  recruitments_path(@recruitment.id), remote: true do %>応募する<% end %>
+                
               </td>
             <% end %>
 

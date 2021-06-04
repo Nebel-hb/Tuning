@@ -1,5 +1,5 @@
 class Public::RecruitmentsController < ApplicationController
-  
+
   def index
      @recruitments = Recruitment.all
   end
@@ -40,6 +40,8 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def confirm
+    @recruitment = Recruitment.find(params[:id])
+    @recruit_user = Recruit_user.new
   end
 
   def recruitment_params
