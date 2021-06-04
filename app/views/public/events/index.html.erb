@@ -40,6 +40,11 @@
                 <%= event.end %>
               </td>
               <td>
+                
+                <p>コメント<%= event.comments.count %>件</p>
+                <%= event.end %>
+              </td>
+              <td>
                 <%= link_to event_path(event.id) do %>Show<% end %>
               </td>
             </tr>
