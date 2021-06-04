@@ -92,7 +92,8 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
   create_table "recruit_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "recruitement_id"
-    t.boolean "join"
+    t.text "recruitement_comment"
+    t.boolean "join", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

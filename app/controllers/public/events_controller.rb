@@ -10,6 +10,7 @@ class Public::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -45,4 +46,5 @@ class Public::EventsController < ApplicationController
     params.require(:event).permit(:title, :area_id, :user_id, :event_introduction, :event_start, :event_end, :event_image)
 
   end
+  
 end
