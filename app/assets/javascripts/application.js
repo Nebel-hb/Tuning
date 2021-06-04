@@ -13,4 +13,16 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+
+var nowchecked = $('input[name=join]:checked').val();
+$('input[name=join]').click(function(){
+	if($(this).val() == nowchecked) {
+		$(this).prop('checked', false);
+		nowchecked = false;
+	} else {
+		nowchecked = $(this).val();
+	}
+});

@@ -13,6 +13,43 @@
     <%= link_to edit_user_path(@user.id) do %>
      <p> 編集 </p>
     <% end %>
+        
+    <% if current_user.role == "orchestra" %>
+      <% @recruitments.each do |recruit| %>
+            <% if recruit.user_id == current_user.id %>
+            <tr>
+              
+              <td>
+                <%= recruit.title %>
+              </td>
+              <td>
+                <%= recruit.area.area_name %>
+              </td>
+              <td>
+                <%= recruit.user_id %>
+              </td>
+              <td>
+                <%= recruit.recruit_introduction %>
+              </td>
+              <td>
+                <%= recruit.recruit_start %>
+              </td>
+              <td>
+                <%= recruit.recruit_end %>
+              </td>
+              <td>
+                <%= link_to recruitment_path(recruit.id) do %>Show<% end %>
+              </td>
+            </tr>
+           </div>
+          </tbody>
+        <%= link_to  recruit_users_path(recruitment: recruit.id) do %>応募<%= @recruit_user.recruit.count %>件<% end %>
+          <% end %>
+        <% end %>
+          
+      <td>
+      </td>  
+    <% end %>
   <% end %>
 
 

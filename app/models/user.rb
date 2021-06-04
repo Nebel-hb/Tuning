@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_many :user_rooms
   has_many :chats
-  has_many :rooms, through: :user_rooms
+  has_many :rooms
   has_many :orchestras
   has_many :recruit_users
   has_many :recruitments

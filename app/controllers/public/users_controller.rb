@@ -5,7 +5,12 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @orchestra = Orchestra.find_by(user_id: @user)
+    @recruitments = Recruitment.all
+    @user = Recruitment.where(user_id: current_user.id)
+    @recruit_user = RecruitUser.where(recruitment_id: @user)
+    
+    
+   
 
   end
 

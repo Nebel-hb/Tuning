@@ -1,2 +1,54 @@
 <h1>Public::RecruitUsers#index</h1>
-<p>Find me in app/views/public/recruit_users/index.html.erb</p>
+
+<tbody><% @recruit_users.each do |recruit_user| %>
+              <% if recruit_user.recruitment_id == @recruitment %>
+                <% if recruit_user.join == false %>
+            <tr>
+              <td>
+                <%= recruit_user.user.name %>
+              </td>
+              <td>
+                <%= recruit_user.recruit_comment %>
+              </td>
+              <td>
+                <%= form_with(url: recruit_user_path(recruit_user), local: true, method: :patch)   do |f| %>
+
+                  <%= f.radio_button :join, :true %>
+                　<%= f.label :join, "許可する"  %>
+                　
+                　<%= f.hidden_field :recruit_comment %>
+                  
+
+                  <%= f.submit %>
+              　<% end %>
+              </td>
+              <td>
+                <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
+              </td>
+              <td>
+                <%= link_to recruit_user_path(recruit_user), method: :delete do %>断る<% end %>
+
+              </td>
+            </tr>
+                  <% else %>
+                  
+                
+            <tr>
+              <td>
+                <%= recruit_user.user.name %>
+              </td>
+              <td>
+                <%= recruit_user.recruit_comment %>
+              </td>
+              <td>
+                  <p>許可済み</p>
+              </td>
+              <td>
+                <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
+              </td>
+              
+            </tr>
+                  <% end %>
+           </div>
+          </tbody>
+          <% end %><% end %>

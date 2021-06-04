@@ -3,8 +3,8 @@ class CreateRecruitUsers < ActiveRecord::Migration[5.2]
     create_table :recruit_users do |t|
 
       t.integer :user_id
-      t.integer :recruitement_id
-      t.text :recruitement_comment
+      t.integer :recruitment_id
+      t.text :recruit_comment
       t.boolean :join, default: false
 
       t.timestamps

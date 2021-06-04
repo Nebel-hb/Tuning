@@ -21,9 +21,8 @@
 
 
           <div class="new-comment">
-            <%= form_with(model:[@recruitment,@recruit_user], local: true) do |f| %>
-              <%= f.text_area :recruitment_comment, rows:'5',placeholder: "申請コメント" %>
-              <%= f.hidden_field :user_id, value:current_user.id %>
+            <%= form_with(model:[ @recruit_user], local: true) do |f| %>
+              <%= f.text_area :recruit_comment, rows:'5',placeholder: "申請コメント" %>
               <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
 
               <%= f.submit "送信する" %>
