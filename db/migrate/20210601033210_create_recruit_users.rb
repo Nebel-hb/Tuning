@@ -4,7 +4,8 @@ class CreateRecruitUsers < ActiveRecord::Migration[5.2]
 
       t.integer :user_id
       t.integer :recruitement_id
-      t.boolean :join
+      t.text :recruitement_comment
+      t.boolean :join, default: false
 
       t.timestamps
     end
