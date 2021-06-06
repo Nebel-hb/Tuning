@@ -5,6 +5,7 @@ class Public::RecruitUsersController < ApplicationController
     recruit_user.user_id = current_user.id
 
     if recruit_user.save
+      # redirect_to recruitments_path
       redirect_to recruitment_path(recruitment)
     end
   end
@@ -12,7 +13,10 @@ class Public::RecruitUsersController < ApplicationController
   def index
     @recruit_users = RecruitUser.all
     @recruitment = params[:recruitment].to_i
-
+    @room = Room.new
+    @rooms = Room.all
+    # @rooms = Room.where(user_id: current_user.id)
+    
   end
 
   def destroy
@@ -22,14 +26,17 @@ class Public::RecruitUsersController < ApplicationController
   end
 
   def update
-    @recruit_user = RecruitUser.find(params[:id])
-    @recruit_user.update(recruit_user_params)
+    @recruit = RecruitUser.find(params[:id])
+    @recruit_user = @recruit.update(recruit_user_params)
     @recruitment = @recruit_user.recruitment_id
     redirect_to recruitment_path(@recruitment)
 
   end
 
   def recruit_user_params
-    params.permit( :recruitment_id, :join, :recruit_comment)
+    params.require(:recruit_user).permit( :recruitment_id, :join, :recruit_comment)
+  end
+  def room_params
+    params.require(:room).permit(:room_name, :user_id)
   end
 end

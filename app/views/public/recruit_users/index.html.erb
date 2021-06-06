@@ -1,8 +1,9 @@
 <h1>Public::RecruitUsers#index</h1>
 
-<tbody><% @recruit_users.each do |recruit_user| %>
-              <% if recruit_user.recruitment_id == @recruitment %>
-                <% if recruit_user.join == false %>
+<tbody>
+  <% @recruit_users.each do |recruit_user| %>
+    <% if recruit_user.recruitment_id == @recruitment %>
+      <% if recruit_user.join == false %>
             <tr>
               <td>
                 <%= recruit_user.user.name %>
@@ -11,13 +12,14 @@
                 <%= recruit_user.recruit_comment %>
               </td>
               <td>
-                <%= form_with(url: recruit_user_path(recruit_user), local: true, method: :patch)   do |f| %>
+                <%= form_with model: @recruit_user, local: true do |f| %>
 
                   <%= f.radio_button :join, :true %>
                 　<%= f.label :join, "許可する"  %>
-                　
+
                 　<%= f.hidden_field :recruit_comment %>
-                  
+                　<%= f.hidden_field :recruit_user_id %>
+
 
                   <%= f.submit %>
               　<% end %>
@@ -31,8 +33,6 @@
               </td>
             </tr>
                   <% else %>
-                  
-                
             <tr>
               <td>
                 <%= recruit_user.user.name %>
@@ -46,9 +46,22 @@
               <td>
                 <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
               </td>
-              
+
             </tr>
-                  <% end %>
+            <% end %>
            </div>
+          <% end %>
+            <% end %>
           </tbody>
-          <% end %><% end %>
+          <h2>トークルーム作成</h2>
+          <%= form_with model: @room do |f| %>
+            <%= f.label :room_name %>
+            <%= f.text_field :room_name %>
+            <%= f.hidden_field :user_id, value:current_user.id %>
+            <%= f.submit %>
+          <% end %>
+         <h2>参加済トークルーム一覧</h2>
+          <% @rooms.each do |room| %>
+            <%= room.room_name %>
+            <%= room.user_id %>
+          <% end %>
