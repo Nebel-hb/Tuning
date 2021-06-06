@@ -26,6 +26,7 @@ Event.create!(user_id: 4, area_id: 4, title: "演奏会4", event_introduction: "
 Orchestra.create!(user_id: 1, application_comment: "８回目の演奏会です。")
 Orchestra.create!(user_id: 2, application_comment: "９回目の演奏会です。")
 
+Room.create!(user_id: 3, room_name: "演奏会3")
 
 
 ["関東","関西","中部","北陸","北海道","東北","中国","四国","九州"].each do |name|
