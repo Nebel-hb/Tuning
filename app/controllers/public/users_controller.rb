@@ -6,8 +6,8 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recruitments = Recruitment.all
-    @user = Recruitment.where(user_id: current_user.id)
-    @recruit_user = RecruitUser.where(recruitment_id: @user)
+    recruit_user = Recruitment.where(user_id: current_user.id)
+    @recruit_user = RecruitUser.where(recruitment_id: recruit_user)
     
     
    

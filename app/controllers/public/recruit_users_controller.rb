@@ -13,11 +13,9 @@ class Public::RecruitUsersController < ApplicationController
   def index
     @recruit_users = RecruitUser.all
     @recruitment = params[:recruitment].to_i
-
     @room = Room.new
-    # @rooms = current_user.rooms
     @rooms = Room.all
-    @nonrooms = Room.where(id: UserRoom.where.not(user_id: current_user.id).pluck(:id))
+    # @rooms = Room.where(user_id: current_user.id)
     
   end
 
