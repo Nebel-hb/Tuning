@@ -1,7 +1,47 @@
-<p><%= "ルーム名：#{@room.name}" %></p>
+<p><%= "ルーム名：#{@room.room_name}" %></p>
+<p>参加メンバー</p>
+<% @users.each do |user| %>
+    <%= link_to user_path(user.id) do %>
+        <%= user.user.name %>
+    <% end %>
+<% end %>
+<div class="container">
+    <div class="row-12">
+        <div class="col-xs-12">
+            
+            <table class="message table">
+              <thead>
+                <tr>
+                  
+                </tr>
+              </thead>
+              <% @chats.each do |chat| %>
+                <% if chat.user_id == current_user.id %>
+                <tbody>
+                  <tr>
+                    <th>
+                      <p style="text-align: left;"><%= chat.message %></p>
+                    </th>
+                  </tr>
+                </tbody>
+                <% else %>
+                <tbody>
+                  <tr>
+                    <th></th>
+                    <th>
+                      <p style="text-align: right;"><%= chat.message %></p>
+                    </th>
+                  </tr>
+                </tbody>
+                <% end %>
+              <% end %>
+            </table>
 
-<input type="text" data-behavior="room_speaker"> // 投稿フォーム
-
-<div id="posts">
-  <%= render "post", collection: @posts %>
+            <%= form_with model: @chat do |f| %>
+              <%= f.text_field :message %>
+              <%= f.hidden_field :room_id %>
+              <%= f.submit %>
+            <% end %>
+        </div>
+    </div>
 </div>

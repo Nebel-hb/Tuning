@@ -4,7 +4,7 @@
   <% @recruit_users.each do |recruit_user| %>
     <% if recruit_user.recruitment_id == @recruitment %>
       <% if recruit_user.join == false %>
-            <tr>
+           <div> <tr>
               <td>
                 <%= recruit_user.user.name %>
               </td>
@@ -12,13 +12,13 @@
                 <%= recruit_user.recruit_comment %>
               </td>
               <td>
-                <%= form_with model: @recruit_user, local: true do |f| %>
+                <%= form_with model: recruit_user, local: true do |f| %>
 
                   <%= f.radio_button :join, :true %>
                 　<%= f.label :join, "許可する"  %>
 
                 　<%= f.hidden_field :recruit_comment %>
-                　<%= f.hidden_field :recruit_user_id %>
+                　<%= f.hidden_field :recruitment %>
 
 
                   <%= f.submit %>
@@ -31,9 +31,9 @@
                 <%= link_to recruit_user_path(recruit_user), method: :delete do %>断る<% end %>
 
               </td>
-            </tr>
-                  <% else %>
-            <tr>
+            </tr></div>
+        <% else %>
+           <div> <tr>
               <td>
                 <%= recruit_user.user.name %>
               </td>
@@ -44,24 +44,50 @@
                   <p>許可済み</p>
               </td>
               <td>
+                <%= form_with model: @user_room, url: user_rooms_path do |f| %>
+                  <%= f.collection_select :room_id, @users_room, :id, :room_name, include_blank: "選択して下さい" %>
+                  <%= f.hidden_field :user_id, value:recruit_user.user_id %>
+                  <%= f.submit '送信'%>
+                <% end %>
+              </td>
+              <td>
+
+              <% @user_rooms.each do |user_room| %>
+            <% if user_room.room.recruitment_id == @recruitment %>
+                <% if user_room.user_id == recruit_user.user_id %>
+              <div><%= link_to room_path(user_room.room_id) do %>
+                <%= user_room.room.room_name %>!!!
+
+                <% end %>
+              <% end %>
+              </div>
+            <% end %>
+          <% end %>
+
+              </td>
+              <td>
                 <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
               </td>
-
-            </tr>
-            <% end %>
-           </div>
-          <% end %>
-            <% end %>
-          </tbody>
+            </tr></div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
           <h2>トークルーム作成</h2>
           <%= form_with model: @room do |f| %>
             <%= f.label :room_name %>
             <%= f.text_field :room_name %>
             <%= f.hidden_field :user_id, value:current_user.id %>
+            <%= f.hidden_field :recruitment_id, value:@recruitment %>
+
             <%= f.submit %>
           <% end %>
-         <h2>参加済トークルーム一覧</h2>
+         <h2>作成済トークルーム一覧</h2>
           <% @rooms.each do |room| %>
-            <%= room.room_name %>
-            <%= room.user_id %>
+            <% if room.recruitment_id == @recruitment %>
+              <div><%= link_to room_path(room.id) do %>
+                <%= room.room_name %>
+              <% end %>
+              </div>
+            <% end %>
           <% end %>

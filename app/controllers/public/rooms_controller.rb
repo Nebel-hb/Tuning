@@ -1,12 +1,16 @@
 class Public::RoomsController < ApplicationController
-  
+
   def index
-  
+
   end
-  
+
   def show
     @room = Room.find(params[:id])
-    @posts = @room.posts
+    @chats = @room.chats
+    @chat = Chat.new(room_id: @room.id)
+    @users = UserRoom.where(room_id: @room)
+    # @user_room = UserRoom.find(params[:id])
+    p @users
   end
 
   def new
@@ -14,9 +18,12 @@ class Public::RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-    @room.save
-    if current_user.user_rooms.create(room_id: @room.id)
-      redirect_to recruitments_path
+    if @room.save!
+      @user_room = @room.user_rooms.new
+      @user_room.room_id = @room.id     
+      @user_room.user_id = @room.user_id
+      @user_room.save!
+      redirect_to request.referer
     end
   end
 
@@ -25,6 +32,6 @@ class Public::RoomsController < ApplicationController
 
 private
 def room_params
-  params.require(:room).permit(:room_name, :user_id)
+  params.require(:room).permit(:room_name, :user_id, :recruitment_id)
 end
 end
