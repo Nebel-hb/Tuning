@@ -22,6 +22,7 @@ class Public::RoomsController < ApplicationController
       @user_room = @room.user_rooms.new
       @user_room.room_id = @room.id     
       @user_room.user_id = @room.user_id
+      @user_room.activation = true
       @user_room.save!
       redirect_to request.referer
     end

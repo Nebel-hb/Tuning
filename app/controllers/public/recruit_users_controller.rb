@@ -3,9 +3,13 @@ class Public::RecruitUsersController < ApplicationController
     recruit_user = RecruitUser.new(recruit_user_params)
     recruitment = recruit_user.recruitment_id
     recruit_user.user_id = current_user.id
-
+    
+    # 申請通知用
+    recruit = Recruitment.find_by(id: recruitment)
+    recruitment_user = recruit.user_id
+    user = User.find_by(id: recruitment_user)
     if recruit_user.save
-      # redirect_to recruitments_path
+      user.create_notification_join!(current_user)
       redirect_to recruitment_path(recruitment)
     end
   end
@@ -17,7 +21,7 @@ class Public::RecruitUsersController < ApplicationController
     @user_rooms = UserRoom.all
     @room = Room.new
     @rooms = Room.where(user_id: current_user.id)
-    @users_room = Room.where(recruitment_id: @recruitment)        
+    @users_room = Room.where(recruitment_id: @recruitment)
   end
 
   def destroy

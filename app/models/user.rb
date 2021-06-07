@@ -19,5 +19,15 @@ class User < ApplicationRecord
   belongs_to :instrument, optional: true
   belongs_to :area, optional: true
 
+  def create_notification_join!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'join'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'join'
+      )
+      notification.save if notification.valid?
+    end
+  end
 
 end
