@@ -1,9 +1,16 @@
 <p><%= "ルーム名：#{@room.room_name}" %></p>
 <p>参加メンバー</p>
 <% @users.each do |user| %>
-     <span><%= link_to user_path(user.id) do %>
+  <% if user.activation == true %>
+     <span><%= link_to user_path(user.user_id) do %>
         <%= user.user.name %>
     <% end %></span>
+  <% else %>
+    <p>招待中</p>
+     <span><%= link_to user_path(user.user_id) do %>
+        <%= user.user.name %>
+    <% end %></span>
+  <% end %>
 <% end %>
 <div class="container">
     <div class="row-12">

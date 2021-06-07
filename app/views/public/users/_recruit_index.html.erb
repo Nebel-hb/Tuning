@@ -1,0 +1,22 @@
+
+  <td>
+    <%= recruit.title %>
+  </td>
+  <td>
+    <%= recruit.area.area_name %>
+  </td>
+  <td>
+    <%= recruit.user_id %>
+  </td>
+  <td>
+    <%= recruit.recruit_introduction %>
+  </td>
+  <td>
+    <%= recruit.recruit_start %>
+  </td>
+  <td>
+    <%= recruit.recruit_end %>
+  </td>
+  <td>
+    <%= link_to recruitment_path(recruit.id) do %>Show<% end %>
+  </td>

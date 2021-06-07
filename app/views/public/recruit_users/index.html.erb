@@ -46,7 +46,7 @@
                 <% end %>
               </td>
               <td>
-            <h2>招待済みトークルーム</h2>
+            <p>招待済みトークルーム</p>
               <% @user_rooms.each do |user_room| %>
             <% if user_room.room.recruitment_id == @recruitment %>
                 <% if user_room.user_id == recruit_user.user_id %>
