@@ -52,3 +52,18 @@
         <%= f.submit "送信する" %>
       <% end %>
     </div>
+
+    <h1> 投稿詳細 </h1>
+
+<p><%= @event.title %></p>
+
+<br>
+
+<%= "タグ: " %>
+  <% @event_tags.each do |tag| %>
+  <span>
+    <%= link_to tag.tag_name, tag_events_path(tag_id: tag.id) %>
+    <%= "(#{tag.events.count})" %>
+　</span>
+<hr>
+　<% end %>
