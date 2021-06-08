@@ -44,15 +44,15 @@
                 <%= event.event_introduction %>
               </td>
               <td>
-                <%= event.start %>
+                <%= l event.start %>
               </td>
               <td>
-                <%= event.end %>
+                <%= l event.end %>
               </td>
               <td>
                 
                 <p>コメント<%= event.comments.count %>件</p>
-                <%= event.end %>
+  
               </td>
               <td>
                 <%= link_to event_path(event.id) do %>Show<% end %>

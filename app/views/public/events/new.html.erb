@@ -23,6 +23,13 @@
   <%= f.label :event_introduction, '説明文', class: 'col-sm-3 col-form-label page-title' %>
   <%= f.text_area :event_introduction, class: 'form-control email page-title' %>
 
+
+  <%= f.label :開始日時, class: 'control-label' %>
+  <%= f.datetime_field :start, class: 'form-control' %>
+
+  <%= f.label :終了日時, class: 'control-label' %>
+  <%= f.datetime_field :end, class: 'form-control' %>
+
   <%= f.text_field :tag_name %>
   <%= f.hidden_field :user_id, value:current_user.id %>
   <%= f.submit %>
