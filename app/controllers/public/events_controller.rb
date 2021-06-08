@@ -37,7 +37,7 @@ class Public::EventsController < ApplicationController
       @event.save_tag(tag_list)
       redirect_to events_path
     else
-      render 'new'
+       redirect_back(fallback_location: events_path)    
     end
   end
 
@@ -50,7 +50,8 @@ class Public::EventsController < ApplicationController
   def search
     @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
-    @events = @tag.events.all           #クリックしたタグに紐付けられた投稿を全て表示
+    @events = @tag.events.all   
+    #クリックしたタグに紐付けられた投稿を全て表示
   end
 
 
