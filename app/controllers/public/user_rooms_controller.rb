@@ -5,6 +5,15 @@ class Public::UserRoomsController < ApplicationController
     @user_room.save
     redirect_to request.referer
   end
+
+  def update 
+    user_room = UserRoom.find(params[:id])
+    if user_room.update(user_room_params)
+      redirect_to  request.referer
+    else
+      render 'show'
+    end
+  end
   
   private
   def user_room_params

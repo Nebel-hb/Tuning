@@ -10,8 +10,18 @@
      <span><%= link_to user_path(user.user_id) do %>
         <%= user.user.name %>
     <% end %></span>
+
+    <% if user.user_id == current_user.id %>
+      <%= form_with model: user, local: true do |f| %>
+        <%= f.radio_button :activation, :true %>
+      　<%= f.label :activation, "参加する"  %>
+      　<%= f.hidden_field :user_id, value:current_user.id %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
+
 <div class="container">
     <div class="row-12">
         <div class="col-xs-12">
@@ -43,11 +53,12 @@
                 <% end %>
               <% end %>
             </table>
-
-            <%= form_with model: @chat do |f| %>
-              <%= f.text_field :message %>
-              <%= f.hidden_field :room_id %>
-              <%= f.submit %>
+            <% if @users.find_by(user_id: current_user.id).activation == true %>
+              <%= form_with model: @chat do |f| %>
+                <%= f.text_field :message %>
+                <%= f.hidden_field :room_id %>
+                <%= f.submit %>
+              <% end %>
             <% end %>
         </div>
     </div>

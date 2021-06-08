@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
   create_table "user_rooms", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
-    t.boolean "activation"
+    t.boolean "activation", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

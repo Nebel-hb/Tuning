@@ -33,18 +33,34 @@
      <h2>トークルーム </h2>
       <% @user_rooms.each do |user_room| %>
           <% if user_room.user_id == current_user.id %>
-          <div>
-            <%= link_to room_path(user_room.room_id) do %>
+             <% if user_room.activation == true %>
+              <div>
+              <%= link_to room_path(user_room.room_id) do %>
               <%= user_room.room.room_name %>
+              <% end %>
+              </div>
             <% end %>
-          </div>
           <% end %>
-      <% end %>
+        <% end %>
 
-    <h2>募集中</h2>
+     <h2>未参加のトークルーム </h2>
+      <% @user_rooms.each do |user_room| %>
+          <% if user_room.user_id == current_user.id %>
+             <% if user_room.activation == false %>
+              <div>
+              <%= link_to room_path(user_room.room_id) do %>
+                <%= user_room.room.room_name %>
+              <% end %>
+               
+            <% end %>
+                  
+          </div>
+        <% end %>
+
     <% if current_user.role == "orchestra" %>
       <% @recruitments.each do |recruit| %>
-            <% if recruit.user_id == current_user.id %>
+        <% if recruit.user_id == current_user.id %>
+          <h2>募集中</h2>
             <div>
               <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
@@ -58,5 +74,6 @@
       <% end %>
     <% end %>
   <% end %>
+<% end %>
 
 

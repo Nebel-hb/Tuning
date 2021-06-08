@@ -11,6 +11,7 @@ class Public::UsersController < ApplicationController
     @recruit_users = RecruitUser.where(user_id: current_user.id, join: true)
     @recruit = RecruitUser.pluck(:recruitment_id)
     @user_rooms = UserRoom.all
+    p @user_rooms
     
    
 
@@ -31,8 +32,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-
     params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
-
   end
+  
 end

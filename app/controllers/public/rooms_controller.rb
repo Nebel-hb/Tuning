@@ -28,11 +28,16 @@ class Public::RoomsController < ApplicationController
     end
   end
 
+
   def destroy
   end
 
 private
-def room_params
-  params.require(:room).permit(:room_name, :user_id, :recruitment_id)
-end
+  def room_params
+    params.require(:room).permit(:room_name, :user_id, :recruitment_id)
+  end
+  
+  def user_room_params
+    params.require(:user_room).permit(:room_id, :user_id, :message)
+  end
 end
