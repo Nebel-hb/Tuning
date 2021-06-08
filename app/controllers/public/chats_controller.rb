@@ -15,6 +15,7 @@ class Public::ChatsController < ApplicationController
     room = @chat.room
     @chat.save
     room.create_notification_chat!(current_user, @chat.id)
+    redirect_to request.referer
   end
   
   private

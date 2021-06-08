@@ -31,6 +31,13 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @user = User.search(params[:search])
+    @keyword = params[:keyword]
+  render "index"
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
   end

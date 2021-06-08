@@ -41,4 +41,13 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search =~  /^[0-9]+$/
+      User.where(['id LIKE ?', "%#{search}%"])
+      # User.where("name LIKE?","%#{search}%")
+    else
+      @users = User.none
+    end
+  end
+
 end

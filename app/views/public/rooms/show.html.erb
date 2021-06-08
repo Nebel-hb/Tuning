@@ -1,12 +1,41 @@
+
 <p><%= "ルーム名：#{@room.room_name}" %></p>
+ <p>検索</p>
+      <%= form_with url: room_path, local: true, method: :get do |f|%>
+        <%= f.text_field :search, placeholder: "search" %>
+        <%= f.submit "search" %>
+      <% end %>
+      <div>
+        <% @user.each do |user| %>
+      <tr>
+          <%= user.name %>
+          <% if @users.pluck(:user_id).include?(user.id) %>
+          <p>招待済み</p>
+          <% else %>
+          <%= form_with model: @user_room, url: user_rooms_path  do |f| %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+        　<%= f.hidden_field :user_id, value: user.id %>
+          <%= f.submit "招待する"  %>
+
+      </tr>
+          <% end %>
+          <% end %>
+        <% end %>
+
+
+
+
+</div>
 <p>参加メンバー</p>
 <% @users.each do |user| %>
   <% if user.activation == true %>
-     <span><%= link_to user_path(user.user_id) do %>
+     <span>
+        <%= link_to user_path(user.user_id) do %>
         <%= user.user.name %>
-    <% end %></span>
+        <% end %>
+      </span>
   <% else %>
-    <p>招待中</p>
+    <p>参加待ち</p>
      <span><%= link_to user_path(user.user_id) do %>
         <%= user.user.name %>
     <% end %></span>
