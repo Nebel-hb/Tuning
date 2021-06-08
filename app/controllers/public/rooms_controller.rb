@@ -1,6 +1,7 @@
 class Public::RoomsController < ApplicationController
 
   def index
+    @user_rooms = UserRoom.all
 
   end
 
@@ -9,8 +10,10 @@ class Public::RoomsController < ApplicationController
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
     @users = UserRoom.where(room_id: @room)
-    # @user_room = UserRoom.find(params[:id])
-    p @users
+    @notifications = current_user.passive_notifications.page(params[:page]).per(20)
+    @notifications.where(room_id: @room, checked: false).each do |notification|
+      notification.update_attributes(checked: true)
+    end
   end
 
   def new

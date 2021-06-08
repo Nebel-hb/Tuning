@@ -21,6 +21,7 @@
     <% end %>
   <% end %>
 <% end %>
+<% if @users.find_by(user_id: current_user.id).activation == true %>
 
 <div class="container">
     <div class="row-12">
@@ -53,13 +54,12 @@
                 <% end %>
               <% end %>
             </table>
-            <% if @users.find_by(user_id: current_user.id).activation == true %>
               <%= form_with model: @chat do |f| %>
                 <%= f.text_field :message %>
                 <%= f.hidden_field :room_id %>
                 <%= f.submit %>
               <% end %>
-            <% end %>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
+<% end %>
