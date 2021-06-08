@@ -37,10 +37,9 @@
                   <p>許可済み</p>
               </td>
               <td>
-                %= a = Room.where(id: UserRoom.where.not(user_id: recruit_user.user_id ).pluck(:room_id)) %>
-
+              
                 <%= form_with model: @user_room, url: user_rooms_path do |f| %>
-                  <%= f.collection_select :room_id, @users_room , :id, :room_name, include_blank: "選択して下さい" %>
+                  <%= f.collection_select :room_id, @users_room.where.not(id: UserRoom.where(user_id: recruit_user.user_id ).pluck(:room_id)) , :id, :room_name, include_blank: "選択して下さい" %>
                   <%= f.hidden_field :user_id, value:recruit_user.user_id %>
                   <%= f.submit '送信'%>
                 <% end %>

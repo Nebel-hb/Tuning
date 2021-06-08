@@ -31,20 +31,12 @@
       <% end %>
 
      <h2>トークルーム </h2>
-      <% @user_rooms.each do |user_room| %>
-          <% if user_room.user_id == current_user.id %>
-          <div>
-            <%= link_to room_path(user_room.room_id) do %>
-              <%= user_room.room.room_name %>
-            <% end %>
-          </div>
-          <% end %>
-      <% end %>
+        <%= link_to "一覧へ", rooms_path %>
 
-    <h2>募集中</h2>
     <% if current_user.role == "orchestra" %>
+          <h2>募集中</h2>
       <% @recruitments.each do |recruit| %>
-            <% if recruit.user_id == current_user.id %>
+        <% if recruit.user_id == current_user.id %>
             <div>
               <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
@@ -54,9 +46,9 @@
               </tr>
             </div>
           </tbody>
-        <% end %>
       <% end %>
     <% end %>
   <% end %>
+<% end %>
 
 

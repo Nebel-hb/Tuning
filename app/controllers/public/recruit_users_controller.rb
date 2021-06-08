@@ -22,6 +22,7 @@ class Public::RecruitUsersController < ApplicationController
     @room = Room.new
     @rooms = Room.where(user_id: current_user.id)
     @users_room = Room.where(recruitment_id: @recruitment)
+
   end
 
   def destroy

@@ -29,10 +29,10 @@ Rails.application.routes.draw do
       get 'events', to: 'events#search'
     end
     get 'recruitments/confirm/:id' => 'recruitments#confirm', as: 'recruitments_confirm'
-    resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy] 
+    resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy]
     resources :recruit_users, only: [:create, :index, :destroy, :update]
-    resources :rooms, only: [:create, :index, :new, :show]
-    resources :user_rooms, only: [:create]
+    resources :rooms, only: [:create, :index, :new, :show ]
+    resources :user_rooms, only: [:create, :update]
     resources :chats, only: [:create, :index]
     resources :notifications, only: [:index]
     resources :activities, only: [:index]
