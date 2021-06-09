@@ -56,7 +56,7 @@
 <%= "タグ: " %>
   <% @event_tags.each do |tag| %>
   <span>
-    <%= link_to tag.tag_name, tag_events_path(tag_id: tag.id) %>
+    <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
     <%= "(#{tag.events.count})" %>
 　</span>
 

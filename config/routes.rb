@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :tags do
-      get 'events', to: 'events#search'
+      get 'events', to: 'events#search',as: 'event_search'
     end
     get 'recruitments/confirm/:id' => 'recruitments#confirm', as: 'recruitments_confirm'
     resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy]

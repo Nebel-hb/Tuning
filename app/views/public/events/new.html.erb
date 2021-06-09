@@ -4,7 +4,7 @@
   <% @tag_list.each do |list| %>
     <% if list.events.count != 0 %>
       <span>
-        <%= link_to list.tag_name, tag_events_path(tag_id: list.id) %>
+        <%= link_to "##{list.tag_name}", tag_event_search_path(tag_id: list.id) %>
         <%= "(#{list.events.count})" %>
     　</span>
 　  <% end %>

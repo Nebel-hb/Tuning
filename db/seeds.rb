@@ -18,8 +18,11 @@ Recruitment.create!(user_id: 3, area_id: 2, title: "演奏会2", recruit_introdu
 Recruitment.create!(user_id: 4, area_id: 3, title: "演奏会3", recruit_introduction: "３回目の演奏会です。")
 Recruitment.create!(user_id: 4, area_id: 4, title: "演奏会4", recruit_introduction: "４回目の演奏会です。")
 
-Orchestra.create!(user_id: 1, application_comment: "８回目の演奏会です。")
-Orchestra.create!(user_id: 2, application_comment: "９回目の演奏会です。")
+Event.create!(user_id: 3, area_id: 1, title: "演奏会1", start:  "2021-06-14", end: "2021-06-15" ,event_introduction: "初めての演奏会です。")
+Event.create!(user_id: 3, area_id: 2, title: "演奏会2", start:  "2021-06-16", end: "2021-06-16" ,event_introduction: "２回目の演奏会です。")
+Event.create!(user_id: 4, area_id: 3, title: "演奏会3", start:  "2021-06-18", end: "2021-06-28" ,event_introduction: "３回目の演奏会です。")
+Event.create!(user_id: 4, area_id: 4, title: "演奏会4", start:  "2021-06-20", end: "2021-06-30" ,event_introduction: "４回目の演奏会です。")
+
 
 Room.create!(user_id: 3, room_name: "演奏会3")
 

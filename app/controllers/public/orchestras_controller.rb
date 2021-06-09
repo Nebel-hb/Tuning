@@ -1,9 +1,9 @@
 class Public::OrchestrasController < ApplicationController
   def create
-   
+
     @orchestra = Orchestra.new(orchestra_params)
     if @orchestra.save
-      redirect_to users_path
+      redirect_to user_path(current_user.id)
     else
       render 'new'
     end

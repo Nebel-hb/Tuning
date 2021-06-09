@@ -38,6 +38,7 @@ class Public::RecruitUsersController < ApplicationController
 
   end
 
+ private
   def recruit_user_params
     params.require(:recruit_user).permit( :recruitment_id, :join, :recruit_comment)
   end
