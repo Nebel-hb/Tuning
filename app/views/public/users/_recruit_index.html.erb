@@ -1,6 +1,8 @@
 
   <td>
-    <%= recruit.title %>
+    <%= link_to recruitment_path(recruit.id) do %>
+      <%= recruit.title %>
+    <% end %>
   </td>
   <td>
     <%= recruit.area.area_name %>
@@ -17,6 +19,5 @@
   <td>
     <%= recruit.recruit_end %>
   </td>
-  <td>
-    <%= link_to recruitment_path(recruit.id) do %>Show<% end %>
-  </td>
+  
+  

@@ -1,6 +1,9 @@
 class Public::UsersController < ApplicationController
   def index
     @users = User.all
+    @q = User.ransack(params[:q])
+    @search = @q.result(distinct: true)
+    
   end
 
   def show
@@ -29,6 +32,13 @@ class Public::UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @user = User.search(params[:search])
+    @keyword = params[:keyword]
+  render "index"
   end
 
   def user_params

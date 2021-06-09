@@ -1,4 +1,4 @@
-<h1>Public::Users#show</h1>
+<h1>Mypage</h1>
 
   <div class="col-sm-2">会員ID</div>
   <div><%= @user.id %></div>
@@ -9,6 +9,7 @@
   <div class="col"><%= @user.area.area_name %> </div>
   <div class="col"><%= @user.instrument.instrument_name %> </div>
   <div class="col"><%= @user.introduction %> </div>
+  <div class="col"><%= @user.role %> </div>
   <% if @user == current_user %>
     <%= link_to edit_user_path(@user.id) do %>
      <p> 編集 </p>
@@ -46,9 +47,13 @@
               </tr>
             </div>
           </tbody>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
+        <div><%= link_to "公式楽団申請はこちら", new_orchestra_path %></div>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
 
 

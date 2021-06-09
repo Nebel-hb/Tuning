@@ -2,10 +2,12 @@
 
 <h3> タグリスト</h3>
   <% @tag_list.each do |list| %>
-  <span>
-    <%= link_to list.tag_name, tag_events_path(tag_id: list.id) %>
-    <%= "(#{list.events.count})" %>
-　</span>
+    <% if list.events.count != 0 %>
+      <span>
+        <%= link_to "##{list.tag_name}", tag_event_search_path(tag_id: list.id) %>
+        <%= "(#{list.events.count})" %>
+    　</span>
+　  <% end %>
 　<% end %>
 <hr>
 
@@ -20,6 +22,13 @@
 
   <%= f.label :event_introduction, '説明文', class: 'col-sm-3 col-form-label page-title' %>
   <%= f.text_area :event_introduction, class: 'form-control email page-title' %>
+
+
+  <%= f.label :開始日時, class: 'control-label' %>
+  <%= f.datetime_field :start, class: 'form-control' %>
+
+  <%= f.label :終了日時, class: 'control-label' %>
+  <%= f.datetime_field :end, class: 'form-control' %>
 
   <%= f.text_field :tag_name %>
   <%= f.hidden_field :user_id, value:current_user.id %>

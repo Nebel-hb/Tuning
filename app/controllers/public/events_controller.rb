@@ -1,9 +1,14 @@
 class Public::EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    events = Event.where("events.end > ?", DateTime.now).reorder(:end)
     @tag_list = Tag.all
     @event = current_user.events.new
+    @p = Tag.ransack(params[:p])
+    @tag_search = @p.result(distinct: true)
+    @q = events.ransack(params[:q])
+    @event_search = @q.result(distinct: true)
+    @areas = Area.all
   end
 
   def new
@@ -37,7 +42,7 @@ class Public::EventsController < ApplicationController
       @event.save_tag(tag_list)
       redirect_to events_path
     else
-      render 'new'
+       redirect_back(fallback_location: events_path)
     end
   end
 
@@ -50,14 +55,20 @@ class Public::EventsController < ApplicationController
   def search
     @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
-    @events = @tag.events.all           #クリックしたタグに紐付けられた投稿を全て表示
+    @event_tag = @tag.events.all
+    @events = Event.all
+    @q = Event.ransack(params[:q])
+    # @events = @q.result(distinct: true)
+    #クリックしたタグに紐付けられた投稿を全て表示
   end
 
-
+ private
+  
   def event_params
-
-    params.require(:event).permit(:title, :area_id, :user_id, :event_introduction, :event_start, :event_end, :event_image)
-
+    params.require(:event).permit(:title, :area_id, :user_id, :event_introduction, :start, :end, :event_image)
   end
-
+  
+  def tag_params
+    params.require(:tag).permit(:tag_name)
+  end
 end

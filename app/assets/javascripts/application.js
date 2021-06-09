@@ -9,12 +9,14 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
 
 
 var nowchecked = $('input[name=join]:checked').val();
@@ -26,3 +28,10 @@ $('input[name=join]').click(function(){
 		nowchecked = $(this).val();
 	}
 });
+
+
+  $(function () {
+    $('.datepicker').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    });
+  });
