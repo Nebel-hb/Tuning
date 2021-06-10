@@ -14,8 +14,8 @@
               <td>
                 <%= form_with model: recruit_user, local: true do |f| %>
 
-                  <%= f.radio_button :join, :true %>
                 　<%= f.label :join, "許可する"  %>
+                  <%= f.check_box :join, {class: "check_box"}, true, false %>
 
                 　<%= f.hidden_field :recruit_comment %>
                 　<%= f.hidden_field :recruitment %>

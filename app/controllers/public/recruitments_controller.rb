@@ -1,10 +1,24 @@
 class Public::RecruitmentsController < ApplicationController
 
   def index
-     @recruitments = Recruitment.all
+    # @recruitments = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:recruit_end)
+    # @q = Recruitment.ransack(params[:q])
+    # @recruitments = @q.result(distinct: true)
+    search_all = params[:search_all]
+    if search_all == 1
+    @q = Recruitment.ransack(params[:q])
+      @recruitments = @q.result(distinct: true)
+      puts "====================="
+      p @recruitments
+    else
+    @q = Recruitment.ransack(params[:q])
+      @recruitments = @q.result(distinct: true)
+
+    end
   end
   def new
      @recruitment = Recruitment.new
+     @event = Event.new
   end
 
   def show
@@ -13,7 +27,7 @@ class Public::RecruitmentsController < ApplicationController
     @recruit_user = RecruitUser.where(recruitment_id: @recruitment.id )
     @count = RecruitUser.where(recruitment_id: @recruitment.id , join: false).count
     @recruitment_user = RecruitUser.find_by(recruitment_id: @recruitment.id, user_id: current_user.id)
-   
+
   end
 
   def edit
@@ -31,7 +45,20 @@ class Public::RecruitmentsController < ApplicationController
 
   def create
      @recruitment = Recruitment.new(recruitment_params)
+     a = (with_event_params)
+     puts "aaaaaaaaaaaaaaaaaaaaaaaa"
+     p a
+     event = Event.new
     if @recruitment.save
+      if a == true
+        event.title =  @recruitment.title
+        event.user_id =  @recruitment.user_id
+        event.area_id = @recruitment.area_id
+        event.event_introduction = @recruitment.recruit_introduction =
+        event.start = @recruitment.recruit_event_start
+        event.end = @recruitment.recruit_event_end
+        event.save
+      end
       redirect_to recruitments_path
     else
       render 'new'
@@ -50,6 +77,9 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def recruitment_params
-    params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end)
+    params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end)
+  end
+  def with_event_params
+    params.permit(:with_event)
   end
 end

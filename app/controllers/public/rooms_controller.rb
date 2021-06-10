@@ -21,7 +21,7 @@ class Public::RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
-    @user_room = UserRoom.new(user_room_params)
+    @user_room = UserRoom.new
     if @room.save!
       @user_room = @room.user_rooms.new
       @user_room.room_id = @room.id

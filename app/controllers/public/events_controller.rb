@@ -4,11 +4,12 @@ class Public::EventsController < ApplicationController
     events = Event.where("events.end > ?", DateTime.now).reorder(:end)
     @tag_list = Tag.all
     @event = current_user.events.new
-    @p = Tag.ransack(params[:p])
+    @p = Tag.ransack(params[:q])
     @tag_search = @p.result(distinct: true)
     @q = events.ransack(params[:q])
     @event_search = @q.result(distinct: true)
     @areas = Area.all
+    
   end
 
   def new
@@ -63,11 +64,11 @@ class Public::EventsController < ApplicationController
   end
 
  private
-  
+
   def event_params
     params.require(:event).permit(:title, :area_id, :user_id, :event_introduction, :start, :end, :event_image)
   end
-  
+
   def tag_params
     params.require(:tag).permit(:tag_name)
   end

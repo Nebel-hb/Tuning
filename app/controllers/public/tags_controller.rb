@@ -1,5 +1,5 @@
 class Public::TagsController < ApplicationController
-  
+
   def index
     # @p = Tag.ransack(params[:p])
     # @tag_search = @p.result(distinct: true)
@@ -7,15 +7,20 @@ class Public::TagsController < ApplicationController
     # @tag_list = Tag.all
     @areas = Area.all
     @event = current_user.events.new
+    #target = params[:target]
+    #if target == "Tag"
+    #elsif target == "Event"
+    #else
+    #end
     @p = Tag.ransack(params[:p])
     @tag_search = @p.result(distinct: true)
     @q = Event.ransack(params[:q])
     @event_search = @q.result(distinct: true)
   end
-  
+
    private
     def tag_params
       params.require(:tag).permit(:tag_name)
     end
-    
+
 end

@@ -13,34 +13,38 @@
                 <%= @recruitment.recruit_introduction %>
               </td>
               <td>
-                <%= @recruitment.recruit_start %>
+                <%= l @recruitment.recruit_start %>
               </td>
               <td>
-                <%= @recruitment.recruit_end %>
+                <%= l @recruitment.recruit_end %>
               </td>
+               <% if  @recruitment.recruit_end > Time.now %>
 
-            <% if @recruitment.user == current_user %>
-
-              <td>
-               <%= link_to edit_recruitment_path(@recruitment.id) do %>edit<% end %>
-              </td>
-              <td>
-                <%= link_to  recruitment_path(@recruitment.id), remote: true, method: :delete do %>Delete<% end %>
-              </td>
-              <td>
-                <%= link_to  recruit_users_path(recruitment: @recruitment.id) do %>応募者一覧へ<% end %>応募未対応<%= @count %>件
-              </td>
-            <% else %>
-
-              <% if current_user.role == "general" %>
-                <% if @recruitment_user.nil? %>
+                <% if @recruitment.user == current_user %>
+    
                   <td>
-                    <%= link_to  recruitments_confirm_path(@recruitment.id) do %>応募する<% end %>
+                   <%= link_to edit_recruitment_path(@recruitment.id) do %>edit<% end %>
+                  </td>
+                  <td>
+                    <%= link_to  recruitment_path(@recruitment.id), remote: true, method: :delete do %>Delete<% end %>
+                  </td>
+                  <td>
+                    <%= link_to  recruit_users_path(recruitment: @recruitment.id) do %>応募者一覧へ<% end %>応募未対応<%= @count %>件
                   </td>
                 <% else %>
-                  <p>応募済み</p>
+
+                  <% if current_user.role == "general" %>
+                    <% if @recruitment_user.nil? %>
+                      <td>
+                        <%= link_to  recruitments_confirm_path(@recruitment.id) do %>応募する<% end %>
+                      </td>
+                    <% else %>
+                      <p>応募済み</p>
+                    <% end %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            <% end %>
+                <% else %>
+                    この応募は終了しました。
+                <% end %>
 
 

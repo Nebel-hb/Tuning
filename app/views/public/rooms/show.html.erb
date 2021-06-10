@@ -42,8 +42,9 @@
 
     <% if user.user_id == current_user.id %>
       <%= form_with model: user, local: true do |f| %>
-        <%= f.radio_button :activation, :true %>
+      
       　<%= f.label :activation, "参加する"  %>
+        <%= f.check_box :activation, {class: "check_box"}, true, false %>
       　<%= f.hidden_field :user_id, value:current_user.id %>
         <%= f.submit %>
       <% end %>
