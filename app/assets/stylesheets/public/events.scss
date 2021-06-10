@@ -1,4 +1,34 @@
 // Place all the styles related to the public/events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+       
+       
+#calendar{
+  width:500px;
+  hight:400px;
+}
+// [calendar.scss]
+.fc-day.fc-today {
+    position: relative;
+}
 
+.fc-day.fc-today::before,
+.fc-day.fc-today::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.fc-day.fc-today::before {
+    border-width: 1.5em;
+}
+
+.fc-day.fc-today::after {
+    border-radius: 0;
+    border-width: 1.5em;
+    border-right-color: green;
+    border-top-color: green;
+}

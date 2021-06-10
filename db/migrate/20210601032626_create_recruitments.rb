@@ -8,6 +8,8 @@ class CreateRecruitments < ActiveRecord::Migration[5.2]
       t.text :recruit_introduction
       t.datetime :recruit_start
       t.datetime :recruit_end
+      t.datetime :recruit_event_start
+      t.datetime :recruit_event_end
 
       t.timestamps
     end

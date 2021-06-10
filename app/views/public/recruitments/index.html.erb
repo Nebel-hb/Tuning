@@ -1,5 +1,36 @@
 
-<h2>Recruitments</h2>
+<h2>募集一覧</h2>
+
+
+<%= search_form_for(@q)   do |f| %>
+
+
+  <%= f.label :_title_cont, "タイトル" %>
+  <%= f.search_field :title_cont , placeholder: "search" %>
+
+  <%= f.label :name_cont, "タイトル" %>
+  <%= f.search_field :user_name_cont , placeholder: "search" %>
+
+  <%= f.label :area_id_eq,  "地域"%>
+  <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+
+  <%= f.label :start, "開始日時", class: 'control-label' %>
+  <%= f.datetime_field :recruit_end_gteq, class: 'form-control' %>
+
+  <%= f.label :end, "終了日時", class: 'control-label' %>
+  <%= f.datetime_field :recruit_start_lteq, class: 'form-control' %>
+
+  <%= f.label :start, "開始日時", class: 'control-label' %>
+  <%= f.datetime_field :recruit_event_end_gteq, class: 'form-control' %>
+
+  <%= f.label :end, "終了日時", class: 'control-label' %>
+  <%= f.datetime_field :recruit_event_start_lteq, class: 'form-control' %>
+
+<!--%= f.select :search_all, [['after today', 1], ['all', 2]], class: 'sample' %>-->
+
+  <%= f.submit "search" %>
+<% end %>
+
 
 <% if current_user.role == "orchestra" %>
 
@@ -8,39 +39,68 @@
         <table class="table">
           <thead>
             <tr>
-              <th>image</th>
-              <th>title</th>
-              <th>area</th>
-              <th>user_name</th>
+              <!--<th>image</th>-->
+              <th><%= sort_link(@q, :title, "タイトル") %></th>
+              <th><%= sort_link(@q, :area_id, "地域") %></th>
+              <th><%= sort_link(@q, :user_name, "募集者") %></th>
               <th>recruit_introduction</th>
-              <th>recruit_start</th>
-              <th>recruit_end</th>
+              <th><%= sort_link(@q, :recruit_start, "募集開始日") %></th>
+              <th><%= sort_link(@q, :recruit_end, "募集終了日") %></th>
+              <th><%= sort_link(@q, :recruit_event_start, "本番開始日") %></th>
+              <th><%= sort_link(@q, :recruit_event_end, "本番終了日") %></th>
               <th colspan="3"></th>
             </tr>
           </thead>
-          <tbody><% @recruitments.each do |recruit| %>
+    <!--      <form>-->
+    <!--<div class="form-check">-->
+    <!--    <input class="form-check-input" type="radio" name="q[event_tags_id_eq]" value="event" onclick="formSwitch()" checked>-->
+    <!--    <label class="form-check-label"> 募集中</label>-->
+    <!--</div>-->
+    <!--<div class="form-check">-->
+    <!--    <input class="form-check-input" type="radio" name="q[event_tags_id_eq]" value="tag" onclick="formSwitch()">-->
+    <!--    <label class="form-check-label"> 過去の募集も表示</label>-->
+    <!--</div>-->
+</form>
+
+<ul>
+  <tbody>
+    <div id="event">
+          <% @recruitments.each do |recruit| %>
+
+    </div>
+    <div id="tag">
+
+          <!--% Recruitment.all.each do |recruit| %>-->
+    </div>
+</ul>
+
             <tr>
-              
+
               <td>
-                <%= recruit.title %>
+                <%= link_to recruitment_path(recruit.id) do %>
+                  <%= recruit.title %>
+                <% end %>
               </td>
               <td>
                 <%= recruit.area.area_name %>
               </td>
               <td>
-                <%= recruit.user_id %>
+                <%= recruit.user.name %>
               </td>
               <td>
-                <%= recruit.recruit_introduction %>
+                <%= truncate(recruit.recruit_introduction, length:15) %>
               </td>
               <td>
-                <%= recruit.recruit_start %>
+                <%= l recruit.recruit_start %>
               </td>
               <td>
-                <%= recruit.recruit_end %>
+                <%= l recruit.recruit_end %>
               </td>
               <td>
-                <%= link_to recruitment_path(recruit.id) do %>Show<% end %>
+                <%= l recruit.recruit_event_start %>
+              </td>
+              <td>
+                <%= l recruit.recruit_event_end %>
               </td>
             </tr>
            </div>

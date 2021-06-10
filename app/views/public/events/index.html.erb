@@ -1,10 +1,15 @@
 
 <h2>Events</h2>
-        
-        <div id="calendar"></div>
 
-<%= search_form_for@q  do |f| %>
-  <%= f.label :title_cont, "タイトル検索" %>
+
+<%= search_form_for(@q, url: events_path)   do |f| %>
+
+  <%= f.label :event_tags_id_eq, "イベント検索"  %>
+  <%= f.radio_button :event_tags_id_eq, :event, onclick: "formSwitch()" ,value: "event" %>
+  <%= f.label :event_tags_id_eq, "タグ検索"  %>
+  <%= f.radio_button :event_tags_id_eq, :tag, onclick: "formSwitch()", value: "tag" %>
+<div id="event">
+  <%= f.label :title_cont, "タイトル" %>
   <%= f.search_field :title_cont , placeholder: "search" %>
 
   <%= f.label :area_id_eq,  "地域"%>
@@ -16,20 +21,41 @@
   <%= f.label :end, "終了日時", class: 'control-label' %>
   <%= f.datetime_field :start_lteq, class: 'form-control' %>
 
+</div>
+
+<div id="tag">
+  <%= f.label :tags_tag_name_cont, "タグ" %>
+  <%= f.search_field :tags_tag_name_cont , placeholder: "search" %>
+</div>
 
   <%= f.submit "search" %>
 <% end %>
 
- 
+<!--%= render  partial: 'search', locals: {q: @q, areas: @areas } %>-->
 
-<%= search_form_for(@p, url:tags_path  ) do |f| %>
-  <%= f.label :tag_name_cont, "タグ検索" %>
-  <%= f.search_field :tag_name_in , placeholder: "search" %>
-
-  <%= f.submit "search" %>
-<% end %>
 
 <%= link_to new_event_path do %>New<% end %>
+
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+  <h3>タグ一覧</h3>
+      <th><%= sort_link(@p, :tag_name, "並び替え") %></th>
+    </tr>
+  </thead>
+
+      <tbody>
+  <% @tag_search.each do |list| %>
+    <% if list.events.count != 0 %>
+         <td>
+          <%= link_to list.tag_name, tag_event_search_path(tag_id: list.id) %>
+          <%= "(#{list.events.count})" %>
+         </td>
+  　<% end %>
+　<% end %>
+  </tbody>
+</table>
 
 <hr>
         <table class="table">
@@ -81,5 +107,8 @@
         </table>
     </div>
   </div>
+
+
+        <div id="calendar"></div>
 
 

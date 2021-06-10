@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
     t.text "recruit_introduction"
     t.datetime "recruit_start"
     t.datetime "recruit_end"
+    t.datetime "recruit_event_start"
+    t.datetime "recruit_event_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
