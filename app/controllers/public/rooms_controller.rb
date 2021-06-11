@@ -10,7 +10,7 @@ class Public::RoomsController < ApplicationController
     @chat = Chat.new(room_id: @room.id)
     @users = UserRoom.where(room_id: @room)
     @users22 = @users.pluck(:user_id)
-    @user = User.search(params[:search])
+    @user = User.search_user(params[:search])
     @user_room = UserRoom.new
     @notifications = current_user.passive_notifications.page(params[:page]).per(20)
     @notifications.where(room_id: @room, checked: false).each do |notification|

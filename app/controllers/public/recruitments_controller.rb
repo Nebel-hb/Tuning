@@ -2,22 +2,39 @@ class Public::RecruitmentsController < ApplicationController
 
   def index
     # @recruitments = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:recruit_end)
-    # @q = Recruitment.ransack(params[:q])
-    # @recruitments = @q.result(distinct: true)
-    # @search_all = params[:search_all]
-    @recruitments = Recruitment.search_recruit(params[:word])
+    @search = params[:search]
+    @word = params[:word]
+    @recruit_params = [params[:word],params[:area],params[:end_gteq],params[:start_lteq]]
+    @search_past = params[:search_past]
+    
+    if  @search_past == "開催予定のイベント"
+      @recruit = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:end)
+    elsif @search_past == "過去のイベント"
+      @recruit = Recruitment.where("recruitments.recruit_end < ?", DateTime.now).reorder(:end)
+    else
+      @recruit = Recruitment.all
+    end
+
+    # @events_all = Recruitment.all
+    @areas = Area.all
+    if  @search == "イベント検索"
+      @recruitments = @recruit.search_recruit(@recruit_params,@search,@recruit)
+      @instruments = Instrument.all
+    elsif @search == "募集者検索"
+      recruit_user = User.search_user(@word).pluck(:id)
+      @recruitments = @recruit.where(user_id: recruit_user)
+      @instruments = Instrument.all
+    elsif @search == "楽器検索"
+      @instruments = Instrument.search_instrument(@word,@search)
+      instrument = @instruments.pluck(:id)
+      @recruitments = @recruitment.where(id: EventTag.where(instrument_id: instrument).pluck(:recruitment_id))
+    else
+      @instruments = Instrument.all
+      @recruitments = @recruit
+    end
+
     
     
-
-    # if @search_all == "1"
-    #   @search = Recruitment.search(word)
-      puts "====================="
-      p @recruitments
-    # else
-    # @q = Recruitment.ransack(params[:q])
-    #   @recruitments = @q.result(distinct: true)
-
-    # end
   end
   def new
      @recruitment = Recruitment.new
@@ -47,13 +64,12 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def create
+    
      @recruitment = Recruitment.new(recruitment_params)
-     a = (with_event_params)
-     puts "aaaaaaaaaaaaaaaaaaaaaaaa"
-     p a
      event = Event.new
     if @recruitment.save
-      if a == true
+     with_event = params[:with_event]
+      if with_event == true
         event.title =  @recruitment.title
         event.user_id =  @recruitment.user_id
         event.area_id = @recruitment.area_id
@@ -76,8 +92,8 @@ class Public::RecruitmentsController < ApplicationController
 
   def confirm
     @recruitment = Recruitment.find(params[:id])
-    @recruit_users = User.where(id: RecruitUser.where(recruitment_id: @recruitment).pluck(:user_id))
     @recruit_user = RecruitUser.new
+    @thank_you_comment = ThankYouComment.new
   end
 
   def recruitment_params

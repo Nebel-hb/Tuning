@@ -3,12 +3,17 @@ class Public::RecruitUsersController < ApplicationController
     recruit_user = RecruitUser.new(recruit_user_params)
     recruitment = recruit_user.recruitment_id
     recruit_user.user_id = current_user.id
-    
+
     # 申請通知用
     recruit = Recruitment.find_by(id: recruitment)
     recruitment_user = recruit.user_id
     user = User.find_by(id: recruitment_user)
     if recruit_user.save
+      thank_you_comment = ThankYouComment.new
+      thank_you_comment.user_id = recruit_user.user_id
+      thank_you_comment.recruitment_id = recruit_user.recruitment_id
+      thank_you_comment.save
+
       user.create_notification_join!(current_user)
       redirect_to recruitment_path(recruitment)
     end
@@ -33,9 +38,14 @@ class Public::RecruitUsersController < ApplicationController
 
   def update
     @recruit = RecruitUser.find(params[:id])
-    @recruit_user = @recruit.update(recruit_user_params)
+    if @recruit_user = @recruit.update(recruit_user_params)
+    thank_you_comment = ThankYouComment.find_by(recruitment_id: @recruit.recruitment_id, user_id: @recruit.user_id)
+    p thank_you_comment
+    thank_you_comment.join = 1
+    p thank_you_comment
+    thank_you_comment.update(thank_you_comment_params)
     redirect_to request.referer
-
+    end
   end
 
  private
@@ -47,5 +57,8 @@ class Public::RecruitUsersController < ApplicationController
   end
   def user_room_params
     params.require(:user_room).permit(:room_id, :user_id, :message)
+  end
+  def thank_you_comment_params
+    params.permit(:room_id, :user_id)
   end
 end

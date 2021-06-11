@@ -1,0 +1,36 @@
+<h1>thank you コメント</h1>
+              <td>
+                <%= @recruitment.title %>
+              </td>
+              <td>
+                <%= @recruitment.area.area_name %>
+              </td>
+              <td>
+                <%= @recruitment.user.name %>
+              </td>
+              <td>
+                <%= @recruitment.recruit_introduction %>
+              </td>
+              <td>
+                <%= l @recruitment.recruit_start %>
+              </td>
+              <td>
+                <%= l @recruitment.recruit_end %>
+              </td>
+  <% if @thank_you_comment.thanks_comment.nil? %>
+
+          <div class="new-comment">
+            <%= form_with(model: @thank_you_comment, local: true) do |f| %>
+
+
+                <%= f.collection_select :user_id,@thank_you_comment_user.all, :id, :name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+                <%= f.text_area :thanks_comment, rows:'5',placeholder: "thank youコメント" %>
+
+
+              <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
+              <%= f.submit "送信する" %>
+            <% end %>
+  <% else %>
+    コメント済みです
+  <% end %>
+          </div>
