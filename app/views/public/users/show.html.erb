@@ -21,7 +21,7 @@
       <h2>参加履歴</h2>
       <% @recruit_users.each do |recruit_user| %>
         <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
-          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.nowe %>
             <div>
               <tr>
                 <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
@@ -47,15 +47,20 @@
           <h2>募集中</h2>
       <% @recruitments.each do |recruit| %>
         <% if recruit.user_id == current_user.id %>
-            <div>
-              <tr>
-                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-                <td>
-                  <%= link_to  recruit_users_path(recruitment: recruit.id) do %>応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
-                </td>
-              </tr>
-            </div>
-          </tbody>
+          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+              <div>
+                <tr>
+                    <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+                  <td>
+                    <%= link_to  recruit_users_path(recruitment: recruit.id) do %>応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
+                  </td>
+                </tr>
+              </div>
+          <% else %>
+          <h2>募集終了</h2>
+                <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+          <% end %>
+            </tbody>
         <% end %>
       <% end %>
     <% else %>

@@ -102,20 +102,20 @@ $(function () {
     });
 });
 
- function formSwitch() {
-        hoge = document.getElementsByName('q[event_tags_id_eq]')
-         if (hoge[0].checked) {
-            // 好きな食べ物が選択されたら下記を実行します
-            document.getElementById('event').style.display = "";
-            document.getElementById('tag').style.display = "none";
-        } else if (hoge[1].checked) {
-            // 好きな場所が選択されたら下記を実行します
-            document.getElementById('event').style.display = "none";
-            document.getElementById('tag').style.display = "";
-        } else {
-            document.getElementById('event').style.display = "none";
-            document.getElementById('tag').style.display = "none";
-        }
-    }
-    window.addEventListener('load', formSwitch());
+//  function formSwitch() {
+//         hoge = document.getElementsByName('utf8')
+//          if (hoge[0].checked) {
+//             // 好きな食べ物が選択されたら下記を実行します
+//             document.getElementById('event').style.display = "";
+//             document.getElementById('tag').style.display = "none";
+//         } else if (hoge[1].checked) {
+//             // 好きな場所が選択されたら下記を実行します
+//             document.getElementById('event').style.display = "none";
+//             document.getElementById('tag').style.display = "";
+//         } else {
+//             document.getElementById('event').style.display = "none";
+//             document.getElementById('tag').style.display = "none";
+//         }
+//     }
+//     window.addEventListener('load', formSwitch());
     

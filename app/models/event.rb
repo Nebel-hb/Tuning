@@ -22,4 +22,34 @@ class Event < ApplicationRecord
     end
   end
 
+
+  def self.search_event(event_params,search,event)
+    if search == "イベント検索"
+        @events = event
+
+      unless event_params[0].empty?
+        @events = @events.where("title LIKE?","%#{event_params[0]}%" )
+        # unless event_params[1].empty?
+          # @events = @events.where(area_id: event_params[1])
+        # @events = Event.all
+        # # event_start = Event.where("start > ?", event_params[2]).reorder(:start)
+        # # event_end = Event.where("end < ?",event_params[3]).reorder(:end)
+        # end
+        # end
+      end
+    else
+      @events = Event.all
+    end
+  end
+
+  def self.sort(not_sort)
+    case not_sort
+    when '開始日時順'
+      return all.order(start: :DESC)
+    when '終了日時順'
+      return all.order(end: :ASC)
+
+    end
+  end
+
 end

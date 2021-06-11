@@ -1,16 +1,43 @@
 class Public::EventsController < ApplicationController
 
   def index
-    events = Event.where("events.end > ?", DateTime.now).reorder(:end)
-    @tag_list = Tag.all
-    @event = current_user.events.new
-    @p = Tag.ransack(params[:q])
-    @tag_search = @p.result(distinct: true)
-    @q = events.ransack(params[:q])
-    @event_search = @q.result(distinct: true)
+    @search = params[:search]
+    @word = params[:word]
+    @event_params = [params[:word],params[:area],params[:end_gteq],params[:start_lteq]]
+    @search_past = params[:search_past]
+
+  # 　if search_all == "1"
+    if  @search_past == "開催予定のイベント"
+      @event = Event.where("events.end > ?", DateTime.now).reorder(:end)
+    elsif @search_past == "過去のイベント"
+      @event = Event.where("events.end < ?", DateTime.now).reorder(:end)
+    else
+      @event = Event.all
+    end
+
+    @events_all = Event.all
     @areas = Area.all
-    
+    if  @search == "イベント検索"
+      @events = @event.search_event(@event_params,@search,@event)
+      @tags = Tag.all
+    elsif @search == "募集者検索"
+      event_user = User.search_user(@word).pluck(:id)
+      @events = @event.where(user_id: event_user)
+      @tags = Tag.all
+    elsif @search == "タグ検索"
+      @tags = Tag.search_tag(@word,@search)
+      tag = @tags.pluck(:id)
+      @events = @event.where(id: EventTag.where(tag_id: tag).pluck(:event_id))
+    else
+      @tags = Tag.all
+      @events = @event
+    end
+
+    # not_sort = params{:sort}
+    # @events = @events.sort(not_sort)
   end
+
+
 
   def new
     @event = Event.new

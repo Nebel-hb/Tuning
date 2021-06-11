@@ -13,10 +13,10 @@ User.create!(name: "user2", email: "musician2@music.com", password: "222222",rol
 User.create!(name: "orchestra1", email: "orchestra1@music.com", password: "aaaaaa",role: 2, instrument_id: 1, area_id: 3)
 User.create!(name: "orchestra2", email: "orchestra2@music.com", password: "bbbbbb",role: 2, instrument_id: 1, area_id: 4)
 
-Recruitment.create!(user_id: 3, area_id: 1, title: "演奏会1", recruit_start:  "2021-06-14", recruit_end: "2021-06-15", recruit_event_start: "2021-06-20", recruit_event_end: "2021-06-26",recruit_introduction: "初めての演奏会です。")
-Recruitment.create!(user_id: 3, area_id: 2, title: "演奏会2", recruit_start:  "2021-06-08", recruit_end: "2021-06-09", recruit_event_start: "2021-06-15", recruit_event_end: "2021-06-15", recruit_introduction: "２回目の演奏会です。")
-Recruitment.create!(user_id: 4, area_id: 3, title: "演奏会3", recruit_start:  "2021-06-16", recruit_end: "2021-06-17", recruit_event_start: "2021-06-22", recruit_event_end: "2021-06-25", recruit_introduction: "３回目の演奏会です。")
-Recruitment.create!(user_id: 4, area_id: 4, title: "演奏会4", recruit_start:  "2021-06-18", recruit_end: "2021-06-20", recruit_event_start: "2021-06-30", recruit_event_end: "2021-07-05", recruit_introduction: "４回目の演奏会です。")
+Recruitment.create!(user_id: 3, area_id: 1, title: "演奏会1", recruit_start: "2021-06-14", recruit_end: "2021-06-15", recruit_event_start: "2021-06-20", recruit_event_end: "2021-06-26", recruit_introduction: "初めての演奏会です。")
+Recruitment.create!(user_id: 3, area_id: 2, title: "演奏会2", recruit_start: "2021-06-08", recruit_end: "2021-06-09", recruit_event_start: "2021-06-15", recruit_event_end: "2021-06-15", recruit_introduction: "２回目の演奏会です。")
+Recruitment.create!(user_id: 4, area_id: 3, title: "演奏会3", recruit_start: "2021-06-16", recruit_end: "2021-06-17", recruit_event_start: "2021-06-22", recruit_event_end: "2021-06-25", recruit_introduction: "３回目の演奏会です。")
+Recruitment.create!(user_id: 4, area_id: 4, title: "演奏会4", recruit_start: "2021-06-18", recruit_end: "2021-06-20", recruit_event_start: "2021-06-30", recruit_event_end: "2021-07-05", recruit_introduction: "４回目の演奏会です。")
 
 Event.create!(user_id: 3, area_id: 1, title: "演奏会1", start:  "2021-06-14", end: "2021-06-15" ,event_introduction: "初めての演奏会です。")
 Event.create!(user_id: 3, area_id: 2, title: "演奏会2", start:  "2021-06-16", end: "2021-06-16" ,event_introduction: "２回目の演奏会です。")

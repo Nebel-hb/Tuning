@@ -4,17 +4,20 @@ class Public::RecruitmentsController < ApplicationController
     # @recruitments = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:recruit_end)
     # @q = Recruitment.ransack(params[:q])
     # @recruitments = @q.result(distinct: true)
-    search_all = params[:search_all]
-    if search_all == 1
-    @q = Recruitment.ransack(params[:q])
-      @recruitments = @q.result(distinct: true)
+    # @search_all = params[:search_all]
+    @recruitments = Recruitment.search_recruit(params[:word])
+    
+    
+
+    # if @search_all == "1"
+    #   @search = Recruitment.search(word)
       puts "====================="
       p @recruitments
-    else
-    @q = Recruitment.ransack(params[:q])
-      @recruitments = @q.result(distinct: true)
+    # else
+    # @q = Recruitment.ransack(params[:q])
+    #   @recruitments = @q.result(distinct: true)
 
-    end
+    # end
   end
   def new
      @recruitment = Recruitment.new
@@ -73,6 +76,7 @@ class Public::RecruitmentsController < ApplicationController
 
   def confirm
     @recruitment = Recruitment.find(params[:id])
+    @recruit_users = User.where(id: RecruitUser.where(recruitment_id: @recruitment).pluck(:user_id))
     @recruit_user = RecruitUser.new
   end
 
