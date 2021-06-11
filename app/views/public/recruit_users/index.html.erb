@@ -29,7 +29,9 @@
               </td>
               <td>
                 <%= link_to recruit_user_path(recruit_user), method: :delete do %>断る<% end %>
-
+              </td>
+              <td>
+                <%= link_to  recruitments_confirm_path(@recruitment) do %>thank youコメントをする<% end %>
               </td>
             </tr></div>
         <% else %>

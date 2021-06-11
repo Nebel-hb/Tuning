@@ -1,19 +1,20 @@
 
 <h2>Events</h2>
+<p>
+<%= @search_past %>の
+<%= @search %>
+<%= @word %>の検索結果
+<%= @events.count %>件
+</p>
+<%= form_with url: events_path, local: true, method: :get do |f|%>
+
+  <%= f.select :search , options_for_select([['イベント検索'], ['募集者検索'],['タグ検索']]) %>
+   
+  <%= f.text_field :word , placeholder: "search" %>
 
 
-<%= search_form_for(@q, url: events_path)   do |f| %>
-
-  <%= f.label :event_tags_id_eq, "イベント検索"  %>
-  <%= f.radio_button :event_tags_id_eq, :event, onclick: "formSwitch()" ,value: "event" %>
-  <%= f.label :event_tags_id_eq, "タグ検索"  %>
-  <%= f.radio_button :event_tags_id_eq, :tag, onclick: "formSwitch()", value: "tag" %>
-<div id="event">
-  <%= f.label :title_cont, "タイトル" %>
-  <%= f.search_field :title_cont , placeholder: "search" %>
-
-  <%= f.label :area_id_eq,  "地域"%>
-  <%= f.collection_select :area_id_eq, @areas, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+  <%= f.label :area,  "地域"%>
+  <%= f.collection_select :area, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
 
   <%= f.label :start, "開始日時", class: 'control-label' %>
   <%= f.datetime_field :end_gteq, class: 'form-control' %>
@@ -21,18 +22,12 @@
   <%= f.label :end, "終了日時", class: 'control-label' %>
   <%= f.datetime_field :start_lteq, class: 'form-control' %>
 
-</div>
 
-<div id="tag">
-  <%= f.label :tags_tag_name_cont, "タグ" %>
-  <%= f.search_field :tags_tag_name_cont , placeholder: "search" %>
-</div>
-
+  <%= f.select :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>  
+  <!--%= f.select :sort , options_for_select([['イベント名順'], ['地域名順'],['タグ名順'],['開始日時順'],['終了日時順']]) %>-->
+  
   <%= f.submit "search" %>
 <% end %>
-
-<!--%= render  partial: 'search', locals: {q: @q, areas: @areas } %>-->
-
 
 <%= link_to new_event_path do %>New<% end %>
 
@@ -41,16 +36,16 @@
   <thead>
     <tr>
   <h3>タグ一覧</h3>
-      <th><%= sort_link(@p, :tag_name, "並び替え") %></th>
+      <th>並び替え</th>
     </tr>
   </thead>
 
       <tbody>
-  <% @tag_search.each do |list| %>
-    <% if list.events.count != 0 %>
+  <% @tags.each do |tag| %>
+    <% if tag.events.count != 0 %>
          <td>
-          <%= link_to list.tag_name, tag_event_search_path(tag_id: list.id) %>
-          <%= "(#{list.events.count})" %>
+          <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+          <%= "(#{tag.events.count})" %>
          </td>
   　<% end %>
 　<% end %>
@@ -62,17 +57,18 @@
           <thead>
             <tr>
               <!--<th>image</th>-->
-              <th><%= sort_link(@q, :title, "タイトル") %></th>
-              <th><%= sort_link(@q, :area_id, "地域") %></th>
-              <th><%= sort_link(@q, :user_name, "開催者") %></th>
+              <th>タイトル</th>
+              <th>地域</th>
+              <th>開催者</th>
               <th>紹介文</th>
-              <th><%= sort_link(@q, :start, "開催開始日") %></th>
-              <th><%= sort_link(@q, :end, "終了日") %></th>
-              <th colspan="3"></th>
-              <%= link_to "過去のイベントも表示する", tags_path   %>
+              <th>開催開始日</th>
+              <th>終了日</th>
+              <th>タグ</th>
+              <th>コメント数</th>
+              <!--%= link_to "過去のイベントも表示する", tags_path   %>-->
             </tr>
           </thead>
-          <tbody><% @event_search.each do |event| %>
+          <tbody><% @events.each do |event| %>
 
             <tr>
               <!--<td>-->
@@ -97,7 +93,11 @@
                 <%= l event.end %>
               </td>
               <td>
-                <p>コメント<%= event.comments.count %>件</p>
+                <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
+                <% t.each do |t| %><%= t.tag_name %><% end %>
+              </td>
+              <td>
+                <p><%= event.comments.count %>件</p>
               </td>
             </tr>
            </div>
