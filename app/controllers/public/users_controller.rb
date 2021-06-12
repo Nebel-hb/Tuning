@@ -10,8 +10,8 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @recruitments = Recruitment.all
     recruit_user = Recruitment.where(user_id: current_user.id)
-    @recruit_user = RecruitUser.where(recruitment_id: recruit_user)
-    @recruit_users = RecruitUser.where(user_id: current_user.id, join: true)
+    @recruit_user = RecruitUser.where(recruitment_id: recruit_user,join:1)
+    @recruit_users = RecruitUser.where(user_id: current_user.id)
     @recruit = RecruitUser.pluck(:recruitment_id)
     @user_rooms = UserRoom.all
     p @user_rooms

@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_045817) do
     t.integer "user_id"
     t.integer "recruitment_id"
     t.text "recruit_comment"
-    t.boolean "join", default: false
+    t.integer "join", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -17,20 +17,17 @@
               <td>
                 <%= l @recruitment.recruit_end %>
               </td>
-  <% if @thank_you_comment.thanks_comment.nil? %>
 
           <div class="new-comment">
             <%= form_with(model: @thank_you_comment, local: true) do |f| %>
 
 
-                <%= f.collection_select :user_id,@thank_you_comment_user.all, :id, :name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+                <%= f.collection_select :user_id,@recruit_user.all, :id, :name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
                 <%= f.text_area :thanks_comment, rows:'5',placeholder: "thank youコメント" %>
 
 
               <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
               <%= f.submit "送信する" %>
             <% end %>
-  <% else %>
-    コメント済みです
-  <% end %>
+  
           </div>
