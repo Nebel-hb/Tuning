@@ -15,9 +15,10 @@ class Public::EventsController < ApplicationController
     
     @q = @event_search.ransack(params[:q])
     @events = @q.result(distinct: true)
-    @tags = Tag.where(id:  EventTag.where(event_id: @events.pluck(:event_id)).pluck(:tag_id))
-    puts "======================="
-    p @tags
+    # @tags = Tag.where(id:  (EventTag.where(event_id: @events.pluck(:event_id))).pluck(:tag_id))
+    @tags = Tag.all
+    # puts "======================="
+    # p @tags
     @areas = Area.all
 
 
