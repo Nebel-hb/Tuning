@@ -12,6 +12,10 @@
       <% case notification.action %>
         <% when 'join' then %>
           <%= "申請しました" %>
+        <% when 'thanks' then %>
+          <%= "あなたに" %>
+            <%= link_to "thank youメッセージ", thank_you_comments_path %>
+            <%= "を送信しました。" %>
         <% when 'add_room' then %>
             <%= link_to "チャットルーム", rooms_path %>
             <%= "に招待しました。" %>

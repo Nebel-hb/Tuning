@@ -1,40 +1,51 @@
 class Public::EventsController < ApplicationController
 
   def index
-    @search = params[:search]
-    @word = params[:word]
-    @event_params = [params[:word],params[:area],params[:end_gteq],params[:start_lteq]]
-    @search_past = params[:search_past]
-
-  # 　if search_all == "1"
     if  @search_past == "開催予定のイベント"
-      @event = Event.where("events.end > ?", DateTime.now).reorder(:end)
+      @event_search = Event.where("events.end > ?", DateTime.now).reorder(:end)
     elsif @search_past == "過去のイベント"
-      @event = Event.where("events.end < ?", DateTime.now).reorder(:end)
+      @event_search = Event.where("events.end < ?", DateTime.now).reorder(:end)
     else
-      @event = Event.all
+      @event_search = Event.all
     end
-
-    @events_all = Event.all
+    
+    # events = Event.where("events.end > ?", DateTime.now).reorder(:end)
+    @tag_list = Tag.all
+    @event = current_user.events.new
+    
+    @q = @event_search.ransack(params[:q])
+    @events = @q.result(distinct: true)
+    @tags = Tag.where(id:  EventTag.where(event_id: @events.pluck(:event_id)).pluck(:tag_id))
+    puts "======================="
+    p @tags
     @areas = Area.all
-    if  @search == "イベント検索"
-      @events = @event.search_event(@event_params,@search,@event)
-      @tags = Tag.all
-    elsif @search == "募集者検索"
-      event_user = User.search_user(@word).pluck(:id)
-      @events = @event.where(user_id: event_user)
-      @tags = Tag.all
-    elsif @search == "タグ検索"
-      @tags = Tag.search_tag(@word,@search)
-      tag = @tags.pluck(:id)
-      @events = @event.where(id: EventTag.where(tag_id: tag).pluck(:event_id))
-    else
-      @tags = Tag.all
-      @events = @event
-    end
 
-    # not_sort = params{:sort}
-    # @events = @events.sort(not_sort)
+
+  #   @search = params[:search]
+  #   @word = params[:word]
+  #   @event_params = [params[:word],params[:area],params[:end_gteq],params[:start_lteq]]
+  #   @search_past = params[:search_past]
+
+  # # 　if search_all == "1"
+
+  #   @events_all = Event.all
+  #   @areas = Area.all
+  #   if  @search == "イベント検索"
+  #     @events = @event.search_event(@event_params,@search,@event)
+  #     @tags = Tag.all
+  #   elsif @search == "募集者検索"
+  #     event_user = User.search_user(@word).pluck(:id)
+  #     @events = @event.where(user_id: event_user)
+  #     @tags = Tag.all
+  #   elsif @search == "タグ検索"
+  #     @tags = Tag.search_tag(@word,@search)
+  #     tag = @tags.pluck(:id)
+  #     @events = @event.where(id: EventTag.where(tag_id: tag).pluck(:event_id))
+  #   else
+  #     @tags = Tag.all
+  #     @events = @event
+  #   end
+
   end
 
 

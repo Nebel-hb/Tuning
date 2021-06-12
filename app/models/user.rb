@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum role: { general: 1, orchestra: 2 }#cancancan
 
   has_many :comments, dependent: :destroy
+  has_many :thank_you_comments, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
@@ -25,6 +26,16 @@ class User < ApplicationRecord
       notification = current_user.active_notifications.new(
         visited_id: id,
         action: 'join'
+      )
+      notification.save if notification.valid?
+    end
+  end
+  def create_notification_thanks!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'thanks'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'thanks'
       )
       notification.save if notification.valid?
     end

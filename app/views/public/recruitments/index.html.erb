@@ -1,65 +1,58 @@
 
 <h2>募集一覧</h2>
-
-<%= form_with url: recruitments_path, local: true, method: :get do |f|%>
-   
-  <%= f.label :title_cont, "タイトル" %>
-  <%= f.text_field :title , placeholder: "search" %>
-
+<%= search_form_for(@q)   do |f| %>
+  <!--%= f.select :search , options_for_select([['イベント検索'], ['募集者検索'],['楽器']]) %>-->
+  <%= f.label :_title_cont, "タイトル" %>
+  <%= f.search_field :title_cont , placeholder: "search" %>
+  <%= f.label :name_cont, "募集者" %>
+  <%= f.search_field :user_name_cont , placeholder: "search" %>
   <%= f.label :area_id_eq,  "地域"%>
-  <%= f.collection_select :area, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
-
+  <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
   <%= f.label :start, "開始日時", class: 'control-label' %>
   <%= f.datetime_field :recruit_end_gteq, class: 'form-control' %>
-
   <%= f.label :end, "終了日時", class: 'control-label' %>
   <%= f.datetime_field :recruit_start_lteq, class: 'form-control' %>
-
   <%= f.label :start, "開始日時", class: 'control-label' %>
   <%= f.datetime_field :recruit_event_end_gteq, class: 'form-control' %>
-
   <%= f.label :end, "終了日時", class: 'control-label' %>
   <%= f.datetime_field :recruit_event_start_lteq, class: 'form-control' %>
+  <%= f.label :instrument_id_eq,  "楽器"%>
+  <%= f.collection_select :instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
 
-<!--%= f.select :search_all, [['after today', 1], ['all', 2]], class: 'sample' %>-->
+
+
+        <!--%= f.select :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>-->
+
+
 
   <%= f.submit "search" %>
 <% end %>
-
-
 <% if current_user.role == "orchestra" %>
-
             <%= link_to new_recruitment_path do %>New<% end %>
  <% end %>
         <table class="table">
           <thead>
             <tr>
               <!--<th>image</th>-->
-              <th>タイトル</th>
-              <th>地域</th>
-              <th>募集者</th>
+              <th><%= sort_link(@q, :title, "タイトル") %></th>
+              <th><%= sort_link(@q, :area_id, "地域") %></th>
+              <th><%= sort_link(@q, :user_name, "募集者") %></th>
               <th>recruit_introduction</th>
-              <th>募集開始日</th>
-              <th>募集終了日</th>
-              <th>本番開始日</th>
-              <th>本番終了日</th>
+              <th><%= sort_link(@q, :recruit_start, "募集開始日") %></th>
+              <th><%= sort_link(@q, :recruit_end, "募集終了日") %></th>
+              <th><%= sort_link(@q, :recruit_event_start, "本番開始日") %></th>
+              <th><%= sort_link(@q, :recruit_event_end, "本番終了日") %></th>
+              <th><%= sort_link(@q, :instrument_id, "楽器") %></th>
               <th colspan="3"></th>
             </tr>
           </thead>
-    <!--      <form>-->
-    <!--<div class="form-check">-->
-    <!--    <input class="form-check-input" type="radio" name="q[event_tags_id_eq]" value="event" onclick="formSwitch()" checked>-->
-    <!--    <label class="form-check-label"> 募集中</label>-->
-    <!--</div>-->
-    <!--<div class="form-check">-->
-    <!--    <input class="form-check-input" type="radio" name="q[event_tags_id_eq]" value="tag" onclick="formSwitch()">-->
-    <!--    <label class="form-check-label"> 過去の募集も表示</label>-->
-    <!--</div>-->
+   
 </form>
+
 
 <ul>
   <tbody>
-          <%= @recruitments.each do |recruit| %>
+          <% @recruitments.each do |recruit| %>
    <tr>
 
           <td>
@@ -77,7 +70,7 @@
             <%= truncate(recruit.recruit_introduction, length:15) %>
           </td>
           <td>
-            <%= l recruit.recruit_start %>
+            %= l recruit.recruit_start %>
           </td>
           <td>
             <%= l recruit.recruit_end %>
@@ -88,10 +81,15 @@
           <td>
             <%= l recruit.recruit_event_end %>
           </td>
+          <td>
+            <%  Instrument.where(id: recruit.instrument_id).each do |i|%>
+              <%= i.instrument_name %>
+            <% end %>
+          </td>
         </tr>
+      <% end %>
        </div>
       </tbody>
-      <% end %>
 
         </table>
     </div>

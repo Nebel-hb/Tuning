@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_034224) do
+ActiveRecord::Schema.define(version: 2021_06_11_045817) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -93,8 +93,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
     t.integer "user_id"
     t.integer "recruitment_id"
     t.text "recruit_comment"
-    t.text "thanks_comment"
-    t.boolean "join", default: false
+    t.integer "join", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
   create_table "recruitments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "area_id"
+    t.integer "instrument_id"
     t.string "title"
     t.text "recruit_introduction"
     t.datetime "recruit_start"
@@ -122,6 +122,15 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
 
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "thank_you_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recruitment_id"
+    t.text "thanks_comment"
+    t.boolean "join", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

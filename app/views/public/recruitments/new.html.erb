@@ -26,9 +26,11 @@
   <%= f.label :本番終了日時, class: 'control-label' %>
   <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
 
-  <%= f.text_field :tag_name %>
-  <%= f.hidden_field :user_id, value:current_user.id %>
-
+  <%= f.collection_check_boxes(:instrument_id, Instrument.all, :id, :instrument_name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+      
+  <% end %>
+      
      　<%= f.label "イベントにも登録しますか？"  %>
         <%= f.check_box :with_event, {class: "check_box"}, true, false %>
       

@@ -2,7 +2,7 @@
 
 <tbody>
   <% @recruit_users.each do |recruit_user| %>
-    <% if recruit_user.recruitment_id == @recruitment %>
+    <% if recruit_user.recruitment_id == @recruitment && recruit_user.join != 3 %>
            <div> <tr>
               <td>
                 <%= recruit_user.user.name %>
@@ -10,12 +10,13 @@
               <td>
                 <%= recruit_user.recruit_comment %>
               </td>
-      <% if recruit_user.join == false %>
+      <% if recruit_user.join == 1  %>
               <td>
                 <%= form_with model: recruit_user, local: true do |f| %>
-
-                　<%= f.label :join, "許可する"  %>
-                  <%= f.check_box :join, {class: "check_box"}, true, false %>
+                  
+                　<%= f.label :join, "協力してもらいますか？（断ると申請者情報は非表示になります。）"  %>
+                  <%= f.select :join ,[["確認中",1], ["参加",2], ["断る",3]] %>
+                  
 
                 　<%= f.hidden_field :recruit_comment %>
                 　<%= f.hidden_field :recruitment %>
@@ -27,14 +28,13 @@
               <td>
                 <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
               </td>
+              
               <td>
-                <%= link_to recruit_user_path(recruit_user), method: :delete do %>断る<% end %>
-              </td>
-              <td>
-                <%= link_to  recruitments_confirm_path(@recruitment) do %>thank youコメントをする<% end %>
+                
+                <%= link_to  thank_you_comment_thanks_path(@recruitment) do %>thank youコメントをする<% end %>
               </td>
             </tr></div>
-        <% else %>
+      <% elsif recruit_user.join == 2  %>
               <td>
                   <p>許可済み</p>
               </td>
@@ -87,3 +87,4 @@
               </div>
             <% end %>
           <% end %>
+      
