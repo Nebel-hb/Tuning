@@ -1,0 +1,21 @@
+  <table>
+  <tr>
+  <th>
+    タイトル
+  </th>
+  <th>
+    コメント
+  </th>
+  </tr>
+<% @thank_you_comments.each do |comment| %>
+  <tr>
+  <td><%= link_to recruitment_path(comment.recruitment_id) do %>
+  <%= Recruitment.find_by(id: comment.recruitment_id).title %>
+    <% end %>
+  </td>
+  <td>
+  <%= comment.thanks_comment %>
+  </td>
+  </tr>
+<% end %>
+  </table>

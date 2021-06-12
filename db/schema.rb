@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_01_034224) do
+ActiveRecord::Schema.define(version: 2021_06_11_045817) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -74,10 +74,10 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
   create_table "notifications", force: :cascade do |t|
     t.integer "room_id"
     t.integer "chat_id"
-    t.integer "visitor_id"
-    t.integer "visited_id"
-    t.string "action"
-    t.boolean "checked"
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
 
   create_table "recruit_users", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "recruitement_id"
-    t.text "recruitement_comment"
-    t.boolean "join", default: false
+    t.integer "recruitment_id"
+    t.text "recruit_comment"
+    t.integer "join", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -101,15 +101,20 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
   create_table "recruitments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "area_id"
+    t.integer "instrument_id"
     t.string "title"
     t.text "recruit_introduction"
     t.datetime "recruit_start"
     t.datetime "recruit_end"
+    t.datetime "recruit_event_start"
+    t.datetime "recruit_event_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recruitment_id"
     t.string "room_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -121,10 +126,19 @@ ActiveRecord::Schema.define(version: 2021_06_01_034224) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "thank_you_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recruitment_id"
+    t.text "thanks_comment"
+    t.boolean "join", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_rooms", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
-    t.boolean "activation"
+    t.boolean "activation", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

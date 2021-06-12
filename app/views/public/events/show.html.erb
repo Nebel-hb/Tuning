@@ -1,54 +1,63 @@
-<h1>Public::Events#show</h1>
+
+    <h1> 投稿詳細 </h1>
 
   <%= attachment_image_tag @event, :event_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
 
-              <td>
-                <%= @event.title %>
-              </td>
-              <td>
-                <%= @event.area.area_name %>
-              </td>
-              <td>
-                <%= @event.user.name %>
-              </td>
-              <td>
-                <%= @event.event_introduction %>
-              </td>
-              <td>
-                <%= @event.start %>
-              </td>
-              <td>
-                <%= @event.end %>
-              </td>
-              <% if @event.user == current_user %>
-              <td>
-                <%= link_to edit_event_path(@event.id) do %>Edit<% end %>
-              </td>
-              <td>
-                <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
-              </td>
-            <% end %>
+    <td>
+      <%= @event.title %>
+    </td>
+    <td>
+      <%= @event.area.area_name %>
+    </td>
+    <td>
+      <%= @event.user.name %>
+    </td>
+    <td>
+      <%= @event.event_introduction %>
+    </td>
+    <td>
+      <%= l @event.start %>
+    </td>
+    <td>
+      <%= l @event.end %>
+    </td>
+    <% if @event.user == current_user %>
+    <td>
+      <%= link_to edit_event_path(@event.id) do %>Edit<% end %>
+    </td>
+    <td>
+      <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
+    </td>
+  <% end %>
 
 
       <div class="comments">
       <p>コメント件数：<%= @event.comments.count %></p>
       <% @event.comments.each do |comment| %>
         <%= comment.user.name %>
-        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+        <%= l comment.created_at %><%= comment.comment %>
         <% if comment.user == current_user %>
-
-    <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete %>
-
-  <% end %>
+          <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete %>
+        <% end %>
       <% end %>
 
 
       <div class="new-comment">
       <%= form_with(model:[@event, @comment], local: true) do |f| %>
         <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-         <%= f.hidden_field :user_id, value:current_user.id %>
-                <%= f.hidden_field :event_id, value:@event.id %>
+        <%= f.hidden_field :user_id, value:current_user.id %>
+        <%= f.hidden_field :event_id, value:@event.id %>
 
         <%= f.submit "送信する" %>
       <% end %>
     </div>
+
+
+<%= "タグ: " %>
+  <% @event_tags.each do |tag| %>
+  <span>
+    <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+    <%= "(#{tag.events.count})" %>
+　</span>
+
+　<% end %>

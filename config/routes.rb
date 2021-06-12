@@ -25,11 +25,18 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :new, :edit, :update, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
-    resources :tags, only: [:create, :destroy]
+    resources :tags do
+      get 'events', to: 'events#search',as: 'event_search'
+    end
+    get 'recruitments/confirm/:id' => 'recruitments#confirm', as: 'recruitments_confirm'
     resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy]
-    get 'recruitments/confirm/:id' => 'recruitments#confirm'
-    resources :recruit_users, only: [:create, :index]
-    resources :rooms, only: [:create, :index, :new]
+    resources :recruit_users, only: [:create, :index, :destroy, :update]
+    resources :thank_you_comments, only: [:index, :create, :update]
+    get 'thank_you_comment/:id' => 'thank_you_comments#thanks', as: 'thank_you_comment_thanks'
+    # patch 'thank_you_comment/:id' => 'thank_you_comments#update', as: 'thank_you_comment'
+    resources :rooms, only: [:create, :index, :show ]
+    get 'search' => 'rooms#search'
+    resources :user_rooms, only: [:create, :update]
     resources :chats, only: [:create, :index]
     resources :notifications, only: [:index]
     resources :activities, only: [:index]

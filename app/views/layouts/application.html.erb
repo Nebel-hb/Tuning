@@ -7,9 +7,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    
   </head>
 
-  <body>
+  <body data-turbolinks="false">
     <% if admin_signed_in? %>
       <%= render "layouts/admin_header" %>
     <% else %>

@@ -1,4 +1,4 @@
-<h1>Public::Users#show</h1>
+<h1>Mypage</h1>
 
   <div class="col-sm-2">会員ID</div>
   <div><%= @user.id %></div>
@@ -9,9 +9,74 @@
   <div class="col"><%= @user.area.area_name %> </div>
   <div class="col"><%= @user.instrument.instrument_name %> </div>
   <div class="col"><%= @user.introduction %> </div>
-  <% if @user == current_user %>
+  <div class="col"><%= @user.role %> </div>
+ 
+      <h2>参加履歴</h2>
+      <% @recruit_users.each do |recruit_user| %>
+        <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
+          <% if recruit_user.join == 2 %>
+            <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+              <div>
+                <tr>
+                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+  
+                </tr>
+              </div>
+            <% else %>
+              <h2>参加予定</h2>
+              <div>
+                <tr>
+                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+  
+                </tr>
+              </div>
+            <% end %>
+          
+           
+          <% end %>
+        <% end %>
+      <% end %>
+ <% if @user == current_user %>
     <%= link_to edit_user_path(@user.id) do %>
      <p> 編集 </p>
+    <% end %>
+<%= link_to thank_you_comments_path do %>
+     <p> thank you コメント </p>
+  
+      
+      
+    <% end %>
+    <!--通知-->
+    <%= render "public/partial/circle" %>
+
+     <h2>トークルーム </h2>
+        <%= link_to "一覧へ", rooms_path %>
+        
+
+    <% if current_user.role == "orchestra" %>
+          <h2>募集中</h2>
+      <% @recruitments.each do |recruit| %>
+        <% if recruit.user_id == current_user.id %>
+          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+          <h2>募集終了</h2>
+                <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+          <% else %>
+              <div>
+                <tr>
+                    <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+                  <td>
+                    <%= link_to  recruit_users_path(recruitment: recruit.id) do %>未確認の応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
+                  </td>
+                </tr>
+              </div>
+          <% end %>
+            </tbody>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
+        <div><%= link_to "公式楽団申請はこちら", new_orchestra_path %></div>
+      <% end %>
     <% end %>
   <% end %>
 

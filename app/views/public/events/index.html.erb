@@ -1,51 +1,120 @@
-<h1>Public::Events#index</h1>
+
 <h2>Events</h2>
 
-      <%= link_to new_event_path do %>New<% end %>
+<p>
+<%= @search_past %>の
+<%= @search %>
+<%= @word %>の検索結果
+<%= @events.count %>件
+</p>
 
+
+
+<%= search_form_for(@q, url: events_path)   do |f| %>
+  <!--%= f.select :search , options_for_select([['イベント検索'], ['募集者検索'],['タグ検索']]) %>-->
+
+  <%= f.label :event_tags_id_eq, "イベント検索"  %>
+  <%= f.radio_button :event_tags_id_eq, :event, onclick: "formSwitch()" ,value: "event" %>
+  <%= f.label :event_tags_id_eq, "投稿者検索"  %>
+  <%= f.radio_button :event_tags_id_eq, :user, onclick: "formSwitch()", value: "user" %>
+  <%= f.label :event_tags_id_eq, "タグ検索"  %>
+  <%= f.radio_button :event_tags_id_eq, :tag, onclick: "formSwitch()", value: "tag" %>
+<div id="event">
+  <%= f.label :title_cont, "タイトル" %>
+  <%= f.search_field :title_cont , placeholder: "search" %>
+  <%= f.label :area_id_eq,  "地域"%>
+  <%= f.collection_select :area_id_eq, @areas, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+  <%= f.label :start, "開始日時", class: 'control-label' %>
+  <%= f.datetime_field :end_gteq, class: 'form-control' %>
+  <%= f.label :end, "終了日時", class: 'control-label' %>
+  <%= f.datetime_field :start_lteq, class: 'form-control' %>
+
+</div>
+<div id="name">
+  <%= f.label :user_name_cont, "投稿者" %>
+  <%= f.search_field :user_name_cont , placeholder: "search" %>
+</div>
+
+<div id="tag">
+  <%= f.label :tags_tag_name_cont, "タグ" %>
+  <%= f.search_field :tags_tag_name_cont , placeholder: "search" %>
+</div>
+  <!--%= f.select :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>-->
+
+  <%= f.submit "search" %>
+<% end %>
+
+<%= link_to new_event_path do %>New<% end %>
+
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+  <h3>タグ一覧</h3>
+      <th>並び替え</th>
+    </tr>
+  </thead>
+
+      <tbody>
+  <% @tags.each do |tag| %>
+    <% if tag.events.count != 0 %>
+         <td>
+          <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+          <%= "(#{tag.events.count})" %>
+         </td>
+  　<% end %>
+　<% end %>
+  </tbody>
+</table>
+
+<hr>
         <table class="table">
           <thead>
             <tr>
-              <th>image</th>
-              <th>title</th>
-              <th>area</th>
-              <th>user_name</th>
-              <th>event_introduction</th>
-              <th>event_start</th>
-              <th>event_end</th>
+              <!--<th>image</th>-->
+
+              <th><%= sort_link(@q, :title, "タイトル") %></th>
+              <th><%= sort_link(@q, :area_id, "地域") %></th>
+              <th><%= sort_link(@q, :user_name, "開催者") %></th>
+              <th>紹介文</th>
+              <th><%= sort_link(@q, :start, "開催開始日") %></th>
+              <th><%= sort_link(@q, :end, "終了日") %></th>
+              <th><%= sort_link(@q, :tag_name, "タグ") %></th>
+              <th>コメント数</th>
               <th colspan="3"></th>
+
             </tr>
           </thead>
           <tbody><% @events.each do |event| %>
+
             <tr>
+              <!--<td>-->
+                <!--%= attachment_image_tag event, :event_image, format: 'jpeg', size: "40x40" %>-->
+              <!--</td>-->
               <td>
-                <%= attachment_image_tag event, :event_image, format: 'jpeg', size: "40x40" %>
-              </td>
-              <td>
-                <%= event.title %>
+                <%= link_to event_path(event.id) do %><%= event.title %><% end %>
               </td>
               <td>
                 <%= event.area.area_name %>
               </td>
               <td>
-                <%= event.user_id %>
+                <%= event.user.name %>
               </td>
               <td>
-                <%= event.event_introduction %>
+                <%= truncate(event.event_introduction, length:15) %>
               </td>
               <td>
-                <%= event.start %>
+                <%= l event.start %>
               </td>
               <td>
-                <%= event.end %>
+                <%= l event.end %>
               </td>
               <td>
-                
-                <p>コメント<%= event.comments.count %>件</p>
-                <%= event.end %>
+                <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
+                <% t.each do |t| %><%= t.tag_name %><% end %>
               </td>
               <td>
-                <%= link_to event_path(event.id) do %>Show<% end %>
+                <p><%= event.comments.count %>件</p>
               </td>
             </tr>
            </div>
@@ -55,3 +124,8 @@
         </table>
     </div>
   </div>
+
+
+        <div id="calendar"></div>
+
+

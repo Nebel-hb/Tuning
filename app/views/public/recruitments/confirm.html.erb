@@ -1,5 +1,4 @@
 <h1>Public::Recruitments#confirm</h1>
-
               <td>
                 <%= @recruitment.title %>
               </td>
@@ -13,19 +12,25 @@
                 <%= @recruitment.recruit_introduction %>
               </td>
               <td>
-                <%= @recruitment.recruit_start %>
+                <%= l @recruitment.recruit_start %>
               </td>
               <td>
-                <%= @recruitment.recruit_end %>
+                <%= l @recruitment.recruit_end %>
               </td>
 
 
           <div class="new-comment">
-            <%= form_with(model:[@recruitment,@recruit_user], local: true) do |f| %>
-              <%= f.text_area :recruitment_comment, rows:'5',placeholder: "申請コメント" %>
-              <%= f.hidden_field :user_id, value:current_user.id %>
+            <%= form_with(model:[ @recruit_user], local: true) do |f| %>
+              
+              <% if @recruitment.user == current_user %>
+                <%= f.collection_select :user_id,@recruit_users.all, :id, :name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+                <%= f.text_area :thanks_comment, rows:'5',placeholder: "thank youコメント" %>
+              
+              <% else %>
+                <%= f.text_area :recruit_comment, rows:'5',placeholder: "申請コメント" %>
+              <% end %>
+              
               <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
-
               <%= f.submit "送信する" %>
             <% end %>
           </div>

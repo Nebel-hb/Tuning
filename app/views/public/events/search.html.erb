@@ -1,0 +1,24 @@
+<h2>Events</h2>
+
+<h2>投稿一覧</h2>
+　<h3>タグ一覧</h3>
+  <% @tag_list.each do |list| %>
+    <% if list.events.count != 0 %>
+    <span>
+      <%= link_to list.tag_name, tag_event_search_path( list.id) %>
+      <%= "(#{list.events.count})" %>
+    </span>
+    <% end %>
+  <% end %>
+  <br>
+
+<%= "タグが ─ " %>
+<strong><%= "#{@tag.tag_name}" %></strong>
+  <%= " ─ の投稿一覧" %>
+<br>
+
+  <% @events.each do |event| %>
+    <%= link_to event.title, event %>
+  <% end %>
+
+<%= link_to 'イベント一覧へ', events_path %>

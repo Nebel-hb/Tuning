@@ -14,6 +14,27 @@
   <%= f.text_area :recruit_introduction, class: 'form-control email page-title' %>
 
 
+  <%= f.label :募集開始日時, class: 'control-label' %>
+  <%= f.datetime_field :rectuit_start, class: 'form-control' %>
+
+  <%= f.label :募集終了日時, class: 'control-label' %>
+  <%= f.datetime_field :recruit_end, class: 'form-control' %>
+
+  <%= f.label :本番開始日時, class: 'control-label' %>
+  <%= f.datetime_field :recruit_event_start, class: 'form-control' %>
+
+  <%= f.label :本番終了日時, class: 'control-label' %>
+  <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
+
+  <%= f.collection_check_boxes(:instrument_id, Instrument.all, :id, :instrument_name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+      
+  <% end %>
+      
+     　<%= f.label "イベントにも登録しますか？"  %>
+        <%= f.check_box :with_event, {class: "check_box"}, true, false %>
+      
   <%= f.submit %>
   <% end %>
+
 

@@ -1,0 +1,41 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-md-6 mx-auto">
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(visitor) do %>
+      <strong>
+        <%= visitor.name %>
+      <% end %>
+        <%= 'さんが' %>
+      </strong>
+      <% case notification.action %>
+        <% when 'join' then %>
+          <%= "申請しました" %>
+        <% when 'thanks' then %>
+          <%= "あなたに" %>
+            <%= link_to "thank youメッセージ", thank_you_comments_path %>
+            <%= "を送信しました。" %>
+        <% when 'add_room' then %>
+            <%= link_to "チャットルーム", rooms_path %>
+            <%= "に招待しました。" %>
+        <% when 'chat' then %>
+          <span>
+            <%= link_to room_path(notification.room) do %>
+              <strong>
+                <%= notification.room.room_name  %>
+              </strong>
+            <% end %>
+              <%= "にメッセージを送信しました。" %>
+          </span>
+          <p class= "text-muted mb-0" %>
+          <%= Chat.find_by(id: notification.chat_id)&.message %>
+        </p>
+      <% end %>
+      </span>
+    </div>
+  </div>
+  <div class="small text-muted text-right ">
+    <%= time_ago_in_words(notification.created_at).upcase %>
+  <hr>
+  </div>

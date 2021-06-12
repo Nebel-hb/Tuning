@@ -4,7 +4,7 @@ class CreateUserRooms < ActiveRecord::Migration[5.2]
 
       t.integer :user_id
       t.integer :room_id
-      t.boolean :activation
+      t.boolean :activation, default: false
 
       t.timestamps
     end
