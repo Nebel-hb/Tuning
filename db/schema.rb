@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_045817) do
+ActiveRecord::Schema.define(version: 2021_06_12_135536) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 2021_06_11_045817) do
   create_table "orchestras", force: :cascade do |t|
     t.integer "user_id"
     t.text "application_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recruit_instruments", force: :cascade do |t|
+    t.integer "instrument_id"
+    t.integer "recruitment_id"
+    t.integer "need_people"
+    t.integer "finded_people"
+    t.boolean "find_all", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
