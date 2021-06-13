@@ -19,7 +19,6 @@ class Public::ThankYouCommentsController < ApplicationController
     thank_you_comment.save
     user = User.find_by(id: thank_you_comment.user_id)
     recruitment = thank_you_comment.recruitment_id
-    p recruitment
     user.create_notification_thanks!(current_user)
     redirect_to recruitment_path(recruitment)
     

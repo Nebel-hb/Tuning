@@ -1,8 +1,9 @@
 class Public::RecruitmentsController < ApplicationController
 
   def index
-    
-    
+    @recruitment = Recruitment.new
+    @search_past = params[:search_past]
+
     if  @search_past == "開催予定のイベント"
       @recruit = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:end)
     elsif @search_past == "過去のイベント"
@@ -10,41 +11,20 @@ class Public::RecruitmentsController < ApplicationController
     else
       @recruit = Recruitment.all
     end
-    
+
     @q =  @recruit.ransack(params[:q])
       @recruitments = @q.result(distinct: true)
-    
-
-    # @recruitments = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:recruit_end)
-    # @search = params[:search]
-    # @word = params[:word]
-    # @recruit_params = [params[:word],params[:area],params[:end_gteq],params[:start_lteq]]
-    # @search_past = params[:search_past]
-
-    # # @events_all = Recruitment.all
-    # @areas = Area.all
-    # if  @search == "イベント検索"
-    #   @recruitments = @recruit.search_recruit(@recruit_params,@search,@recruit)
-    #   @instruments = Instrument.all
-    # elsif @search == "募集者検索"
-    #   recruit_user = User.search_user(@word).pluck(:id)
-    #   @recruitments = @recruit.where(user_id: recruit_user)
-    #   @instruments = Instrument.all
-    # elsif @search == "楽器検索"
-    #   @instruments = Instrument.search_instrument(@word,@search)
-    #   instrument = @instruments.pluck(:id)
-    #   @recruitments = @recruitment.where(id: EventTag.where(instrument_id: instrument).pluck(:recruitment_id))
-    # else
-    #   @instruments = Instrument.all
-    #   @recruitments = @recruit
-    # end
-
-    
-    
   end
   def new
-     @recruitment = Recruitment.new
-     @event = Event.new
+    recruitment  = params[:recruitment]
+    @recruit_instrument = RecruitInstrument.new
+    @recruitment = Recruitment.find_by(id: recruitment)
+    puts "=================="
+    p @recruitment 
+    @recruit_instruments = RecruitInstrument.where(recruitment_id: @recruitment.id)
+    p @recruit_instruments 
+    @event = Event.new
+
   end
 
   def show
@@ -63,6 +43,17 @@ class Public::RecruitmentsController < ApplicationController
   def update
     @recruitment = Recruitment.find(params[:id])
     if @recruitment.update(recruitment_params)
+     with_event = params[:with_event]
+      if with_event == true
+        event = Event.new
+        event.title =  @recruitment.title
+        event.user_id =  @recruitment.user_id
+        event.area_id = @recruitment.area_id
+        event.event_introduction = @recruitment.recruit_introduction
+        event.start = @recruitment.recruit_event_start
+        event.end = @recruitment.recruit_event_end
+        event.save
+      end
       redirect_to recruitment_path(@recruitment.id)
     else
       render 'edit'
@@ -70,22 +61,12 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def create
-    
+
      @recruitment = Recruitment.new(recruitment_params)
-     event = Event.new
+    # @recruit_instrument = RecruitInstrument.new(recruit_instrument_params)
+    # @recruit_instrument.save
     if @recruitment.save
-      p @recruitment
-     with_event = params[:with_event]
-      if with_event == true
-        event.title =  @recruitment.title
-        event.user_id =  @recruitment.user_id
-        event.area_id = @recruitment.area_id
-        event.event_introduction = @recruitment.recruit_introduction =
-        event.start = @recruitment.recruit_event_start
-        event.end = @recruitment.recruit_event_end
-        event.save
-      end
-      redirect_to recruitments_path
+       redirect_to new_recruitment_path(recruitment: @recruitment.id)
     else
       render 'new'
     end
@@ -104,8 +85,13 @@ class Public::RecruitmentsController < ApplicationController
   end
 
   def recruitment_params
-    params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end)
+    params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end, :instrument_id)
   end
+
+  def recruit_instrument_params
+    params.require(:recruit_instrument).permit(:instrument_id, :recruitment_id, :need_people)
+  end
+
   def with_event_params
     params.permit(:with_event)
   end

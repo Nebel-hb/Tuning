@@ -9,11 +9,7 @@ class Public::RecruitUsersController < ApplicationController
     recruitment_user = recruit.user_id
     user = User.find_by(id: recruitment_user)
     if recruit_user.save
-      # thank_you_comment = ThankYouComment.new
-      # thank_you_comment.user_id = recruit_user.user_id
-      # thank_you_comment.recruitment_id = recruit_user.recruitment_id
-      # thank_you_comment.save
-
+      
       user.create_notification_join!(current_user)
       redirect_to recruitment_path(recruitment)
     end

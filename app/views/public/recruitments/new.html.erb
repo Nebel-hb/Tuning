@@ -6,7 +6,7 @@
   <%= f.label :title, 'タイトル', class: 'col-sm-3 col-form-label page-title ' %>
   <%= f.text_field :title, class: 'form-control last_name page-title' %>
 
-    <%= f.label :area_id, 'エリア' %>
+  <%= f.label :area_id, 'エリア' %>
   <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
 
 
@@ -15,7 +15,7 @@
 
 
   <%= f.label :募集開始日時, class: 'control-label' %>
-  <%= f.datetime_field :rectuit_start, class: 'form-control' %>
+  <%= f.datetime_field :recruit_start, class: 'form-control' %>
 
   <%= f.label :募集終了日時, class: 'control-label' %>
   <%= f.datetime_field :recruit_end, class: 'form-control' %>
@@ -26,15 +26,39 @@
   <%= f.label :本番終了日時, class: 'control-label' %>
   <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
 
-  <%= f.collection_check_boxes(:instrument_id, Instrument.all, :id, :instrument_name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
       
-  <% end %>
-      
-     　<%= f.label "イベントにも登録しますか？"  %>
+     　　<%= f.label "イベントにも登録しますか？"  %>
         <%= f.check_box :with_event, {class: "check_box"}, true, false %>
+        <%= f.hidden_field :user_id, value:current_user.id %>
       
   <%= f.submit %>
   <% end %>
 
 
+
+ <%= form_with model: @recruit_instrument, local: true do |f| %>
+  <%= f.label :instrument_id, '楽器' %>
+  <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required",  placeholder: " "%>
+  <%= f.label :need_people, '募集人数' %>
+　<%= f.number_field :need_people %>
+  <%= f.hidden_field :recruitment_id, value: @recruitment %>
+<%= f.submit %>
+
+<% end %>
+
+
+
+
+<!--% @recruit_instruments.where(recruitment_id: @recruitment.id).each do |recruit_instrument| %>-->
+<% @recruit_instruments.each do |recruit_instrument| %>
+        <tr>
+          <td>
+            <%= recruit_instrument.instrument.instrument_name %>
+          </td>
+          <td>
+            <%= recruit_instrument.need_people%><%= "名" %>
+          </td>
+          <td>
+
+        </tr>
+<% end %>
