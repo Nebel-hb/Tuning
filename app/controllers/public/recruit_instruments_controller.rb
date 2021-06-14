@@ -31,7 +31,7 @@ class Public::RecruitInstrumentsController < ApplicationController
   # end
 
   def recruit_instrument_params
-    params.require(:recruit_instrument).permit(:instrument_id, :recruitment_id, :need_people)
+    params.permit(:instrument_id, :recruitment_id, :need_people)
   end
 
   def recruitment_params
