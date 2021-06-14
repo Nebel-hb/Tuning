@@ -33,13 +33,26 @@
 
   <span class="search_other">
   <%= f.label :instrument_id_eq,  "楽器"%>
-  <%= f.collection_select :instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>
+  <%= f.collection_select :recruit_instruments_instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>
   </span>
 
   <%= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>
 
   <%= f.submit "search" %>
 <% end %>
+
+<% form_with url: recruit_instruments_path do |f|%>
+
+  <span class="search_other">
+  <%= f.label :instrument_id,  "楽器"%>
+  <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>
+  </span>
+
+  <%= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>
+
+  <%= f.submit "search" %>
+<% end %>
+
 <% if current_user.role == "orchestra" %>
   <%= form_with model: @recruitment do |f| %>
     <%= f.hidden_field :user_id, value:current_user.id %>
@@ -58,8 +71,7 @@
               <th><%= sort_link(@q, :recruit_end, "募集終了日") %></th>
               <th><%= sort_link(@q, :recruit_event_start, "本番開始日") %></th>
               <th><%= sort_link(@q, :recruit_event_end, "本番終了日") %></th>
-              <th><%= sort_link(@q, :instrument_id, "楽器") %></th>
-              <th colspan="3"></th>
+              
             </tr>
           </thead>
 
@@ -96,11 +108,7 @@
           <td>
             <%= l recruit.recruit_event_end %>
           </td>
-          <td>
-            <%  Instrument.where(id: recruit.instrument_id).each do |i|%>
-              <%= i.instrument_name %>
-            <% end %>
-          </td>
+
         </tr>
       <% end %>
        </div>

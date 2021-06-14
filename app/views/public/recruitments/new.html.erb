@@ -28,7 +28,7 @@
 
       
      　　<%= f.label "イベントにも登録しますか？"  %>
-        <%= f.check_box :with_event, {class: "check_box"}, true, false %>
+        <%= check_box_tag :with_event, true %>
         <%= f.hidden_field :user_id, value:current_user.id %>
       
   <%= f.submit %>
@@ -36,12 +36,12 @@
 
 
 
- <%= form_with model: @recruit_instrument, local: true do |f| %>
+ <%= form_with url: recruit_instruments_path , local: true do |f| %>
   <%= f.label :instrument_id, '楽器' %>
   <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required",  placeholder: " "%>
   <%= f.label :need_people, '募集人数' %>
 　<%= f.number_field :need_people %>
-  <%= f.hidden_field :recruitment_id, value: @recruitment %>
+  <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
 <%= f.submit %>
 
 <% end %>

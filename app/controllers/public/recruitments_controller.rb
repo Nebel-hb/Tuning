@@ -14,15 +14,16 @@ class Public::RecruitmentsController < ApplicationController
 
     @q =  @recruit.ransack(params[:q])
       @recruitments = @q.result(distinct: true)
+      puts "============="
+      p @recruitments
   end
+  
   def new
     recruitment  = params[:recruitment]
+   
     @recruit_instrument = RecruitInstrument.new
     @recruitment = Recruitment.find_by(id: recruitment)
-    puts "=================="
-    p @recruitment 
-    @recruit_instruments = RecruitInstrument.where(recruitment_id: @recruitment.id)
-    p @recruit_instruments 
+    @recruit_instruments = RecruitInstrument.where(recruitment_id: recruitment)
     @event = Event.new
 
   end
@@ -44,7 +45,8 @@ class Public::RecruitmentsController < ApplicationController
     @recruitment = Recruitment.find(params[:id])
     if @recruitment.update(recruitment_params)
      with_event = params[:with_event]
-      if with_event == true
+     p with_event
+      if with_event == "true"
         event = Event.new
         event.title =  @recruitment.title
         event.user_id =  @recruitment.user_id
@@ -63,8 +65,6 @@ class Public::RecruitmentsController < ApplicationController
   def create
 
      @recruitment = Recruitment.new(recruitment_params)
-    # @recruit_instrument = RecruitInstrument.new(recruit_instrument_params)
-    # @recruit_instrument.save
     if @recruitment.save
        redirect_to new_recruitment_path(recruitment: @recruitment.id)
     else
