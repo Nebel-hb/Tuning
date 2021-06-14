@@ -1,34 +1,63 @@
 
 <h2>募集一覧</h2>
+
+
+<p>
+検索結果
+<%= @recruitments.count %>件
+</p>
+
+
 <%= search_form_for(@q)   do |f| %>
-  <!--%= f.select :search , options_for_select([['イベント検索'], ['募集者検索'],['楽器']]) %>-->
-  <%= f.label :_title_cont, "タイトル" %>
-  <%= f.search_field :title_cont , placeholder: "search" %>
-  <%= f.label :name_cont, "募集者" %>
-  <%= f.search_field :user_name_cont , placeholder: "search" %>
-  <%= f.label :area_id_eq,  "地域"%>
-  <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
-  <%= f.label :start, "開始日時", class: 'control-label' %>
-  <%= f.datetime_field :recruit_end_gteq, class: 'form-control' %>
-  <%= f.label :end, "終了日時", class: 'control-label' %>
-  <%= f.datetime_field :recruit_start_lteq, class: 'form-control' %>
-  <%= f.label :start, "開始日時", class: 'control-label' %>
-  <%= f.datetime_field :recruit_event_end_gteq, class: 'form-control' %>
-  <%= f.label :end, "終了日時", class: 'control-label' %>
-  <%= f.datetime_field :recruit_event_start_lteq, class: 'form-control' %>
+  <%= select_tag :search , options_for_select([['イベント検索'], ['募集者検索'],['楽器検索']]), class: "search_type",prompt: "検索条件" %>
+
+  <%= f.label :title_cont, "イベントタイトル", class: 'search_title'%>
+  <%= f.search_field :title_cont , placeholder: "search", class: 'search_title' %>
+  <span class="search_title">
+  <%= f.label :area_id_eq,  "地域", class: 'search_title' %>
+  <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "----", required: "required",  placeholder: " ", class: "search_title" %>
+  <%= f.label :start, "開始日時", class: 'search_title' %>
+  <%= f.datetime_field :recruit_end_gteq, class: 'search_title' %>
+  <%= f.label :end, "終了日時", class: 'search_title' %>
+  <%= f.datetime_field :recruit_start_lteq, class: 'search_title' %>
+  <%= f.label :start, "開始日時", class: 'search_title' %>
+  <%= f.datetime_field :recruit_event_end_gteq, class: 'search_title' %>
+  <%= f.label :end, "終了日時", class: 'search_title' %>
+  <%= f.datetime_field :recruit_event_start_lteq, class: 'search_title' %>
+  </span>
+
+  <span class="search_user">
+  <%= f.label :name_cont, "募集者"   %>
+  <%= f.search_field :user_name_cont , placeholder: "search"%>
+  </span>
+
+  <span class="search_other">
   <%= f.label :instrument_id_eq,  "楽器"%>
-  <%= f.collection_select :instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+  <%= f.collection_select :recruit_instruments_instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>
+  </span>
 
-
-
-        <!--%= f.select :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>-->
-
-
+  <%= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>
 
   <%= f.submit "search" %>
 <% end %>
+
+<% form_with url: recruit_instruments_path do |f|%>
+
+  <span class="search_other">
+  <%= f.label :instrument_id,  "楽器"%>
+  <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>
+  </span>
+
+  <%= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>
+
+  <%= f.submit "search" %>
+<% end %>
+
 <% if current_user.role == "orchestra" %>
-            <%= link_to new_recruitment_path do %>New<% end %>
+  <%= form_with model: @recruitment do |f| %>
+    <%= f.hidden_field :user_id, value:current_user.id %>
+  <%= f.submit "new" %>
+<% end %>
  <% end %>
         <table class="table">
           <thead>
@@ -42,19 +71,17 @@
               <th><%= sort_link(@q, :recruit_end, "募集終了日") %></th>
               <th><%= sort_link(@q, :recruit_event_start, "本番開始日") %></th>
               <th><%= sort_link(@q, :recruit_event_end, "本番終了日") %></th>
-              <th><%= sort_link(@q, :instrument_id, "楽器") %></th>
-              <th colspan="3"></th>
+              
             </tr>
           </thead>
-   
+
 </form>
 
 
 <ul>
   <tbody>
           <% @recruitments.each do |recruit| %>
-   <tr>
-
+        <tr>
           <td>
             <%= link_to recruitment_path(recruit.id) do %>
               <%= recruit.title %>
@@ -70,7 +97,7 @@
             <%= truncate(recruit.recruit_introduction, length:15) %>
           </td>
           <td>
-            %= l recruit.recruit_start %>
+            <%= l recruit.recruit_start %>
           </td>
           <td>
             <%= l recruit.recruit_end %>
@@ -81,11 +108,7 @@
           <td>
             <%= l recruit.recruit_event_end %>
           </td>
-          <td>
-            <%  Instrument.where(id: recruit.instrument_id).each do |i|%>
-              <%= i.instrument_name %>
-            <% end %>
-          </td>
+
         </tr>
       <% end %>
        </div>
