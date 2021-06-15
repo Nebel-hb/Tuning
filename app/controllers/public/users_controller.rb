@@ -14,8 +14,7 @@ class Public::UsersController < ApplicationController
     @recruit_users = RecruitUser.where(user_id: current_user.id)
     @recruit = RecruitUser.pluck(:recruitment_id)
     @user_rooms = UserRoom.all
-    p @user_rooms
-    
+   
    
 
   end

@@ -1,16 +1,16 @@
 <h1>Mypage</h1>
 
-  <div class="col-sm-2">会員ID</div>
+  <div>会員ID</div>
   <div><%= @user.id %></div>
 
-  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
+ <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "300x300", fallback: "public/image/no_image.png" %>
 
-  <div class="col"><%= @user.name %> </div>
-  <div class="col"><%= @user.area.area_name %> </div>
-  <div class="col"><%= @user.instrument.instrument_name %> </div>
-  <div class="col"><%= @user.introduction %> </div>
-  <div class="col"><%= @user.role %> </div>
- 
+  <div><%= @user.name %> </div>
+  <div><%= @user.area.area_name %> </div>
+  <div><%= @user.instrument.instrument_name %> </div>
+  <div><%= @user.introduction %> </div>
+  <div><%= @user.role %> </div>
+
       <h2>参加履歴</h2>
       <% @recruit_users.each do |recruit_user| %>
         <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
@@ -19,7 +19,7 @@
               <div>
                 <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-  
+
                 </tr>
               </div>
             <% else %>
@@ -27,12 +27,12 @@
               <div>
                 <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-  
+
                 </tr>
               </div>
             <% end %>
-          
-           
+
+
           <% end %>
         <% end %>
       <% end %>
@@ -42,16 +42,16 @@
     <% end %>
 <%= link_to thank_you_comments_path do %>
      <p> thank you コメント </p>
-  
-      
-      
+
+
+
     <% end %>
     <!--通知-->
     <%= render "public/partial/circle" %>
 
      <h2>トークルーム </h2>
         <%= link_to "一覧へ", rooms_path %>
-        
+
 
     <% if current_user.role == "orchestra" %>
           <h2>募集中</h2>
