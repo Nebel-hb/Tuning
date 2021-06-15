@@ -1,3 +1,354 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$main-color: #f9a939;
+$green: #788d63;
+$white: #fdeed7;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$gray: #eee;
+$dark_gray: #838e95;
+
+#header {
+  height: 300px;
+  width: 100%;
+  background-color: $green;
+  background-image: image-url('public/bg/flute.jpg');
+  box-shadow: 0px 300px 200px 0px rgba(253, 238, 215, 0.2)inset;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: screen;
+  animation: bg-color 25s infinite;
+}
+
+
+@keyframes bg-color {
+    0% { background-color: $main_color; }
+
+    20% { background-color: $green; }
+
+    75% { background-color: $light_grayish_orange; }
+
+    100% { background-color:$main_color; }
+}
+
+
+/*========= 検索窓を開くためのボタン設定 ===========*/
+
+.open-btn{
+	position: absolute;
+	top: 320px;
+	right: 10px;
+	background-image: image-url('public/icon/search_icon.png');
+	background-repeat: no-repeat;
+  background-position: center;
+	background-size: 15px;
+	width:50px;
+	height:50px;
+	cursor: pointer;/*カーソルを指マークに*/
+
+}
+/*クリック後、JSでボタンに btnactive クラスが付与された後の見た目*/
+	.btnactive{
+		background-image: image-url('public/icon/close.png');
+		background-repeat: no-repeat;
+	  background-position: center;
+		background-size:  40px 15px;
+	}
+
+/*========= 検索窓の設定 ===============*/
+
+/*==検索窓背景のエリア*/
+
+#search-wrap{
+    position:absolute;/*絶対配置にして*/
+		top: 400px;
+    right: 20px;
+    width: 280px;
+	z-index: -1;/*最背面に設定*/
+	opacity: 0;/*透過を0に*/
+	transition: all 0.4s;/*transitionを使ってスムースに現れる*/
+	border-radius: 5px;
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
+#search-wrap.panelactive{
+	opacity: 1;/*不透明に変更*/
+	z-index: 3;/*全面に出現*/
+	width:280px;
+	right: 20px;
+	top: 360px;
+	padding:20px;
+	margin-top: 14px;
+	border:#eee solid 2px;
+// 	background: $orange;
+}
+
+/*==検索窓*/
+#user_search{
+	display: none;/*検索窓は、はじめ非表示*/
+}
+
+/*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後*/
+#user_search{
+	display: block;/*検索窓を表示*/
+}
+
+/*==検索フォームの設定*/
+
+/*==テキスト入力とボタンinput共通設定*/
+#search-wrap input{
+	-webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
+	outline: none;
+	margin-top: 5px;
+	cursor: pointer;/*カーソルを指マークに*/
+	// color: #666;
+}
+
+/*テキスト入力input設定*/
+#search-wrap input[type="search"] {
+	width: 90%;
+	border: none;
+	border-bottom:2px solid $gray;
+	transition: all 0.5s;
+	letter-spacing: 0.05em;
+  height: 30px;
+	padding: 10px;
+	left: 0;
+}
+
+/*テキスト入力inputにフォーカスされたら*/
+#search-wrap input[type="search"]:focus {
+	background: $gray;/*背景色を付ける*/
+}
+
+/*ボタンinput設定*/
+#search-wrap input[type="submit"] {
+
+	position: absolute;
+  top: 20px;
+	right: 10px;
+	background-image: image-url('public/icon/search_icon.png');
+	background-repeat: no-repeat;
+  background-position: right;
+	background-color:rgba(0,0,0,0);
+	background-size: 20px 20px;
+	width: 30px;
+	height: 60px;
+	border: none;
+	transition: all 0.5s;
+	letter-spacing: 0.05em;
+}
+
+
+
+/* ===== Select Box ===== */
+.sel {
+  // font-size: ;
+  display: inline-block;
+  margin: 5px;
+  width: 180px;
+  // background-color: $white;
+  position: relative;
+  cursor: pointer;
+}
+
+.sel::before {
+  position: absolute;
+  content: '\f063';
+  font-family: "Font Awesome 5 Free";
+  font-size: 2em;
+  color: #838e95;
+  right: 20px;
+  top: calc(50% - 0.5em);
+}
+
+.sel.active::before {
+  transform: rotateX(-180deg);
+}
+
+.sel__placeholder {
+  display: block;
+  color: #838e95;
+  padding: 0.2em 0.5em;
+  text-align: left;
+  pointer-events: none;
+  user-select: none;
+  visibility: visible;
+}
+
+.sel.active .sel__placeholder {
+  visibility: hidden;
+}
+
+.sel__placeholder::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.2em 0.5em;
+  content: attr(data-placeholder);
+  visibility: hidden;
+}
+
+.sel.active .sel__placeholder::before {
+  visibility: visible;
+}
+
+.sel__box {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -4px;
+  display: none;
+  list-style-type: none;
+  text-align: left;
+  // font-size: 1em;
+  background-color: #FFF;
+  border: $gray solid 2px;
+  width: calc(100% + 8px);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.sel.active .sel__box {
+  display: block;
+  animation: fadeInUp 500ms;
+}
+
+.sel__box__options {
+  display: list-item;
+  color: #838e95;
+  padding: 0.5em 1em;
+  user-select: none;
+}
+
+.sel__box__options::after {
+  content: '\f00c';
+  font-family: "Font Awesome 5 Free";
+  font-size: 0.5em;
+  margin-left: 5px;
+  display: none;
+}
+
+.sel__box__options.selected::after {
+  display: inline;
+}
+
+.sel__box__options:hover {
+  background-color: #ebedef;
+}
+
+/* ----- Select Box Black Panther ----- */
+.sel {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* ===== Keyframes ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.users_contain{
+  width: 100%;
+  display: flex;
+}
+
+.search-btn {
+  width: 15%;
+  margin: 10px;
+}
+
+.user_sort {
+  width: 15%;
+  margin: 10px;
+
+  a{
+  text-align: center;
+  color: $dark_gray;
+  }
+}
+
+
+.users_index{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.user_contain{
+  margin: 10px auto;
+  width: 600px;
+  height: 300px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  // background-color: $white;
+}
+
+.user_back1{
+  position:  absolute;
+  z-index: 2;
+  left: 30px;
+  top: 150px;
+  width: 130px;
+  height: 130px;
+  border-radius: 45% 10% 45% 40%;
+  background-image: image-url('public/bg/flute.jpg');
+  box-shadow:  0 10px 25px 0 rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+.user_back2{
+  position:  absolute;
+  left: 100px;
+  top: 40px;
+  width: 400px;
+  height: 220px;
+  border-radius: 5px;
+  background-image: image-url('public/bg/to-kai.jpg');
+  box-shadow: 0px 100px 220px 0px rgba(255, 255, 255, 0.9)inset;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: $gray;
+  background-blend-mode: luminosity;
+  position: relative;
+}
+
+.user_td{
+  position:  absolute;
+  left: 50px;
+  top: 30px;
+  width: 300px;
+  height: 180px;
+  text-align: center;
+
+  div:first-child{
+    font-size: 80px ;
+
+  }
+}

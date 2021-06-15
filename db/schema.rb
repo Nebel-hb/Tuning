@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_135536) do
     t.integer "instrument_id"
     t.integer "area_id"
     t.string "name"
-    t.integer "profile_image"
+    t.string "profile_image_id"
     t.text "introduction"
     t.integer "role", default: 1, null: false
     t.datetime "created_at", null: false
