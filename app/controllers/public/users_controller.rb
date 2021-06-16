@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
     @users = User.all
     @q = User.ransack(params[:q])
     @search = @q.result(distinct: true)
-    
+
   end
 
   def show
@@ -14,8 +14,8 @@ class Public::UsersController < ApplicationController
     @recruit_users = RecruitUser.where(user_id: current_user.id)
     @recruit = RecruitUser.pluck(:recruitment_id)
     @user_rooms = UserRoom.all
-   
-   
+
+
 
   end
 
@@ -43,5 +43,5 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
   end
-  
+
 end

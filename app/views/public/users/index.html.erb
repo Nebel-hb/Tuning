@@ -1,15 +1,15 @@
-
-<div id="title">
-  <h2>Users</h2>
-</div>
+<div id="header">
+  <div id="title">
+    <h2>Users</h2>
+  </div>
 </div>
 
 
 <div class="users_contain">
     <div class="user_sort">
-      <div class="sel sel--black-panther">
+      <!--<div class="sel sel--black-panther">-->
         <%= select_tag :user_index , options_for_select([['一覧切り替え'], ['奏者一覧'] ,['オーケストラ一覧']]) %>
-      </div>
+      <!--</div>-->
 
       <div class="sort_item">
         <div><%= sort_link(@q, :name, "名前順") %></div>
@@ -50,7 +50,9 @@
             <div class="user_contain">
               <%= attachment_image_tag user, :profile_image, format: 'jpeg',class: "user_back1", fallback: "public/image/no_image.png" %>
               <%= link_to user_path(user)  do %>
-                <div class="user_back2">
+                <div class="user_back2" >
+                  <!--%= image_tag 'public/image/users_img_1.jpg',  class: "user_back2"%>-->
+                  
                   <div class="user_td">
                     <div>
                       <%= user.name %>
@@ -80,18 +82,18 @@
       <div class="sel sel--black-panther">
         <%= f.collection_select :instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "楽器", required: "required", class: 'page-title', placeholder: "楽器"%>
       </div>
-    
+
       <div class="sel sel--black-panther">
         <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "地域", required: "required", class: 'page-title', placeholder: "地域"%>
       </div>
-    
+
       <span class="search_users"><p>user</p>
         <%= f.search_field :name_cont, placeholder: "search" %>
       </span>
       <span class="search_id"><p>id</p>
         <%= f.search_field :id_eq , placeholder: "search" %>
       </span>
-    
+
         <%= f.submit "" %>
       <% end %>
     </div>
