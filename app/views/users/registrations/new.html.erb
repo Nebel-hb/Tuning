@@ -1,6 +1,6 @@
 
   <%= render "users/shared/error_messages", resource: resource %>
-<div class="devise_container">
+<div class="form_container">
   <div class="welcome">
     <div class="box">
       <div class="signup nodisplay">
@@ -34,7 +34,7 @@
 
   <div class="field">
     <%= f.label :area_id, 'area' %><br />
-    <span class="field sel sel--black-panther">
+    <span class=" sel sel--black-panther">
       <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
     </span>
   </div>
