@@ -1,0 +1,248 @@
+// Place all the styles related to the user_rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$main-color: #f9a939;
+$green: #788d63;
+// $white: #fdeed7;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+// $light-green: #a2e29b;
+$white: #f6f6f6;
+
+
+// $lavender: #788d63;
+// $pale: #788d63;
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora');
+
+// $sans-serif: 'Open Sans', sans-serif;
+// $serif: 'Lora', serif;
+
+body {
+  // background-image: image-url('public/bg/old_score.jpg');
+  width: 100%;
+  height: 100%;
+  // background-color:#000;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
+}
+
+/* div box styling */
+.devise_container {
+  margin: auto;
+  width: 650px;
+  height: 550px;
+  position: relative;
+
+  .welcome {
+    background: $white;
+    width: 650px;
+    height: 415px;
+    position: absolute;
+    top: 5%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+    background-image: image-url('public/bg/old_score.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .box {
+    position: absolute;
+    top: -15%;
+    left: 5%;
+    background: $green;
+    width: 320px;
+    height: 510px;
+    border-radius: 5px;
+    box-shadow: 2px 0 10px rgba(0,0,0,.1);
+    transition: all .5s ease-in-out;
+    z-index: 2;
+
+    h1 {
+      // font-family: $sans-serif;
+      text-align: center;
+      margin-top: 10px;
+      text-transform: uppercase;
+      color: $white;
+      font-size: 40px;
+      letter-spacing: 8px;
+    }
+  }
+
+  .nodisplay {
+    display:none;
+    transition: all .5s ease;
+  }
+
+  .leftbox, .rightbox {
+    position: absolute;
+    width: 50%;
+    transition: 1s all ease;
+  }
+
+  .leftbox {
+    left: -2%;
+  }
+  .rightbox {
+    right: -2%;
+  }
+
+  /* font & button styling */
+
+  .title {
+    // font-family: $serif;
+    color: $dark-green;
+    font-size: 40px;
+    // line-height: 1.1em;
+    letter-spacing: 3px;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 20%;
+  }
+  .desc {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #000;
+  }
+  .account {
+    margin-top: 45%;
+    font-size: 15px;
+  }
+  p {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  span {
+    color: $dark-green;
+  }
+
+  // .flower {
+  //   position: absolute;
+  //   width: 120px;
+  //   height: 120px;
+  //   top: 46%;
+  //   left: 29%;
+  //   opacity: .7;
+  // }
+
+  .smaller {
+    width: 90px;
+    height: 100px;
+    top: 48%;
+    left: 38%;
+    opacity: .9;
+  }
+
+  button {
+    padding: 12px;
+    // font-family: $sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    border-radius: 10px;
+    margin: auto;
+    outline: none;
+    display: block;
+    &:hover {
+      background: $dark-green;
+      color: $white;
+      transition: background-color 1s ease-out;
+    }
+  }
+
+  .button {
+    margin-top: 3%;
+    background: $white;
+    color: $gray;
+    border: solid 1px $green;
+  }
+
+  /* form styling */
+
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 7px;
+  }
+  .more-padding{
+    padding-top: 35px;
+    input {
+      padding: 12px;
+    }
+    .submit {
+      margin-top: 45px;
+    }
+  }
+  .submit {
+    padding: 12px;
+    border-color: $green;
+    &:hover {
+      background: $dark-green;
+      border-color: darken($green, 5%);
+      color: $white;
+    }
+  }
+
+  input {
+    background: $green;
+    width: 85%;
+    color: darken($dark-green, 20%);
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 9px;
+    margin: 7px;
+      font-size: 15px;
+    &::placeholder {
+      color: rgba($white, 1);
+      letter-spacing: 2px;
+      font-size: 18px;
+      font-weight: 100;
+    }
+    &:focus {
+      color: $dark-green;
+      outline: none;
+      border-bottom: 1.2px solid rgba($dark-green, 0.7);
+      font-size: 15px;
+      transition: .8s all ease;
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+
+  label {
+    // font-family: $sans-serif;
+    color: darken($dark-green, 20%);
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .checkbox {
+    display: inline;
+    white-space: nowrap;
+    position: relative;
+    left: -62px;
+    top: 5px;
+  }
+
+  input[type=checkbox] {
+    width: 10px;
+    background: $dark-green;
+  }
+
+  .checkbox input[type="checkbox"]:checked + label {
+    color: $dark-green;
+    transition: .5s all ease;
+  }
+}

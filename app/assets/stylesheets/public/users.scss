@@ -329,8 +329,8 @@ $dark_gray: #838e95;
   width: 400px;
   height: 220px;
   border-radius: 5px;
-  background-image: image-url('public/bg/to-kai.jpg');
-  box-shadow: 0px 100px 220px 0px rgba(255, 255, 255, 0.9)inset;
+  background-image: image-url('public/image/users_img_1.jpg');
+  box-shadow: 0px 190px 220px 0px rgba(255, 255, 255, 0.9)inset;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -346,9 +346,11 @@ $dark_gray: #838e95;
   width: 300px;
   height: 180px;
   text-align: center;
+  color: #000;
 
   div:first-child{
     font-size: 80px ;
+    color: #000;
 
   }
 }
