@@ -1,3 +1,58 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+  display: flix;
+  // position:relative;
+	z-index: 1;
+	/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+	height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+
+.slider-top,
+.slider-bottom {
+    height: 50vh;/*スライダー上下の縦幅を画面の高さの半分（50vh）にする*/
+}
+
+.slick-track{
+    height: 50vh;/*スライダー上下の縦幅を画面の高さの半分（50vh）にする*/
+
+}
+
+/*　背景画像設定　*/
+
+.slider-item01 {
+    background-image: image-url('public/image/users_img_1.jpg');
+}
+
+.slider-item02 {
+    background-image: image-url('public/bg/flute.jpg');
+}
+
+.slider-item03 {
+    background-image: image-url('public/bg/to-kai.jpg');
+}
+
+.slider-item04 {
+    background-image: image-url('public/bg/to-kai_yoko.jpg');
+}
+
+.slider-item05 {
+    background-image: image-url('public/image/users_img_1.jpg');
+}
+
+.slider-item06 {
+    background-image: image-url('public/bg/flute.jpg');
+}
+
+.slider-item {
+    width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+    height:50vh;/*各スライダーの縦幅を画面の高さの半分（50vh）にする*/
+    background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}

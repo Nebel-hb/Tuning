@@ -1,38 +1,6 @@
 <h1>Public::Recruitments#new</h1>
 
-<%= form_with(model: @recruitment, local: true) do |f| %>
 
-
-  <%= f.label :title, 'タイトル', class: 'col-sm-3 col-form-label page-title ' %>
-  <%= f.text_field :title, class: 'form-control last_name page-title' %>
-
-  <%= f.label :area_id, 'エリア' %>
-  <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
-
-
-  <%= f.label :recruit_introduction, '説明文', class: 'col-sm-3 col-form-label page-title' %>
-  <%= f.text_area :recruit_introduction, class: 'form-control email page-title' %>
-
-
-  <%= f.label :募集開始日時, class: 'control-label' %>
-  <%= f.datetime_field :recruit_start, class: 'form-control' %>
-
-  <%= f.label :募集終了日時, class: 'control-label' %>
-  <%= f.datetime_field :recruit_end, class: 'form-control' %>
-
-  <%= f.label :本番開始日時, class: 'control-label' %>
-  <%= f.datetime_field :recruit_event_start, class: 'form-control' %>
-
-  <%= f.label :本番終了日時, class: 'control-label' %>
-  <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
-
-      
-     　　<%= f.label "イベントにも登録しますか？"  %>
-        <%= check_box_tag :with_event, true %>
-        <%= f.hidden_field :user_id, value:current_user.id %>
-      
-  <%= f.submit %>
-  <% end %>
 
 
 
@@ -46,6 +14,73 @@
 
 <% end %>
 
+<div class="form_container">
+  <div class="welcome">
+    
+    <%= form_with(model: @recruitment, local: true) do |f| %>
+    <div class="form-contain">
+      <div class="form">
+        <div class="field">
+          <%= f.label :title, 'タイトル' %><br />
+          <%= f.text_field :title %>
+        </div>
+    
+        <div class="field">
+          <%= f.label :area_id, 'area' %><br />
+          <span class=" sel">
+            <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", placeholder: " "%>
+          </span>
+        </div>
+        
+        <div class="field">
+          <%= f.label :recruit_introduction, '説明文' %><br />
+          <%= f.text_area :recruit_introduction %>
+        </div>
+      
+      </div>
+      <div class="form">
+        <div class="field">
+          <%= f.label :募集開始日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_start, class: 'form-control' %>
+        </div>
+        
+        <div class="field">
+          <%= f.label :募集終了日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_end, class: 'form-control' %>
+        </div>
+        
+        <div class="field">
+          <%= f.label :本番開始日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_event_start, class: 'form-control' %>
+        </div>
+        
+        <div class="field">
+          <%= f.label :本番終了日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
+        </div>
+    
+        <div class="actions">
+          <%= check_box_tag :with_event, true %>
+     　　   <%= f.label "イベントにも登録しますか？"  %>
+          <%= f.hidden_field :user_id, value:current_user.id %>
+      
+          <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
+            <!--<span class= "col btnripple ">-->
+              <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
+            <!--</span>-->
+            <p>募集をする</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+  
+      
 
 
 

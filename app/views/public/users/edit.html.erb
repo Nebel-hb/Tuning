@@ -1,29 +1,59 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<h1>プロフィール編集</h1>
 
-<%= form_with(model: @user, url: user_path, local: true, method: :put) do |f| %>
-  
-  <%= f.label :name, '氏名', class: 'col-sm-3 col-form-label page-title ' %>
-  <%= f.text_field :name, class: 'form-control last_name page-title' %>
-  
-  <%= f.label :email, 'メールアドレス', class: 'col-sm-3 col-form-label page-title' %>
-  <%= f.text_field :email, class: 'form-control email page-title' %>
-
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60 %>
-
-  <label for="inputImage">ProfileImage</label>
-  <!--%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %> -->
-  
-  <%= f.label :introduction, 'プロフィール', class: 'col-sm-3 col-form-label page-title' %>
-  <%= f.text_area :introduction, class: 'form-control email page-title' %>
- 
-  <%= f.label :area_id, 'エリア' %>
-  <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
- 
-  <%= f.label :instrument_id, 'メイン楽器' %>
-  <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
- 
-  <%= f.submit %>
-  <% end %>
- 
+<div class="form_container">
+  <div class="welcome">
+    
+    <%= form_with(model: @user, url: user_path, local: true, method: :put) do |f| %>
+    <div class="form-contain">
+      <div class="form">
+        <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true ,type: "text",placeholder: "username" %>
+        </div>
+    
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email" %>
+        </div>
+    
+        <div class="field">
+          <%= f.label :area_id, 'area' %><br />
+          <span class=" sel">
+            <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+          </span>
+        </div>
+    
+        <div class="field">
+          <%= f.label :instrument_id, 'main instrument' %><br />
+          <span class="sel sel--black-panther">
+            <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
+          </span>
+        </div>
+      </div>
+    
+      <div class="form">
+        <div class="field">
+          <%= f.label :profile_image, 'ProfileImage' %><br />
+          <%= f.file_field :user_image, class: "image-field", style: "display: none" %>
+          <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image" %>
+        </div>
+        
+        <div class="field">
+          <%= f.label :introduction, 'Profile' %><br />
+          <%= f.text_area :introduction %>
+        </div>
+      
+        <div class="actions">
+          <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
+            <!--<span class= "col btnripple ">-->
+              <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
+            <!--</span>-->
+            <p>書き換える</p>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
  

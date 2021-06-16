@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image
   enum role: { general: 1, orchestra: 2 }#cancancan
 
   has_many :comments, dependent: :destroy
@@ -40,7 +41,7 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   def create_notification_add_room!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'add_room'])
     if temp.blank?
