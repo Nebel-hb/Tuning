@@ -1,6 +1,13 @@
 class Public::UsersController < ApplicationController
   def index
     @users = User.all
+    search_value = params[:q][:name_cont] if params[:q]
+    if search_value =~  /^[0-9]+$/
+      
+      params[:q][:name_cont] = ""
+      params[:q][:id_eq] = search_value
+    end
+
     @q = User.ransack(params[:q])
     @search = @q.result(distinct: true)
 

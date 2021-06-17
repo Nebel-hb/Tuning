@@ -193,9 +193,10 @@ body {
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding: 9px;
     margin: 7px;
-      font-size: 15px;
+    font-size: 15px;
+
     &::placeholder {
-      color: rgba($white, 1);
+      // color: rgba($white, 1);
       letter-spacing: 2px;
       font-size: 18px;
       font-weight: 100;
@@ -206,6 +207,7 @@ body {
       border-bottom: 1.2px solid rgba($dark-green, 0.7);
       font-size: 15px;
       transition: .8s all ease;
+
       &::placeholder {
         opacity: 0;
       }
@@ -248,10 +250,14 @@ body {
     // margin: 40px 40px;
     width: 50%;
 
+    input{
+      height: 35px;
+    }
+
     textarea {
       width: 200px;
       height: 100px;
-      font-size: 15px;
+      font-size: 5px;
 
     }
   }
@@ -264,4 +270,12 @@ body {
     }
   }
 
+}
+
+.p-icon{
+  margin: 10px;
+}
+
+.field{
+  color: $gray;
 }

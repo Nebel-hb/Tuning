@@ -1,5 +1,5 @@
 
-  <%= render "users/shared/error_messages", resource: resource %>
+<%= render "users/shared/error_messages", resource: resource %>
 <div class="form_container">
   <div class="welcome">
     <div class="box">
@@ -7,61 +7,62 @@
 
         <h1>register</h1>
 
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+          <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true ,type: "text",placeholder: "username" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password",  type: "password", placeholder: "password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", type: "password" ,placeholder: "password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :area_id, 'area' %><br />
-    <span class=" sel sel--black-panther">
-      <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
-    </span>
-  </div>
-  
-  <div class="field">
-    <%= f.label :instrument_id, 'main instrument' %><br />
-    <span class="sel sel--black-panther">
-      <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
-    </span>
-  </div>
-
-  <div class="actions">
-    <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
-      <!--<span class= "col btnripple ">-->
-        <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
-      <!--</span>-->
-    <p>Sign up</p>
-<% end %>
-  </div>
-<% end %>
-
+            <div class="field">
+              <%= f.label :name %><br />
+              <%= f.text_field :name, autofocus: true ,type: "text",placeholder: "username" %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email" %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password",  type: "password", placeholder: "password" %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", type: "password" ,placeholder: "password" %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :area_id, 'area' %><br />
+              <span class=" sel sel--black-panther">
+                <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
+              </span>
+            </div>
+            
+            <div class="field">
+              <%= f.label :instrument_id, 'main instrument' %><br />
+              <span class="sel sel--black-panther">
+                <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
+              </span>
+            </div>
+          
+            <div class="actions">
+              <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
+                <!--<span class= "col btnripple ">-->
+                  <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
+                <!--</span>-->
+              <p>Sign up</p>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        
+        <%= render "users/sessions/new" %>
 
       </div>
 
-      <%= render "users/sessions/new" %>
 
-    </div>
+
     <div class="leftbox">
       <h2 class="title"><span>Tuning</span></h2>
       <p class="desc">Let's <span>tune</span> together</p>
@@ -76,16 +77,17 @@
       <p class="account">don't have an account?</p>
       <button class="button" id="signup">sign up</button>
     </div>
-  </div>
- </div>
-
+    
+    </div>
+   </div>
+  
 <!--</div>-->
 
 
 
- <div class="pretty p-default p-thick">
-        <input type="checkbox" />
-        <div class="state">
-            <label>Thick</label>
-        </div>
-    </div>
+ <!--<div class="pretty p-default p-thick">-->
+ <!--       <input type="checkbox" />-->
+ <!--       <div class="state">-->
+ <!--           <label>Thick</label>-->
+ <!--       </div>-->
+ <!--   </div>-->

@@ -16,14 +16,21 @@
       <%= f.password_field :password, autocomplete: "current-password" , type: "password" ,placeholder: "password" %>
     </div>
 
+
+
     <% if devise_mapping.rememberable? %>
-      <div class="field pretty p-default">
+    <div class="pretty p-icon p-round p-pulse">
+        
         <%= f.check_box :remember_me %>
+        <div class="state p-warning">
+            <i class="icon mdi mdi-check"></i>
         <%= f.label :remember_me %>
-      </div>
+            
+        </div>
+    </div>
+      
     <% end %>
 
-            </div>
     <div class="actions">
       <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
         <!--<span class= "col btnripple ">-->
@@ -32,7 +39,8 @@
         <p>Log in</p>
       <% end %>
     </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+  
 
 

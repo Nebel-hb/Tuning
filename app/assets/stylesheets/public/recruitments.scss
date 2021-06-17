@@ -1,3 +1,84 @@
 // Place all the styles related to the public/recruitments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$main-color: #f9a939;
+$green: #788d63;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+$white: #f6f6f6;
+
+
+  .recruit_form_container{
+    margin: auto;
+    width: 650px;
+    height: 100px;
+    position: relative;
+
+
+  /* form styling */
+
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 7px;
+  }
+
+
+  #need_people  {
+    background: rgba(255, 255, 255, 0.3);
+    width: 85%;
+    color: darken($dark-green, 20%);
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    // margin: 7px;
+    font-size: 15px;
+
+    &::placeholder {
+      // color: rgba($white, 1);
+      letter-spacing: 2px;
+      font-size: 18px;
+      font-weight: 100;
+    }
+    &:focus {
+      color: $dark-green;
+      outline: none;
+      border-bottom: 1.2px solid rgba($dark-green, 0.7);
+      font-size: 15px;
+      transition: .8s all ease;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.add_need_people {
+    padding: 3px 7px 8px;
+    // font-family: $sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    border-radius: 10px;
+    margin: auto 10px;
+    outline: none;
+    display: block;
+    &:hover {
+      background: $dark-green;
+      color: $white;
+      transition: background-color 1s ease-out;
+    }
+  }
+
+.recruit-new{
+  margin: 0;
+  font-size: 18px;
+  font-family: 'Cormorant Upright','Cormorant Upright', serif;
+}

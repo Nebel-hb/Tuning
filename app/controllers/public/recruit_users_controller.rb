@@ -37,9 +37,9 @@ class Public::RecruitUsersController < ApplicationController
     if @recruit_user = @recruit.update(recruit_user_params)
     thank_you_comment = ThankYouComment.find_by(recruitment_id: @recruit.recruitment_id, user_id: @recruit.user_id)
     p thank_you_comment
-    thank_you_comment.join = 1
+    # thank_you_comment.join = 1
     p thank_you_comment
-    thank_you_comment.update(thank_you_comment_params)
+    # thank_you_comment.update(thank_you_comment_params)
     redirect_to request.referer
     end
   end

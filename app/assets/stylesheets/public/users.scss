@@ -10,6 +10,7 @@ $light_grayish_orange: #d7a861;
 // $gray: #eee;
 $gray: #8E9AAF;
 $dark_gray: #838e95;
+$white: #f6f6f6;
 
 #header {
   height: 300px;
@@ -64,14 +65,15 @@ $dark_gray: #838e95;
 /*==検索窓背景のエリア*/
 
 #search-wrap{
-    position:absolute;/*絶対配置にして*/
-		top: 400px;
-    right: 20px;
-    width: 280px;
+  position: absolute;/*絶対配置にして*/
+	top: 400px;
+  right: 20px;
+  width: 280px;
 	z-index: -1;/*最背面に設定*/
 	opacity: 0;/*透過を0に*/
 	transition: all 0.4s;/*transitionを使ってスムースに現れる*/
 	border-radius: 5px;
+	background-color: $white;
 }
 
 /*ボタンクリック後、JSで#search-wrapに panelactive クラスが付与された後の見た目*/
@@ -105,24 +107,25 @@ $dark_gray: #838e95;
 	outline: none;
 	margin-top: 5px;
 	cursor: pointer;/*カーソルを指マークに*/
-	// color: #666;
+	color: $gray;
 }
 
 /*テキスト入力input設定*/
 #search-wrap input[type="search"] {
 	width: 90%;
 	border: none;
-	border-bottom:2px solid $gray;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 	transition: all 0.5s;
 	letter-spacing: 0.05em;
   height: 30px;
 	padding: 10px;
 	left: 0;
+	background: rgba(255, 255, 255, 0.3);
 }
 
 /*テキスト入力inputにフォーカスされたら*/
 #search-wrap input[type="search"]:focus {
-	background: $gray;/*背景色を付ける*/
+  background: rgba(255, 255, 255, 0.8);
 }
 
 /*ボタンinput設定*/
@@ -158,9 +161,10 @@ $dark_gray: #838e95;
 
 .sel::before {
   position: absolute;
+  font-family: "Font Awesome 5 Free";
   content: '\f063';
-  // font-family: "Font Awesome 5 Free";
-  font-size: 2em;
+  font-weight: 900;
+  font-size: 10px;
   color: #838e95;
   right: 20px;
   top: calc(50% - 0.5em);
@@ -208,7 +212,7 @@ $dark_gray: #838e95;
   text-align: left;
   // font-size: 1em;
   background-color: #FFF;
-  border: $gray solid 2px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
   width: calc(100% + 8px);
   box-sizing: border-box;
   z-index: 1;
@@ -228,8 +232,9 @@ $dark_gray: #838e95;
 
 .sel__box__options::after {
   content: '\f00c';
-  // font-family: "Font Awesome 5 Free";
-  font-size: 0.5em;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 10px;
   margin-left: 5px;
   display: none;
 }
@@ -272,18 +277,19 @@ $dark_gray: #838e95;
   }
 }
 
-.users_contain{
+.index_contain{
   width: 100%;
+  // width: 1000px;
   display: flex;
 }
 
 .search-btn {
-  width: 15%;
+  width: 20%;
   margin: 10px;
 }
 
 .user_sort {
-  width: 15%;
+  width: 25%;
   margin: 10px;
 
   a{
