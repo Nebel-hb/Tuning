@@ -1,8 +1,20 @@
 // Place all the styles related to the public/events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-       
-       
+
+
+$main-color: #f9a939;
+$green: #788d63;
+// $white: #fdeed7;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+// $light-green: #a2e29b;
+$white: #f6f6f6;
+
+
 #calendar{
   width:500px;
   hight:400px;
@@ -32,3 +44,76 @@
     border-right-color: green;
     border-top-color: green;
 }
+
+.events_index{
+     width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .item{
+      margin: 30px auto 0;
+      padding: 15px;
+      width: 205px;
+      position: relative;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+        .event_box{
+          left: 50px;
+          top: 30px;
+          text-align: center;
+          color: #000;
+        }
+        .event_image{
+            position:  absolute;
+              z-index: 2;
+              left: -30px;
+              top: -20px;
+              width: 90px;
+              height: 90px;
+              border-radius: 50%;
+              background-image: image-url('public/bg/flute.jpg');
+              box-shadow:  0 10px 15px 0 rgba(0, 0, 0, 0.3);
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+        }
+    }
+}
+
+input  {
+    background: rgba(255, 255, 255, 0.3);
+    width: 85%;
+    color: darken($dark-green, 20%);
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 9px;
+    margin: 7px;
+    font-size: 15px;
+
+    &::placeholder {
+       color: rgba($white, 1);
+      letter-spacing: 2px;
+      font-size: 18px;
+      font-weight: 100;
+    }
+    &:focus {
+      color: $dark-green;
+      outline: none;
+      border-bottom: 1.2px solid rgba($dark-green, 0.7);
+      font-size: 15px;
+      transition: .8s all ease;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+
+  }
+
+  h3{
+      margin-top: 5px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      color: $gray;
+  }

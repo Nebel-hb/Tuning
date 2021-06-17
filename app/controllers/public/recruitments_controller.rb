@@ -39,6 +39,7 @@ class Public::RecruitmentsController < ApplicationController
 
   def edit
      @recruitment = Recruitment.find(params[:id])
+     @recruit_instruments = RecruitInstrument.where(recruitment_id: @recruitment)
   end
 
   def update

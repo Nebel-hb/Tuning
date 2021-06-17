@@ -20,7 +20,10 @@ $(document).on('turbolinks:load', function () {
     $('.search_users').val('')
     $('.search_id').css("display","none")
     $('#search_users').change(function () {
-        var selectedUserValue = $(this).val();
+      //$('#user_search > div:nth-child(2) > div > span:nth-child(2)').on('click', function() {
+        //let selectedUserValue = $(this).val();
+        let selectedUserValue = document.querySelector('#user_search > div > span').innerText
+        console.log(selectedUserValue)
         if (selectedUserValue == '名前検索') {
             $('.search_id').val('')
             $('.search_users').val('')
@@ -73,6 +76,8 @@ $('.sel').each(function() {
     }));
   });
 });
+// let type = document.getElementById('type');
+// type.value = document.querySelector('#user_search > div:nth-child(2) > span').innerText;
 });
 
 // Toggling the `.active` state on the `.sel`.
@@ -92,7 +97,20 @@ $('.sel__box__options').click(function() {
   $(this).addClass('selected');
 
   var $currentSel = $(this).closest('.sel');
+  if ($(this).text() == "奏者一覧") {
+    //$('.users_index').css("display","");
+    //$('.user_orchestra').css("display","none");
+    document.querySelector('.user_general').style.display = "block";
+    document.querySelector('.user_orchestra').style.display = "none";
+  } else if ($(this).text() == "オーケストラ一覧") {
+    document.querySelector('.user_orchestra').style.display = "block";
+    document.querySelector('.user_general').style.display = "none";
+    //$('.user_orchestra').css("display","");
+    //$('.users_index')..css("display","none");
+  };
+
   $currentSel.children('.sel__placeholder').text(txt);
+
   $currentSel.children('select').prop('selectedIndex', index + 1);
 });
 });
