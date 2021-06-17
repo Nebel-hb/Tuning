@@ -18,8 +18,6 @@
 // for font-awesome
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300&display=swap');
-// @import '~pretty-checkbox/src/pretty-checkbox.scss';
-
 
 
 
@@ -41,6 +39,18 @@ $pink: #ffb2c1;
 $yellow: #ffd673;
 $light-green: #a2e29b;
 $grey: #333;
+
+
+$main-color: #f9a939;
+$green: #788d63;
+// $white: #fdeed7;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+// $light-green: #a2e29b;
+$white: #f6f6f6;
 
 
 // fonts
@@ -89,3 +99,34 @@ a{
   color: #000;
   text-decoration: none;
 }
+
+input  {
+    color: $gray;
+//     background: rgba(255, 255, 255, 0.3);
+//     width: 85%;
+//     color: darken($dark-green, 20%);
+//     border: none;
+//     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+//     padding: 9px;
+//     margin: 7px;
+//     font-size: 15px;
+
+//     &::placeholder {
+//       color: rgba($white, 1);
+//       letter-spacing: 2px;
+//       font-size: 18px;
+//       font-weight: 100;
+//     }
+//     &:focus {
+//       color: $dark-green;
+//       outline: none;
+//       border-bottom: 1.2px solid rgba($dark-green, 0.7);
+//       font-size: 15px;
+//       transition: .8s all ease;
+
+//       &::placeholder {
+//         opacity: 0;
+//       }
+//     }
+
+  }

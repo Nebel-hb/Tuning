@@ -1,19 +1,110 @@
 <h1>Public::Recruitments#edit</h1>
-<p>Find me in app/views/public/recruitments/edit.html.erb</p>
-
-<%= form_with(model: @recruitment, url: recruitment_path, local: true, method: :put) do |f| %>
-
-  <%= f.label :title, 'タイトル', class: 'col-sm-3 col-form-label page-title ' %>
-  <%= f.text_field :title, class: 'form-control last_name page-title' %>
-
-    <%= f.label :area_id, 'エリア' %>
-  <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
 
 
-  <%= f.label :recruit_introduction, '説明文', class: 'col-sm-3 col-form-label page-title' %>
-  <%= f.text_area :recruit_introduction, class: 'form-control email page-title' %>
-
-
-  <%= f.submit %>
+<div class="recruit_form_container">
+  <!--<div class="welcome">-->
+  <%= form_with url: recruit_instruments_path , local: true do |f| %>
+    <div class="form-contain">
+          <div class="field">
+    <%= f.label :instrument_id, '楽器' %><br />
+            <span class=" sel">
+        
+  
+    <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required",  placeholder: " "%>
+            </span>
+          </div>
+          <div class="field">
+          <%= f.label :need_people, '募集人数' %><br />
+  　<%= f.text_field :need_people %>
+        
+          </div>
+    <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
+  <%= f.submit "追加する", class: "add_need_people"%>
+  
   <% end %>
+  
+  <% @recruit_instruments.each do |recruit_instrument| %>
+          <tr>
+            <td>
+              <%= recruit_instrument.instrument.instrument_name %>
+            </td>
+            <td>
+              <%= recruit_instrument.need_people%><%= "名" %></br>
+            </td>
+            <td>
+  
+          </tr>
+  <% end %>
+  </div>
+</div>
+        <!--</div>-->
+
+<div class="form_container">
+  <div class="welcome">
+
+    <%= form_with(model: @recruitment, local: true) do |f| %>
+    <div class="form-contain">
+      <div class="form">
+        <div class="field">
+          <%= f.label :title, 'タイトル' %><br />
+          <%= f.text_field :title %>
+        </div>
+
+        <div class="field">
+          <%= f.label :area_id, 'area' %><br />
+          <span class=" sel">
+            <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", placeholder: " "%>
+          </span>
+        </div>
+
+        <div class="field">
+          <%= f.label :recruit_introduction, '説明文' %><br />
+          <%= f.text_area :recruit_introduction %>
+        </div>
+
+      </div>
+      <div class="form">
+        <div class="field">
+          <%= f.label :募集開始日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_start, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :募集終了日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_end, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :本番開始日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_event_start, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :本番終了日時, class: 'control-label' %>
+          <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
+        </div>
+
+        <div class="actions">
+          <div class="pretty p-icon p-round p-pulse">
+        <!--<input type="checkbox" />-->
+          <%= check_box_tag :with_event, true %>
+        <div class="state p-success">
+            <i class="icon mdi mdi-check"></i>
+     　　   <%= f.label "イベントにも登録しますか？"  %>
+        </div>
+    </div>
+          <%= f.hidden_field :user_id, value:current_user.id %>
+
+          <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
+            <!--<span class= "col btnripple ">-->
+              <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
+            <!--</span>-->
+            <p>募集をする</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 

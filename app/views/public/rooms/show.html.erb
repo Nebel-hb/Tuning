@@ -1,5 +1,7 @@
 
-<p><%= "ルーム名：#{@room.room_name}" %></p>
+<div class="room-contain">
+<div class="room-menber-contain">
+<h3><%= "ルーム名：#{@room.room_name}" %></h3>
  <p>検索</p>
       <%= form_with url: room_path, local: true, method: :get do |f|%>
         <%= f.text_field :search, placeholder: "search" %>
@@ -42,7 +44,7 @@
 
     <% if user.user_id == current_user.id %>
       <%= form_with model: user, local: true do |f| %>
-      
+
       　<%= f.label :activation, "参加する"  %>
         <%= f.check_box :activation, {class: "check_box"}, true, false %>
       　<%= f.hidden_field :user_id, value:current_user.id %>
@@ -53,43 +55,55 @@
 <% end %>
 <% if @users.find_by(user_id: current_user.id).activation == true %>
 
-<div class="container">
-    <div class="row-12">
-        <div class="col-xs-12">
+</div><!--room-menber-contain-->
 
-            <table class="message table">
-              <thead>
-                <tr>
 
-                </tr>
-              </thead>
-              <% @chats.each do |chat| %>
-                <% if chat.user_id == current_user.id %>
-                <tbody>
-                  <tr>
-                    <th>
-                      <p style="text-align: left;"><%= chat.message %></p>
-                    </th>
-                  </tr>
-                </tbody>
-                <% else %>
-                <tbody>
-                  <tr>
-                    <th></th>
-                    <th>
-                      <p style="text-align: right;"><%= chat.user.name %><%= chat.message %></p>
-                    </th>
-                  </tr>
-                </tbody>
-                <% end %>
-              <% end %>
-            </table>
+<div class="chat-contain">
+
+
+
+  
+
+
+
+
+<div class="chat_container">
+  <div class="chat_title"></div>
+    <div class="chat_contents scroll">
+      <% @chats.each do |chat| %>
+        <% if chat.user_id != current_user.id %>
+        <div class="left_chat">
+          <div class="left_image">
+             <%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 30, 30, fallback: "public/image/no_image.png", size:'80x80', class:"profile-image"), user_path(chat.user) %>
+          </div>
+          <div class="left-text">
+            <div class="name"><%= chat.user.name%></div>
+            <div class="text"><%= chat.message%></div>
+            <div class="text-white"><%= chat.created_at.strftime("%H:%M")%></div>
+          </div>
+        </div>
+
+        <% else %>
+
+        <div class="right_chat">
+          <div class="text"><%= chat.message %></div>
+          <div class="text-right"><%= chat.created_at.strftime("%H:%M")%></div>
+        </div>
+
+        <% end %>
+      <% end %>
+  </div>
+</div>
+
               <%= form_with model: @chat do |f| %>
                 <%= f.text_field :message %>
                 <%= f.hidden_field :room_id %>
                 <%= f.submit %>
               <% end %>
-      </div>
-    </div>
-  </div>
+
+
+
 <% end %>
+</div>
+
+</div><!--#roon-contain-->

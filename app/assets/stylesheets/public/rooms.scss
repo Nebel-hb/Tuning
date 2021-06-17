@@ -1,3 +1,200 @@
-// Place all the styles related to the public/rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// // Place all the styles related to the public/rooms controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$main-color: #f9a939;
+$green: #788d63;
+// $white: #fdeed7;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+// $light-green: #a2e29b;
+$white: #f6f6f6;
+
+// // 自分のメッセージの吹き出し
+// .other-user-says {
+//   position: relative;
+//   width: calc(100% - 420px);
+//   margin-left: 20px;
+//   padding: 16px;
+//   background: $gray;
+//   border-radius: 15px;
+//   line-height: 1.5;
+//   word-break: break-all;
+//   p{
+//   // position: absolute;
+
+
+//   }
+// }
+// .other-user-says:after {
+//   content: "";
+//   display: inline-block;
+//   position: absolute;
+//   top: 3px;
+//   left: -19px;
+//   border: 8px solid transparent;
+//   border-right: 18px solid #gray;
+//   -webkit-transform: rotate(35deg);
+//   transform: rotate(35deg);
+// }
+
+// // 自分以外のメッセージの吹き出し
+// .says {
+//   float: right;
+//   position: relative;
+//   width: calc(100% - 420px);
+//   padding: 16px;
+//   background: $gray;
+//   border-radius: 15px;
+//   line-height: 1.5;
+//   word-break: break-all;
+//   direction: flex;
+//   flex-direction: column;
+
+//   p{
+//     text-align: right;
+//   }
+// }
+// .says:after {
+//   content: "";
+//   display: inline-block;
+//   position: absolute;
+//   top: 3px;
+//   right: -19px;
+//   border: 8px solid transparent;
+//   border-right: 18px solid $gray;
+//   -webkit-transform: rotate(145deg);
+//   transform: rotate(145deg);
+// }
+
+.room-contain{
+  width: 100%;
+  display: flex;
+
+}
+
+.room-menber-contain{
+  width: 30%;
+}
+
+.chat-contain{
+  width: 70%;
+  margin: 5px;
+  // display: flex;
+  justify-content: center;
+
+  .profile-image{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+
+
+$titleColor: #E6FFE9;
+$baseColor: #85CDFA;
+$leftTextColor: #fff;
+$rightTextColor: #D8D8D8;
+
+
+.chat_container {
+  padding: 0;
+  overflow: hidden;
+  max-width: 80%;
+  margin: 20px auto;
+  font-size: 80%;
+
+  .chat_contents {
+    padding: 10px;
+    overflow: hidden;
+    line-height: 135%;
+
+    &.scroll {
+      height: 500px;
+      overflow-y: scroll;
+    }
+
+    .left_chat {
+      width: 100%;
+      position: relative;
+      display: block;
+      margin-bottom: 5px;
+      max-width: 75%;
+      clear: both;
+
+      .left_image {
+        width: 50px;
+        position: absolute;
+        top: 15px;
+      }
+
+      .left-text {
+        margin-left: 70px;
+
+        .name {
+          font-size: 80%;
+          color: $gray;
+        }
+      }
+
+      .text {
+        margin: 0;
+        position: relative;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: $gray;
+
+        &::after {
+          content: '';
+          position: absolute;
+         display: inline-block;
+          left: -19px;
+          top: 3px;
+          border: 8px solid transparent;
+          border-right: 18px solid $gray;
+          -webkit-transform: rotate(35deg);
+          transform: rotate(35deg);
+        }
+
+      }
+     }
+      /* 自分の会話 */
+      .right_chat {
+        position: relative;
+        display: block;
+        margin: 5px 0;
+        max-width: 75%;
+        float: right;
+        margin-right: 15px;
+        clear: both;
+        /* コメントエリア */
+        .text {
+          padding: 10px;
+          border-radius: 20px;
+          background-color: $gray;
+          margin: 0;
+          margin-left: 80px;
+          /* 吹き出し */
+          &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 3px;
+            right: -19px;
+            border: 8px solid transparent;
+            border-right: 18px solid $gray;
+            -webkit-transform: rotate(145deg);
+            transform: rotate(145deg);
+           
+          }
+
+        }
+      }
+  }
+}
