@@ -2,6 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+$('#calendar').fullCalendar({});
 
 //カレンダー
 
@@ -80,7 +81,7 @@ $(document).on('turbolinks:load', function () {
             $('.search_title').css("display","")
             $('.search_user').css("display","none")
             $('.search_other').css("display","none")
-            
+
         }else if (selectedValue == '募集者検索') {
             $('.search_title').val('')
             $('.search_other').val('')
