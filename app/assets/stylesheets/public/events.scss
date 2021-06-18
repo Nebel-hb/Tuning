@@ -135,3 +135,30 @@ input  {
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
       color: $gray;
   }
+
+.show-contain{
+  width: 80%;
+  display: flex;
+  margin: 10px auto;
+
+  .show-item,
+  .show-comments{
+    margin-left: 20px;
+    &.scroll {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.event-show_image{
+  width: 150px;
+}
+
+#comment_comment{
+  width: 136px;
+  
+}
+  .new-comment{
+    margin-bottom: 20px;
+  }

@@ -81,7 +81,7 @@ $white: #f6f6f6;
   width: 20%;
   margin: 10px;
   color: $green;
- 
+
 }
 
 .chat-contain{
@@ -111,7 +111,7 @@ $white: #f6f6f6;
     line-height: 135%;
 
     &.scroll {
-      height: 500px;
+      height: 300px;
       overflow-y: scroll;
     }
 
@@ -201,7 +201,7 @@ $white: #f6f6f6;
   color: $gray;
 }
 
-.chat_btn{
+.btn-size{
 
   width: 80px;
 

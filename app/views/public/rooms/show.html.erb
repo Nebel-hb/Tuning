@@ -5,7 +5,7 @@
     <h3>検索</h3>
       <%= form_with url: room_path, local: true, method: :get do |f|%>
         <%= f.text_field :search, placeholder: "search" %>
-        <%= f.submit "検索",id: "btn", class: "chat_btn" %>
+        <%= f.submit "検索",id: "btn", class: "btn-size" %>
       <% end %>
       <div>
         <% @user.each do |user| %>
@@ -17,13 +17,13 @@
               <%= form_with model: @user_room, url: user_rooms_path  do |f| %>
                 <%= f.hidden_field :room_id, value: @room.id %>
             　   <%= f.hidden_field :user_id, value: user.id %>
-                <%= f.submit "招待する" ,id: "btn", class: "chat_btn" %>
+                <%= f.submit "招待する" ,id: "btn", class: "btn-size" %>
               <% end %>
             <% end %>
           </tr>
         <% end %>
       </div>
-      
+
       <h3>参加メンバー</h3>
       <% @users.each do |user| %>
         <% if user.activation == true %>
@@ -36,7 +36,7 @@
         </tr>
         <% end %>
       <% end %>
-      
+
       <h3>参加待ち</h3>
       <% @users.each do |user| %>
         <% if user.activation == true %>
@@ -44,27 +44,27 @@
             <%= user.user.name %>
           <% end %></span>
         <% end %>
-      
+
         <% if user.user_id == current_user.id %>
           <%= form_with model: user, local: true do |f| %>
-    
+
+            <%= f.check_box :activation, {class: "check_box"}, true, false %>
           <div class="pretty p-icon p-round p-pulse">
-            <!--%= f.check_box :activation, {class: "check_box"}, true, false %>-->
             <%= check_box_tag :activation,  true %>
             <div class="state p-success">
                 <i class="icon mdi mdi-check"></i>
           　<%= f.label :activation, "参加する"  %>
             </div>
             </div>
-    
+
           　<%= f.hidden_field :user_id, value:current_user.id %>
-            <%= f.submit "送信" , id: "btn", class: "chat_btn" %>
+            <%= f.submit "送信" , id: "btn", class: "btn-size" %>
           <% end %>
         <% end %>
       <% end %>
   </div><!--room-menber-contain-->
-      
-      
+
+
   <% if @users.find_by(user_id: current_user.id).activation == true %>
     <div class="chat-contain">
       <div class="chat_container">
@@ -81,7 +81,7 @@
                 <span class="menbers_text_time"><%= chat.created_at.strftime("%H:%M")%></span>
               </div>
             </div>
-    
+
             <% else %>
             <div class="my_chat">
               <div class="text"><%= chat.message %></div>
@@ -91,11 +91,11 @@
           <% end %>
         </div>
       </div>
-      
+
       <%= form_with model: @chat do |f| %>
         <%= f.text_field :message ,placeholder: "Aa", class: "chat_field" %>
         <%= f.hidden_field :room_id %>
-        <%= f.submit "送信", class: "chat_btn", id: "btn"%>
+        <%= f.submit "送信", class: "btn-size", id: "btn"%>
       <% end %>
     <% end %>
     </div>
