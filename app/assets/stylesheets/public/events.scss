@@ -85,7 +85,8 @@ $white: #f6f6f6;
 input  {
     background: rgba(255, 255, 255, 0.3);
     width: 85%;
-    color: darken($dark-green, 20%);
+    // color: darken($dark-green, 20
+    color: $gray;
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding: 9px;
@@ -111,9 +112,53 @@ input  {
     }
 
   }
+    #btn{
+      background: rgba(255, 255, 255, 0);
+      padding: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      border-radius: 10px;
+      margin: auto;
+      outline: none;
+      display: block;
+        &:hover {
+        background: $dark-green;
+        color: $white;
+        transition: background-color 1s ease-out;
+      }
+
+    }
 
   h3{
       margin-top: 5px;
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
       color: $gray;
+  }
+
+.show-contain{
+  width: 80%;
+  display: flex;
+  margin: 10px auto;
+
+  .show-item,
+  .show-comments{
+    margin-left: 20px;
+    &.scroll {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.event-show_image{
+  width: 150px;
+}
+
+#comment_comment{
+  width: 136px;
+  
+}
+  .new-comment{
+    margin-bottom: 20px;
   }

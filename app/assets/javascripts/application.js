@@ -17,6 +17,10 @@
 
 //= require moment
 //= require fullcalendar
+//= require fullcalendar/locale-all
+
+
+//= require shards
 
 //= require_tree .
 

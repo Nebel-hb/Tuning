@@ -1,109 +1,102 @@
 
 <div class="room-contain">
-<div class="room-menber-contain">
-<h3><%= "ルーム名：#{@room.room_name}" %></h3>
- <p>検索</p>
+  <div class="room-menber-contain">
+    <h3>ルーム名：<span class="green"><%= @room.room_name %></span></h3>
+    <h3>検索</h3>
       <%= form_with url: room_path, local: true, method: :get do |f|%>
         <%= f.text_field :search, placeholder: "search" %>
-        <%= f.submit "search" %>
+        <%= f.submit "検索",id: "btn", class: "btn-size" %>
       <% end %>
       <div>
         <% @user.each do |user| %>
-      <tr>
-          <%= user.name %>
-          <% if @users.pluck(:user_id).include?(user.id) %>
-          <p>招待済み</p>
-          <% else %>
-          <%= form_with model: @user_room, url: user_rooms_path  do |f| %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-        　<%= f.hidden_field :user_id, value: user.id %>
-          <%= f.submit "招待する"  %>
+          <tr>
+            <p class="black"><%= user.name %></p>
+            <% if @users.pluck(:user_id).include?(user.id) %>
+              <p class="green">招待済み</p>
+            <% else %>
+              <%= form_with model: @user_room, url: user_rooms_path  do |f| %>
+                <%= f.hidden_field :room_id, value: @room.id %>
+            　   <%= f.hidden_field :user_id, value: user.id %>
+                <%= f.submit "招待する" ,id: "btn", class: "btn-size" %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </div>
 
-      </tr>
-          <% end %>
-          <% end %>
+      <h3>参加メンバー</h3>
+      <% @users.each do |user| %>
+        <% if user.activation == true %>
+        <tr>
+          <span>
+            <%= link_to user_path(user.user_id) do %>
+              <%= user.user.name %>
+            <% end %>
+          </span>
+        </tr>
+        <% end %>
+      <% end %>
+
+      <h3>参加待ち</h3>
+      <% @users.each do |user| %>
+        <% if user.activation == true %>
+          <span><%= link_to user_path(user.user_id) do %>
+            <%= user.user.name %>
+          <% end %></span>
         <% end %>
 
+        <% if user.user_id == current_user.id %>
+          <%= form_with model: user, local: true do |f| %>
 
+            <%= f.check_box :activation, {class: "check_box"}, true, false %>
+          <div class="pretty p-icon p-round p-pulse">
+            <%= check_box_tag :activation,  true %>
+            <div class="state p-success">
+                <i class="icon mdi mdi-check"></i>
+          　<%= f.label :activation, "参加する"  %>
+            </div>
+            </div>
 
-
-</div>
-<p>参加メンバー</p>
-<% @users.each do |user| %>
-  <% if user.activation == true %>
-     <span>
-        <%= link_to user_path(user.user_id) do %>
-        <%= user.user.name %>
+          　<%= f.hidden_field :user_id, value:current_user.id %>
+            <%= f.submit "送信" , id: "btn", class: "btn-size" %>
+          <% end %>
         <% end %>
-      </span>
-  <% else %>
-    <p>参加待ち</p>
-     <span><%= link_to user_path(user.user_id) do %>
-        <%= user.user.name %>
-    <% end %></span>
+      <% end %>
+  </div><!--room-menber-contain-->
 
-    <% if user.user_id == current_user.id %>
-      <%= form_with model: user, local: true do |f| %>
 
-      　<%= f.label :activation, "参加する"  %>
-        <%= f.check_box :activation, {class: "check_box"}, true, false %>
-      　<%= f.hidden_field :user_id, value:current_user.id %>
-        <%= f.submit %>
+  <% if @users.find_by(user_id: current_user.id).activation == true %>
+    <div class="chat-contain">
+      <div class="chat_container">
+        <div class="chat_contents scroll">
+          <% @chats.each do |chat| %>
+            <% if chat.user_id != current_user.id %>
+            <div class="menbers_chat">
+              <div class="chat_image">
+                <%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 30, 30, fallback: "public/image/no_image.png", size:'80x80', class:"profile-image"), user_path(chat.user) %>
+              </div>
+              <div class="left-text">
+                <div class="name"><%= chat.user.name%></div>
+                <div class="text"><%= chat.message%></div>
+                <span class="menbers_text_time"><%= chat.created_at.strftime("%H:%M")%></span>
+              </div>
+            </div>
+
+            <% else %>
+            <div class="my_chat">
+              <div class="text"><%= chat.message %></div>
+              <div class="my_text_time"><%= chat.created_at.strftime("%H:%M")%></div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form_with model: @chat do |f| %>
+        <%= f.text_field :message ,placeholder: "Aa", class: "chat_field" %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit "送信", class: "btn-size", id: "btn"%>
       <% end %>
     <% end %>
-  <% end %>
-<% end %>
-<% if @users.find_by(user_id: current_user.id).activation == true %>
-
-</div><!--room-menber-contain-->
-
-
-<div class="chat-contain">
-
-
-
-  
-
-
-
-
-<div class="chat_container">
-  <div class="chat_title"></div>
-    <div class="chat_contents scroll">
-      <% @chats.each do |chat| %>
-        <% if chat.user_id != current_user.id %>
-        <div class="left_chat">
-          <div class="left_image">
-             <%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 30, 30, fallback: "public/image/no_image.png", size:'80x80', class:"profile-image"), user_path(chat.user) %>
-          </div>
-          <div class="left-text">
-            <div class="name"><%= chat.user.name%></div>
-            <div class="text"><%= chat.message%></div>
-            <div class="text-white"><%= chat.created_at.strftime("%H:%M")%></div>
-          </div>
-        </div>
-
-        <% else %>
-
-        <div class="right_chat">
-          <div class="text"><%= chat.message %></div>
-          <div class="text-right"><%= chat.created_at.strftime("%H:%M")%></div>
-        </div>
-
-        <% end %>
-      <% end %>
-  </div>
-</div>
-
-              <%= form_with model: @chat do |f| %>
-                <%= f.text_field :message %>
-                <%= f.hidden_field :room_id %>
-                <%= f.submit %>
-              <% end %>
-
-
-
-<% end %>
-</div>
-
-</div><!--#roon-contain-->
+    </div>
+  </div><!--#roon-contain-->

@@ -1,36 +1,37 @@
-<h1>Public::Recruitments#confirm</h1>
-              <td>
-                <%= @recruitment.title %>
-              </td>
-              <td>
-                <%= @recruitment.area.area_name %>
-              </td>
-              <td>
-                <%= @recruitment.user.name %>
-              </td>
-              <td>
-                <%= @recruitment.recruit_introduction %>
-              </td>
-              <td>
-                <%= l @recruitment.recruit_start %>
-              </td>
-              <td>
-                <%= l @recruitment.recruit_end %>
-              </td>
+<h1>応募する</h1>
 
-
-          <div class="new-comment">
-            <%= form_with(model:[ @recruit_user], local: true) do |f| %>
-              
-              <% if @recruitment.user == current_user %>
-                <%= f.collection_select :user_id,@recruit_users.all, :id, :name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
-                <%= f.text_area :thanks_comment, rows:'5',placeholder: "thank youコメント" %>
-              
-              <% else %>
-                <%= f.text_area :recruit_comment, rows:'5',placeholder: "申請コメント" %>
-              <% end %>
-              
-              <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
-              <%= f.submit "送信する" %>
-            <% end %>
-          </div>
+   <div class="confirm-contain">
+    <div class="confirm-item">
+      <div class="confirm-box">
+        <h3 class="green">
+          <%= @recruitment.title %>
+        </h3>
+        <p>
+          地域：<%= @recruitment.area.area_name %>
+        </p>
+        <p>
+          募集者<%= @recruitment.user.name %>
+        </p>
+        <p>
+          <%= @recruitment.recruit_introduction %>
+        </p>
+        <p>
+          <%= l @recruitment.recruit_start %>~
+        </p>
+        <p>
+          <%= l @recruitment.recruit_end %>
+        </p>
+          
+        <div class="new-comment">
+          <%= form_with(model:[ @recruit_user], local: true) do |f| %>
+            <div class="field">
+              <%= f.text_area :recruit_comment, placeholder: "申請コメント", class: "comment-field" %>
+            </div>
+            <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
+             <%= f.submit "送信" , id: "btn", class: "comment_btn" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+    

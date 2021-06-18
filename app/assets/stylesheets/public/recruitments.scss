@@ -82,3 +82,21 @@ $white: #f6f6f6;
   font-size: 18px;
   font-family: 'Cormorant Upright','Cormorant Upright', serif;
 }
+
+.show-item-box{
+  margin-bottom: 10px;
+
+  h3{
+    margin-bottom: 10px;
+
+  }
+}
+
+.recruit-show-contain{
+  width: 80%;
+  display: flex;
+  margin: 10px auto;
+  .recruit-show{
+    margin: 0 auto;
+  }
+}

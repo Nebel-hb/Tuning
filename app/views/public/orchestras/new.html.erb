@@ -1,13 +1,16 @@
 <h1>公式オーケストラ申請</h1>
-
+<div class="confirm-contain">
+  <div class="confirm-box">
   <p>申請が受理されると、演奏会への募集をかけ、チャットグループのルームを作りコミュニケーションが取れるようになります。</p>
 
-<div>
-<%= form_with(model: @orchestra, local: true) do |f| %>
-  <%= f.text_area :application_comment, rows: '5',placeholder: "コメントをここに" %>
-  <%= f.hidden_field :user_id, value: current_user.id  %>
-  <%= f.submit "応募する" %>
-<% end %>
+    <div class="new-comment">
+      <%= form_with(model: @orchestra, local: true) do |f| %>
+      <div class="field">
+        <%= f.text_area :application_comment, rows: '5',placeholder: "申請コメントをここに", class: "comment-field" %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id  %>
+      <%= f.submit "応募する" , id: "btn", class: "comment_btn" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
- 
