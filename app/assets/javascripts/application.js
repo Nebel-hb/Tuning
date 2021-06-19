@@ -34,3 +34,33 @@
   //   });
   // });
 
+
+
+//スクロールすると上部に固定させるための設定を関数でまとめる
+
+function FixedAnime() {
+	var headerH = $('#header').outerHeight(true);
+	var scroll = $(window).scrollTop();
+	if (scroll >= headerH){//headerの高さ以上になったら
+			$('#header').addClass('fade-in');//fixedというクラス名を付与
+			$('#header').removeClass('fade-out');//fixedというクラス名を除去
+			// $('#header').fadeOut();//fixedというクラス名を付与
+			// $('.fixed').fadeIn();//fixedというクラス名を除去
+
+		}else{//それ以外は
+			$('#header').addClass('fade-out');//fixedというクラス名を付与
+			$('#header').removeClass('fade-in');//fixedというクラス名を除去
+			// $('#header').fadeIn();//fixedというクラス名を付与
+			// $('.fixed').fadeOut();//fixedというクラス名を除去
+
+
+		}
+}
+
+
+$(document).on('turbolinks:load', function () {
+// 画面をスクロールをしたら動かしたい場合の記述
+$(window).scroll(function () {
+	FixedAnime();/* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+});
+});

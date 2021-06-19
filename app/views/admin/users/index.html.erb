@@ -11,12 +11,18 @@
                   <%= user.name %>
                 <% end %>
               </p>
+              <p>
+                <%= user.area.area_name %>
+              </p>
+              <p>
+                <%= user.instrument.instrument_name %>
+              </p>
           </div>
         </div>
-      
+
       <% end %>
     <% end %>
-                
+
   <h2>Orchestras</h2>
     <% @users.each do |user| %>
       <% if user.role == "orchestra" %>
@@ -29,8 +35,10 @@
                   <%= user.name %>
                 <% end %>
               </p>
+              <p>
+                <%= user.area.area_name %>
+              </p>
           </div>
         </div>
       <% end %>
     <% end %>
-    

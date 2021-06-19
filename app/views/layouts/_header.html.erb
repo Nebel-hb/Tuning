@@ -1,14 +1,64 @@
-<div class="header">
-<% if user_signed_in? %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "top", root_path %>
-        <%= link_to 'mypage', user_path(current_user.id) %>
-        <%= link_to "users", users_path %>
-        <%= link_to "events", events_path %>
-        <%= link_to "recruitments", recruitments_path %>
-    <% else %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to "top", root_path %>
-        <%= link_to "about", about_path %>
+<span id="header">
+<span class="fixed">
+    <nav>
+<ul>
+    <% if user_signed_in? %>
+<li>
+    <%= link_to "log out", destroy_user_session_path, method: :delete %>
+</li>
+<li><%= link_to "top", root_path %></li>
+<li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %><!--子要素を持つ li にはhas-childというクラス名をつける-->
+  <ul>
+  <li><a href="#">Service Top</a></li>
+  <li><a href="#">Service-1</a></li>
+  <li class="has-child"><a href="#">Service-2</a>
+    <ul>
+    <li><a href="#">Service-2 Top</a></li>
+    <li><a href="#">Service-2-1</a></li>
+    <li><a href="#">Service-2-2</a></li>
+    <li><a href="#">Service-2-3</a></li>
+    <li><a href="#">Service-2-4</a></li>
+    </ul>
+ </li>
+ <li><a href="#">Service-3</a></li>
+</ul>
+</li>
+<li class="has-child"> <%= link_to "users", users_path %>
+  <ul>
+  <li><a href="#">Blog Top</a></li>
+  <li><a href="#">Blog-1</a></li>
+  <li><a href="#">Blog-2</a></li>
+  <li><a href="#">Blog-3</a></li>
+  <li><a href="#">Blog-4</a></li>
+  </ul>
+</li>
+<li class="has-child"> <%= link_to "events", events_path %>
+  <ul>
+  <li><a href="#">Blog Top</a></li>
+  <li><a href="#">Blog-1</a></li>
+  <li><a href="#">Blog-2</a></li>
+  <li><a href="#">Blog-3</a></li>
+  <li><a href="#">Blog-4</a></li>
+  </ul>
+</li>
+<li class="has-child"><%= link_to "recruitments", recruitments_path %>
+  <ul>
+  <li><a href="#">Blog Top</a></li>
+  <li><a href="#">Blog-1</a></li>
+  <li><a href="#">Blog-2</a></li>
+  <li><a href="#">Blog-3</a></li>
+  <li><a href="#">Blog-4</a></li>
+  </ul>
+</li>
+<% else %>
+<li>
+    <%= link_to "新規登録", new_user_registration_path %>
+</li>
+<li><%= link_to "top", root_path %></li>
+</ul>
+<li><%= link_to "about", about_path %></li>
     <% end %>
-    </div>
+</ul>
+</nav>
+</span>
+</span>
