@@ -22,6 +22,7 @@
     <div id="main">
 
   <body data-turbolinks="false">
+
     <% if admin_signed_in? %>
       <%= render "layouts/admin_header" %>
     <% else %>
@@ -38,18 +39,27 @@
 <script>
 $(function(){
 $('#bg').shards(
-  // [0,0,0,.05],
-	[58,172,173,.25],
-// 	[249,169,57,.25],
-	[253,238,215,.25],
-	[120,141,99,.25],
-	12,
-	.5,
-	2.999,
-	.08,
+// 	[249,169,57,.25],// 	oreng
+// 	[253,238,215,.25],// white
+// 	[25,70,33,.9],// 濃い緑
+// 	[64,39,23,.9],// 	brown
+// 	[64,39,23,.9],// 	brown
+  [0,0,0,.9],
+  [0,0,0,.8],
+// 	[58,172,173,.8],
+// 	[120,141,99,.9],// 緑
+// 	[171,15,80,.8],// red
+	[64,39,23,.8],// 	brown
+// 	[70,28,84,.8],// 	紫
+	20,
+	.6,
+	1,
+	1,
 	false
+// [10,35,180,.15],[255,20,220,.25],[0,0,0,.25],20,.58,2,.15,true
 );
 });
+
 </script>
     <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
     <!--<script type="text/javascript" src="jquery.pagepiling.js"></script>-->

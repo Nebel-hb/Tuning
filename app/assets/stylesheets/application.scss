@@ -17,7 +17,9 @@
  */
 
 // for font-awesome
+// @import "font-awesome-sprockets"
 @import "font-awesome";
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300&display=swap');
 
 
@@ -55,6 +57,7 @@ $white: #f6f6f6;
 // fonts
 html {
 font-family: 'Cormorant Upright','Cormorant Upright', serif;
+  height: 100vh;
 
 }
 
@@ -64,18 +67,54 @@ font-family: 'Cormorant Upright','Cormorant Upright', serif;
   padding: 0;
   box-sizing: border-box;
 }
-// body {
-//   width: 100%;
-//   height: 100vh;
-//     // align-items: center;
-//     // -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-//     // clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-// }
-// #main{
-//   width: 80%;
-//   hight: 100px;
-//   margin: 0 auto;
-// }
+body {
+  width: 100%;
+  height: 100%;
+  color:$white;
+  font-size: 20px;
+
+}
+
+#bg{
+  height: 100%;
+
+}
+
+#main{
+  color:$white;
+  width: 80%;
+  min-hight: 100vh;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+
+a{
+  color: $white;
+  text-decoration: none;
+}
+
+
+#title h2{
+  // height: 300px;
+  // width: 100%;
+  // background-color: $green;
+  // background-image: image-url('public/bg/flute.jpg');
+  // box-shadow: 0px 300px 200px 0px rgba(253, 238, 215, 0.2)inset;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  // background-blend-mode: screen;
+  animation: bg-color 60s infinite;
+   -webkit-background-clip: text;//テキストでくり抜く
+  -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
+}
+
+#title{
+  // line-height: 300px;
+  // text-align: center;
+  font-size: 30px;
+}
 
 
 @keyframes bg-color {
@@ -88,16 +127,7 @@ font-family: 'Cormorant Upright','Cormorant Upright', serif;
     100% { background-color:$main_color; }
 }
 
-#title{
-  line-height: 300px;
-  text-align: center;
-  font-size: 30px;
-}
 
-a{
-  color: #000;
-  text-decoration: none;
-}
 
 // input  {
 //     color: $gray;
@@ -130,6 +160,232 @@ a{
 
   // }
 
+
+/*========= ナビゲーションドロップダウンのためのCSS ===============*/
+
+/*==ナビゲーション全体の設定*/
+nav{
+	// background:#333;
+	color:#fff;
+	text-align: center;
+}
+/*ナビゲーションを横並びに*/
+nav ul{
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+/*2階層目以降は横並びにしない*/
+nav ul ul{
+	display: block;
+}
+
+/*下の階層のulや矢印の基点にするためliにrelativeを指定*/
+nav ul li{
+	position: relative;
+}
+
+/*ナビゲーションのリンク設定*/
+nav ul li a{
+	display: block;
+	text-decoration: none;
+	color: #999;
+	padding:20px 35px;
+	transition:all .3s;
+}
+
+nav ul li li a{
+	padding:10px 35px;
+}
+
+nav ul li a:hover{
+	color:#fff;
+}
+
+/*==矢印の設定*/
+
+/*2階層目を持つliの矢印の設定*/
+nav ul li.has-child::before{
+	content:'';
+	position: absolute;
+	left:15px;
+	top:25px;
+	width:6px;
+	height:6px;
+	border-top: 2px solid #999;
+    border-right:2px solid #999;
+    transform: rotate(135deg);
+}
+
+/*3階層目を持つliの矢印の設定*/
+nav ul ul li.has-child::before{
+	content:'';
+	position: absolute;
+	left:6px;
+	top:17px;
+	width:6px;
+	height:6px;
+    border-top: 2px solid #fff;
+    border-right:2px solid #fff;
+    transform: rotate(45deg);
+}
+
+/*== 2・3階層目の共通設定 */
+
+/*下の階層を持っているulの指定*/
+nav li.has-child ul{
+    /*絶対配置で位置を指定*/
+	position: absolute;
+	left:0;
+	top:62px;
+	z-index: 4;
+    /*形状を指定*/
+	background:#28BFE7;
+	width:180px;
+    /*はじめは非表示*/
+	visibility: hidden;
+	opacity: 0;
+    /*アニメーション設定*/
+	transition: all .3s;
+}
+
+/*hoverしたら表示*/
+nav li.has-child:hover > ul,
+nav li.has-child ul li:hover > ul,
+nav li.has-child:active > ul,
+nav li.has-child ul li:active > ul{
+  visibility: visible;
+  opacity: 1;
+}
+
+/*ナビゲーションaタグの形状*/
+nav li.has-child ul li a{
+	color: #fff;
+	border-bottom:solid 1px rgba(255,255,255,0.6);
+}
+
+nav li.has-child ul li:last-child a{
+	border-bottom:none;
+}
+
+nav li.has-child ul li a:hover,
+nav li.has-child ul li a:active{
+	background:#3577CA;
+}
+
+
+/*==3階層目*/
+
+/*3階層目の位置*/
+nav li.has-child ul ul{
+	top:0;
+	left:182px;
+	background:#66ADF5;
+}
+
+nav li.has-child ul ul li a:hover,
+nav li.has-child ul ul li a:active{
+	background:#448ED3;
+}
+
+
+/*==768px以下の形状*/
+
+@media screen and (max-width:768px){
+	nav{
+		padding: 0;
+	}
+
+	nav ul{
+		display: block;
+	}
+
+	nav li.has-child ul,
+	nav li.has-child ul ul{
+  	position: relative;
+	left:0;
+	top:0;
+	width: 100%;
+	visibility:visible;/*JSで制御するため一旦表示*/
+	opacity:1;/*JSで制御するため一旦表示*/
+	display: none;/*JSのslidetoggleで表示させるため非表示に*/
+	transition:none;/*JSで制御するためCSSのアニメーションを切る*/
+}
+
+nav ul li a{
+	border-bottom:1px solid #ccc;
+}
+
+/*矢印の位置と向き*/
+
+nav ul li.has-child::before{
+	left:20px;
+}
+
+nav ul ul li.has-child::before{
+    transform: rotate(135deg);
+	left:20px;
+}
+
+nav ul li.has-child.active::before{
+    transform: rotate(-45deg);
+}
+
+}
+
+#header{
+	height: 70px;/*高さ指定*/
+	width: 100%;/*横幅指定*/
+	/*以下はレイアウトのためのCSS*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color:#fff;
+	background:rgba(255, 255, 255, 0);
+	text-align: center;
+	padding: 20px;
+	position: fixed;/*fixedを設定して固定*/
+  z-index: 999;/*最前面へ*/
+  top:0;/*位置指定*/
+  left:0;/*位置指定*/
+}
+
+/*JSを使いfixedクラスが付与された際の設定*/
+#header.fade-in{
+  animation: fadeIn .3s ease  1 normal;
+  position: fixed;/*fixedを設定して固定*/
+  z-index: 999;/*最前面へ*/
+  top:0;/*位置指定*/
+  left:0;/*位置指定*/
+  background: #333;
+}
+#header.fade-out{
+  animation: fadeOut .3s ease  1 normal;
+  		// background: #333;
+}
+
+@keyframes fadeIn { /*animation-nameで設定した値を書く*/
+
+  0% {background:rgba(255, 255, 255, 0);} 
+
+  100% {background: #333;}
+}
+
+@keyframes fadeOut { /*animation-nameで設定した値を書く*/
+
+  0% {
+  		background: #333;
+
+  }
+
+  100% {
+  		background:rgba(255, 255, 255, 0);
+  	
+  }
+
+
+}
+
 .gray{
   color:$gray;
 }
@@ -139,4 +395,7 @@ a{
 }
 .black{
   color:#000;
+}
+.image{
+  width: 150px;
 }

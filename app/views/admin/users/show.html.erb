@@ -1,41 +1,62 @@
 <h1>Admin::Users#show</h1>
 
-  <p class="col-sm-2">会員ID：<%= @user.id %></p>
+<div class="orchestra-show-contain">
+  <div class="orchestra-show">
+  <%= attachment_image_tag @user, :profile_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
+  </div>
+
+    <div class="orchestra-show-box">
+      <div class="orchestra-comment">
+        <div class="orchestra-item">
+          <p>会員ID</p>
+          <p>名前</p>
+          <p>エリア</p>
+          <p>楽器</p>
+          <p>自己紹介文</p>
+          <p>ステータス</p>
+        </div>
+        <div>
+          <p><%= @user.id %></p>
+          <p><%= @user.name %></p>
+          <p><%= @user.area.area_name %></p>
+          <p><%= @user.instrument.instrument_name %></p>
+          <p><%= @user.introduction %></p>
+          <p><%= @user.role %></p>
+        </div>
+      </div>
+
+      <div class="orchestra-form">
+        <%= form_with(url: admin_user_path, local: true)   do |f| %>
+        <div class="pretty p-default  p-fill  p-round p-pulse">
+          <%= f.radio_button :role, :general %>
+          <div class="state p-success p-info-o">
+          　<%= f.label :role, "general"  %>
+          </div>
+        </div>
+        <div class="pretty p-default  p-fill  p-round p-pulse">
+          <%= f.radio_button :role, :orchestra %>
+          <div class="state p-success p-info-o">
+          　<%= f.label :role, "orchestra" %>
+          </div>
+        </div>
+      </div>
+      <%= f.submit "更新", id: "btn", class: "btn-size"  %>
+      <% end %>
+      <div class="orchestra-comment link-space">
+        <div class="orchestra-item ">
+        <%= link_to admin_orchestras_path do %>
+             申請者一覧
+        <% end %>
+      </div>
+        <div>
+        <%= link_to admin_users_path do %>
+              利用者一覧
+        <% end %>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  <%= attachment_image_tag @user, :profile_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
-    <table class="table">
-        <thead>
-            <tr>
-              <th>名前</th>
-              <th>エリア</th>
-              <th>楽器</th>
-              <th>自己紹介文</th>
-              <th>ステータス</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td><%= @user.name %></td>
-              <td><%= @user.area.area_name %></td>
-              <td><%= @user.instrument.instrument_name %></td>
-              <td><%= @user.introduction %></td>
-              <td><%= @user.role %></td>
-            </tr>    
-          </tbody>
-        </table>
-            <div>
-            <!--%= form_with(model: @user, local: true)  do |f| %>-->
-            <%= form_with(url: admin_user_path, local: true)   do |f| %>
-  
-                <%= f.radio_button :role, :general %>
-              　<%= f.label :role, "general"  %>
-              　<%= f.radio_button :role, :orchestra %>
-              　<%= f.label :role, "orchestra" %>
-                <%= f.submit %>
-            <% end %>
-            </div>    
-            <%= link_to admin_orchestras_path do %>
-                 <p> 一覧 </p>
-            <% end %>
-            

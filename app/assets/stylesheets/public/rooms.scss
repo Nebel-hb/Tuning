@@ -202,10 +202,16 @@ $white: #f6f6f6;
 }
 
 .btn-size{
-
   width: 80px;
-
-    }
-
-
-
+  }
+  
+.room-box{
+  width: 40%;
+  margin: 20px auto;
+}
+  
+.room-index-contain{
+  width: 80%;
+  display: flex;
+  margin: 20px auto;
+}
