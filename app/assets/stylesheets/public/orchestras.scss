@@ -1,3 +1,87 @@
 // Place all the styles related to the public/orchestras controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$main-color: #f9a939;
+$green: #788d63;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+$white: #f6f6f6;
+
+.orchestra-contain{
+  width: 80%;
+  padding-bottom: 20px;
+  margin: 20px auto;
+}
+
+.orchestra-show-contain{
+  width: 80%;
+  padding-bottom: 20px;
+  margin: 20px auto;
+  display:flex;
+}
+
+.orchestra-comment{
+  display:flex;
+  width: 100%;
+
+  p{
+    height: 30px;
+    // font-size: 1px;
+  }
+}
+
+  .link-space{
+    margin: 10px 0;
+  }
+
+.orchestra-show{
+  width: 50%;
+  text-align: right;
+  .image{
+    border-radius: 50%;
+  }
+
+}
+.orchestra-name{
+  width: 50%;
+  padding-left: 20px;
+  // text-align: right;
+
+}
+
+.orchestra-comment-comment{
+  width: 80%;
+}
+
+.orchestra-show-box{
+  margin: 0 auto;
+
+}
+
+.orchestra-item{
+  width: 50%;
+}
+
+.orchestra-form{
+  margin-bottom: 10px;
+}
+
+.admin-users{
+  width: 80%;
+  margin: 20px auto;
+  display:flex;
+
+  .image{
+    border-radius: 50%;
+    width: 50px;
+  }
+
+  .admin-name{
+    padding-left: 20px;
+  }
+}
