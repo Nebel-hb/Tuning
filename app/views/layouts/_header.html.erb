@@ -1,64 +1,38 @@
 <span id="header">
-<span class="fixed">
-    <nav>
-<ul>
-    <% if user_signed_in? %>
-<li>
-    <%= link_to "log out", destroy_user_session_path, method: :delete %>
-</li>
-<li><%= link_to "top", root_path %></li>
-<li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %><!--子要素を持つ li にはhas-childというクラス名をつける-->
-  <ul>
-  <li><a href="#">Service Top</a></li>
-  <li><a href="#">Service-1</a></li>
-  <li class="has-child"><a href="#">Service-2</a>
+  <nav>
     <ul>
-    <li><a href="#">Service-2 Top</a></li>
-    <li><a href="#">Service-2-1</a></li>
-    <li><a href="#">Service-2-2</a></li>
-    <li><a href="#">Service-2-3</a></li>
-    <li><a href="#">Service-2-4</a></li>
+      <% if user_signed_in? %>
+      <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "top", root_path %></li>
+      <li class="has-child"><%= link_to "users", users_path %>
+        <ul>
+          <li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %>
+            <ul>
+              <li><%= link_to "thank you", thank_you_comments_path %></li>
+              <li><%= link_to "通知", (notifications_path) %>
+                <% if unchecked_notifications.any? %>
+                  <span><%= unchecked_notifications.count %>件</span>
+                  <% end %>
+                </li>
+              <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
+                <li><%= link_to "公式楽団申請", new_orchestra_path %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to "トークルーム", rooms_path %></li>
+        </ul>
+      </li>
+
+      <li class="has-child"> <%= link_to "募集中", recruitments_path %>
+        <ul>
+          <li><%= link_to "イベント", events_path %></li>
+        </ul>
+      </li>
+      <% else %>
+        <li><%= link_to "新規登録", new_user_registration_path %></li>
+        <li><%= link_to "top", root_path %></li>
+        <li><%= link_to "about", about_path %></li>
+      <% end %>
     </ul>
- </li>
- <li><a href="#">Service-3</a></li>
-</ul>
-</li>
-<li class="has-child"> <%= link_to "users", users_path %>
-  <ul>
-  <li><a href="#">Blog Top</a></li>
-  <li><a href="#">Blog-1</a></li>
-  <li><a href="#">Blog-2</a></li>
-  <li><a href="#">Blog-3</a></li>
-  <li><a href="#">Blog-4</a></li>
-  </ul>
-</li>
-<li class="has-child"> <%= link_to "events", events_path %>
-  <ul>
-  <li><a href="#">Blog Top</a></li>
-  <li><a href="#">Blog-1</a></li>
-  <li><a href="#">Blog-2</a></li>
-  <li><a href="#">Blog-3</a></li>
-  <li><a href="#">Blog-4</a></li>
-  </ul>
-</li>
-<li class="has-child"><%= link_to "recruitments", recruitments_path %>
-  <ul>
-  <li><a href="#">Blog Top</a></li>
-  <li><a href="#">Blog-1</a></li>
-  <li><a href="#">Blog-2</a></li>
-  <li><a href="#">Blog-3</a></li>
-  <li><a href="#">Blog-4</a></li>
-  </ul>
-</li>
-<% else %>
-<li>
-    <%= link_to "新規登録", new_user_registration_path %>
-</li>
-<li><%= link_to "top", root_path %></li>
-</ul>
-<li><%= link_to "about", about_path %></li>
-    <% end %>
-</ul>
-</nav>
-</span>
+  </nav>
 </span>
