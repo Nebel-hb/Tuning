@@ -41,3 +41,44 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+        
+  activerecord:
+    attributes:
+      area:
+        area_name: "地域"
+      comment:
+        comment: "コメント"
+      event:
+        title: "イベント名"
+        event_introduction: "紹介文"
+        start: "開始日時"
+        end: "終了日時"
+      orchestra:
+        application_comment: "申請コメント"
+      recruit_user:
+        recruit_comment: "申請コメント"
+      recruitment:
+        title: "タイトル"
+        recruit_introduction: "紹介文"
+        recruit_start: "募集開始日時"
+        recruit_end: "募集終了日時"
+        recruit_event_start: "イベント開始日時"
+        recruit_event_end: "イベント終了日時"
+      room:
+        room_name: "ルーム名"
+      tag:
+        tag_name: "タグ"
+      thank_you_comment:
+        user_id: "ユーザー名"
+        thanks_comment: "thank you コメント"
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        instrument_id: "楽器"
+        area_id: "地域"
+        profile_image_id: "プロフィール画像"
+        introduction: "自己紹介文"
+       
+  
