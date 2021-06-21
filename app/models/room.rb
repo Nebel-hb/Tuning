@@ -6,6 +6,11 @@ class Room < ApplicationRecord
   has_many :user_rooms
   has_many :notifications, dependent: :destroy
 
+  validates :user_id, presence: true
+  validates :recruitment_id, presence: true
+  validates :room_name, presence: true
+
+
   def create_notification_chat!(current_user, chat_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
     temp_ids = Chat.select(:user_id).where(room_id: id).where.not(user_id: current_user.id).distinct
