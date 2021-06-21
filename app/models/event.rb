@@ -6,6 +6,25 @@ class Event < ApplicationRecord
   has_many :tags, through: :event_tags
   has_many :comments, dependent: :destroy
 
+
+  validates :user_id, presence: true
+  validates :area_id, presence: true
+  validates :title, presence: true
+  validates :event_introduction, presence: true
+  validates :start, presence: true
+  validates :end, presence: true
+  validate :start_end_check
+  validate :start_check
+
+  def start_end_check
+    errors.add(:end, "は開始時刻より遅い時間を選択してください") if self.start > self.end
+  end
+
+  def start_check
+    errors.add(:start, "は現在の日時より遅い時間を選択してください") if self.start < Time.now
+  end
+
+
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
