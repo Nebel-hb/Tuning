@@ -11,9 +11,13 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
     room = @chat.room
-    @chat.save
-    room.create_notification_chat!(current_user, @chat.id)
-    redirect_to request.referer
+    if @chat.save
+      room.create_notification_chat!(current_user, @chat.id)
+      redirect_to request.referer
+    else
+      flash[:notice] = "空欄の箇所を入力して下さい"
+      render'room/show'
+    end
   end
   
   private

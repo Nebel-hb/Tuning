@@ -31,8 +31,9 @@ class Public::RoomsController < ApplicationController
       redirect_to request.referer
     else if @user_room.save!
       redirect_to request.referer
-
     end
+      flash[:notice] = "空欄の箇所を入力して下さい"
+      render:show
     end
   end
 
@@ -49,11 +50,6 @@ class Public::RoomsController < ApplicationController
     #Viewのformで取得したパラメータをモデルに渡す
     @user = User.search(params[:search])
     @user_room = UserRoom.new
-    # @room = Room.find(params[:room_id])
-    puts "===================="
-    p @user
-
-    # render "show"
   end
 
 private

@@ -1,6 +1,10 @@
 class Public::EventsController < ApplicationController
 
   def index
+    @search_past = params[:search_past]
+    puts"=============="
+    p @search_past
+    
     if  @search_past == "開催予定のイベント"
       @event_search = Event.where("events.end > ?", DateTime.now).reorder(:end)
     elsif @search_past == "過去のイベント"
@@ -14,7 +18,6 @@ class Public::EventsController < ApplicationController
     
     @q = @event_search.ransack(params[:q])
     @events = @q.result(distinct: true)
-    # @tags = Tag.where(id:  (EventTag.where(event_id: @events.pluck(:event_id))).pluck(:tag_id))
     @tags = Tag.all
     
     @areas = Area.all
@@ -52,9 +55,11 @@ class Public::EventsController < ApplicationController
     tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
     if @event.save
       @event.save_tag(tag_list)
+      
       redirect_to events_path
     else
-       redirect_back(fallback_location: events_path)
+      flash[:notice] = "空欄の箇所を入力して下さい"
+      redirect_back(fallback_location: events_path)
     end
   end
 
