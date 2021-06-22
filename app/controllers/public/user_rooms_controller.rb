@@ -3,9 +3,12 @@ class Public::UserRoomsController < ApplicationController
   def create
     @user_room = UserRoom.new(user_room_params)
     user = User.find_by(id: @user_room.user_id)
-    @user_room.save
-    user.create_notification_add_room!(current_user)
-    redirect_to request.referer
+    if @user_room.save
+      user.create_notification_add_room!(current_user)
+      redirect_to request.referer
+    else
+      flash[:notice] = "空欄の箇所を入力して下さい"
+    end
   end
 
   def update 

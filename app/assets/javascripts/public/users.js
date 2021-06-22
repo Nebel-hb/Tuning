@@ -90,6 +90,7 @@ $('.sel').click(function() {
 $(function(){
 // Toggling the `.selected` state on the options.
 $('.sel__box__options').click(function() {
+  $('input[type=search]').val('');
   var txt = $(this).text();
   var index = $(this).index();
 
@@ -97,16 +98,34 @@ $('.sel__box__options').click(function() {
   $(this).addClass('selected');
 
   var $currentSel = $(this).closest('.sel');
-  if ($(this).text() == "奏者一覧") {
-    //$('.users_index').css("display","");
-    //$('.user_orchestra').css("display","none");
+  if ($(this).text() == "奏者一覧"  ) {
     document.querySelector('.user_general').style.display = "block";
     document.querySelector('.user_orchestra').style.display = "none";
   } else if ($(this).text() == "オーケストラ一覧") {
     document.querySelector('.user_orchestra').style.display = "block";
     document.querySelector('.user_general').style.display = "none";
-    //$('.user_orchestra').css("display","");
-    //$('.users_index')..css("display","none");
+  } else if ($(this).text() == "イベント検索"  ) {
+    document.querySelector('.search_title').style.display = "block";
+    document.querySelector('.search_user').style.display = "none";
+    document.querySelector('.search_other').style.display = "none";
+  } else if ($(this).text() == "募集者検索") {
+    document.querySelector('.search_title').style.display = "none";
+    document.querySelector('.search_user').style.display = "block";
+    document.querySelector('.search_other').style.display = "none";
+  } else if ($(this).text() == "楽器検索" ) {
+    document.querySelector('.search_title').style.display = "none";
+    document.querySelector('.search_user').style.display = "none";
+    document.querySelector('.search_other').style.display = "block";
+  } else if ($(this).text() ==  "投稿者検索") {
+    document.querySelector('.search_title').style.display = "none";
+    document.querySelector('.search_user').style.display = "block";
+    document.querySelector('.search_other').style.display = "none";
+  } else if ($(this).text() == "タグ検索") {
+    document.querySelector('.search_title').style.display = "none";
+    document.querySelector('.search_user').style.display = "none";
+    document.querySelector('.search_other').style.display = "block";
+
+
   };
 
   $currentSel.children('.sel__placeholder').text(txt);
@@ -120,28 +139,28 @@ $('.sel__box__options').click(function() {
 
 
 
-$(document).on('turbolinks:load', function () {
-    $('.user_general').val('')
-    $('.user_orchestra').val('')
-    $('.user_general').css("display","")
-    $('.user_orchestra').css("display","none")
-    $('#user_index').change(function () {
-        var selectedValue = $('#user_index').val();
-        if (selectedValue == '奏者一覧') {
-            $('.user_orchestra').val('')
-            $('.user_general').val('')
-            $('.user_orchestra').css("display","none")
-            $('.user_general').css("display","")
-        }else if (selectedValue == 'オーケストラ一覧') {
-            $('.user_orchestra').val('')
-            $('.user_general').val('')
-            $('.user_orchestra').css("display","")
-            $('.user_general').css("display","none")
-        }else{
-            $('.user_general').val('')
-            $('.user_orchestra').val('')
-            $('.user_general').css("display","none")
-            $('.user_orchestra').css("display","none")
-        }
-    })
-});
+// $(document).on('turbolinks:load', function () {
+//     $('.user_general').val('')
+//     $('.user_orchestra').val('')
+//     $('.user_general').css("display","")
+//     $('.user_orchestra').css("display","none")
+//     $('#user_index').change(function () {
+//         var selectedValue = $('#user_index').val();
+//         if (selectedValue == '奏者一覧') {
+//             $('.user_orchestra').val('')
+//             $('.user_general').val('')
+//             $('.user_orchestra').css("display","none")
+//             $('.user_general').css("display","")
+//         }else if (selectedValue == 'オーケストラ一覧') {
+//             $('.user_orchestra').val('')
+//             $('.user_general').val('')
+//             $('.user_orchestra').css("display","")
+//             $('.user_general').css("display","none")
+//         }else{
+//             $('.user_general').val('')
+//             $('.user_orchestra').val('')
+//             $('.user_general').css("display","none")
+//             $('.user_orchestra').css("display","none")
+//         }
+//     })
+// });

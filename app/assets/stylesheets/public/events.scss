@@ -41,45 +41,65 @@ $white: #f6f6f6;
 .fc-day.fc-today::after {
     border-radius: 0;
     border-width: 1.5em;
-    border-right-color: green;
-    border-top-color: green;
+    border-right-color: $green;
+    border-top-color: $green;
 }
 
-.events_index{
-     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
+// .events_index{
+//     width: 80%;
+//     display: flex;
+//     flex-wrap: wrap;
 
-    .item{
-      margin: 30px auto 0;
-      padding: 15px;
-      width: 205px;
-      position: relative;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+//     .item{
+//       margin: 30px auto 0;
+//       padding: 15px;
+//       width: 205px;
+//       position: relative;
+//       background-repeat: no-repeat;
+//       background-position: center;
+//       background-size: cover;
 
-        .event_box{
-          left: 50px;
-          top: 30px;
-          text-align: center;
-          color: #000;
-        }
-        .event_image{
-            position:  absolute;
-              z-index: 2;
-              left: -30px;
-              top: -20px;
-              width: 90px;
-              height: 90px;
-              border-radius: 50%;
-              background-image: image-url('public/bg/flute.jpg');
-              box-shadow:  0 10px 15px 0 rgba(0, 0, 0, 0.3);
-              background-repeat: no-repeat;
-              background-position: center;
-              background-size: cover;
-        }
-    }
+//         .event_box{
+//           left: 50px;
+//           top: 30px;
+//           text-align: center;
+//           color: $white;
+//         }
+//         .event_image{
+//             position:  absolute;
+//               z-index: 2;
+//               left: -30px;
+//               top: -20px;
+//               width: 90px;
+//               height: 90px;
+//               border-radius: 50%;
+//               background-image: image-url('public/bg/flute.jpg');
+//               box-shadow:  0 10px 15px 0 rgba(0, 0, 0, 0.3);
+//               background-repeat: no-repeat;
+//               background-position: center;
+//               background-size: cover;
+//         }
+//     }
+// }
+
+.index_event_contain{
+  margin: 10px auto;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  display:flex;
+}
+.event_title_a{
+  display:flex;
+}
+.index_title{
+  margin: 0 20px;
+  width: 40%;
+}
+.title_strong{
+  font-size: 30px;
+  margin-left: 20px;
 }
 
 input  {
@@ -94,7 +114,7 @@ input  {
     font-size: 15px;
 
     &::placeholder {
-       color: rgba($white, 1);
+       color: rgba($gray, 1);
       letter-spacing: 2px;
       font-size: 18px;
       font-weight: 100;
@@ -154,7 +174,7 @@ input  {
 
 #comment_comment{
   width: 136px;
-  
+
 }
   .new-comment{
     margin-bottom: 20px;

@@ -12,16 +12,17 @@ class Public::ThankYouCommentsController < ApplicationController
   
   def create
     # 申請通知用
-    # recruit = Recruitment.find_by(id: thank_you_comment.recruitment_id)
-    # recruitment_user = recruit.user_id
-  
     thank_you_comment = ThankYouComment.new(thank_you_comment_params)
-    thank_you_comment.save
-    user = User.find_by(id: thank_you_comment.user_id)
-    recruitment = thank_you_comment.recruitment_id
-    user.create_notification_thanks!(current_user)
+    if thank_you_comment.save
+      user = User.find_by(id: thank_you_comment.user_id)
+      recruitment = thank_you_comment.recruitment_id
+      user.create_notification_thanks!(current_user)
+      flash[:notice] = "コメントを送信しました"
     redirect_to recruitment_path(recruitment)
-    
+    else  
+      flash[:alert] = "空欄の箇所を入力して下さい"
+      render:thanks
+    end
   end
 
   

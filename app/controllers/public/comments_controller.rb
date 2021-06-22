@@ -12,6 +12,7 @@ class Public::CommentsController < ApplicationController
     if comment.save
       redirect_to event_path(event)
     else
+      flash[:notice] = "空欄の箇所を入力して下さい"
       render 'event/index'
     end
   end

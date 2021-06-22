@@ -30,7 +30,7 @@ class User < ApplicationRecord
   #メールアドレスを正規表現のフォームに指定
   validates :area_id,  presence: true
   validates :instrument_id,  presence: true
-  before_save :downcase_email
+  # before_save :downcase_email
 
 
 
