@@ -48,6 +48,7 @@ $(document).on('turbolinks:load', function () {
 
 
 /* ===== Logic for creating fake Select Boxes ===== */
+
 $(function(){
 $('.sel').each(function() {
   $(this).children('select').css('display', 'none');

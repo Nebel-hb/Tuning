@@ -9,6 +9,15 @@ class Recruitment < ApplicationRecord
   has_many :rooms
 
 
+  # validates :user_id, presence: true
+  # validates :area_id, presence: true
+  # validates :title, presence: true
+  # validates :recruit_introduction, presence: true
+  # validates :recruit_start, presence: true
+  # validates :recruit_end, presence: true
+  # validates :recruit_event_start, presence: true
+  # validates :recruit_event_end, presence: true
+  
   # validate :start_end_check
   # validate :start_check
 
@@ -21,13 +30,6 @@ class Recruitment < ApplicationRecord
   #   errors.add(:recruit_start, "は現在の日時より遅い時間を選択してください") if self.recruit_start < Time.now
   #   errors.add(:recruit_event_start, "は募集開始の日時より遅い時間を選択してください") if self.recruit_event_start < self.recruit_start
   # end
-
-
-
-  # def self.search_recruit(word)
-  #   @recruitments = Recruitment.where("title LIKE?","%#{word}%")
-  # end
-
 
 
 
