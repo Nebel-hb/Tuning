@@ -8,7 +8,7 @@ document.addEventListener("turbolinks:load", () => {
         if(document.URL.match(/room\/+\d/)){
         const messageDetails = document.getElementById('scroll');
         messageDetails.scrollTop = messageDetails.scrollHeight;
-    }
+        }
     }
     scrollToEnd()
 })
