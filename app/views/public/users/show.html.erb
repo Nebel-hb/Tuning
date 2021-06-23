@@ -1,12 +1,12 @@
 <div id="title">
-  <h2>Mypage</h2>
+  <h2><%= @user.name %></h2>
 </div>
 
 <div class="user-show-contain">
 <div class="user-show-side">
 
- <% if @user == current_user %>
     <p><%= link_to "thank you", thank_you_comments_path %></p>
+ <% if @user == current_user %>
     <p><%= link_to "トークルーム", rooms_path %></p>
     <!--通知-->
     <p><%= render "public/partial/circle" %></p>
@@ -16,27 +16,72 @@
     <% end %>
   <% end %>
 
-
-    <% if current_user.role == "orchestra" %>
-          <p>募集中</p>
+  <% if @user.role == "orchestra" %>
+    <ul class="info-list">
+      <li><a href="#info-1" class="info"><!--modaal用-->
+        <p>募集イベント</p>
+      </a></li>
+    </ul>
+    <section id="info-1" class="hide-area"><!--表示エリア-->
+      <p>募集中</p>
       <% @recruitments.each do |recruit| %>
-        <% if recruit.user_id == current_user.id %>
-          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
-          <p>募集終了</p>
-                <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-          <% else %>
-              <div>
-                <tr>
-                    <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-                  <td>
-                    <%= link_to  recruit_users_path(recruitment: recruit.id) do %>未確認の応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
-                  </td>
-                </tr>
-              </div>
+        <% if recruit.user_id == @user.id %>
+          <% unless  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+            <div class="index_contain">
+              <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+              <% if @user == current_user %>
+              <p>
+                <%= link_to  recruit_users_path(recruitment: recruit.id), class: "green" do %>未確認の応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
+              </p>
+              <% end %>
+            </div>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
+      <p>募集終了</p>
+      <% @recruitments.each do |recruit| %>
+        <% if recruit.user_id == current_user.id %>
+          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+            <div class="index_contain">
+              <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </section>
+  <% end %>
+  <% if @user.role == "general" %>
+    <ul class="info-list">
+      <li><a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
+        <p>参加履歴</p>
+      </a></li>
+    </ul>
+    <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
+
+      <h3>参加履歴</h3>
+      <% @recruit_users.each do |recruit_user| %>
+        <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
+          <% if recruit_user.join == 2 %>
+            <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+              <div>
+                <tr>
+                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+                </tr>
+              </div>
+            <% else %>
+              <h2>参加予定</h2>
+              <div>
+                <tr>
+                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+                </tr>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </section>
+  <% end %>
   </div>
 
 
@@ -63,41 +108,5 @@
           <p><%= @user.role %></p>
         </div>
       </div>
-      
-<ul class="info-list">
-<li><a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
-<dl><dt>2021.5.12</dt><dd> お知らせのタイトル</dd></dl>
-</a></li>
-</ul>
-<section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
-<h2>お知らせ</h2>
-<p> おしらせの内容が入ります。</p>
-</section>
-
-      <h3>参加履歴</h3>
-      <% @recruit_users.each do |recruit_user| %>
-        <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
-          <% if recruit_user.join == 2 %>
-            <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
-              <div>
-                <tr>
-                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-
-                </tr>
-              </div>
-            <% else %>
-              <h2>参加予定</h2>
-              <div>
-                <tr>
-                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-
-                </tr>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-
-
- </div>
     </div>
+  </div>

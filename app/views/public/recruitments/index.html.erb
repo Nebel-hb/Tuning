@@ -27,7 +27,7 @@
         <% if current_user.role == "orchestra" %>
           <%= form_with model: @recruitment do |f| %>
             <%= f.hidden_field :user_id, value:current_user.id %>
-            <%= f.submit "新規募集作成" ,class: "recruit-new"%>
+            <%= f.submit "新規募集作成" ,class: "bgc-non"%>
           <% end %>
         <% end %>
       <!--<div id="calendar"></div>-->

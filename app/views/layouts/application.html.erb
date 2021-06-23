@@ -9,19 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <link href=" https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/7-2-3.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">-->
-    <!--<link rel="stylesheet" href="jquery.pagepiling.css">-->
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" />
-    <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">-->
-<!--<style type="text/css"></style>-->
 
   </head>
-<div id="bg">
     <!--<div id="header">-->
-    <div id="main">
 
   <body data-turbolinks="false">
+    <div id="bg">
+      <div id="main">
 
     <% if admin_signed_in? %>
       <%= render "layouts/admin_header" %>
@@ -33,15 +28,13 @@
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+      </div>
     </div>
-</div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>-->
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
-    <!--<script src="modaal.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <%= javascript_include_tag "shards" %>
-    <!--%= javascript_include_tag "modaal.js" %>-->
 <script>
 $(function(){
 $('#bg').shards(
@@ -58,12 +51,6 @@ $('#bg').shards(
 });
 
 </script>
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-    <!--<script type="text/javascript" src="jquery.pagepiling.js"></script>-->
 
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
-    <!--<script src="js/jquery.pagepiling.min.js"></script>-->
-
-    <!--<script src="js/7-2-3.js"></script>-->
   </body>
 </html>

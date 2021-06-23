@@ -1,4 +1,6 @@
-<h1>応募する</h1>
+<div id="title">
+    <h2>応募する</h2>
+  </div>
 
    <div class="confirm-contain">
     <div class="confirm-item">
@@ -21,11 +23,11 @@
         <p>
           <%= l @recruitment.recruit_end %>
         </p>
-          
-        <div class="new-comment">
+
+        <div>
           <%= form_with(model:[ @recruit_user], local: true) do |f| %>
             <div class="field">
-              <%= f.text_area :recruit_comment, placeholder: "申請コメント", class: "comment-field" %>
+              <%= f.text_area :recruit_comment, placeholder: "申請コメント"%>
             </div>
             <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
              <%= f.submit "送信" , id: "btn", class: "comment_btn" %>
@@ -34,4 +36,3 @@
       </div>
     </div>
   </div>
-    

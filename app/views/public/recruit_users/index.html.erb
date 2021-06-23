@@ -1,21 +1,22 @@
-<h1>志願者一覧</h1>
+<div id="title">
+    <h2>志願者一覧</h2>
+  </div>
 
-<div class="recruit-user-contain">
+<div class="index_contain">
 
-  <div class="recruit_user-room">
-    <%= link_to  thank_you_comment_thanks_path(@recruitment) do %>
-      <h3>thank youコメントへ</h3>
-    <% end %>
+  <div class="user_sort">
+    <h3><%= link_to  thank_you_comment_thanks_path(@recruitment) do %>
+      thank youコメント
+    <% end %></h3>
     <h3>トークルーム作成</h3>
     <%= form_with model: @room do |f| %>
-      <%= f.label :room_name %>
-      <%= f.text_field :room_name, class: "btn-size" %>
+      <%= f.text_field :room_name,placeholder: "ルーム名" %>
       <%= f.hidden_field :user_id, value:current_user.id %>
       <%= f.hidden_field :recruitment_id, value:@recruitment %>
 
       <%= f.submit "作成", class: "btn-size", id: "btn"%>
     <% end %>
-    <h3>作成済トークルーム一覧</h3>
+    <h3>トークルーム一覧</h3>
     <% @rooms.each do |room| %>
       <% if room.recruitment_id == @recruitment %>
         <div><%= link_to room_path(room.id) do %>
@@ -26,7 +27,7 @@
     <% end %>
   </div>
 
-  <div class="recruit-user-box">
+  <div class="users_index">
     <% @recruit_users.each do |recruit_user| %>
     <div class="recruit-user-item">
       <% if recruit_user.recruitment_id == @recruitment && recruit_user.join != 3 %>
