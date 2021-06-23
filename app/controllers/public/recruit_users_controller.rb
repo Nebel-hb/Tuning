@@ -9,9 +9,12 @@ class Public::RecruitUsersController < ApplicationController
     recruitment_user = recruit.user_id
     user = User.find_by(id: recruitment_user)
     if recruit_user.save
-      
+
       user.create_notification_join!(current_user)
       redirect_to recruitment_path(recruitment)
+    else
+      flash[:notice] = "空欄の箇所を入力して下さい"
+      render'recruitment/show'
     end
   end
 

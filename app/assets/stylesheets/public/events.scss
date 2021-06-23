@@ -41,59 +41,110 @@ $white: #f6f6f6;
 .fc-day.fc-today::after {
     border-radius: 0;
     border-width: 1.5em;
-    border-right-color: green;
-    border-top-color: green;
+    border-right-color: $green;
+    border-top-color: $green;
 }
 
-.events_index{
-     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
+// .events_index{
+//     width: 80%;
+//     display: flex;
+//     flex-wrap: wrap;
 
-    .item{
-      margin: 30px auto 0;
-      padding: 15px;
-      width: 205px;
-      position: relative;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+//     .item{
+//       margin: 30px auto 0;
+//       padding: 15px;
+//       width: 205px;
+//       position: relative;
+//       background-repeat: no-repeat;
+//       background-position: center;
+//       background-size: cover;
 
-        .event_box{
-          left: 50px;
-          top: 30px;
-          text-align: center;
-          color: #000;
-        }
-        .event_image{
-            position:  absolute;
-              z-index: 2;
-              left: -30px;
-              top: -20px;
-              width: 90px;
-              height: 90px;
-              border-radius: 50%;
-              background-image: image-url('public/bg/flute.jpg');
-              box-shadow:  0 10px 15px 0 rgba(0, 0, 0, 0.3);
-              background-repeat: no-repeat;
-              background-position: center;
-              background-size: cover;
-        }
-    }
+//         .event_box{
+//           left: 50px;
+//           top: 30px;
+//           text-align: center;
+//           color: $white;
+//         }
+//         .event_image{
+//             position:  absolute;
+//               z-index: 2;
+//               left: -30px;
+//               top: -20px;
+//               width: 90px;
+//               height: 90px;
+//               border-radius: 50%;
+//               background-image: image-url('public/bg/flute.jpg');
+//               box-shadow:  0 10px 15px 0 rgba(0, 0, 0, 0.3);
+//               background-repeat: no-repeat;
+//               background-position: center;
+//               background-size: cover;
+//         }
+//     }
+// }
+
+.index_event_contain{
+  margin: 10px auto;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  display:flex;
+}
+.event_title_a{
+  display:flex;
+}
+.index_title{
+  margin: 0 20px;
+  width: 40%;
+}
+.title_strong{
+  font-size: 30px;
+  margin-left: 20px;
 }
 
 input  {
     background: rgba(255, 255, 255, 0.3);
     width: 85%;
-    color: darken($dark-green, 20%);
+    color: $white;
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding: 9px;
     margin: 7px;
     font-size: 15px;
+    font-family: 'Cormorant Upright','Cormorant Upright', serif;
 
     &::placeholder {
-       color: rgba($white, 1);
+       color: rgba($gray, 1);
+      letter-spacing: 2px;
+      font-size: 18px;
+      font-weight: 100;
+    }
+    &:focus {
+      color: $gray;
+      outline: none;
+      border-bottom: 1.2px solid rgba($dark-green, 0.7);
+      font-size: 15px;
+      transition: .8s all ease;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+
+  }
+#start {
+    background: rgba(255, 255, 255, 0.3);
+    width: 85%;
+    color: $dark-green;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 9px;
+    margin: 7px;
+    font-size: 15px;
+    font-family: 'Cormorant Upright','Cormorant Upright', serif;
+
+    &::placeholder {
+       color: rgba($green, 1);
       letter-spacing: 2px;
       font-size: 18px;
       font-weight: 100;
@@ -112,8 +163,54 @@ input  {
 
   }
 
+
+    #btn{
+      background: rgba(255, 255, 255, .1);
+      padding: 10px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 15px;
+      border-radius: 10px;
+      margin: auto;
+      outline: none;
+      display: block;
+      // color: $white;
+      color: $green;
+        &:hover {
+        background: $dark-green;
+        color: $white;
+        transition: background-color 1s ease-out;
+      }
+    }
+
+
   h3{
       margin-top: 5px;
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
       color: $gray;
+  }
+
+.show-contain{
+  width: 80%;
+  display: flex;
+  margin: 10px auto;
+
+  .show-item,
+  .show-comments{
+    margin-left: 20px;
+    &.scroll {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  }
+}
+
+
+#comment_comment{
+  width: 136px;
+
+}
+  .new-comment{
+    margin-bottom: 20px;
   }

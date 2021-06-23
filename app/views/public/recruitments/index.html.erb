@@ -1,9 +1,9 @@
 
 <div id="header">
+</div>
   <div id="title">
     <h2>募集一覧</h2>
   </div>
-</div>
 
 
 
@@ -11,7 +11,7 @@
 
     <div class="user_sort">
       <h3>検索結果&nbsp;<%= @recruitments.count %>&nbsp;件</h3>
-      <h3>一覧並び替え</h3>
+      <h3>並び替え</h3>
         <p><%= sort_link(@q, :title, "タイトル") %></p>
         <p><%= sort_link(@q, :area_id, "地域") %></p>
         <p><%= sort_link(@q, :user_name, "募集者") %></p>
@@ -23,128 +23,121 @@
         <p><%= sort_link(@q, :recruit_event_end, "本番終了日") %></p>
 
 
-        
+
         <% if current_user.role == "orchestra" %>
           <%= form_with model: @recruitment do |f| %>
             <%= f.hidden_field :user_id, value:current_user.id %>
-            <%= f.submit "新規募集作成" ,class: "recruit-new"%>
+            <%= f.submit "新規募集作成" ,class: "bgc-non"%>
           <% end %>
         <% end %>
       <!--<div id="calendar"></div>-->
     </div>
-    
-    
-      <div class="events_index">
-        <% @recruitments.each do |recruit| %>
-        <div class="item">
-          <div class="event_box">
-          <!--%= attachment_image_tag event, :event_image, format: 'jpeg',class: "event_image", fallback: "public/image/no_image.png" %>-->
-             <%= link_to recruitment_path(recruit.id) do %>
-            <h3>
-              <%= recruit.title %>
-            </h3>
-            <p>
-              <%= recruit.area.area_name %>
-            </p>
-            <p>募集者：
-              <%= recruit.user.name %>
-            </p>
-            <p>
-              <%= truncate(recruit.recruit_introduction, length:15) %>
-            </p>
-            <p>募集期間
-            </p>
-            <p>
-              <%= l recruit.recruit_start %>〜
-           </p>
-            <p>
-               <%= l recruit.recruit_end %>
-            </p>
-            <p>開催期間
-            </p>
-            <p>
-              <%= l recruit.recruit_event_start %>〜
-            </p>
-            <p>
-              <%= l recruit.recruit_event_end %>
-            </p>
-            <% end %>
+
+
+    <div class="users_index">
+      <% @recruitments.each do |recruit| %>
+        <%= link_to recruitment_path(recruit.id) do %>
+          <p class="title_strong">
+            <%= recruit.title %>
+          </p>
+          <div class="index_event_contain">
+            <div class="index_title">
+              <p class="green">募集期間</p>
+              <p><%= recruit.recruit_start.strftime("%m月 %d日") %>〜
+                <%= recruit.recruit_end.strftime("%m月 %d日") %>
+              </p>
+              <p class="green">開催期間</p>
+              <p>
+                <%= recruit.recruit_event_start.strftime("%m月 %d日") %>〜
+
+                <%= recruit.recruit_event_end.strftime("%m月 %d日") %>
+              </p>
+              <p class="green">募集者</p>
+              <p><%= recruit.user.name %>
+              </p>
+            </div>
+            <div class="index_item">
+              <p><%= recruit.area.area_name %>
+              </p>
+              <p><%= truncate(recruit.recruit_introduction, length:15) %>
+              </p>
+            </div>
           </div>
-        </div>
         <% end %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="search-btn">
+    <div class="open-btn"></div><!--開閉ボタン-->
+    <div id="search-wrap"><!--表示エリアのHTML開閉ボタンをクリックするたび、search-wrap に表示用のクラス名が付与・除去されて付与の場合出現します。-->
+      <%= search_form_for(@q)   do |f| %>
+      <div class="sel sel--black-panther">
+        <%= select_tag :search , options_for_select([['イベント検索'], ['募集者検索'],['楽器検索']]), class: "search_type",prompt: "検索条件" %>
       </div>
 
+      <span class="search_title">
 
-      <div class="search-btn">
-        <div class="open-btn"></div><!--開閉ボタン-->
-        <div id="search-wrap"><!--表示エリアのHTML開閉ボタンをクリックするたび、search-wrap に表示用のクラス名が付与・除去されて付与の場合出現します。-->
-          <%= search_form_for(@q)   do |f| %>
-          <!--<div class="sel sel--black-panther">-->
-            <%= select_tag :search , options_for_select([['イベント検索'], ['募集者検索'],['楽器検索']]), class: "search_type",prompt: "検索条件" %>
-          <!--</div>-->
-
-          <span class="search_title">
-            <div class="sel sel--black-panther">
-              <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "地域", required: "required", class: 'page-title', placeholder: "地域"%>
-            </div>
-            
-            <div class="field">
-              <%= f.label :start, "募集開始日時", class: 'control-label' %>
-              <%= f.datetime_field :recruit_end_gteq, class: 'form-control' %>
-            </div>
-  
-            <div class="field">
-              <%= f.label :end, "募集終了日時", class: 'control-label' %>
-              <%= f.datetime_field :recruit_start_lteq, class: 'form-control' %>
-            </div>
-            
-            <div class="field">
-              <%= f.label :start, "イベント開始日時", class: 'control-label' %>
-              <%= f.datetime_field :recruit_event_end_gteq, class: 'form-control' %>
-            </div>
-  
-            <div class="field">
-              <%= f.label :end, "イベント終了日時", class: 'control-label' %>
-              <%= f.datetime_field :recruit_event_start_lteq, class: 'form-control' %>
-            </div>
-          </span>
-  
-
-
-          <span class="search_title">
-            <div class="field">
-            <%= f.label :title_cont, "イベント名" %>
-            <%= f.search_field :title_cont , placeholder: "search" %>
-            </div>
-          </span>
-          
-          <span class="search_user">
-            <div class="field">
-            <%= f.label :name_cont, "募集者"   %>
-            <%= f.search_field :user_name_cont , placeholder: "search"%>
-            </div>
-          </span>
-          
-          <span class="search_other">
-            <div class="sel sel--black-panther">
-            <%= f.collection_select :recruit_instruments_instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "楽器", required: "required", placeholder: " "%>
-            </div>
-          </span>
-
-          
-          <div class="sel sel--black-panther">
-            <%= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>
-          </div>
-          <!--<span class="search_id"><p>id</p>-->
-          <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
-          <!--</span>-->
-          <%= f.hidden_field :type, value: "", id: "type" %>
-          <%= f.submit "" %>
-
-        <% end %>
+        <div class="field">
+        <%= f.search_field :title_cont , placeholder: "イベント名", class: "gray" %>
         </div>
+
+        <div class="sel sel--black-panther">
+          <%= f.collection_select :area_id_eq, Area.all, :id, :area_name, prompt: "地域", required: "required", class: 'page-title', placeholder: "地域"%>
         </div>
+
+        <div class="field">
+          <%= f.label :start, "募集開始日時", class: 'control-label' %>
+          <%= f.datetime_field :recruit_end_gteq, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :end, "募集終了日時", class: 'control-label' %>
+          <%= f.datetime_field :recruit_start_lteq, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :start, "イベント開始日時", class: 'control-label' %>
+          <%= f.datetime_field :recruit_event_end_gteq, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :end, "イベント終了日時", class: 'control-label' %>
+          <%= f.datetime_field :recruit_event_start_lteq, class: 'form-control' %>
+        </div>
+      </span>
+
+
+
+
+
+      <span class="search_user">
+        <div class="field">
+        <%= f.search_field :user_name_cont , placeholder: "募集者"%>
+        </div>
+      </span>
+
+      <span class="search_other">
+        <div class="sel sel--black-panther">
+        <%= f.collection_select :recruit_instruments_instrument_id_eq, Instrument.all, :id, :instrument_name, prompt: "楽器", required: "required", placeholder: " "%>
+        </div>
+      </span>
+
+
+      <div class="sel sel--black-panther">
+        <%= select_tag :search_past , options_for_select([['開催予定'], ['全てのイベント'],['過去のイベント']]) %>
       </div>
+      <!--<span class="search_id"><p>id</p>-->
+      <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
+      <!--</span>-->
+      <%= f.hidden_field :type, value: "", id: "type" %>
+      <%= f.submit "" %>
+
+    <% end %>
+    </div>
+    </div>
+  </div>
 
 
 
@@ -162,7 +155,7 @@
 <!--% end %>-->
 
 
-        
+
 
 <!--    </div>-->
 <!--  </div>-->

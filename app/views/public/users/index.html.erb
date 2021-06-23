@@ -1,13 +1,12 @@
-<div id="header">
+
   <div id="title">
     <h2>Users</h2>
   </div>
-</div>
 
 
 <div class="index_contain">
     <div class="user_sort">
-      <div class="sel sel--black-panther">
+      <div class="sel sel--black-panther sel-bg-none">
         <%= select_tag :user_index , options_for_select([['一覧切り替え'], ['奏者一覧'] ,['オーケストラ一覧']]) %>
       </div>
 
@@ -22,51 +21,36 @@
       <span class="user_general" >
         <% @search.each do |user| %>
           <% if user.role == "general" %>
-            <div class="user_contain">
-              <%= attachment_image_tag user, :profile_image, format: 'jpeg',class: "user_back1", fallback: "public/image/no_image.png" %>
-              <%= link_to user_path(user)  do %>
-                <div class="user_back2">
-                  <div class="user_td">
-                    <div>
-                      <%= user.name %>
-                    </div>
-                    <div>
-                      <%= user.instrument.instrument_name %>
-                    </div>
-                    <div>
-                      <%= user.area.area_name %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
+            <div class="index_user_contain">
+              <div class= "index_image_box">
+                <%= link_to user_path(user)  do %>
+                  <%= attachment_image_tag user, :profile_image, format: 'jpeg', class: "index_image",fallback: "public/image/no_image.png" %>
+                <% end %>
+              </div>
+              <p class="index_name"><%= user.name %></p>
+              <div class="index_item">
+                <p><%= user.instrument.instrument_name %></p>
+                <p><%= user.area.area_name %></p>
+              </div>
             </div>
           <% end %>
         <% end %>
       </span>
-<%#= @search.inspect %>
       <span class="user_orchestra" >
         <% @search.each do |user| %>
           <% if user.role == "orchestra" %>
-            <div class="user_contain">
-              <%= attachment_image_tag user, :profile_image, format: 'jpeg',class: "user_back1", fallback: "public/image/no_image.png" %>
-              <%= link_to user_path(user)  do %>
-                <div class="user_back2" >
-                  <!--%= image_tag 'public/image/users_img_1.jpg',  class: "user_back2"%>-->
-
-                  <div class="user_td">
-                    <div>
-                      <%= user.name %>
-                    </div>
-                    <div>
-                      <%= user.instrument.instrument_name %>
-                    </div>
-                    <div>
-                      <%= user.area.area_name %>
-                    </div>
-                  </div>
+            <div class="index_user_contain">
+              <div class= "index_image_box">
+                <%= link_to user_path(user)  do %>
+                  <%= attachment_image_tag user, :profile_image, format: 'jpeg',class: "index_image", fallback: "public/image/no_image.png" %>
+                <% end %>
+              </div>
+              <p class="index_name"><%= user.name %></p>
+                 <div class="index_item">
+                  <p><%= user.instrument.instrument_name %></p>
+                  <p><%= user.area.area_name %></p>
                 </div>
               </div>
-            <% end %>
           <% end %>
         <% end %>
       </span>

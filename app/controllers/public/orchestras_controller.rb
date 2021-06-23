@@ -5,13 +5,13 @@ class Public::OrchestrasController < ApplicationController
     if @orchestra.save
       redirect_to user_path(current_user.id)
     else
-      render 'new'
+      flash[:notice] = "空欄の箇所を入力して下さい"
+      render:new
     end
   end
 
   def new
     @orchestra = Orchestra.new
-    # @user = current_user.id
   end
 
   private

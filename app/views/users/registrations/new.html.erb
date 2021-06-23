@@ -13,12 +13,12 @@
               <%= f.label :name %><br />
               <%= f.text_field :name, autofocus: true ,type: "text",placeholder: "username" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :password %>
               <% if @minimum_password_length %>
@@ -26,26 +26,26 @@
               <% end %><br />
               <%= f.password_field :password, autocomplete: "new-password",  type: "password", placeholder: "password" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password", type: "password" ,placeholder: "password" %>
             </div>
-          
+
             <div class="field">
               <%= f.label :area_id, 'area' %><br />
               <span class=" sel sel--black-panther">
                 <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
               </span>
             </div>
-            
+
             <div class="field">
               <%= f.label :instrument_id, 'main instrument' %><br />
               <span class="sel sel--black-panther">
                 <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
               </span>
             </div>
-          
+
             <div class="actions">
               <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
                 <!--<span class= "col btnripple ">-->
@@ -56,7 +56,7 @@
             </div>
           <% end %>
         </div>
-        
+
         <%= render "users/sessions/new" %>
 
       </div>
@@ -67,20 +67,20 @@
       <h2 class="title"><span>Tuning</span></h2>
       <p class="desc">Let's <span>tune</span> together</p>
 
-      <p class="account">have an account?</p>
+      <p class="account green">have an account?</p>
       <button class="button" id="signin">log in</button>
     </div>
     <div class="rightbox">
       <h2 class="title"><span>Tuning</span></h2>
       <p class="desc">Let's <span>tune</span> together</p>
 
-      <p class="account">don't have an account?</p>
+      <p class="account green">don't have an account?</p>
       <button class="button" id="signup">sign up</button>
     </div>
-    
+
     </div>
    </div>
-  
+
 <!--</div>-->
 
 

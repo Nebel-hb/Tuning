@@ -2,121 +2,120 @@
 
 
 <div id="header">
-  <div id="title">
-    <h2>Events</h2>
-  </div>
+</div>
+<div id="title">
+  <h2>Events</h2>
 </div>
 
 <div class="index_contain">
 
-    <div class="user_sort">
-      <h3>一覧並び替え</h3>
-        <p><%= sort_link(@q, :title, "タイトル") %></p>
-        <p><%= sort_link(@q, :area_id, "地域") %></p>
-        <p><%= sort_link(@q, :user_name, "開催者") %></p>
-        <p><%= sort_link(@q, :start, "開催開始日") %></p>
-        <p><%= sort_link(@q, :end, "終了日") %></p>
+  <div class="user_sort">
+    <h3>並び替え</h3>
+      <p><%= sort_link(@q, :title, "タイトル") %></p>
+      <p><%= sort_link(@q, :area_id, "地域") %></p>
+      <p><%= sort_link(@q, :user_name, "開催者") %></p>
+      <p><%= sort_link(@q, :start, "開催開始日") %></p>
+      <p><%= sort_link(@q, :end, "終了日") %></p>
 
 
-        <h3><%= link_to new_event_path do %>新規イベント投稿<% end %></h3>
+      <h3><%= link_to new_event_path do %>新規投稿<% end %></h3>
 
-        <h3>タグ一覧</h3>
-          <% @tags.each do |tag| %>
+      <h3>タグ一覧</h3>
+        <% @tags.each do |tag| %>
+          <p>
             <% if tag.events.count != 0 %>
-              <p><%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
-              <%= "(#{tag.events.count})" %></p>
+              <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+              <%= "(#{tag.events.count})" %>
           　<% end %>
-        　<% end %>
+        　</p>
+      　<% end %>
 
-        <div id="calendar"></div>
+      <!--<div id="calendar"></div>-->
+    </div>
 
-      </div>
-
-      <div class="events_index">
-        <% @events.each do |event| %>
-        <div class="item">
-          <div class="event_box">
-          <%= attachment_image_tag event, :event_image, format: 'jpeg',class: "event_image", fallback: "public/image/no_image.png" %>
-            <h3>
-              <%= link_to event_path(event.id) do %><%= event.title %><% end %>
-            </h3>
-            <p>
-              <%= event.area.area_name %>
-            </p>
-            <p>投稿者：
-              <%= event.user.name %>
-            </p>
-            <p>
-              <%= truncate(event.event_introduction, length:15) %>
-            </p>
-            <p>
-              <%= l event.start %>
-           </p>
-            <p>
-              <%= l event.end %>
-           </p>
-            <p>タグ：
-              <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
-              <% t.each do |t| %><%= t.tag_name %><% end %>
-            </p>
-
-            <p>コメント<%= event.comments.count %>件</p>
+    <div class="users_index">
+      <% @events.each do |event| %>
+        <%= link_to event_path(event.id) ,class: "event_title_a" do %>
+          <div class= "index_image_box">
+            <%= attachment_image_tag event, :event_image, format: 'jpeg',class: "index_image", fallback: "public/image/no_image.png" %>
           </div>
-        </div>
+          <p class="title_strong">
+            <%= event.title %>
+          </p>
+          <% end %>
+          <div class="index_event_contain">
+            <div class="index_title">
+             <p class="green">募集期間</p>
+             <p><%= event.start.strftime("%m月 %d日") %>〜
+                <%= event.end.strftime("%m月 %d日") %></p>
+              <p class="green">投稿者</p>
+              <p><%= event.user.name %></p>
+              <p>コメント<%= event.comments.count %>件</p>
+            </div>
+            <div class="index_item">
+              <p><%= event.area.area_name %></p>
+              <p><%= truncate(event.event_introduction, length:15) %></p>
+              <p><span class="green">タグ</span>
+                <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
+                <% t.each do |t| %>
+                  <%= link_to  tag_event_search_path(tag_id: t.id) do %>
+                    <%= t.tag_name %>
+                  <% end %>
+              　<% end %>
+              </p>
+            </div>
+          </div>
         <% end %>
       </div>
+    </div>
 
-      <div class="search-btn">
-        <div class="open-btn"></div><!--開閉ボタン-->
-        <div id="search-wrap"><!--表示エリアのHTML開閉ボタンをクリックするたび、search-wrap に表示用のクラス名が付与・除去されて付与の場合出現します。-->
+    <div class="search-btn">
+      <div class="open-btn"></div><!--開閉ボタン-->
+      <div id="search-wrap"><!--表示エリアのHTML開閉ボタンをクリックするたび、search-wrap に表示用のクラス名が付与・除去されて付与の場合出現します。-->
 
-        <%= search_form_for(@q, url: events_path)   do |f| %>
-          <div class="sel sel--black-panther">
-            <%= select_tag :search , options_for_select([['イベント検索'], ['投稿者検索'],['タグ検索']]) ,prompt: "検索条件" %>
+      <%= search_form_for(@q, url: events_path)   do |f| %>
+        <div class="sel sel--black-panther">
+          <%= select_tag :search , options_for_select([['イベント検索'], ['投稿者検索'], ['タグ検索']]) ,prompt: "検索条件" %>
+        </div>
+        <span class= "search_title">
+
+          <div class="field">
+          <%= f.search_field :title_cont , placeholder: "イベント名" %>
           </div>
-          <span class= "search_title">
-            <div class="sel sel--black-panther">
-              <%= f.collection_select :area_id_eq, @areas.all, :id, :area_name, prompt: "地域", required: "required", class: 'page-title', placeholder: "地域"%>
-            </div>
-
-            <div class="field">
-              <%= f.label :start, "開始日時", class: 'control-label' %>
-              <%= f.datetime_field :end_gteq, class: 'form-control' %>
-            </div>
-
-            <div class="field">
-              <%= f.label :end, "終了日時", class: 'control-label' %>
-              <%= f.datetime_field :start_lteq, class: 'form-control' %>
-            </div>
-          </span>
-
-          <span class="search_user">
-            <div class="field">
-            <%= f.label :title_cont, "イベント名" %>
-            <%= f.search_field :title_cont , placeholder: "search" %>
-            </div>
-          </span>
-
-          <!--<span class="search_user">-->
-          <!--  %= f.label :user_name_cont, "投稿者" %>-->
-          <!--  %= f.search_field :user_name_cont , placeholder: "search" %>-->
-          <!--</span>-->
-
-          <!--<span class="search_other">-->
-          <!--  %= f.label :tags_tag_name_cont, "タグ" %>-->
-          <!--  %= f.search_field :tags_tag_name_cont , placeholder: "search" %>-->
-          <!--</span>-->
 
           <div class="sel sel--black-panther">
-            <%= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>
+            <%= f.collection_select :area_id_eq, @areas.all, :id, :area_name, prompt: "地域", required: "required", class: 'page-title', placeholder: "地域"%>
           </div>
-          <!--<span class="search_id"><p>id</p>-->
-          <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
-          <!--</span>-->
-          <%= f.hidden_field :type, value: "", id: "type" %>
-          <%= f.submit "" %>
 
-        <% end %>
+          <div class="field">
+            <%= f.label :start, "開始日時", class: 'control-label' %>
+            <%= f.datetime_field :end_gteq, class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :end, "終了日時", class: 'control-label' %>
+            <%= f.datetime_field :start_lteq, class: 'form-control' %>
+          </div>
+        </span>
+
+        <span class="search_user">
+          <%= f.search_field :user_name_cont , placeholder: "投稿者名" %>
+        </span>
+
+        <span class="search_other">
+          <%= f.search_field :tags_tag_name_cont , placeholder: "タグ名" %>
+        </span>
+
+        <div class="sel sel--black-panther">
+          <%= select_tag :search_past , options_for_select([['開催予定'], ['全てのイベント'],['過去のイベント']]) %>
         </div>
-        </div>
-      </div>
+        <!--<span class="search_id"><p>id</p>-->
+        <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
+        <!--</span>-->
+        <%= f.hidden_field :type, value: "", id: "type" %>
+        <%= f.submit "" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

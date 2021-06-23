@@ -3,7 +3,7 @@ class Public::RecruitmentsController < ApplicationController
   def index
     @recruitment = Recruitment.new
     @search_past = params[:search_past]
-
+   
     if  @search_past == "開催予定のイベント"
       @recruit = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:end)
     elsif @search_past == "過去のイベント"
@@ -13,9 +13,7 @@ class Public::RecruitmentsController < ApplicationController
     end
 
     @q =  @recruit.ransack(params[:q])
-      @recruitments = @q.result(distinct: true)
-      puts "============="
-      p @recruitments
+    @recruitments = @q.result(distinct: true)
   end
   
   def new
@@ -69,6 +67,7 @@ class Public::RecruitmentsController < ApplicationController
     if @recruitment.save
        redirect_to new_recruitment_path(recruitment: @recruitment.id)
     else
+      flash[:notice] = "空欄の箇所を入力して下さい"
       render 'new'
     end
   end

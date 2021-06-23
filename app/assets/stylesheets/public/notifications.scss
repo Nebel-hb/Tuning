@@ -1,9 +1,67 @@
 // Place all the styles related to the public/notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$main-color: #f9a939;
+$green: #788d63;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+$white: #f6f6f6;
+
+
+
 .n-circle {
   position: absolute;
   padding-left: 0.8rem;
   padding-top: 0rem;
-  color: #9fca99;
+  color: $orange;
 }
+
+.notification-contain{
+  width: 100%;
+  margin: 20px;
+}
+
+.strong{
+  font-size: 20px;
+}
+
+.confirm-box{
+  p{
+    font-size: 18px;
+  }
+}
+
+.confirm-contain{
+     width: 80%;
+     margin: 0 auto ;
+     padding-bottom: 20px;
+    display: flex;
+
+}
+
+.confirm-item{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.comment_btn{
+
+  width: 80px;
+
+    }
+//   .new-comment{
+//     .comment-field{
+// background: rgba(255, 255, 255, 0.3);
+//     width: 85%;
+//     color: darken($dark-green, 20%);
+//     border: none;
+//     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+//     padding: 9px;
+//     margin: 7px;
+//     font-size: 15px;
+//   }
+//   }

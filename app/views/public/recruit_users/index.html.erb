@@ -1,90 +1,90 @@
-<h1>志願者一覧</h1>
+<div id="title">
+    <h2>志願者一覧</h2>
+  </div>
 
-<tbody>
-  <% @recruit_users.each do |recruit_user| %>
-    <% if recruit_user.recruitment_id == @recruitment && recruit_user.join != 3 %>
-           <div> <tr>
-              <td>
-                <%= recruit_user.user.name %>
-              </td>
-              <td>
-                <%= recruit_user.recruit_comment %>
-              </td>
-      <% if recruit_user.join == 1  %>
-              <td>
-                <%= form_with model: recruit_user, local: true do |f| %>
-                  
-                　<%= f.label :join, "協力してもらいますか？（断ると申請者情報は非表示になります。）"  %>
-                  <%= f.select :join ,[["確認中",1], ["参加",2], ["断る",3]] %>
-                  
+<div class="index_contain">
 
-                　<%= f.hidden_field :recruit_comment %>
-                　<%= f.hidden_field :recruitment %>
+  <div class="user_sort">
+    <h3><%= link_to  thank_you_comment_thanks_path(@recruitment) do %>
+      thank youコメント
+    <% end %></h3>
+    <h3>トークルーム作成</h3>
+    <%= form_with model: @room do |f| %>
+      <%= f.text_field :room_name,placeholder: "ルーム名" %>
+      <%= f.hidden_field :user_id, value:current_user.id %>
+      <%= f.hidden_field :recruitment_id, value:@recruitment %>
 
-
-                  <%= f.submit %>
-              　<% end %>
-              </td>
-              <td>
-                <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
-              </td>
-              
-              <td>
-                
-                <%= link_to  thank_you_comment_thanks_path(@recruitment) do %>thank youコメントをする<% end %>
-              </td>
-            </tr></div>
-      <% elsif recruit_user.join == 2  %>
-              <td>
-                  <p>許可済み</p>
-              </td>
-              <td>
-              
-                <%= form_with model: @user_room, url: user_rooms_path do |f| %>
-                  <%= f.collection_select :room_id, @users_room.where.not(id: UserRoom.where(user_id: recruit_user.user_id ).pluck(:room_id)) , :id, :room_name, include_blank: "選択して下さい" %>
-                  <%= f.hidden_field :user_id, value:recruit_user.user_id %>
-                  <%= f.submit '送信'%>
-                <% end %>
-              </td>
-              <td>
-            <p>招待済みトークルーム</p>
-              <% @user_rooms.each do |user_room| %>
-            <% if user_room.room.recruitment_id == @recruitment %>
-                <% if user_room.user_id == recruit_user.user_id %>
-              <div><%= link_to room_path(user_room.room_id) do %>
-                <%= user_room.room.room_name %>
-
-                <% end %>
-              <% end %>
-              </div>
-            <% end %>
-          <% end %>
-
-              </td>
-              <td>
-                <%= link_to user_path(recruit_user.user_id) do %>Show<% end %>
-              </td>
-            </tr></div>
+      <%= f.submit "作成", class: "btn-size", id: "btn"%>
+    <% end %>
+    <h3>トークルーム一覧</h3>
+    <% @rooms.each do |room| %>
+      <% if room.recruitment_id == @recruitment %>
+        <div><%= link_to room_path(room.id) do %>
+          <%= room.room_name %>
         <% end %>
+        </div>
       <% end %>
     <% end %>
-  </tbody>
-          <h2>トークルーム作成</h2>
-          <%= form_with model: @room do |f| %>
-            <%= f.label :room_name %>
-            <%= f.text_field :room_name %>
-            <%= f.hidden_field :user_id, value:current_user.id %>
-            <%= f.hidden_field :recruitment_id, value:@recruitment %>
+  </div>
 
-            <%= f.submit %>
-          <% end %>
-         <h2>作成済トークルーム一覧</h2>
-          <% @rooms.each do |room| %>
-            <% if room.recruitment_id == @recruitment %>
-              <div><%= link_to room_path(room.id) do %>
-                <%= room.room_name %>
-              <% end %>
+  <div class="users_index">
+    <% @recruit_users.each do |recruit_user| %>
+    <div class="recruit-user-item">
+      <% if recruit_user.recruitment_id == @recruitment && recruit_user.join != 3 %>
+        
+          <p>名前：
+            <%= link_to user_path(recruit_user.user_id) do %><span class="strong"><%= recruit_user.user.name %></span><% end %>
+          </p>
+          <p>申請コメント：
+            <%= recruit_user.recruit_comment %>
+          </p>
+          <% if recruit_user.join == 1  %>
+            <p>協力してもらいますか？（断ると申請者情報は非表示になります。）</p>
+            <%= form_with model: recruit_user, local: true do |f| %>
+              <div class="sel sel--black-panther">
+              <%= f.select :join ,[["確認中",1], ["参加",2], ["断る",3]] %>
               </div>
-            <% end %>
+            　<%= f.hidden_field :recruit_comment %>
+            　<%= f.hidden_field :recruitment %>
+              <%= f.submit "更新", class: "btn-size", id: "btn" %>
+          　<% end %>
+          
+
+          <% elsif recruit_user.join == 2  %>
+
+          <div class="invitation-room">
+            <div class="invited-room">
+              <h3>招待済みトークルーム</h3>
+              <% @user_rooms.each do |user_room| %>
+                <% if user_room.room.recruitment_id == @recruitment %>
+                  <% if user_room.user_id == recruit_user.user_id %>
+                  <div>
+                    <%= link_to room_path(user_room.room_id) do %>
+                      <%= user_room.room.room_name %>
+                    <% end %>
+                  </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <!--<p>許可済み</p>-->
+            </div>
+
+            <div class="join-room">
+              <h3>トークルームに招待する</h3>
+              <%= form_with model: @user_room, url: user_rooms_path do |f| %>
+                <div class="sel sel--black-panther">
+                  <%= f.collection_select :room_id, @users_room.where.not(id: UserRoom.where(user_id: recruit_user.user_id ).pluck(:room_id)) , :id, :room_name, include_blank: "選択して下さい" %>
+                </div>
+                <%= f.hidden_field :user_id, value:recruit_user.user_id %>
+                <%= f.submit '送信' , class: "btn-size", id: "btn"%>
+              <% end %>
+            </div>
+
+      </div>
           <% end %>
-      
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

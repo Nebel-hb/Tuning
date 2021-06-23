@@ -1,27 +1,12 @@
-<h1>Public::Recruitments#new</h1>
+<div id="title">
+  <h2>新規募集</h2>
+</div>
 
-<div class="recruit_form_container">
-  <!--<div class="welcome">-->
-  <%= form_with url: recruit_instruments_path , local: true do |f| %>
-    <div class="form-contain">
-          <div class="field">
-    <%= f.label :instrument_id, '楽器' %><br />
-            <span class=" sel">
-        
-  
-    <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required",  placeholder: " "%>
-            </span>
-          </div>
-          <div class="field">
-          <%= f.label :need_people, '募集人数' %><br />
-  　<%= f.text_field :need_people %>
-        
-          </div>
-    <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
-  <%= f.submit "追加する", class: "add_need_people"%>
-  
-  <% end %>
-  
+<!--<div class="recruit_form_container">-->
+  <div class="index_contain">
+    <div class="user_sort">
+<p><a href="#info" class="modal-open">募集人数の追加</a></p>
+
   <% @recruit_instruments.each do |recruit_instrument| %>
           <tr>
             <td>
@@ -31,15 +16,17 @@
               <%= recruit_instrument.need_people%><%= "名" %></br>
             </td>
             <td>
-  
+
           </tr>
   <% end %>
-  </div>
+
+
 </div>
         <!--</div>-->
 
-<div class="form_container">
-  <div class="welcome">
+<!--<div class="form_container">-->
+<div class="users_index">
+  <!--<div class="welcome">-->
 
     <%= form_with(model: @recruitment, local: true) do |f| %>
     <div class="form-contain">
@@ -50,7 +37,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :area_id, 'area' %><br />
+          <%= f.label :area_id, '地域' %><br />
           <span class=" sel">
             <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", placeholder: " "%>
           </span>
@@ -83,9 +70,10 @@
           <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
         </div>
 
+      </div>
+    </div>
         <div class="actions">
-          <div class="pretty p-icon p-round p-pulse">
-        <!--<input type="checkbox" />-->
+          <div class="pretty p-icon p-round p-pulse actions1" id="user_remember_me">
           <%= check_box_tag :with_event, true %>
         <div class="state p-success">
             <i class="icon mdi mdi-check"></i>
@@ -94,15 +82,35 @@
     </div>
           <%= f.hidden_field :user_id, value:current_user.id %>
 
-          <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
+          <%= button_tag :method => :get, :class => "btn-size", id: "btn" do %>
             <!--<span class= "col btnripple ">-->
               <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
             <!--</span>-->
-            <p>募集をする</p>
+            <p>確定</p>
           <% end %>
         </div>
-      </div>
-    </div>
     <% end %>
-  </div>
+  <!--</div>-->
 </div>
+
+
+<section id="info" class="hide-area">
+<h3>募集する楽器と人数を追加して下さい</h3>
+
+  <%= form_with url: recruit_instruments_path , local: true do |f| %>
+    <div class="form-contain">
+      <div class="field">
+        <%= f.label :instrument_id, '楽器' %><br />
+        <span class=" sel">
+        <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "選択", required: "required"%>
+        </span>
+      </div>
+      <div class="field">
+        <%= f.label :need_people, '募集人数' %>
+　      <%= f.text_field :need_people, placeholder: "半角数字を入力", class: "add_need_people" %>
+      </div>
+        <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
+        <%= f.submit "追加", id: "btn", class: "btn-size btn-green"%>
+    </div>
+  <% end %>
+</section>

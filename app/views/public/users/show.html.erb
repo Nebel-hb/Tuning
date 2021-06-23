@@ -1,17 +1,64 @@
-<h1>Mypage</h1>
+<div id="title">
+  <h2><%= @user.name %></h2>
+</div>
 
-  <div>会員ID</div>
-  <div><%= @user.id %></div>
+<div class="user-show-contain">
+<div class="user-show-side">
 
- <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "300x300", fallback: "public/image/no_image.png" %>
+    <p><%= link_to "thank you", thank_you_comments_path %></p>
+ <% if @user == current_user %>
+    <p><%= link_to "トークルーム", rooms_path %></p>
+    <!--通知-->
+    <p><%= render "public/partial/circle" %></p>
+    <p><%= link_to "編集", edit_user_path(@user.id) %>
+    <% unless Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "orchestra" %>
+      <p><%= link_to "公式楽団申請", new_orchestra_path %></p>
+    <% end %>
+  <% end %>
 
-  <div><%= @user.name %> </div>
-  <div><%= @user.area.area_name %> </div>
-  <div><%= @user.instrument.instrument_name %> </div>
-  <div><%= @user.introduction %> </div>
-  <div><%= @user.role %> </div>
+  <% if @user.role == "orchestra" %>
+    <ul class="info-list">
+      <li><a href="#info-1" class="info"><!--modaal用-->
+        <p>募集イベント</p>
+      </a></li>
+    </ul>
+    <section id="info-1" class="hide-area"><!--表示エリア-->
+      <p>募集中</p>
+      <% @recruitments.each do |recruit| %>
+        <% if recruit.user_id == @user.id %>
+          <% unless  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+            <div class="index_contain">
+              <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+              <% if @user == current_user %>
+              <p>
+                <%= link_to  recruit_users_path(recruitment: recruit.id), class: "green" do %>未確認の応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
+              </p>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <p>募集終了</p>
+      <% @recruitments.each do |recruit| %>
+        <% if recruit.user_id == current_user.id %>
+          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
+            <div class="index_contain">
+              <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </section>
+  <% end %>
+  <% if @user.role == "general" %>
+    <ul class="info-list">
+      <li><a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
+        <p>参加履歴</p>
+      </a></li>
+    </ul>
+    <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
 
-      <h2>参加履歴</h2>
+      <h3>参加履歴</h3>
       <% @recruit_users.each do |recruit_user| %>
         <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
           <% if recruit_user.join == 2 %>
@@ -19,7 +66,6 @@
               <div>
                 <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-
                 </tr>
               </div>
             <% else %>
@@ -27,57 +73,40 @@
               <div>
                 <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-
                 </tr>
               </div>
             <% end %>
-
-
           <% end %>
         <% end %>
       <% end %>
- <% if @user == current_user %>
-    <%= link_to edit_user_path(@user.id) do %>
-     <p> 編集 </p>
-    <% end %>
-<%= link_to thank_you_comments_path do %>
-     <p> thank you コメント </p>
 
-
-
-    <% end %>
-    <!--通知-->
-    <%= render "public/partial/circle" %>
-
-     <h2>トークルーム </h2>
-        <%= link_to "一覧へ", rooms_path %>
-
-
-    <% if current_user.role == "orchestra" %>
-          <h2>募集中</h2>
-      <% @recruitments.each do |recruit| %>
-        <% if recruit.user_id == current_user.id %>
-          <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
-          <h2>募集終了</h2>
-                <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-          <% else %>
-              <div>
-                <tr>
-                    <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-                  <td>
-                    <%= link_to  recruit_users_path(recruitment: recruit.id) do %>未確認の応募<%= @recruit_user.where(recruitment_id: recruit).count %>件<% end %>
-                  </td>
-                </tr>
-              </div>
-          <% end %>
-            </tbody>
-        <% end %>
-      <% end %>
-    <% else %>
-      <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
-        <div><%= link_to "公式楽団申請はこちら", new_orchestra_path %></div>
-      <% end %>
-    <% end %>
+    </section>
   <% end %>
+  </div>
 
 
+  <div class="orchestra-show">
+  <%= attachment_image_tag @user, :profile_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
+  </div>
+
+    <div class="orchestra-show-box">
+      <div class="orchestra-comment">
+        <div class="orchestra-item">
+          <p>会員ID</p>
+          <p>名前</p>
+          <p>エリア</p>
+          <p>楽器</p>
+          <p>自己紹介文</p>
+          <p>ステータス</p>
+        </div>
+        <div>
+          <p><%= @user.id %></p>
+          <p><%= @user.name %></p>
+          <p><%= @user.area.area_name %></p>
+          <p><%= @user.instrument.instrument_name %></p>
+          <p><%= @user.introduction %></p>
+          <p><%= @user.role %></p>
+        </div>
+      </div>
+    </div>
+  </div>

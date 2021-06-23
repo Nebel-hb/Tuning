@@ -1,23 +1,38 @@
-<% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "top", root_path %>
-        <%= link_to 'mypage', user_path(current_user.id) %>
-        <%= link_to "users", users_path %>
-        <%= link_to "events", events_path %>
-        <%= link_to "recruitments", recruitments_path %>
+<span id="header">
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+      <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "top", root_path %></li>
+      <li class="has-child"><%= link_to "users", users_path %>
+        <ul>
+          <li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %>
+            <ul>
+              <li><%= link_to "thank you", thank_you_comments_path %></li>
+              <li><%= link_to "通知", (notifications_path) %>
+                <% if unchecked_notifications.any? %>
+                  <span><%= unchecked_notifications.count %>件</span>
+                  <% end %>
+                </li>
+              <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
+                <li><%= link_to "公式楽団申請", new_orchestra_path %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to "トークルーム", rooms_path %></li>
+        </ul>
       </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+
+      <li class="has-child"> <%= link_to "募集中", recruitments_path %>
+        <ul>
+          <li><%= link_to "イベント", events_path %></li>
+        </ul>
       </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "top", root_path %>
-      </li>
-      <li>
-        <%= link_to "about", about_path %>
-      </li>
-    <% end %>
+      <% else %>
+        <li><%= link_to "start", new_user_registration_path %></li>
+        <li><%= link_to "top", root_path %></li>
+        <li><%= link_to "about", about_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</span>

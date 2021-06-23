@@ -1,22 +1,16 @@
 
-  <td>
-    <%= link_to recruitment_path(recruit.id) do %>
+  <p class="index_image_box">
+    <%= link_to recruitment_path(recruit.id), class: "green"  do %>
       <%= recruit.title %>
     <% end %>
-  </td>
-  <td>
+  </p>
+  <p  class="index_image_box">
     <%= recruit.area.area_name %>
-  </td>
-  <td>
-    <%= recruit.user_id %>
-  </td>
-  <td>
-    <%= recruit.recruit_introduction %>
-  </td>
-  <td>
-    <%= l recruit.recruit_start %>
-  </td>
-  <td>
-    <%= l recruit.recruit_end %>
-  </td>
-  
+  </p>
+  <p  class="index_contain_time">
+    <%= recruit.recruit_start.strftime("%Y年 %m月 %d日") %>〜
+  </p>
+  <p  class="index_contain_time">
+    <%= recruit.recruit_end.strftime("%Y年 %m月 %d日") %>
+  </p>
+

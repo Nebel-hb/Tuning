@@ -1,59 +1,30 @@
 
     <h1> 投稿詳細 </h1>
 
-  <%= attachment_image_tag @event, :event_image, :fill, 300, 300, format: 'jpeg', size: "300x300" , class: 'shadow mb-5 bg-white rounded'%>
-
-    <td>
-      <%= @event.title %>
-    </td>
-    <td>
-      <%= @event.area.area_name %>
-    </td>
-    <td>
-      <%= @event.user.name %>
-    </td>
-    <td>
-      <%= @event.event_introduction %>
-    </td>
-    <td>
-      <%= l @event.start %>
-    </td>
-    <td>
-      <%= l @event.end %>
-    </td>
-    <% if @event.user == current_user %>
-    <td>
-      <%= link_to edit_event_path(@event.id) do %>Edit<% end %>
-    </td>
-    <td>
-      <%= link_to  event_path(@event.id), remote: true, method: :delete do %>Delete<% end %>
-    </td>
-  <% end %>
-
-
-      <div class="comments">
-      <p>コメント件数：<%= @event.comments.count %></p>
-      <% @event.comments.each do |comment| %>
-        <%= comment.user.name %>
-        <%= l comment.created_at %><%= comment.comment %>
-        <% if comment.user == current_user %>
-          <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete %>
-        <% end %>
-      <% end %>
-
-
-      <div class="new-comment">
-      <%= form_with(model:[@event, @comment], local: true) do |f| %>
-        <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-        <%= f.hidden_field :user_id, value:current_user.id %>
-        <%= f.hidden_field :event_id, value:@event.id %>
-
-        <%= f.submit "送信する" %>
-      <% end %>
-    </div>
-
-
-<%= "タグ: " %>
+<div class="show-contain">
+          <div class="show-image">
+          <%= attachment_image_tag @event, :event_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
+           </div>
+        <div class="show-item">
+            <h3>
+              <%= @event.title %>
+            </h3>
+            <p>地域：
+              <%= @event.area.area_name %>
+            </p>
+            <p>投稿者：
+              <%= @event.user.name %>
+            </p>
+            <p>
+              <%= l @event.start %>
+           </p>
+            <p>
+              <%= l @event.end %>
+           </p>
+            <p>
+              <%= @event.event_introduction %>
+            </p>
+<p> タグ：
   <% @event_tags.each do |tag| %>
   <span>
     <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
@@ -61,3 +32,42 @@
 　</span>
 
 　<% end %>
+</p>
+
+    <% if @event.user == current_user %>
+    <td>
+      <%= link_to edit_event_path(@event.id), class: "gray" do %>編集<% end %>
+    </td>
+    <td>
+      <%= link_to  event_path(@event.id), remote: true, method: :delete , class: "gray" do %>投稿の削除<% end %>
+    </td>
+  <% end %>
+
+
+        </div>
+
+      </div>
+
+<div class="show-contain">
+  <div class="new-comment">
+    <%= form_with(model:[@event, @comment], local: true) do |f| %>
+      <%= f.text_area :comment, placeholder: "コメントをここに", class: "comment-field" %>
+      <%= f.hidden_field :user_id, value:current_user.id %>
+      <%= f.hidden_field :event_id, value:@event.id %>
+
+      <%= f.submit "送信する" ,id: "btn"%>
+    <% end %>
+  </div>
+
+    <div class="show-comments scroll">
+    <p>コメント件数：<%= @event.comments.count %></p>
+      <% @event.comments.each do |comment| %>
+        <p><%= comment.comment %></p>
+        <%= comment.user.name %>
+        <span class="green"><%= l comment.created_at %></span>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete, class: "gray" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

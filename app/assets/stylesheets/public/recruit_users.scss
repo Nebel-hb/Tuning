@@ -1,3 +1,51 @@
 // Place all the styles related to the public/recruit_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$main-color: #f9a939;
+$green: #788d63;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+$white: #f6f6f6;
+
+
+.recruit-user-contain{
+  width: 80%;
+  padding-bottom: 20px;
+  margin: 20px auto;
+  display: flex;
+}
+
+.recruit_user-room{
+  width: 25%;
+  margin-right: 20px;
+}
+.recruit-user-item{
+  border-bottom: solid 2px $green;
+  padding: 20px;
+
+  .strong{
+    font-size: 25px;
+  }
+}
+
+.invitation-room{
+  display: flex;
+}
+
+.invited-room{
+  width: 45%;
+  margin-right: 10px;
+}
+
+.recruit-user-item{
+  width: 100%;
+}
+
+.recruit-user-box{
+  width: 80%;
+}

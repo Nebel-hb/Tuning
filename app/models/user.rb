@@ -21,6 +21,20 @@ class User < ApplicationRecord
   belongs_to :instrument, optional: true
   belongs_to :area, optional: true
 
+
+  validates :name,  presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i #　←メールアドレスの正規表現
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true
+  #メールアドレスを正規表現のフォームに指定
+  validates :area_id,  presence: true
+  validates :instrument_id,  presence: true
+  # before_save :downcase_email
+
+
+
+
   def create_notification_join!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'join'])
     if temp.blank?

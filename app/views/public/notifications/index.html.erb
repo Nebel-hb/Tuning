@@ -1,5 +1,6 @@
-<h1>Public::Notifications#index</h1>
-<p>Find me in app/views/public/notifications/index.html.erb</p>
+
+<div class="notification-contain">
+  <h3>通知一覧</h3>
 
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
@@ -9,4 +10,4 @@
       <p>
     | 通知はありません</p>
     <% end %>
-  
+</div>
