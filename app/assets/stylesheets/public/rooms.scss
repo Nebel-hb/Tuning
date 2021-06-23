@@ -144,6 +144,7 @@ $white: #f6f6f6;
         padding: 10px;
         border-radius: 20px;
         background-color:  darken($white, 10%);
+        color: #000;
 
         &::after {
           content: '';
@@ -175,6 +176,7 @@ $white: #f6f6f6;
           background-color: $white;
           margin: 0;
           margin-left: 80px;
+          color: #000;
           /* 吹き出し */
           &::after {
             content: "";
@@ -197,9 +199,7 @@ $white: #f6f6f6;
   }
 }
 
-.chat_field{
-  color: $gray;
-}
+
 
 .btn-size{
   width: 80px;

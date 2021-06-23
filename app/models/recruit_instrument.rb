@@ -5,6 +5,6 @@ class RecruitInstrument < ApplicationRecord
 
   validates :instrument_id, presence: true
   validates :recruitment_id, presence: true
-  validates :need_people, presence: true
+  validates :need_people, presence: true, numericality: {only_integer: true}
 
 end

@@ -3,17 +3,17 @@
 <div class="signin">
   <h1>sign in</h1>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name))  do |f| %>
 
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email",id: "start" %>
     </div>
 
     <div class="field">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" , type: "password" ,placeholder: "password" %>
+      <%= f.password_field :password, autocomplete: "current-password" , type: "password" ,placeholder: "password",id: "start" %>
     </div>
 
 

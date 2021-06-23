@@ -105,16 +105,46 @@ $white: #f6f6f6;
 input  {
     background: rgba(255, 255, 255, 0.3);
     width: 85%;
-    // color: darken($dark-green, 20
-    color: $gray;
+    color: $white;
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     padding: 9px;
     margin: 7px;
     font-size: 15px;
+    font-family: 'Cormorant Upright','Cormorant Upright', serif;
 
     &::placeholder {
        color: rgba($gray, 1);
+      letter-spacing: 2px;
+      font-size: 18px;
+      font-weight: 100;
+    }
+    &:focus {
+      color: $gray;
+      outline: none;
+      border-bottom: 1.2px solid rgba($dark-green, 0.7);
+      font-size: 15px;
+      transition: .8s all ease;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+
+  }
+#start {
+    background: rgba(255, 255, 255, 0.3);
+    width: 85%;
+    color: $dark-green;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 9px;
+    margin: 7px;
+    font-size: 15px;
+    font-family: 'Cormorant Upright','Cormorant Upright', serif;
+
+    &::placeholder {
+       color: rgba($green, 1);
       letter-spacing: 2px;
       font-size: 18px;
       font-weight: 100;
@@ -132,23 +162,28 @@ input  {
     }
 
   }
+
+
     #btn{
-      background: rgba(255, 255, 255, 0);
-      padding: 12px;
+      background: rgba(255, 255, 255, .1);
+      padding: 10px;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 3px;
-      font-size: 11px;
+      font-size: 15px;
       border-radius: 10px;
       margin: auto;
       outline: none;
       display: block;
+      // color: $white;
+      color: $green;
         &:hover {
         background: $dark-green;
         color: $white;
         transition: background-color 1s ease-out;
       }
-
     }
+
 
   h3{
       margin-top: 5px;

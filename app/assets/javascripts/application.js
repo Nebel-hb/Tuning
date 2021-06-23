@@ -70,6 +70,8 @@ $(window).scroll(function () {
 // =========モーダル===========
 
 //. テキストを含む一般的なモーダル
+
+$(document).on('turbolinks:load', function () {
 $(".info").modaal({
 	overlay_close:true,//モーダル背景クリック時に閉じるか
 	before_open:function(){// モーダルが開く前に行う動作
@@ -78,6 +80,7 @@ $(".info").modaal({
 	after_close:function(){// モーダルが閉じた後に行う動作
 		$('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
 	}
+});
 });
 
 //. 確認を促すモーダル
@@ -117,5 +120,30 @@ $(".iframe-open").modaal({
 	}
 });
 
+
+$(document).on('turbolinks:load', function () {
+var access = $.cookie('access')
+	if(!access){
+		flag = true;
+		$.cookie('access', false);
+	}else{
+		flag = false
+	}
+	});
+
+$(document).on('turbolinks:load', function () {
+	//モーダル表示
+	$(".modal-open").modaal({
+	// start_open:flag, // ページロード時に表示するか
+	start_open:true, // ページロード時に表示するか
+	overlay_close:true,//モーダル背景クリック時に閉じるか
+	before_open:function(){// モーダルが開く前に行う動作
+		$('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
+	},
+	after_close:function(){// モーダルが閉じた後に行う動作
+		$('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
+	}
+	});
+	});
 
 // ====================

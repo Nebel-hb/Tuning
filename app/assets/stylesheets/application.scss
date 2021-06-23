@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require fullcalendar
+ *= require modaal
+
 
  */
 
@@ -57,7 +59,7 @@ $white: #f6f6f6;
 // fonts
 html {
 font-family: 'Cormorant Upright','Cormorant Upright', serif;
-  height: 100vh;
+
 
 }
 
@@ -75,15 +77,14 @@ body {
 
 }
 
-#bg{
-  height: 100vh;
-
-}
+// #bg{
+//   height: 100%;
+// }
 
 #main{
   color:$white;
   width: 80%;
-  min-hight: 100vh;
+  hight: 100vh;
   margin: 0 auto;
   padding-top: 70px;
 }
@@ -360,6 +361,9 @@ nav ul li.has-child.active::before{
 /*全て共通：hideエリアをはじめは非表示*/
 .hide-area{
 	display: none;
+	p{
+		color:#000;
+	}
 }
 
 /*全て共通：モーダルのボタンの色を変更したい場合*/
@@ -387,6 +391,9 @@ nav ul li.has-child.active::before{
 .gray{
   color:$gray;
 }
+.white{
+  color:$white;
+}
 
 .green{
   color:$green;
@@ -397,3 +404,13 @@ nav ul li.has-child.active::before{
 .image{
   width: 150px;
 }
+
+
+textarea {
+      width: 200px;
+      height: 100px;
+      // font-size: 5px;
+      color: $white;
+      background: rgba(255, 255, 255, 0.3);
+
+    }

@@ -3,7 +3,7 @@
 
   <div class="room-index-contain">
     <div class="room-box">
-       <h2>参加済みトークルーム </h2>
+       <h3>参加済みトークルーム </h3>
        <% @user_rooms.each do |user_room| %>
          <% if user_room.user_id == current_user.id %>
            <% if user_room.activation == true %>
@@ -17,7 +17,7 @@
        <% end %>
     </div>
     <div class="room-box">
-     <h2>未参加のトークルーム </h2>
+     <h3>未参加のトークルーム </h3>
       <% @user_rooms.each do |user_room| %>
           <% if user_room.user_id == current_user.id %>
              <% if user_room.activation == false %>
@@ -25,9 +25,9 @@
               <%= link_to room_path(user_room.room_id) do %>
                 <%= user_room.room.room_name %>
               <% end %>
-               
+
             <% end %>
-                  
+
           </div>
         <% end %>
       <% end %>

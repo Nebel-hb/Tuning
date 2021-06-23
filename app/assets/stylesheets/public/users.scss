@@ -280,8 +280,9 @@ $white: #f6f6f6;
 
 .index_contain{
   width: 100%;
+  height: 100vh;
   display: flex;
-  
+
 }
 
 .search-btn {
@@ -302,12 +303,12 @@ $white: #f6f6f6;
 
 .users_index{
   width: 70%;
-  margin: 0 auto;
-  
+  margin: 10px auto ;
+
 }
 
 .index_user_contain{
-  margin: 10px auto;
+  margin: auto;
   width: 100%;
   height: 130px;
   background-position: center;
@@ -337,7 +338,7 @@ $white: #f6f6f6;
 
 .index_item{
   width: 60%;
-  
+
 }
 
 
@@ -367,7 +368,9 @@ $white: #f6f6f6;
 
 }
 
-
+.index_contain_time{
+  width: 23%;
+}
 
 .user-show-contain{
   width: 100%;

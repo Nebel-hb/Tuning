@@ -17,7 +17,7 @@ $white: #f6f6f6;
   position: absolute;
   padding-left: 0.8rem;
   padding-top: 0rem;
-  color: #9fca99;
+  color: $orange;
 }
 
 .notification-contain{
@@ -53,15 +53,15 @@ $white: #f6f6f6;
   width: 80px;
 
     }
-  .new-comment{
-    .comment-field{
-background: rgba(255, 255, 255, 0.3);
-    width: 85%;
-    color: darken($dark-green, 20%);
-    border: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 9px;
-    margin: 7px;
-    font-size: 15px;
-  }
-  }
+//   .new-comment{
+//     .comment-field{
+// background: rgba(255, 255, 255, 0.3);
+//     width: 85%;
+//     color: darken($dark-green, 20%);
+//     border: none;
+//     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+//     padding: 9px;
+//     margin: 7px;
+//     font-size: 15px;
+//   }
+//   }
