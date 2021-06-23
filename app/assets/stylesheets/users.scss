@@ -187,12 +187,13 @@ body {
 
   // input ,
   textarea {
+    font-family: 'Cormorant Upright','Cormorant Upright', serif;
     background: rgba(255, 255, 255, 0.3);
     width: 85%;
     color: darken($dark-green, 20%);
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 9px; 
+    padding: 9px;
     margin: 7px;
     // font-size: 15px
 
