@@ -10,18 +10,20 @@
     <p><%= link_to "トークルーム", rooms_path %></p>
     <!--通知-->
     <p><%= render "public/partial/circle" %></p>
+    <% unless @user.email == "guest@music.com" %>
     <p><%= link_to "編集", edit_user_path(@user.id) %>
+    <% end %>
     <% unless Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "orchestra" %>
       <p><%= link_to "公式楽団申請", new_orchestra_path %></p>
     <% end %>
   <% end %>
 
   <% if @user.role == "orchestra" %>
-    <ul class="info-list">
-      <li><a href="#info-1" class="info"><!--modaal用-->
+    <div class="info-list">
+      <a href="#info-1" class="info"><!--modaal用-->
         <p>募集イベント</p>
-      </a></li>
-    </ul>
+      </a>
+    </div>
     <section id="info-1" class="hide-area"><!--表示エリア-->
       <p>募集中</p>
       <% @recruitments.each do |recruit| %>
@@ -51,11 +53,11 @@
     </section>
   <% end %>
   <% if @user.role == "general" %>
-    <ul class="info-list">
-      <li><a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
+    <div class="info-list">
+      <a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
         <p>参加履歴</p>
-      </a></li>
-    </ul>
+      </a>
+    </div>
     <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
 
       <h3>参加履歴</h3>
@@ -96,16 +98,16 @@
           <p>名前</p>
           <p>エリア</p>
           <p>楽器</p>
-          <p>自己紹介文</p>
           <p>ステータス</p>
+          <p>自己紹介文</p>
         </div>
         <div>
           <p><%= @user.id %></p>
           <p><%= @user.name %></p>
           <p><%= @user.area.area_name %></p>
           <p><%= @user.instrument.instrument_name %></p>
-          <p><%= @user.introduction %></p>
           <p><%= @user.role %></p>
+          <p><%= @user.introduction %></p>
         </div>
       </div>
     </div>

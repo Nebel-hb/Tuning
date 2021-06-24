@@ -1,19 +1,37 @@
 
-    <h1> 投稿詳細 </h1>
+<div id="title">
+  <h2>
+    <%= @event.title %>
+  </h2>
+</div>
 
 <div class="show-contain">
           <div class="show-image">
           <%= attachment_image_tag @event, :event_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
+          
+    
+    <span class="info-list">
+      <a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
+       コメント投稿
+      </a>
+    </span></p>
+           <p> タグ
+            <% @event_tags.each do |tag| %>
+            <p>
+              <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+              <%= "(#{tag.events.count})" %>
+          　</p>
+          
+          　<% end %>
+          </p>
            </div>
         <div class="show-item">
-            <h3>
-              <%= @event.title %>
-            </h3>
-            <p>地域：
-              <%= @event.area.area_name %>
-            </p>
+            
             <p>投稿者：
               <%= @event.user.name %>
+            </p>
+            <p>
+              <%= @event.area.area_name %>
             </p>
             <p>
               <%= l @event.start %>
@@ -24,15 +42,7 @@
             <p>
               <%= @event.event_introduction %>
             </p>
-<p> タグ：
-  <% @event_tags.each do |tag| %>
-  <span>
-    <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
-    <%= "(#{tag.events.count})" %>
-　</span>
 
-　<% end %>
-</p>
 
     <% if @event.user == current_user %>
     <td>
@@ -46,10 +56,33 @@
 
         </div>
 
-      </div>
 
-<div class="show-contain">
+
+    
+    
+    
+    <div class="chat-contain">
+      <span class="gray">コメント<%= @event.comments.count %>件</span>
+      <div class="chat_container">
+        <div class="chat_contents scroll" id="scroll">
+      <% @event.comments.each do |comment| %>
+        <p class="mt10"><%= comment.comment %></p>
+        <%= comment.user.name %>
+        <span class="green"><%= l comment.created_at %></span>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete, class: "gray" %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div><!--#roon-contain-->
+
+  </div>
+     
+      
+      <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
   <div class="new-comment">
+
     <%= form_with(model:[@event, @comment], local: true) do |f| %>
       <%= f.text_area :comment, placeholder: "コメントをここに", class: "comment-field" %>
       <%= f.hidden_field :user_id, value:current_user.id %>
@@ -58,16 +91,4 @@
       <%= f.submit "送信する" ,id: "btn"%>
     <% end %>
   </div>
-
-    <div class="show-comments scroll">
-    <p>コメント件数：<%= @event.comments.count %></p>
-      <% @event.comments.each do |comment| %>
-        <p><%= comment.comment %></p>
-        <%= comment.user.name %>
-        <span class="green"><%= l comment.created_at %></span>
-        <% if comment.user == current_user %>
-          <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete, class: "gray" %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+    </section>

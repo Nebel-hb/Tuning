@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
     end
 
     @q = User.ransack(params[:q])
-    @search = @q.result(distinct: true)
+    @search = @q.result(distinct: true).page(params[:page]).per(5)
 
   end
 

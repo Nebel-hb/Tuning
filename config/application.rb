@@ -17,5 +17,6 @@ module Tuning
     # the framework and any gems in your application.
      config.time_zone = 'Asia/Tokyo'
      config.i18n.default_locale = :ja
+     config.autoload_paths << Rails.root.join('lib')
   end
 end

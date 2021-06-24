@@ -2,8 +2,6 @@ class Public::EventsController < ApplicationController
 
   def index
     @search_past = params[:search_past]
-    puts"=============="
-    p @search_past
     
     if  @search_past == "開催予定のイベント"
       @event_search = Event.where("events.end > ?", DateTime.now).reorder(:end)
@@ -56,7 +54,7 @@ class Public::EventsController < ApplicationController
     if @event.save
       @event.save_tag(tag_list)
       
-      redirect_to events_path
+      redirect_to event_path(@event.id)
     else
       flash[:notice] = "空欄の箇所を入力して下さい"
       redirect_back(fallback_location: events_path)

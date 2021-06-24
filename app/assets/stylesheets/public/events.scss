@@ -45,43 +45,6 @@ $white: #f6f6f6;
     border-top-color: $green;
 }
 
-// .events_index{
-//     width: 80%;
-//     display: flex;
-//     flex-wrap: wrap;
-
-//     .item{
-//       margin: 30px auto 0;
-//       padding: 15px;
-//       width: 205px;
-//       position: relative;
-//       background-repeat: no-repeat;
-//       background-position: center;
-//       background-size: cover;
-
-//         .event_box{
-//           left: 50px;
-//           top: 30px;
-//           text-align: center;
-//           color: $white;
-//         }
-//         .event_image{
-//             position:  absolute;
-//               z-index: 2;
-//               left: -30px;
-//               top: -20px;
-//               width: 90px;
-//               height: 90px;
-//               border-radius: 50%;
-//               background-image: image-url('public/bg/flute.jpg');
-//               box-shadow:  0 10px 15px 0 rgba(0, 0, 0, 0.3);
-//               background-repeat: no-repeat;
-//               background-position: center;
-//               background-size: cover;
-//         }
-//     }
-// }
-
 .index_event_contain{
   margin: 10px auto;
   width: 100%;
@@ -193,16 +156,14 @@ input  {
 
 .show-contain{
   width: 80%;
+  height: 100vh;
   display: flex;
   margin: 10px auto;
 
   .show-item,
   .show-comments{
     margin-left: 20px;
-    &.scroll {
-      height: 300px;
-      overflow-y: scroll;
-    }
+    width: 40%;
   }
 }
 

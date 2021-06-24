@@ -1,0 +1,5 @@
+
+$('#scroll').append("<div class="text"><%= @chat.message %></div>");
+$('input[type=text]').val("")
+$('#scroll').animate({ scrollEnd: $('#scroll')[0].scrollHeight});
+

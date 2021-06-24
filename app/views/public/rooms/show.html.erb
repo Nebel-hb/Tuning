@@ -2,37 +2,39 @@
 <div class="room-contain">
   <div class="user_sort">
     <h3>ルーム名：<span class="green"><%= @room.room_name %></span></h3>
-    <h3>検索</h3>
-      <%= form_with url: room_path, local: true, method: :get do |f|%>
-        <%= f.text_field :search, placeholder: "search" %>
-        <%= f.submit "検索",id: "btn", class: "btn-size" %>
-      <% end %>
-      <div>
-        <% @user.each do |user| %>
-          <tr>
-            <p class="black"><%= user.name %></p>
-            <% if @users.pluck(:user_id).include?(user.id) %>
-              <p class="green">招待済み</p>
-            <% else %>
-              <%= form_with model: @user_room, url: user_rooms_path  do |f| %>
-                <%= f.hidden_field :room_id, value: @room.id %>
-            　   <%= f.hidden_field :user_id, value: user.id %>
-                <%= f.submit "招待する" ,id: "btn", class: "btn-size" %>
-              <% end %>
-            <% end %>
-          </tr>
+    <% if @users.find_by(user_id: current_user.id).activation == true %>
+      <h3>検索</h3>
+        <%= form_with url: room_path, local: true, method: :get do |f|%>
+          <%= f.text_field :search, placeholder: "search" %>
+          <%= f.submit "検索",id: "btn", class: "btn-size" %>
         <% end %>
-      </div>
+        <div>
+          <% @user.each do |user| %>
+            <tr>
+              <p><%= user.name %></p>
+              <% if @users.pluck(:user_id).include?(user.id) %>
+                <p class="green">招待済み</p>
+              <% else %>
+                <%= form_with model: @user_room, url: user_rooms_path  do |f| %>
+                  <%= f.hidden_field :room_id, value: @room.id %>
+              　   <%= f.hidden_field :user_id, value: user.id %>
+                  <%= f.submit "招待" ,id: "btn", class: "btn-size" %>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </div>
+      <% end %>
 
       <h3>参加メンバー</h3>
       <% @users.each do |user| %>
         <% if user.activation == true %>
         <tr>
-          <span>
+          <p>
             <%= link_to user_path(user.user_id) do %>
               <%= user.user.name %>
             <% end %>
-          </span>
+          </p>
         </tr>
         <% end %>
       <% end %>
@@ -47,9 +49,8 @@
           <% if user.user_id == current_user.id %>
             <%= form_with model: user, local: true do |f| %>
 
-            <%= f.check_box :activation, {class: "check_box"}, true, false %>
             <div class="pretty p-icon p-round p-pulse">
-              <%= check_box_tag :activation,  true %>
+              <%= f.check_box :activation, {class: "check_box"}, true, false %>
               <div class="state p-success">
                 <i class="icon mdi mdi-check"></i>
             　  <%= f.label :activation, "参加する"  %>
@@ -68,7 +69,7 @@
   <% if @users.find_by(user_id: current_user.id).activation == true %>
     <div class="chat-contain">
       <div class="chat_container">
-        <div class="chat_contents scroll">
+        <div class="chat_contents scroll" id="scroll">
           <% @chats.each do |chat| %>
             <% if chat.user_id != current_user.id %>
             <div class="menbers_chat">
@@ -91,7 +92,7 @@
           <% end %>
         </div>
 
-      <%= form_with model: @chat do |f| %>
+      <%= form_with model: @chat, remote: true do |f| %>
         <%= f.text_field :message ,placeholder: "Aa", class: "gray" %>
         <%= f.hidden_field :room_id %>
         <%= f.submit "送信", class: "btn-size", id: "btn"%>
