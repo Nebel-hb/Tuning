@@ -81,13 +81,13 @@
         </div>
     </div>
           <%= f.hidden_field :user_id, value:current_user.id %>
-
+          <%= hidden_field_tag :recruit_relation,  @recruit_relation.id %>
           <%= button_tag :method => :get, :class => "btn-size", id: "btn" do %>
             <p>確定</p>
           <% end %>
         </div>
-        
-        
+
+
     <% end %>
   <!--</div>-->
 </div>
@@ -108,7 +108,7 @@
         <%= f.label :need_people, '募集人数' %>
 　      <%= f.text_field :need_people, placeholder: "半角数字を入力", class: "add_need_people" %>
       </div>
-        <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
+        <%= f.hidden_field :recruit_relation_id, value: @recruit_relation.id %>
         <%= f.submit "追加", id: "btn", class: "btn-size btn-green"%>
     </div>
   <% end %>

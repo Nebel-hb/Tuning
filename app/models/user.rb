@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :orchestras
   has_many :recruit_users
   has_many :recruitments
+  has_many :recruit_relations, dependent: :destroy
   belongs_to :instrument, optional: true
   belongs_to :area, optional: true
 
@@ -76,7 +77,7 @@ class User < ApplicationRecord
       user.instrument_id = 2
       user.area_id =  1
       user.role =  1
-      user.introduction = 'よろしく'
+      user.introduction = 'Tuningに来て頂きありがとうございます。'
       user.profile_image = 'public/bg/flute.jpg'
     end
   end

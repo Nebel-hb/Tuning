@@ -1,12 +1,13 @@
 class Public::RecruitInstrumentsController < ApplicationController
 
   def new
-    @recruitment = recruitment_params[:recruitment]
+    @recruit_relation = recruit_relation_params[:recruit_relation]
     @recruit_instrument = RecruitInstrument.new
     @recruit_instruments = RecruitInstrument.all
   end
 
   def create
+    puts "================="
     @recruit_instrument = RecruitInstrument.new(recruit_instrument_params)
     @recruit_instrument.save
     redirect_to request.referer
@@ -19,11 +20,11 @@ class Public::RecruitInstrumentsController < ApplicationController
   end
 
   def recruit_instrument_params
-    params.permit(:instrument_id, :recruitment_id, :need_people)
+    params.permit(:instrument_id, :recruit_relation_id, :need_people)
   end
 
-  def recruitment_params
-    params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end, :instrument_id)
+  def recruit_relation_params
+    params.require(:recruit_relation).permit(:user_id, :recruitment_id, :event_id)
   end
 
 end

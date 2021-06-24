@@ -1,9 +1,9 @@
 class Public::RecruitmentsController < ApplicationController
 
   def index
-    @recruitment = Recruitment.new
+    @recruit_relation = RecruitRelation.new
     @search_past = params[:search_past]
-   
+
     if  @search_past == "開催予定のイベント"
       @recruit = Recruitment.where("recruitments.recruit_end > ?", DateTime.now).reorder(:end)
     elsif @search_past == "過去のイベント"
@@ -15,13 +15,12 @@ class Public::RecruitmentsController < ApplicationController
     @q =  @recruit.ransack(params[:q])
     @recruitments = @q.result(distinct: true)
   end
-  
+
   def new
-    recruitment  = params[:recruitment]
-   
+    @recruit_relation  = RecruitRelation.find(params[:recruit_relation])
     @recruit_instrument = RecruitInstrument.new
-    @recruitment = Recruitment.find_by(id: recruitment)
-    @recruit_instruments = RecruitInstrument.where(recruitment_id: recruitment)
+    @recruitment = Recruitment.new
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation.id)
     @event = Event.new
 
   end
@@ -37,14 +36,25 @@ class Public::RecruitmentsController < ApplicationController
 
   def edit
      @recruitment = Recruitment.find(params[:id])
-     @recruit_instruments = RecruitInstrument.where(recruitment_id: @recruitment)
+     @recruit_instruments = RecruitInstrument.where(recruit_relation_id: (RecruitRelation.where(recruitment_id: @recruitment.id).pluck(:id)))
   end
 
   def update
     @recruitment = Recruitment.find(params[:id])
     if @recruitment.update(recruitment_params)
+      redirect_to recruitment_path(@recruitment.id)
+    else
+      render 'edit'
+    end
+  end
+
+  def create
+    @recruitment = Recruitment.new(recruitment_params)
+    recruit_relation  = RecruitRelation.find_by(id: params[:recruit_relation])
+    if @recruitment.save
+   
+      recruit_relation.recruitment_id = @recruitment.id
      with_event = params[:with_event]
-     p with_event
       if with_event == "true"
         event = Event.new
         event.title =  @recruitment.title
@@ -54,20 +64,11 @@ class Public::RecruitmentsController < ApplicationController
         event.start = @recruitment.recruit_event_start
         event.end = @recruitment.recruit_event_end
         event.save
+        recruit_relation.update(event_id: event.id)
       end
-      redirect_to recruitment_path(@recruitment.id)
+        recruit_relation.update(recruitment_id: @recruitment.id )
+        redirect_to recruitment_path(@recruitment.id)
     else
-      render 'edit'
-    end
-  end
-
-  def create
-
-     @recruitment = Recruitment.new(recruitment_params)
-    if @recruitment.save
-       redirect_to new_recruitment_path(recruitment: @recruitment.id)
-    else
-      flash[:notice] = "空欄の箇所を入力して下さい"
       render 'new'
     end
   end
@@ -84,13 +85,17 @@ class Public::RecruitmentsController < ApplicationController
     @thank_you_comment = ThankYouComment.new
   end
 
-
+private
   def recruitment_params
     params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end, :instrument_id)
   end
+  def recruit_relation_params
+    params.require(:recruit_relation)
+    params.permit(:recruit_relation)
+  end
 
   def recruit_instrument_params
-    params.require(:recruit_instrument).permit(:instrument_id, :recruitment_id, :need_people)
+    params.require(:recruit_instrument).permit(:instrument_id, :recruit_relation_id, :need_people)
   end
 
   def with_event_params

@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :recruitments, only: [:index, :show, :new, :edit, :update, :create, :destroy]
     resources :recruit_users, only: [:create, :index, :destroy, :update]
     resources :recruit_instruments, only: [:create, :new, :index, :destroy, :update]
+    resources :recruit_relations, only: [:create]
     resources :thank_you_comments, only: [:index, :create, :update]
     get 'thank_you_comment/:id' => 'thank_you_comments#thanks', as: 'thank_you_comment_thanks'
     # patch 'thank_you_comment/:id' => 'thank_you_comments#update', as: 'thank_you_comment'
