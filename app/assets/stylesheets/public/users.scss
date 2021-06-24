@@ -280,9 +280,8 @@ $white: #f6f6f6;
 
 .index_contain{
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
-
 }
 
 .search-btn {
@@ -303,6 +302,7 @@ $white: #f6f6f6;
 
 .users_index{
   width: 70%;
+  height: 100vh;
   margin: 10px auto ;
 
 }
@@ -345,6 +345,7 @@ $white: #f6f6f6;
 .form-contain{
   display:flex;
   width: 80%;
+  margin: 0 auto;
 
   .form{
     margin: 40px 40px;
@@ -374,6 +375,7 @@ $white: #f6f6f6;
 
 .user-show-contain{
   width: 100%;
+  height: 100vh;
   padding-bottom: 20px;
   margin: 20px auto;
   display:flex;

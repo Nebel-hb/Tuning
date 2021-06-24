@@ -1,6 +1,5 @@
 
-<div class="form_container">
-  <div class="welcome">
+<!--<div class="index_contain">-->
 
     <%= form_with(model: event, url: events_path, local: true) do |f| %>
     <div class="form-contain">
@@ -36,7 +35,7 @@
         <div class="field">
           <%= f.label :event_image, 'EventImage' %><br />
           <%= f.file_field :event_image, class: "event_image", style: "display: none" %>
-          <%= attachment_image_tag event, :event_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image" %>
+          <%= attachment_image_tag event, :event_image,format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.event_image').click()", class: "profile_image" %>
         </div>
 
         <div class="field">
@@ -44,16 +43,10 @@
           <%= f.text_field :tag_name ,placeholder: "スペースで複数登録"	%>
           <%= f.hidden_field :user_id, value:current_user.id %>
         </div>
-
-          <%= button_tag :method => :get, :class => "button submit", onfocus: "this.blur();" do %>
-            <!--<span class= "col btnripple ">-->
-              <!--%= image_tag "log_in.png", class: 'img-fluid border border-0',size: "60x40" %>-->
-            <!--</span>-->
-            <p>宣伝をする</p>
+          <%= button_tag :method => :get, :class => "btn-size", id: "btn" do %>
+          <p>宣伝</p>
           <% end %>
       </div>
     </div>
     <% end %>
-  </div>
-</div>
-
+  <!--</div>-->

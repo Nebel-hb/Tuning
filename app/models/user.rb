@@ -67,6 +67,20 @@ class User < ApplicationRecord
     end
   end
 
+  def self.guest
+    find_or_create_by!(email: 'guest@music.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+      user.instrument_id = 2
+      user.area_id =  1
+      user.role =  1
+      user.introduction = 'よろしく'
+      user.profile_image = 'public/bg/flute.jpg'
+    end
+  end
+
   def self.search_user(search)
     if search =~  /^[0-9]+$/
       User.where(['id LIKE ?', "%#{search}%"])

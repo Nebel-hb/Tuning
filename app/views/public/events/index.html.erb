@@ -1,8 +1,4 @@
 
-
-
-<div id="header">
-</div>
 <div id="title">
   <h2>Events</h2>
 </div>
@@ -20,52 +16,15 @@
 
       <h3><%= link_to new_event_path do %>新規投稿<% end %></h3>
 
-      <h3>タグ一覧</h3>
-        <% @tags.each do |tag| %>
-          <p>
-            <% if tag.events.count != 0 %>
-              <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
-              <%= "(#{tag.events.count})" %>
-          　<% end %>
-        　</p>
-      　<% end %>
+      <h3 class="info-list">
+      <a href="#info-1" class="info">タグ一覧</a>
+    </h3>
 
-      <!--<div id="calendar"></div>-->
+      <div id="calendar"></div>
     </div>
 
-    <div class="users_index">
-      <% @events.each do |event| %>
-        <%= link_to event_path(event.id) ,class: "event_title_a" do %>
-          <div class= "index_image_box">
-            <%= attachment_image_tag event, :event_image, format: 'jpeg',class: "index_image", fallback: "public/image/no_image.png" %>
-          </div>
-          <p class="title_strong">
-            <%= event.title %>
-          </p>
-          <% end %>
-          <div class="index_event_contain">
-            <div class="index_title">
-             <p class="green">募集期間</p>
-             <p><%= event.start.strftime("%m月 %d日") %>〜
-                <%= event.end.strftime("%m月 %d日") %></p>
-              <p class="green">投稿者</p>
-              <p><%= event.user.name %></p>
-              <p>コメント<%= event.comments.count %>件</p>
-            </div>
-            <div class="index_item">
-              <p><%= event.area.area_name %></p>
-              <p><%= truncate(event.event_introduction, length:15) %></p>
-              <p><span class="green">タグ</span>
-                <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
-                <% t.each do |t| %>
-                  <%= link_to  tag_event_search_path(tag_id: t.id) do %>
-                    <%= t.tag_name %>
-                  <% end %>
-              　<% end %>
-              </p>
-            </div>
-          </div>
-        <% end %>
+      <div class="users_index">
+        <%= render partial: 'index', locals: { events: @events } %>
       </div>
     </div>
 
@@ -109,9 +68,7 @@
         <div class="sel sel--black-panther">
           <%= select_tag :search_past , options_for_select([['開催予定'], ['全てのイベント'],['過去のイベント']]) %>
         </div>
-        <!--<span class="search_id"><p>id</p>-->
-        <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
-        <!--</span>-->
+        
         <%= f.hidden_field :type, value: "", id: "type" %>
         <%= f.submit "" %>
 
@@ -119,3 +76,7 @@
     </div>
   </div>
 </div>
+
+<section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
+ <%= render partial: 'tag', locals: { tag_list: @tags } %>
+</section>

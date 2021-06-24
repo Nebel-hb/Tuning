@@ -86,8 +86,6 @@ class Public::RecruitmentsController < ApplicationController
 
 
   def recruitment_params
-    puts "================"
-    p params
     params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end, :instrument_id)
   end
 

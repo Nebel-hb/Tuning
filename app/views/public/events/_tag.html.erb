@@ -1,0 +1,9 @@
+
+  <% tag_list.each do |list| %>
+    <% if list.events.count != 0 %>
+      <%= link_to list.tag_name, tag_event_search_path( list.id), class: "black" %>
+      <span class="gray">
+        <%= "(#{list.events.count})" %>
+      </span>
+    <% end %>
+  <% end %>

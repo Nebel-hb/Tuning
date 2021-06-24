@@ -15,8 +15,15 @@ Rails.application.routes.draw do
     post 'admin/users/:id' => 'admin/users#update'
   # ========= 利用者(user)のルーティング ================
 
-  devise_for :users
 
+  # devise_for :users
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'

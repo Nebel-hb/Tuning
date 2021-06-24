@@ -156,16 +156,14 @@ input  {
 
 .show-contain{
   width: 80%;
+  height: 100vh;
   display: flex;
   margin: 10px auto;
 
   .show-item,
   .show-comments{
     margin-left: 20px;
-    &.scroll {
-      height: 300px;
-      overflow-y: scroll;
-    }
+    width: 40%;
   }
 }
 
