@@ -34,7 +34,8 @@
     </div>
 
 
-    <div class="users_index">
+    <div class="users_index" >
+      <span class="scroll-list jscroll">
       <% @recruitments.each do |recruit| %>
         <%= link_to recruitment_path(recruit.id) do %>
           <p class="title_strong">
@@ -65,6 +66,8 @@
           </div>
         <% end %>
       <% end %>
+      <%= paginate @recruitments %>
+      </span>
     </div>
   </div>
 
@@ -128,34 +131,9 @@
       <div class="sel sel--black-panther">
         <%= select_tag :search_past , options_for_select([['開催予定'], ['全てのイベント'],['過去のイベント']]) %>
       </div>
-      <!--<span class="search_id"><p>id</p>-->
-      <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
-      <!--</span>-->
       <%= f.hidden_field :type, value: "", id: "type" %>
       <%= f.submit "" %>
-
-    <% end %>
-    </div>
+      <% end %>
     </div>
   </div>
-
-
-
-
-<!--% form_with url: recruit_instruments_path do |f|%>-->
-
-<!--  <span class="search_other">-->
-<!--  %= f.label :instrument_id,  "楽器"%>-->
-<!--  %= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>-->
-<!--  </span>-->
-
-<!--  %= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>-->
-
-<!--  %= f.submit "search" %>-->
-<!--% end %>-->
-
-
-
-
-<!--    </div>-->
-<!--  </div>-->
+  

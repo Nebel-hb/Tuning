@@ -1,53 +1,89 @@
 <div id="title">
-  <h2>募集詳細</h2>
+  <h2><%= @recruitment.title %></h2>
 </div>
-<div class="recruit-show-contain">
-  <div class="show-item recruit-show">
-    <div class="show-item-box">
-        <h3>
-          <%= @recruitment.title %>
-        </h3>
-        <p>地域：
-          <%= @recruitment.area.area_name %>
-         </p>
-        <p>投稿者：
-          <%= @recruitment.user.name %>
-        </p>
-        <p>
-          <%= l @recruitment.recruit_start %>
-        </p>
-        <p>
-          <%= l @recruitment.recruit_end %>
-        </p>
-        <p>
-          <%= @recruitment.recruit_introduction %>
-        </p>
-    </div>
-    <div>
-      <% if  @recruitment.recruit_end > Time.now %>
-        <% if @recruitment.user == current_user %>
-          <p>
-            <%= link_to  recruit_users_path(recruitment: @recruitment.id) ,class: "green" do %>応募者一覧へ<% end %>&nbsp;応募未対応<%= @count %>件
-          </p>
-          <p>
-            <%= link_to edit_recruitment_path(@recruitment.id) ,class: "gray" do %>edit<% end %>
-            <%= link_to  recruitment_path(@recruitment.id), remote: true, method: :delete ,class: "gray" do %>Delete<% end %>
-          </p>
-        <% else %>
+<div class="index_contain">
 
-          <% if current_user.role == "general" %>
-            <% if @recruitment_user.nil? %>
-              <p>
-                <%= link_to  recruitments_confirm_path(@recruitment.id) do %>応募する<% end %>
-              </p>
-            <% else %>
-              <p>応募済み</p>
-            <% end %>
+  <div class="user_sort">
+    <% if  @recruitment.recruit_end > Time.now %>
+      <% if @recruitment.user == current_user %>
+        <p>
+          <%= link_to  recruit_users_path(recruitment: @recruitment.id) ,class: "green" do %>応募者一覧へ<% end %>
+        </p>
+        <p class="gray">
+          応募未対応<%= @count %>件
+        </p>
+        <p>
+          <%= link_to edit_recruitment_path(@recruitment.id) ,class: "gray" do %>編集<% end %>
+        </p>
+        <p>
+          <%= link_to  recruitment_path(@recruitment.id), remote: true, method: :delete ,class: "gray" do %>募集の削除<% end %>
+        </p>
+      <% else %>
+
+        <% if current_user.role == "general" %>
+          <% if @recruitment_user.nil? %>
+            <p>
+              <%= link_to  recruitments_confirm_path(@recruitment.id) do %>応募する<% end %>
+            </p>
+          <% else %>
+            <p>応募済み</p>
           <% end %>
         <% end %>
-      <% else %>
-          この応募は終了しました。
       <% end %>
+      <% unless @find_all.nil? %>
+          <p><a href="#info" class="info"><span class="green">募集中楽器</span></a></p>
+      <% end %>
+    <% end %>
+
+  </div>
+  <div class="recruit-show-contain">
+    <div class="index_title">
+      <p class="green">募集期間</p>
+      <p><%= l @recruitment.recruit_start %>〜
+      </p>
+      <p>
+        <%= l @recruitment.recruit_end %>
+      </p>
+      <p class="green">開催期間</p>
+      <p>
+        <%= l @recruitment.recruit_start %>〜
+      </p>
+      <p>
+        <%= l @recruitment.recruit_event_end %>
+      </p>
+    </div>
+    <div class="index_item">
+      <p class="green">募集者</p>
+      <p><%= @recruitment.user.name %>
+      </p>
+      <p><%= @recruitment.area.area_name %>
+      </p>
+      <p><%= @recruitment.recruit_introduction %>
+      </p>
+      <span class="orange">
+        <% if  @recruitment.recruit_end > Time.now %>
+          <% if @find_all.nil? %>
+            この募集のメンバーは揃いました。
+          <% end %>
+        <% else %>
+            この応募は終了しました。
+        <% end %>
+      </span>
     </div>
   </div>
 </div>
+
+
+
+<section id="info" class="hide-area">
+<h3>募集中楽器</h3>
+
+      <% @recruit_instruments.each do |recruit_instrument| %>
+        <% if recruit_instrument.find_all == false %>
+        <p>
+          <%= recruit_instrument.instrument.instrument_name %>
+          <%= recruit_instrument.need_people.to_i - recruit_instrument.finded_people.to_i %><%= "名" %></br>
+        </p>
+        <% end %>
+      <% end %>
+</section>

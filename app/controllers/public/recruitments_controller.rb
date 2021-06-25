@@ -13,7 +13,8 @@ class Public::RecruitmentsController < ApplicationController
     end
 
     @q =  @recruit.ransack(params[:q])
-    @recruitments = @q.result(distinct: true)
+    @recruitments = @q.result(distinct: true).page(params[:page]).per(5)
+
   end
 
   def new
@@ -31,17 +32,34 @@ class Public::RecruitmentsController < ApplicationController
     @recruit_user = RecruitUser.where(recruitment_id: @recruitment.id )
     @count = RecruitUser.where(recruitment_id: @recruitment.id , join: 1).count
     @recruitment_user = RecruitUser.find_by(recruitment_id: @recruitment.id, user_id: current_user.id)
-
+    
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment.id))
+    @find_all = @recruit_instruments.where(find_all: false)
   end
 
   def edit
-     @recruitment = Recruitment.find(params[:id])
-     @recruit_instruments = RecruitInstrument.where(recruit_relation_id: (RecruitRelation.where(recruitment_id: @recruitment.id).pluck(:id)))
+    @recruitment = Recruitment.find(params[:id])
+    @recruit_relation  = RecruitRelation.find_by(recruitment_id: @recruitment.id)
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation.id)
+
   end
 
   def update
     @recruitment = Recruitment.find(params[:id])
+    recruit_relation  = RecruitRelation.find_by(recruitment_id: @recruitment.id)
     if @recruitment.update(recruitment_params)
+      with_event = params[:with_event]
+      if with_event == "true"
+        event = Event.new
+        event.title =  @recruitment.title
+        event.user_id =  @recruitment.user_id
+        event.area_id = @recruitment.area_id
+        event.event_introduction = @recruitment.recruit_introduction
+        event.start = @recruitment.recruit_event_start
+        event.end = @recruitment.recruit_event_end
+        event.save
+        recruit_relation.update(event_id: event.id)
+      end
       redirect_to recruitment_path(@recruitment.id)
     else
       render 'edit'
@@ -52,7 +70,6 @@ class Public::RecruitmentsController < ApplicationController
     @recruitment = Recruitment.new(recruitment_params)
     recruit_relation  = RecruitRelation.find_by(id: params[:recruit_relation])
     if @recruitment.save
-   
       recruit_relation.recruitment_id = @recruitment.id
      with_event = params[:with_event]
       if with_event == "true"
@@ -69,7 +86,9 @@ class Public::RecruitmentsController < ApplicationController
         recruit_relation.update(recruitment_id: @recruitment.id )
         redirect_to recruitment_path(@recruitment.id)
     else
-      render 'new'
+      redirect_to request.referer
+      flash[:notice] = "全ての項目を正しく入力してください"
+      # render 'new'
     end
   end
 
