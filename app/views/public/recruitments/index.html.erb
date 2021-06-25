@@ -38,8 +38,11 @@
       <span class="scroll-list jscroll">
       <% @recruitments.each do |recruit| %>
         <%= link_to recruitment_path(recruit.id) do %>
-          <p class="title_strong">
-            <%= recruit.title %>
+          <p><spanp class="title_strong"><%= recruit.title %></span>
+          <% recruit_instrument = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: recruit.id))%>
+          <% if recruit_instrument.where(find_all: false).empty? %>
+          <span class="orange">&nbsp;&nbsp;Found all members!</span>
+          <% end %>
           </p>
           <div class="index_event_contain">
             <div class="index_title">

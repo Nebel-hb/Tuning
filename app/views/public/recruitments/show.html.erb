@@ -30,11 +30,15 @@
           <% end %>
         <% end %>
       <% end %>
-      <% unless @find_all.nil? %>
+      <% unless @find_all.empty? %>
           <p><a href="#info" class="info"><span class="green">募集中楽器</span></a></p>
       <% end %>
     <% end %>
-
+    <% unless @recruit_relation.event_id.nil? %>
+    <p>
+      <%= link_to  event_path(@recruit_relation.event_id) do %>Event情報<% end %>
+    </p>
+    <% end %>
   </div>
   <div class="recruit-show-contain">
     <div class="index_title">
@@ -62,7 +66,7 @@
       </p>
       <span class="orange">
         <% if  @recruitment.recruit_end > Time.now %>
-          <% if @find_all.nil? %>
+          <% if @find_all.empty? %>
             この募集のメンバーは揃いました。
           <% end %>
         <% else %>

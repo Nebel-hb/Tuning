@@ -20,13 +20,15 @@ class Public::RecruitUsersController < ApplicationController
 
   def index
     @recruit_users = RecruitUser.all
+    # @recruit_users = RecruitUser.page(params[:page]).per(5)
     @recruitment = params[:recruitment].to_i
     @user_room = UserRoom.new
     @user_rooms = UserRoom.all
     @room = Room.new
     @rooms = Room.where(user_id: current_user.id)
     @users_room = Room.where(recruitment_id: @recruitment)
-
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment).id).pluck(:instrument_id)
+    @instruments = Instrument.where(id: @recruit_instruments)
   end
 
   def destroy
@@ -37,19 +39,21 @@ class Public::RecruitUsersController < ApplicationController
 
   def update
     @recruit = RecruitUser.find(params[:id])
-    if @recruit_user = @recruit.update(recruit_user_params)
-    thank_you_comment = ThankYouComment.find_by(recruitment_id: @recruit.recruitment_id, user_id: @recruit.user_id)
-    p thank_you_comment
-    # thank_you_comment.join = 1
-    p thank_you_comment
-    # thank_you_comment.update(thank_you_comment_params)
-    redirect_to request.referer
+    @recruit_user = @recruit.update(recruit_user_params)
+   
+    instrument = RecruitInstrument.find_by(instrument_id: @recruit.instrument_id, recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruit.recruitment_id).id)
+    recruit_instrument = instrument.finded_people.to_i + 1
+    instrument.update(finded_people: recruit_instrument)
+    if instrument.need_people == instrument.finded_people
+      instrument.update(find_all: true)
     end
+
+    redirect_to request.referer
   end
 
  private
   def recruit_user_params
-    params.require(:recruit_user).permit( :recruitment_id, :join, :recruit_comment)
+    params.require(:recruit_user).permit( :recruitment_id, :join, :recruit_comment, :instrument_id)
   end
   def room_params
     params.require(:room).permit(:room_name, :user_id, :recruitment_id)
@@ -59,5 +63,11 @@ class Public::RecruitUsersController < ApplicationController
   end
   def thank_you_comment_params
     params.permit(:room_id, :user_id)
+  end
+  def recruitment_params
+    params.permit(:recruitment)
+  end
+  def recruit_instrument_params
+    params.permit(:recruit_instrument)
   end
 end

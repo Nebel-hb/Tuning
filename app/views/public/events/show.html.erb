@@ -6,89 +6,79 @@
 </div>
 
 <div class="show-contain">
-          <div class="show-image">
-          <%= attachment_image_tag @event, :event_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
-          
-    
-    <span class="info-list">
-      <a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
-       コメント投稿
-      </a>
-    </span></p>
-           <p> タグ
-            <% @event_tags.each do |tag| %>
-            <p>
-              <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
-              <%= "(#{tag.events.count})" %>
-          　</p>
-          
-          　<% end %>
-          </p>
-           </div>
-        <div class="show-item">
-            
-            <p>投稿者：
-              <%= @event.user.name %>
-            </p>
-            <p>
-              <%= @event.area.area_name %>
-            </p>
-            <p>
-              <%= l @event.start %>
-           </p>
-            <p>
-              <%= l @event.end %>
-           </p>
-            <p>
-              <%= @event.event_introduction %>
-            </p>
-
+  <div class="show-image">
+  <%= attachment_image_tag @event, :event_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
+  <% unless @recruit_relation.nil? %>
+    <p>
+      <%= link_to  recruitment_path(@recruit_relation.recruitment_id), class: "gray" do %>募集情報<% end %>
+    </p>
+    <% end %>
+  <p class="info-list">
+    <a href="#info-1" class="info gray">
+     コメント投稿
+    </a>
+  </p>
+    <p class="gray"> タグ</p>
+    <% @event_tags.each do |tag| %>
+    <p>
+      <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+      <%= "(#{tag.events.count})" %>
+  　</p>
+  　<% end %>
+  </div>
+  <div class="show-item">
+    <p class="green">募集者</p>
+    <p><%= @event.user.name %>
+    </p>
+    <p><%= @event.area.area_name %>
+    </p>
+    <p class="green">開催期間</p>
+    <p>
+      <%= l @event.start %>〜
+   </p>
+    <p>
+      <%= l @event.end %>
+   </p>
+    <p class="mb10">
+      <%= @event.event_introduction %>
+    </p>
 
     <% if @event.user == current_user %>
-    <td>
-      <%= link_to edit_event_path(@event.id), class: "gray" do %>編集<% end %>
-    </td>
-    <td>
-      <%= link_to  event_path(@event.id), remote: true, method: :delete , class: "gray" do %>イベントの削除<% end %>
-    </td>
-  <% end %>
+      <p>
+        <%= link_to edit_event_path(@event.id), class: "gray" do %>編集<% end %>
+        <%= link_to  event_path(@event.id), remote: true, method: :delete , class: "gray" do %>削除<% end %>
+      </p>
+    <% end %>
+  </div>
 
-
-        </div>
-
-
-
-    
-    
-    
-    <div class="chat-contain">
-      <span class="gray">コメント<%= @event.comments.count %>件</span>
-      <div class="chat_container">
-        <div class="chat_contents scroll" id="scroll">
+  <div class="show-item">
+    <span class="gray">コメント<%= @event.comments.count %>件</span>
+    <div class="chat_container">
+      <div class="chat_contents scroll" id="scroll">
       <% @event.comments.each do |comment| %>
         <p class="mt10"><%= comment.comment %></p>
         <%= comment.user.name %>
-        <span class="green"><%= l comment.created_at %></span>
+        <span class="green"><%= comment.created_at.strftime("%m/ %d %H:%M") %></span>
         <% if comment.user == current_user %>
           <%= link_to "削除", event_comment_path(comment.event, comment), method: :delete, class: "gray" %>
         <% end %>
       <% end %>
       </div>
     </div>
-  </div><!--#roon-contain-->
-
   </div>
-     
-      
-      <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
+</div>
+
+<section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
   <div class="new-comment">
+    <div class="new-comment-item">
 
-    <%= form_with(model:[@event, @comment], local: true) do |f| %>
-      <%= f.text_area :comment, placeholder: "コメントをここに", class: "comment-field" %>
-      <%= f.hidden_field :user_id, value:current_user.id %>
-      <%= f.hidden_field :event_id, value:@event.id %>
+      <%= form_with(model:[@event, @comment], local: true) do |f| %>
+        <%= f.text_area :comment, placeholder: "コメントをここに", class: "comment-field black" %>
+        <%= f.hidden_field :user_id, value:current_user.id %>
+        <%= f.hidden_field :event_id, value:@event.id %>
 
-      <%= f.submit "送信する" ,id: "btn"%>
-    <% end %>
+        <%= f.submit "送信する" ,id: "btn"%>
+      <% end %>
+    </div>
   </div>
-    </section>
+</section>

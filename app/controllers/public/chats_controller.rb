@@ -13,7 +13,7 @@ class Public::ChatsController < ApplicationController
     room = @chat.room
     if @chat.save
       room.create_notification_chat!(current_user, @chat.id)
-      # redirect_to request.referer
+      redirect_to request.referer
       # render template: 'room/show'
 
     else

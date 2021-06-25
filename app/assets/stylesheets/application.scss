@@ -104,24 +104,16 @@ a{
 
 
 #title h2{
-  // height: 300px;
-  // width: 100%;
-  // background-color: $green;
-  // background-image: image-url('public/bg/flute.jpg');
-  // box-shadow: 0px 300px 200px 0px rgba(253, 238, 215, 0.2)inset;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  // background-blend-mode: screen;
   animation: bg-color 60s infinite;
    -webkit-background-clip: text;//テキストでくり抜く
   -webkit-text-fill-color: transparent;//くり抜いた部分は背景を表示
 }
 
 #title{
-  // line-height: 300px;
-  // text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 

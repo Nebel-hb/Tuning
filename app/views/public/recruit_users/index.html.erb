@@ -28,33 +28,44 @@
   </div>
 
   <div class="users_index">
+    <span class="scroll-list jscroll">
     <% @recruit_users.each do |recruit_user| %>
     <div class="recruit-user-item">
       <% if recruit_user.recruitment_id == @recruitment && recruit_user.join != 3 %>
-        
-          <p>名前：
-            <%= link_to user_path(recruit_user.user_id) do %><span class="strong"><%= recruit_user.user.name %></span><% end %>
+
+          <p><%= link_to user_path(recruit_user.user_id) do %><span class="strong"><%= recruit_user.user.name %></span><% end %>
           </p>
-          <p>申請コメント：
-            <%= recruit_user.recruit_comment %>
+          <div class="orchestra-comment">
+          <p class="orchestra-item"><span class = "gray">応募楽器：</span>
+          <%= (Instrument.find_by(id: recruit_user.instrument_id)).instrument_name %></p>
+          <p class="orchestra-item"><span class = "gray">メイン楽器：</span>
+          <%= (Instrument.find_by(id: recruit_user.user.instrument_id)).instrument_name %></p>
+          </div>
+          <p>申請コメント</p>
+          <p class="mb10"><%= recruit_user.recruit_comment %>
           </p>
           <% if recruit_user.join == 1  %>
-            <p>協力してもらいますか？（断ると申請者情報は非表示になります。）</p>
+            <p class="gray">協力してもらいますか？</p>
             <%= form_with model: recruit_user, local: true do |f| %>
               <div class="sel sel--black-panther">
               <%= f.select :join ,[["確認中",1], ["参加",2], ["断る",3]] %>
               </div>
+
+              <div class="sel sel--black-panther ">
+                <%= f.collection_select :instrument_id, @instruments, :id, :instrument_name, prompt: "選択", required: "required" %>
+
+              </div>
             　<%= f.hidden_field :recruit_comment %>
             　<%= f.hidden_field :recruitment %>
-              <%= f.submit "更新", class: "btn-size", id: "btn" %>
+              <%= f.submit "更新", class: "btn-size", id: "btn" , data: { confirm: "相手に通知してよろしいですか？（断ると申請者情報は非表示になります。）"}%>
           　<% end %>
-          
+
 
           <% elsif recruit_user.join == 2  %>
 
-          <div class="invitation-room">
-            <div class="invited-room">
-              <h3>招待済みトークルーム</h3>
+          <div class="orchestra-comment">
+            <div class="orchestra-item">
+              <p class="gray">招待済みトークルーム</p>
               <% @user_rooms.each do |user_room| %>
                 <% if user_room.room.recruitment_id == @recruitment %>
                   <% if user_room.user_id == recruit_user.user_id %>
@@ -69,8 +80,8 @@
             <!--<p>許可済み</p>-->
             </div>
 
-            <div class="join-room">
-              <h3>トークルームに招待する</h3>
+            <div class="orchestra-item">
+              <p class="gray">トークルームに招待する</p>
               <%= form_with model: @user_room, url: user_rooms_path do |f| %>
                 <div class="sel sel--black-panther">
                   <%= f.collection_select :room_id, @users_room.where.not(id: UserRoom.where(user_id: recruit_user.user_id ).pluck(:room_id)) , :id, :room_name, include_blank: "選択して下さい" %>
@@ -80,11 +91,13 @@
               <% end %>
             </div>
 
-      </div>
+          </div>
           <% end %>
         <% end %>
       </div>
     <% end %>
+    <!--%= paginate @recruit_users %>-->
+    </span>
   </div>
 </div>
 

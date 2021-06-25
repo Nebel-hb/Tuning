@@ -32,8 +32,8 @@ class Public::RecruitmentsController < ApplicationController
     @recruit_user = RecruitUser.where(recruitment_id: @recruitment.id )
     @count = RecruitUser.where(recruitment_id: @recruitment.id , join: 1).count
     @recruitment_user = RecruitUser.find_by(recruitment_id: @recruitment.id, user_id: current_user.id)
-    
-    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment.id))
+    @recruit_relation = RecruitRelation.find_by(recruitment_id: @recruitment.id)
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation)
     @find_all = @recruit_instruments.where(find_all: false)
   end
 
@@ -102,6 +102,8 @@ class Public::RecruitmentsController < ApplicationController
     @recruitment = Recruitment.find(params[:id])
     @recruit_user = RecruitUser.new
     @thank_you_comment = ThankYouComment.new
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment).id).pluck(:instrument_id)
+    @instruments = Instrument.where(id: @recruit_instruments)
   end
 
 private
@@ -109,7 +111,7 @@ private
     params.require(:recruitment).permit(:title, :area_id, :user_id, :recruit_introduction, :recruit_start, :recruit_end,:recruit_event_start, :recruit_event_end, :instrument_id)
   end
   def recruit_relation_params
-    params.require(:recruit_relation)
+    # params.require(:recruit_relation)
     params.permit(:recruit_relation)
   end
 

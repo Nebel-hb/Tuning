@@ -172,6 +172,9 @@ input  {
   width: 136px;
 
 }
-  .new-comment{
-    margin-bottom: 20px;
-  }
+.new-comment{
+  display: flex;
+    .new-comment-item{
+      margin: 20px auto;
+    }
+}
