@@ -1,0 +1,108 @@
+
+  <div class="index_contain">
+    <div class="user_sort">
+      <p class="mb10"><a href="#info" class="modal-open"><span class="green">募集人数の追加</span></a></p>
+      <p><%= link_to  "全削除", recruit_instruments_destroy_all_path(recruit_relation: @recruit_relation.id), method: :delete  %></p>
+
+      <% recruit_instruments.each do |recruit_instrument| %>
+        <p>
+          <%= recruit_instrument.instrument.instrument_name %>
+        </p>
+        <p>
+          <%= recruit_instrument.need_people%><%= "名" %></br>
+        </p>
+        <p>
+          <!--！！！-->
+          <%= link_to "編集", recruit_instrument_path(recruit_instrument.id) %>
+          <%= link_to "削除", recruit_instrument_path(recruit_instrument.id), remote: true, method: :delete %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="users_index">
+      <%= form_with(model: recruitment, local: true) do |f| %>
+      <div class="form-contain">
+        <div class="form">
+          <div class="field">
+            <%= f.label :title, 'タイトル' %><br />
+            <%= f.text_field :title %>
+          </div>
+
+          <div class="field">
+            <%= f.label :area_id, '地域' %><br />
+            <span class=" sel">
+              <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", placeholder: " "%>
+            </span>
+          </div>
+
+          <div class="field">
+            <%= f.label :recruit_introduction, '説明文' %><br />
+            <%= f.text_area :recruit_introduction %>
+          </div>
+
+        </div>
+        <div class="form">
+          <div class="field">
+            <%= f.label :募集開始日時, class: 'control-label' %>
+            <%= f.datetime_field :recruit_start, class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :募集終了日時, class: 'control-label' %>
+            <%= f.datetime_field :recruit_end, class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :本番開始日時, class: 'control-label' %>
+            <%= f.datetime_field :recruit_event_start, class: 'form-control' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :本番終了日時, class: 'control-label' %>
+            <%= f.datetime_field :recruit_event_end, class: 'form-control' %>
+          </div>
+
+        </div>
+      </div>
+          <div class="actions">
+            <% if recruit_relation.event_id.blank? %>
+              <div class="pretty p-icon p-round p-pulse actions1" id="user_remember_me">
+                <%= check_box_tag :with_event, true %>
+                <div class="state p-success">
+                  <i class="icon mdi mdi-check"></i>
+             　　   <%= f.label "イベントにも登録しますか？"  %>
+                </div>
+              </div>
+            <% end %>
+
+            <%= f.hidden_field :user_id, value:current_user.id %>
+            <%= hidden_field_tag :recruit_relation,  recruit_relation.id %>
+            <%= f.hidden_field :recruit_relation_id, value: recruit_relation.id %>
+            <%= button_tag :method => :get, :class => "btn-size", id: "btn" do %>
+              <p>確定</p>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+
+
+<section id="info" class="hide-area">
+<h3>募集する楽器と人数を追加して下さい</h3>
+
+  <%= form_with url: recruit_instruments_path , local: true do |f| %>
+    <div class="form-contain">
+      <div class="field">
+        <%= f.label :instrument_id, '楽器' %><br />
+        <span class=" sel">
+        <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "選択", required: "required"%>
+        </span>
+      </div>
+      <div class="field">
+        <%= f.label :need_people, '募集人数' %>
+　      <%= f.text_field :need_people, placeholder: "半角数字を入力", class: "add_need_people" %>
+      </div>
+        <%= f.hidden_field :recruit_relation_id, value: recruit_relation.id %>
+        <%= f.submit "追加", id: "btn", class: "btn-size btn-green"%>
+    </div>
+  <% end %>
+</section>

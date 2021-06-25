@@ -1,32 +1,35 @@
-<% events.each do |event| %>
-        <%= link_to event_path(event.id) ,class: "event_title_a" do %>
-          <div class= "index_image_box">
-            <%= attachment_image_tag event, :event_image, format: 'jpeg',class: "index_image", fallback: "public/image/no_image.png" %>
-          </div>
-          <p class="title_strong">
-            <%= event.title %>
+<span class="scroll-list jscroll">
+  <% events.each do |event| %>
+    <%= link_to event_path(event.id) ,class: "event_title_a" do %>
+      <div class= "index_image_box">
+        <%= attachment_image_tag event, :event_image, format: 'jpeg',class: "index_image", fallback: "public/image/no_image.png" %>
+      </div>
+      <p class="title_strong">
+        <%= event.title %>
+      </p>
+      <% end %>
+      <div class="index_event_contain">
+        <div class="index_title">
+         <p class="green">募集期間</p>
+         <p><%= event.start.strftime("%m月 %d日") %>〜
+            <%= event.end.strftime("%m月 %d日") %></p>
+          <p class="green">投稿者</p>
+          <p><%= event.user.name %></p>
+          <p>コメント<%= event.comments.count %>件</p>
+        </div>
+        <div class="index_item">
+          <p><%= event.area.area_name %></p>
+          <p><%= truncate(event.event_introduction, length:15) %></p>
+          <p><span class="green">タグ</span>
+            <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
+            <% t.each do |t| %>
+              <%= link_to  tag_event_search_path(tag_id: t.id) do %>
+                <%= t.tag_name %>
+              <% end %>
+          　<% end %>
           </p>
-          <% end %>
-          <div class="index_event_contain">
-            <div class="index_title">
-             <p class="green">募集期間</p>
-             <p><%= event.start.strftime("%m月 %d日") %>〜
-                <%= event.end.strftime("%m月 %d日") %></p>
-              <p class="green">投稿者</p>
-              <p><%= event.user.name %></p>
-              <p>コメント<%= event.comments.count %>件</p>
-            </div>
-            <div class="index_item">
-              <p><%= event.area.area_name %></p>
-              <p><%= truncate(event.event_introduction, length:15) %></p>
-              <p><span class="green">タグ</span>
-                <% t = Tag.where(id: EventTag.where(event_id: event.id).pluck(:tag_id)) %>
-                <% t.each do |t| %>
-                  <%= link_to  tag_event_search_path(tag_id: t.id) do %>
-                    <%= t.tag_name %>
-                  <% end %>
-              　<% end %>
-              </p>
-            </div>
-          </div>
-        <% end %>
+        </div>
+      </div>
+    <% end %>
+  <%= paginate events %>
+</span>

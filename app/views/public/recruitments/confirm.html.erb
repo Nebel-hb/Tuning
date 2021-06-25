@@ -1,38 +1,50 @@
 <div id="title">
-    <h2>応募する</h2>
+    <h2><%= @recruitment.title %></h2><span>に応募する</span>
   </div>
 
-   <div class="confirm-contain">
-    <div class="confirm-item">
-      <div class="confirm-box">
-        <h3 class="green">
-          <%= @recruitment.title %>
-        </h3>
-        <p>
-          地域：<%= @recruitment.area.area_name %>
-        </p>
-        <p>
-          募集者<%= @recruitment.user.name %>
-        </p>
-        <p>
-          <%= @recruitment.recruit_introduction %>
-        </p>
-        <p>
-          <%= l @recruitment.recruit_start %>~
-        </p>
-        <p>
-          <%= l @recruitment.recruit_end %>
-        </p>
+   <div class="index_contain">
+     <div class="recruit-show-contain">
+    <div class="index_title">
 
-        <div>
+      <p class="green">募集期間</p>
+      <p><%= l @recruitment.recruit_start %>〜
+      </p>
+      <p>
+        <%= l @recruitment.recruit_end %>
+      </p>
+      <p class="green">開催期間</p>
+      <p>
+        <%= l @recruitment.recruit_start %>〜
+        </p>
+      <p>
+        <%= l @recruitment.recruit_event_end %>
+      </p>
+
+    </div>
+    <div class="index_item">
+      <p class="green">募集者</p>
+      <p><%= @recruitment.user.name %>
+      </p>
+      <p><%= @recruitment.area.area_name %>
+      </p>
+      <p><%= @recruitment.recruit_introduction %>
+      </p>
+    </div>
+  </div>
+
+    <div class="user_sort">
           <%= form_with(model:[ @recruit_user], local: true) do |f| %>
+          <p class="green">希望楽器</p>
+              <div class="sel sel--black-panther ">
+              <!--%= select_tag :instrument, options_for_select( @instrument, :id, :instrument_name), prompt: "選択", required: "required"%>-->
+              <%= f.collection_select :instrument_id, @instruments, :id, :instrument_name, prompt: "選択", required: "required" %>
+              </div>
             <div class="field">
               <%= f.text_area :recruit_comment, placeholder: "申請コメント"%>
             </div>
             <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
              <%= f.submit "送信" , id: "btn", class: "comment_btn" %>
           <% end %>
-        </div>
+
       </div>
-    </div>
-  </div>
+</div>

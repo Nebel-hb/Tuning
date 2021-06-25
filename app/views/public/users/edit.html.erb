@@ -17,14 +17,14 @@
         </div>
 
         <div class="field">
-          <%= f.label :area_id, 'area' %><br />
+          <%= f.label :area_id, '地域' %><br />
           <span class=" sel">
             <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", class: 'page-title', placeholder: " "%>
           </span>
         </div>
 
         <div class="field">
-          <%= f.label :instrument_id, 'main instrument' %><br />
+          <%= f.label :instrument_id, 'メイン楽器' %><br />
           <span class="sel sel--black-panther">
             <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
           </span>
@@ -33,13 +33,13 @@
 
       <div class="form">
         <div class="field mb10">
-          <%= f.label :profile_image, 'ProfileImage', class: "mb10" %><br />
+          <%= f.label :profile_image, 'プロフィール写真', class: "mb10" %><br />
           <%= f.file_field :user_image, class: "image-field", style: "display: none" %>
           <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image" %>
         </div>
 
         <div class="field mb10">
-          <%= f.label :introduction, 'Profile', class: "mb10" %><br />
+          <%= f.label :introduction, 'プロフィール', class: "mb10" %><br />
           <%= f.text_area :introduction %>
         </div>
 

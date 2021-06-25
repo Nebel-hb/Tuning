@@ -25,8 +25,8 @@
 
 
         <% if current_user.role == "orchestra" %>
-          <%= form_with model: @recruitment do |f| %>
-            <%= f.hidden_field :user_id, value:current_user.id %>
+          <%= form_with model: @recruit_relation do |f| %>
+            <!--%= f.hidden_field :user_id, value:current_user.id %>-->
             <%= f.submit "新規募集作成" ,class: "bgc-non"%>
           <% end %>
         <% end %>
@@ -34,11 +34,15 @@
     </div>
 
 
-    <div class="users_index">
+    <div class="users_index" >
+      <span class="scroll-list jscroll">
       <% @recruitments.each do |recruit| %>
         <%= link_to recruitment_path(recruit.id) do %>
-          <p class="title_strong">
-            <%= recruit.title %>
+          <p><spanp class="title_strong"><%= recruit.title %></span>
+          <% recruit_instrument = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: recruit.id))%>
+          <% if recruit_instrument.where(find_all: false).empty? %>
+          <span class="orange">&nbsp;&nbsp;Found all members!</span>
+          <% end %>
           </p>
           <div class="index_event_contain">
             <div class="index_title">
@@ -65,6 +69,8 @@
           </div>
         <% end %>
       <% end %>
+      <%= paginate @recruitments %>
+      </span>
     </div>
   </div>
 
@@ -128,34 +134,9 @@
       <div class="sel sel--black-panther">
         <%= select_tag :search_past , options_for_select([['開催予定'], ['全てのイベント'],['過去のイベント']]) %>
       </div>
-      <!--<span class="search_id"><p>id</p>-->
-      <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
-      <!--</span>-->
       <%= f.hidden_field :type, value: "", id: "type" %>
       <%= f.submit "" %>
-
-    <% end %>
-    </div>
+      <% end %>
     </div>
   </div>
-
-
-
-
-<!--% form_with url: recruit_instruments_path do |f|%>-->
-
-<!--  <span class="search_other">-->
-<!--  %= f.label :instrument_id,  "楽器"%>-->
-<!--  %= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", placeholder: " "%>-->
-<!--  </span>-->
-
-<!--  %= select_tag :search_past , options_for_select([['開催予定のイベント'], ['全てのイベント'],['過去のイベント']]) %>-->
-
-<!--  %= f.submit "search" %>-->
-<!--% end %>-->
-
-
-
-
-<!--    </div>-->
-<!--  </div>-->
+  
