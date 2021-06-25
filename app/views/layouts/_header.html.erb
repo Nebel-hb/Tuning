@@ -8,7 +8,7 @@
         <ul>
           <li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %>
             <ul>
-              <li><%= link_to "thank you", thank_you_comments_path %></li>
+              <li><%= link_to "thank you", thank_you_comments_path(user: current_user) %></li>
               <li><%= link_to  (notifications_path) do %>通知
                 <% if unchecked_notifications.any? %>
                   <span class="orange"><%= unchecked_notifications.count %></span>件

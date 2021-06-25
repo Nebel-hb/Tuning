@@ -5,7 +5,7 @@
 <div class="user-show-contain">
 <div class="user-show-side">
 
-    <p><%= link_to "thank you", thank_you_comments_path %></p>
+    <p><%= link_to "thank you", thank_you_comments_path(user: @user) %></p>
  <% if @user == current_user %>
     <p><%= link_to "トークルーム", rooms_path %></p>
     <!--通知-->
@@ -13,7 +13,7 @@
     <% unless @user.email == "guest@music.com" %>
     <p><%= link_to "編集", edit_user_path(@user.id) %>
     <% end %>
-    <% unless Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "orchestra" %>
+    <% if Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "general" %>
       <p><%= link_to "公式楽団申請", new_orchestra_path %></p>
     <% end %>
   <% end %>
@@ -65,19 +65,13 @@
       </a>
     </div>
     <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
-
+    <div class="orchestra-comment">
+    <div class="orchestra-item">
       <h3>参加履歴</h3>
       <% @recruit_users.each do |recruit_user| %>
         <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
           <% if recruit_user.join == 2 %>
-            <% if  (recruit.recruit_start..recruit.recruit_end).cover? Time.now %>
-              <div>
-                <tr>
-                  <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
-                </tr>
-              </div>
-            <% else %>
-              <h2>参加予定</h2>
+            <% if  recruit.recruit_event_start < Time.now %>
               <div>
                 <tr>
                   <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
@@ -87,7 +81,24 @@
           <% end %>
         <% end %>
       <% end %>
-
+            </div>
+      <div class="orchestra-item">
+        <h3>参加予定</h3>
+        <% @recruit_users.each do |recruit_user| %>
+          <% Recruitment.where(id: recruit_user.recruitment_id).each do |recruit| %>
+            <% if recruit_user.join == 2 %>
+              <% if  recruit.recruit_event_start > Time.now %>
+                <div>
+                  <tr>
+                    <%= render partial: "recruit_index", locals:{ recruit: recruit } %>
+                  </tr>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
     </section>
   <% end %>
   </div>

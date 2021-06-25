@@ -1,16 +1,31 @@
- <h1>thank you comment</h1>
+ <div id="title">
+    <h2>thank youコメント</h2>
+  </div>
+  <h3 class="white"><span class="orange"><%= @thank_you_comments.count %></span> thanks</h3>
   <div class="notification-contain">
   <% @thank_you_comments.each do |comment| %>
-    <div class="thanks-comment">
-      <tr>
-        <td><%= link_to recruitment_path(comment.recruitment_id) do %>
-          <%= Recruitment.find_by(id: comment.recruitment_id).title %>
+    <div class="mb10">
+      <p>
+        <%= comment.thanks_comment %>
+      </p>
+      <p class="green">
+        <%= link_to recruitment_path(comment.recruitment_id), class: "green" do %>
+          from：<%= Recruitment.find_by(id: comment.recruitment_id).title %>
           <% end %>
-        </td>
-        <td><span class="green">からのコメント：</span>
-          <%= comment.thanks_comment %>
-        </td>
-      </tr>
+        <%= comment.created_at.strftime("%Y / %m / %d") %>
+        <% if comment.join == true %>
+          <% if Recruitment.find_by(id: comment.recruitment_id).recruit_event_start > Time.now %>
+            参加予定
+          <% elsif Recruitment.find_by(id: comment.recruitment_id).recruit_event_end < Time.now %>
+            参加
+          <% else %>
+            本番期間中
+          <% end %>
+        <% else %>
+          不参加
+        <% end %>
+      </p>
+    <hr>
     </div>
   <% end %>
   </div>

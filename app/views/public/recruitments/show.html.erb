@@ -81,13 +81,12 @@
 
 <section id="info" class="hide-area">
 <h3>募集中楽器</h3>
-
-      <% @recruit_instruments.each do |recruit_instrument| %>
-        <% if recruit_instrument.find_all == false %>
-        <p>
-          <%= recruit_instrument.instrument.instrument_name %>
-          <%= recruit_instrument.need_people.to_i - recruit_instrument.finded_people.to_i %><%= "名" %></br>
-        </p>
-        <% end %>
-      <% end %>
+  <% @recruit_instruments.each do |recruit_instrument| %>
+    <% if recruit_instrument.find_all == false %>
+    <p>
+      <%= recruit_instrument.instrument.instrument_name %>
+      <%= recruit_instrument.need_people.to_i - recruit_instrument.finded_people.to_i %><%= "名" %></br>
+    </p>
+    <% end %>
+  <% end %>
 </section>

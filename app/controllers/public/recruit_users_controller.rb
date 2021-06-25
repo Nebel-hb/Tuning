@@ -21,14 +21,17 @@ class Public::RecruitUsersController < ApplicationController
   def index
     @recruit_users = RecruitUser.all
     # @recruit_users = RecruitUser.page(params[:page]).per(5)
-    @recruitment = params[:recruitment].to_i
+    @recruitment = Recruitment.find_by(id: params[:recruitment].to_i)
     @user_room = UserRoom.new
     @user_rooms = UserRoom.all
     @room = Room.new
     @rooms = Room.where(user_id: current_user.id)
-    @users_room = Room.where(recruitment_id: @recruitment)
-    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment).id).pluck(:instrument_id)
+    @users_room = Room.where(recruitment_id: @recruitment.id)
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment.id).id).pluck(:instrument_id)
     @instruments = Instrument.where(id: @recruit_instruments)
+    recruit_users = RecruitUser.where(recruitment_id: @recruitment)
+    @recruit_user = User.where(id: recruit_users.pluck(:user_id))
+    @thank_you_comment = ThankYouComment.new
   end
 
   def destroy
@@ -40,10 +43,13 @@ class Public::RecruitUsersController < ApplicationController
   def update
     @recruit = RecruitUser.find(params[:id])
     @recruit_user = @recruit.update(recruit_user_params)
-   
-    instrument = RecruitInstrument.find_by(instrument_id: @recruit.instrument_id, recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruit.recruitment_id).id)
+    recruitment = @recruit.recruitment_id
+    instrument = RecruitInstrument.find_by(instrument_id: @recruit.instrument_id, recruit_relation_id: RecruitRelation.find_by(recruitment_id: recruitment).id)
     recruit_instrument = instrument.finded_people.to_i + 1
     instrument.update(finded_people: recruit_instrument)
+    unless  ThankYouComment.where(recruitment_id: recruitment, user_id: @recruit.user_id).nil?
+      ThankYouComment.where(recruitment_id: recruitment, user_id: @recruit.user_id).update(join: true)
+    end
     if instrument.need_people == instrument.finded_people
       instrument.update(find_all: true)
     end

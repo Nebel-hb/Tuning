@@ -1,13 +1,13 @@
 <div id="title">
-    <h2>応募者一覧</h2>
-  </div>
+  <h2>応募者一覧</h2>
+</div>
 
 <div class="index_contain">
 
   <div class="user_sort">
-    <h3><%= link_to  thank_you_comment_thanks_path(@recruitment) do %>
-      thank youコメント
-    <% end %></h3>
+    <!--<h3>%= link_to  thank_you_comment_thanks_path(@recruitment) do %>-->
+      <h3><a href="#info" class="info">thank youコメント</a></p>
+    <!--% end %></h3>-->
     <h3>トークルーム作成</h3>
     <%= form_with model: @room do |f| %>
       <%= f.text_field :room_name,placeholder: "ルーム名" %>
@@ -18,7 +18,7 @@
     <% end %>
     <h3>トークルーム一覧</h3>
     <% @rooms.each do |room| %>
-      <% if room.recruitment_id == @recruitment %>
+      <% if room.recruitment_id == @recruitment.id %>
         <div><%= link_to room_path(room.id) do %>
           <%= room.room_name %>
         <% end %>
@@ -31,7 +31,7 @@
     <span class="scroll-list jscroll">
     <% @recruit_users.each do |recruit_user| %>
     <div class="recruit-user-item">
-      <% if recruit_user.recruitment_id == @recruitment && recruit_user.join != 3 %>
+      <% if recruit_user.recruitment_id == @recruitment.id && recruit_user.join != 3 %>
 
           <p><%= link_to user_path(recruit_user.user_id) do %><span class="strong"><%= recruit_user.user.name %></span><% end %>
           </p>
@@ -67,7 +67,7 @@
             <div class="orchestra-item">
               <p class="gray">招待済みトークルーム</p>
               <% @user_rooms.each do |user_room| %>
-                <% if user_room.room.recruitment_id == @recruitment %>
+                <% if user_room.room.recruitment_id == @recruitment.id %>
                   <% if user_room.user_id == recruit_user.user_id %>
                   <div>
                     <%= link_to room_path(user_room.room_id) do %>
@@ -101,3 +101,32 @@
   </div>
 </div>
 
+<section id="info" class="hide-area">
+  <div class="orchestra-comment">
+    <div class="users_index">
+      <p class="gray">
+        thank youコメントでは応募していただいた方に</br>
+        メッセージを送ることができます。</br>
+        このメッセージは受信者と公式楽団の方に公開されています。</br>
+        募集人数が集まらない時は他の方のthank youコメントを見て</br>
+        トークルームから誘ってみましょう。</br>
+      </p>
+    </div>
+    <div class="user_sort">
+    <%= form_with(model: @thank_you_comment, local: true) do |f| %>
+
+        <p class="gray">送信先</p>
+      <div class="sel sel--black-panther">
+        <%= f.collection_select :user_id,@recruit_user.all, :id, :name, prompt: "----", required: "required",  placeholder: " "%>
+      </div>
+
+      <div class="field">
+        <%= f.text_area :thanks_comment, placeholder: "thank youコメント", class: "comment-field black" %>
+      </div>
+
+      <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
+      <%= f.submit "送信" , id: "btn", class: "btn-size" %>
+    <% end %>
+    </div>
+  </div>
+</section>

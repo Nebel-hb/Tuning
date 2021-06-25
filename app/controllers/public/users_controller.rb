@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
     @users = User.all
     search_value = params[:q][:name_cont] if params[:q]
     if search_value =~  /^[0-9]+$/
-      
+
       params[:q][:name_cont] = ""
       params[:q][:id_eq] = search_value
     end
@@ -16,9 +16,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @recruitments = Recruitment.all
-    recruit_user = Recruitment.where(user_id: current_user.id)
+    recruit_user = Recruitment.where(user_id: @user.id)
     @recruit_user = RecruitUser.where(recruitment_id: recruit_user,join:1)
-    @recruit_users = RecruitUser.where(user_id: current_user.id)
+    @recruit_users = RecruitUser.where(user_id: @user.id)
     @recruit = RecruitUser.pluck(:recruitment_id)
     @user_rooms = UserRoom.all
 
