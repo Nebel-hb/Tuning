@@ -13,7 +13,6 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 
 //= require moment
 //= require fullcalendar
@@ -60,7 +59,7 @@ function FixedAnime() {
 }
 
 
-$(document).on('turbolinks:load', function () {
+$(function () {
 // 画面をスクロールをしたら動かしたい場合の記述
 $(window).scroll(function () {
 	FixedAnime();/* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
@@ -72,7 +71,7 @@ $(window).scroll(function () {
 
 //. テキストを含む一般的なモーダル
 
-$(document).on('turbolinks:load', function () {
+$(function () {
 $(".info").modaal({
 	overlay_close:true,//モーダル背景クリック時に閉じるか
 	before_open:function(){// モーダルが開く前に行う動作
@@ -122,7 +121,7 @@ $(".iframe-open").modaal({
 });
 
 
-$(document).on('turbolinks:load', function () {
+$(function () {
 var access = $.cookie('access')
 	if(!access){
 		flag = true;
@@ -132,7 +131,7 @@ var access = $.cookie('access')
 	}
 	});
 
-$(document).on('turbolinks:load', function () {
+$(function () {
 	//モーダル表示
 	$(".modal-open").modaal({
 	// start_open:flag, // ページロード時に表示するか
@@ -149,7 +148,7 @@ $(document).on('turbolinks:load', function () {
 
 // ====================
 
-$(window).on('scroll', function() {
+$(function() {
   scrollHeight = $(document).height();
   scrollPosition = $(window).height() + $(window).scrollTop();
   if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {

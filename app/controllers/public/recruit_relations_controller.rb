@@ -3,6 +3,8 @@ class Public::RecruitRelationsController < ApplicationController
   def create
       @recruit_relation = RecruitRelation.new
       @recruit_relation.user_id = current_user.id
+      puts 111111111111
+      p @recruit_relation
     if @recruit_relation.save
        redirect_to new_recruitment_path(recruit_relation: @recruit_relation.id)
     end

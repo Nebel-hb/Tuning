@@ -15,7 +15,7 @@ $('#search-text').focus();//テキスト入力のinputにフォーカス
 });
 
 
-$(document).on('turbolinks:load', function () {
+$(function () {
     $('.search_id').val('')
     $('.search_users').val('')
     $('.search_id').css("display","none")

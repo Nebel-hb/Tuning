@@ -7,7 +7,7 @@ $('#calendar').fullCalendar({});
 //カレンダー
 
     // 画面遷移を検知
-    $(document).on('turbolinks:load', function () {
+    $(function () {
         if ($('#calendar').length) {
 
             function Calendar() {
@@ -24,7 +24,7 @@ $('#calendar').fullCalendar({});
             $(document).on('turbolinks:before-cache', clearCalendar);
 
             //events: '/events.json', 以下に追加
-            
+
             $('#calendar').fullCalendar({
                 events: '/events.json',
                 //カレンダー上部を年月で表示させる
@@ -67,7 +67,7 @@ $('#calendar').fullCalendar({});
     });
 
 
-$(document).on('turbolinks:load', function () {
+$(function () {
     $('.search_title').val('')
     $('.search_user').val('')
     $('.search_other').val('')

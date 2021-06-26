@@ -2,7 +2,7 @@
 // // # All this logic will automatically be available in application.js.
 // // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on('turbolinks:load', function () {
+$(function () {
 $('#signup').click(function() {
   $('.box').css('transform', 'translateX(80%)');
   $('.signin').addClass('nodisplay');
@@ -10,7 +10,7 @@ $('#signup').click(function() {
 });
 });
 
-$(document).on('turbolinks:load', function () {
+$( function () {
 $('#signin').click(function() {
   $('.box').css('transform', 'translateX(0%)');
   $('.signup').addClass('nodisplay');
