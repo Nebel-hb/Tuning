@@ -1,23 +1,23 @@
 
-          <h2>Orchestras</h2>
-            <div class="orchestra-contain">
-              <p class="gray">新規申請  <%= @sum.count %>  件</p>
-
-            <% @orchestras.each do |orchestra| %>
-              <% if orchestra.user.role == "general" %>
-              <div class="orchestra-comment">
-
-                    <div class="orchestra-name">
-                  <p><%= link_to admin_user_path(orchestra.user_id) do %>
-                      <%= orchestra.user.name %></p>
-                  <% end %>
-                      </div>
-
-                  <div class="orchestra-comment-comment"><%= orchestra.application_comment %></div>
-
-             </div>
-            <% end %>
+  <h1 class="gray">公式楽団申請</h1>
+    <div class="orchestra-contain">
+      <p class="gray">新規申請  <%= @sum.count %>  件</p>
+      <div class="notification-contain">
+        <% @orchestras.each do |orchestra| %>
+          <% if orchestra.user.role == "general" %>
+            <div class="mb10">
+              <p>
+                <%= orchestra.application_comment %>
+              </p>
+              <p class="green"><%= link_to admin_user_path(orchestra.user_id) do %>
+                <%= orchestra.user.name %>
+                <% end %>
+                <%= orchestra.created_at.strftime("%m / %d  %H : %M") %>
+              </p>
+              <hr>
+            </div>
           <% end %>
-
+        <% end %>
+      </div>
     </div>
 

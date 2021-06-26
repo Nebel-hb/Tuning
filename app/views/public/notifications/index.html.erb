@@ -1,6 +1,7 @@
 
-<div class="notification-contain">
   <h3>通知一覧</h3>
+<div class="notification-contain">
+  <span class="scroll-list jscroll">
 
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
@@ -10,4 +11,5 @@
       <p>
     | 通知はありません</p>
     <% end %>
+  </span>
 </div>

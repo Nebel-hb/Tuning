@@ -13,8 +13,10 @@
     <% unless @user.email == "guest@music.com" %>
     <p><%= link_to "編集", edit_user_path(@user.id) %>
     <% end %>
-    <% if Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "general" %>
+    <% unless Orchestra.pluck(:user_id).include?(current_user.id)  %>
+      <% if current_user.role == "general" %>
       <p><%= link_to "公式楽団申請", new_orchestra_path %></p>
+      <% end %>
     <% end %>
   <% end %>
 
@@ -81,7 +83,7 @@
           <% end %>
         <% end %>
       <% end %>
-            </div>
+      </div>
       <div class="orchestra-item">
         <h3>参加予定</h3>
         <% @recruit_users.each do |recruit_user| %>

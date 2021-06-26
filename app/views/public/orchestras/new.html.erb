@@ -1,16 +1,21 @@
-<h1>公式オーケストラ申請</h1>
-<div class="confirm-contain">
-  <div class="confirm-box">
-  <p>申請が受理されると、演奏会への募集をかけ、チャットグループのルームを作りコミュニケーションが取れるようになります。</p>
-
-    <div class="new-comment">
+<h3>公式楽団申請</h3>
+  <div class="index_contain">
+    <div class="users_index">
+      <p class="gray">
+        申請が受理されると、演奏会への募集をかけトークルームを作り</br>
+        コミュニケーションが取れるようになります。</br>
+        他にも応募した人にthank youコメントを送れるようになり</br>
+        過去の他楽団からのコメントを確認することができます。</br>
+      </p>  
+    </div>
+    <div class="user_sort">
       <%= form_with(model: @orchestra, local: true) do |f| %>
       <div class="field">
         <%= f.text_area :application_comment, rows: '5',placeholder: "申請コメントをここに", class: "comment-field" %>
       </div>
       <%= f.hidden_field :user_id, value: current_user.id  %>
-      <%= f.submit "応募する" , id: "btn", class: "comment_btn" %>
+      <%= f.submit "申請" , id: "btn", class: "btn-size", data: { confirm: "申請後は取り消し、変更、再申請はできません。申請してよろしいですか？（受理されると通知があります。）"} %>
       <% end %>
     </div>
   </div>
-</div>
+
