@@ -17,17 +17,18 @@
   <body data-turbolinks="false">
     <div id="bg">
       <div id="main">
+      <span id="header">
+      <% if admin_signed_in? %>
+        <%= render "layouts/admin_header" %>
+      <% else %>
+        <%= render "layouts/header" %>
+      <% end %>
+      </span>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <% if admin_signed_in? %>
-      <%= render "layouts/admin_header" %>
-    <% else %>
-      <%= render "layouts/header" %>
-    <% end %>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+      <%= yield %>
+      
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
