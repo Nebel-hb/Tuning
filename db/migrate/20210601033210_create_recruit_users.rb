@@ -4,6 +4,7 @@ class CreateRecruitUsers < ActiveRecord::Migration[5.2]
 
       t.integer :user_id
       t.integer :recruitment_id
+      t.integer :instrument_id
       t.text :recruit_comment
       t.integer :join, default: 1
 

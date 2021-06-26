@@ -1,5 +1,5 @@
 class Public::RoomsController < ApplicationController
-
+before_action :authenticate_user!
   def index
     @user_rooms = UserRoom.all
   end
@@ -16,6 +16,7 @@ class Public::RoomsController < ApplicationController
     @notifications.where(room_id: @room, checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
+    
   end
 
 
@@ -37,9 +38,6 @@ class Public::RoomsController < ApplicationController
     end
   end
 
-
-  def destroy
-  end
 
   def search
     if params[:search].present?

@@ -1,7 +1,21 @@
-<h1>Public::Events#new</h1>
+<div id="title">
+  <h2>Event 作成</h2>
+</div>
 
 <h3> タグリスト</h3>
+
+    <section id="info-1" class="hide-area">
+<h3> タグリスト</h3>
   <% @tag_list.each do |list| %>
+    <% if list.events.count != 0 %>
+      <span>
+        <%= link_to "##{list.tag_name}", tag_event_search_path(tag_id: list.id) ,class: "black"%>
+        <%= "(#{list.events.count})" %>
+    　</span>
+　  <% end %>
+　<% end %>
+　</section>
+  <% @tag_list.first(5).each do |list| %>
     <% if list.events.count != 0 %>
       <span>
         <%= link_to "##{list.tag_name}", tag_event_search_path(tag_id: list.id) %>
@@ -9,6 +23,11 @@
     　</span>
 　  <% end %>
 　<% end %>
+　<span class="info-list">
+      <a href="#info-1" class="info green"><!--modaal用-->
+      全てのタグへ
+      </a>
+    </span>
 <hr>
 
 

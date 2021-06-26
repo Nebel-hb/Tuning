@@ -1,16 +1,14 @@
 
-  <p class="index_image_box">
-    <%= link_to recruitment_path(recruit.id), class: "green"  do %>
+  <p>
+    <%= link_to recruitment_path(recruit.id), class: "black"  do %>
       <%= recruit.title %>
     <% end %>
   </p>
-  <p  class="index_image_box">
+  <p>
     <%= recruit.area.area_name %>
   </p>
-  <p  class="index_contain_time">
+  <p>
     <%= recruit.recruit_start.strftime("%Y年 %m月 %d日") %>〜
-  </p>
-  <p  class="index_contain_time">
     <%= recruit.recruit_end.strftime("%Y年 %m月 %d日") %>
   </p>
 

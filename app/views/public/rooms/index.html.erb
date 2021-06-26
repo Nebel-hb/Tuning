@@ -1,8 +1,9 @@
+<div id="title">
+  <h2>トークルーム</h2>
+</div>
 
-<h1>トークルーム </h1>
-
-  <div class="room-index-contain">
-    <div class="room-box">
+  <div class="index_contain">
+    <div class="index_title">
        <h3>参加済みトークルーム </h3>
        <% @user_rooms.each do |user_room| %>
          <% if user_room.user_id == current_user.id %>
@@ -16,7 +17,7 @@
          <% end %>
        <% end %>
     </div>
-    <div class="room-box">
+    <div class="index_title">
      <h3>未参加のトークルーム </h3>
       <% @user_rooms.each do |user_room| %>
           <% if user_room.user_id == current_user.id %>

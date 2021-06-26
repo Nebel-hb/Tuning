@@ -24,6 +24,7 @@ $('#calendar').fullCalendar({});
             $(document).on('turbolinks:before-cache', clearCalendar);
 
             //events: '/events.json', 以下に追加
+            
             $('#calendar').fullCalendar({
                 events: '/events.json',
                 //カレンダー上部を年月で表示させる

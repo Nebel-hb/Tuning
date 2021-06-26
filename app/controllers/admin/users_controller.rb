@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @users = User.all
   end
@@ -9,7 +11,6 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-   
   end
 
   def update
@@ -23,6 +24,5 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
-
   end
 end

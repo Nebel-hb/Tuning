@@ -48,6 +48,7 @@ $(document).on('turbolinks:load', function () {
 
 
 /* ===== Logic for creating fake Select Boxes ===== */
+
 $(function(){
 $('.sel').each(function() {
   $(this).children('select').css('display', 'none');
@@ -134,33 +135,3 @@ $('.sel__box__options').click(function() {
 });
 });
 
-
-// 絞り込み
-
-
-
-// $(document).on('turbolinks:load', function () {
-//     $('.user_general').val('')
-//     $('.user_orchestra').val('')
-//     $('.user_general').css("display","")
-//     $('.user_orchestra').css("display","none")
-//     $('#user_index').change(function () {
-//         var selectedValue = $('#user_index').val();
-//         if (selectedValue == '奏者一覧') {
-//             $('.user_orchestra').val('')
-//             $('.user_general').val('')
-//             $('.user_orchestra').css("display","none")
-//             $('.user_general').css("display","")
-//         }else if (selectedValue == 'オーケストラ一覧') {
-//             $('.user_orchestra').val('')
-//             $('.user_general').val('')
-//             $('.user_orchestra').css("display","")
-//             $('.user_general').css("display","none")
-//         }else{
-//             $('.user_general').val('')
-//             $('.user_orchestra').val('')
-//             $('.user_general').css("display","none")
-//             $('.user_orchestra').css("display","none")
-//         }
-//     })
-// });

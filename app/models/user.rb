@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :orchestras
   has_many :recruit_users
   has_many :recruitments
+  has_many :recruit_relations, dependent: :destroy
   belongs_to :instrument, optional: true
   belongs_to :area, optional: true
 
@@ -64,6 +65,20 @@ class User < ApplicationRecord
         action: 'add_room'
       )
       notification.save if notification.valid?
+    end
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@music.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+      user.instrument_id = 2
+      user.area_id =  1
+      user.role =  1
+      user.introduction = 'Tuningに来て頂きありがとうございます。'
+      user.profile_image = 'public/bg/flute.jpg'
     end
   end
 

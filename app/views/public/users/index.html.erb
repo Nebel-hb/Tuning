@@ -17,8 +17,8 @@
       </div>
     </div>
 
-  <div class="users_index">
-      <span class="user_general" >
+  <div class="users_index ">
+      <span class="user_general scroll-list jscroll" >
         <% @search.each do |user| %>
           <% if user.role == "general" %>
             <div class="index_user_contain">
@@ -35,8 +35,9 @@
             </div>
           <% end %>
         <% end %>
+        <%= paginate @search %>
       </span>
-      <span class="user_orchestra" >
+      <span class="user_orchestra scroll-list jscroll" >
         <% @search.each do |user| %>
           <% if user.role == "orchestra" %>
             <div class="index_user_contain">
@@ -53,6 +54,7 @@
               </div>
           <% end %>
         <% end %>
+        <%= paginate @search %>
       </span>
     </div>
 

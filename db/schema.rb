@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_135536) do
+ActiveRecord::Schema.define(version: 2021_06_24_041206) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_135536) do
 
   create_table "recruit_instruments", force: :cascade do |t|
     t.integer "instrument_id"
-    t.integer "recruitment_id"
+    t.integer "recruit_relation_id"
     t.integer "need_people"
     t.integer "finded_people"
     t.boolean "find_all", default: false
@@ -99,9 +99,18 @@ ActiveRecord::Schema.define(version: 2021_06_12_135536) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recruit_relations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recruitment_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recruit_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "recruitment_id"
+    t.integer "instrument_id"
     t.text "recruit_comment"
     t.integer "join", default: 1
     t.datetime "created_at", null: false
@@ -111,7 +120,6 @@ ActiveRecord::Schema.define(version: 2021_06_12_135536) do
   create_table "recruitments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "area_id"
-    t.integer "instrument_id"
     t.string "title"
     t.text "recruit_introduction"
     t.datetime "recruit_start"

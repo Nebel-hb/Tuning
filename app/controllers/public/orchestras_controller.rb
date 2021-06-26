@@ -1,8 +1,10 @@
 class Public::OrchestrasController < ApplicationController
+  before_action :authenticate_user!
   def create
 
     @orchestra = Orchestra.new(orchestra_params)
     if @orchestra.save
+      flash[:notice] = "申請を行いました"
       redirect_to user_path(current_user.id)
     else
       flash[:notice] = "空欄の箇所を入力して下さい"

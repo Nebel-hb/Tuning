@@ -1,4 +1,5 @@
 class Public::ChatsController < ApplicationController
+before_action :authenticate_user!
   def index
     # @user = User.find(params[:id])
     @user_room = UserRoom.find(params[:id])
@@ -14,12 +15,14 @@ class Public::ChatsController < ApplicationController
     if @chat.save
       room.create_notification_chat!(current_user, @chat.id)
       redirect_to request.referer
+      # render template: 'room/show'
+
     else
       flash[:notice] = "空欄の箇所を入力して下さい"
       render'room/show'
     end
   end
-  
+
   private
     def chat_params
       params.require(:chat).permit(:message, :room_id)

@@ -1,4 +1,4 @@
-<span id="header">
+
   <nav>
     <ul>
       <% if user_signed_in? %>
@@ -8,13 +8,13 @@
         <ul>
           <li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %>
             <ul>
-              <li><%= link_to "thank you", thank_you_comments_path %></li>
-              <li><%= link_to "通知", (notifications_path) %>
+              <li><%= link_to "thank you", thank_you_comments_path(user: current_user) %></li>
+              <li><%= link_to  (notifications_path) do %>通知
                 <% if unchecked_notifications.any? %>
-                  <span><%= unchecked_notifications.count %>件</span>
-                  <% end %>
-                </li>
-              <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
+                  <span class="orange"><%= unchecked_notifications.count %></span>件
+                <% end %>
+              <% end %></li>
+              <% unless Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "orchestra" %>
                 <li><%= link_to "公式楽団申請", new_orchestra_path %></li>
               <% end %>
             </ul>
@@ -35,4 +35,3 @@
       <% end %>
     </ul>
   </nav>
-</span>
