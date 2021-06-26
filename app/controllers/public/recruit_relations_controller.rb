@@ -1,4 +1,5 @@
 class Public::RecruitRelationsController < ApplicationController
+  before_action :authenticate_user!
   def create
       @recruit_relation = RecruitRelation.new
       @recruit_relation.user_id = current_user.id

@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
   scope module: :public do
     root to: 'homes#top'

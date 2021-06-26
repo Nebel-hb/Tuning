@@ -1,5 +1,5 @@
 class Public::EventsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @search_past = params[:search_past]
 

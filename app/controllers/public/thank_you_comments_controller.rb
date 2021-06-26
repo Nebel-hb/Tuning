@@ -1,4 +1,5 @@
 class Public::ThankYouCommentsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @thank_you_comments = ThankYouComment.where(user_id:  params[:user])
   end

@@ -1,5 +1,5 @@
 class Public::RecruitmentsController < ApplicationController
-
+before_action :authenticate_user!
   def index
     @recruit_relation = RecruitRelation.new
     @search_past = params[:search_past]

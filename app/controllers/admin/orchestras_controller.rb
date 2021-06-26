@@ -4,7 +4,7 @@ class Admin::OrchestrasController < ApplicationController
     @orchestras = Orchestra.all
     application_user = Orchestra.pluck(:user_id)
     @sum = User.where(id: application_user, role: "general")
-    
+
   end
   def edit
   end
