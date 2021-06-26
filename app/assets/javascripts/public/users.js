@@ -44,49 +44,52 @@ $(document).on('turbolinks:load', function () {
 
         }
     })
+    /* ===== Logic for creating fake Select Boxes ===== */
+    $('.sel').each(function() {
+      $(this).children('select').css('display', 'none');
+
+      var $current = $(this);
+
+      $(this).find('option').each(function(i) {
+        if (i == 0) {
+          $current.prepend($('<div>', {
+            class: $current.attr('class').replace(/sel/g, 'sel__box')
+          }));
+
+          var placeholder = $(this).text();
+          $current.prepend($('<span>', {
+            class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
+            text: placeholder,
+            'data-placeholder': placeholder
+          }));
+
+          return;
+        }
+
+        $current.children('div').append($('<span>', {
+          class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
+          text: $(this).text()
+        }));
+        // let type = document.getElementById('type');
+        // type.value = document.querySelector('#user_search > div:nth-child(2) > span').innerText;
+      });
+  　});
+
+    $(document).on('click', '.sel__box__options', function(){
+      var text = $(this).text();
+      $(this).closest('.sel').find('.sel__placeholder').text(text)
+    });
+    // Toggling the `.active` state on the `.sel`.
+      // $('.sel').find('select').change(function(){
+      //   var text = $("option:selected", this).text();
+      //   $(this).closest('.sel').find('.sel__placeholder').text(text)
+      //   console.log($("option:selected", this).text())
+      // });
+    $('.sel').click(function() {
+     $(this).toggleClass('active');
+    });
 });
 
-
-/* ===== Logic for creating fake Select Boxes ===== */
-
-$(function(){
-$('.sel').each(function() {
-  $(this).children('select').css('display', 'none');
-
-  var $current = $(this);
-
-  $(this).find('option').each(function(i) {
-    if (i == 0) {
-      $current.prepend($('<div>', {
-        class: $current.attr('class').replace(/sel/g, 'sel__box')
-      }));
-
-      var placeholder = $(this).text();
-      $current.prepend($('<span>', {
-        class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
-        text: placeholder,
-        'data-placeholder': placeholder
-      }));
-
-      return;
-    }
-
-    $current.children('div').append($('<span>', {
-      class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
-      text: $(this).text()
-    }));
-  });
-});
-// let type = document.getElementById('type');
-// type.value = document.querySelector('#user_search > div:nth-child(2) > span').innerText;
-});
-
-// Toggling the `.active` state on the `.sel`.
-$(function(){
-$('.sel').click(function() {
-  $(this).toggleClass('active');
-});
-});
 
 $(function(){
 // Toggling the `.selected` state on the options.

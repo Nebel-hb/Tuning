@@ -14,13 +14,14 @@ before_action :authenticate_user!
     room = @chat.room
     if @chat.save
       room.create_notification_chat!(current_user, @chat.id)
-      redirect_to request.referer
-      # render template: 'room/show'
+      # redirect_to request.referer
+      # render 'room/show'
 
     else
       flash[:notice] = "空欄の箇所を入力して下さい"
-      render'room/show'
     end
+    #render 'public/rooms/show'
+    render 'public/rooms/create'
   end
 
   private
