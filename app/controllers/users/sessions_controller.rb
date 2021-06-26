@@ -3,7 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-   def new_guest
+  def new_guest
     user = User.guest
     sign_in user
     redirect_to user_path(current_user.id), notice: 'ゲストユーザーとしてログインしました。'

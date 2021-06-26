@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
   def index
     @users = User.all
     search_value = params[:q][:name_cont] if params[:q]

@@ -1,5 +1,5 @@
 class Public::RecruitInstrumentsController < ApplicationController
-
+before_action :authenticate_user!
   def new
     @recruit_relation = recruit_relation_params[:recruit_relation]
     @recruit_instrument = RecruitInstrument.new

@@ -1,4 +1,5 @@
 class Public::RecruitUsersController < ApplicationController
+  before_action :authenticate_user!
   def create
     recruit_user = RecruitUser.new(recruit_user_params)
     recruitment = recruit_user.recruitment_id

@@ -1,4 +1,5 @@
 class Public::ChatsController < ApplicationController
+before_action :authenticate_user!
   def index
     # @user = User.find(params[:id])
     @user_room = UserRoom.find(params[:id])
