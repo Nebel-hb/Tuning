@@ -195,6 +195,13 @@ $white: #f6f6f6;
   z-index: 1;
 }
 
+.signup .sel__box {
+  height: 200px;
+  overflow: scroll;
+  top: inherit;
+  bottom: 0%;
+}
+
 .sel.active .sel__box {
   display: block;
   animation: fadeInUp 500ms;

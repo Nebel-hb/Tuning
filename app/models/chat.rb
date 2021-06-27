@@ -4,4 +4,6 @@ class Chat < ApplicationRecord
   belongs_to :user
   has_many :notifications, dependent: :destroy
 
+  # validates :message, presence: true
+
 end
