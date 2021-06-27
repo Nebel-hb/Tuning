@@ -14,70 +14,13 @@ $gray: #8E9AAF;
 // $light-green: #a2e29b;
 $white: #f6f6f6;
 
-// // 自分のメッセージの吹き出し
-// .other-user-says {
-//   position: relative;
-//   width: calc(100% - 420px);
-//   margin-left: 20px;
-//   padding: 16px;
-//   background: $gray;
-//   border-radius: 15px;
-//   line-height: 1.5;
-//   word-break: break-all;
-//   p{
-//   // position: absolute;
-
-
-//   }
-// }
-// .other-user-says:after {
-//   content: "";
-//   display: inline-block;
-//   position: absolute;
-//   top: 3px;
-//   left: -19px;
-//   border: 8px solid transparent;
-//   border-right: 18px solid #gray;
-//   -webkit-transform: rotate(35deg);
-//   transform: rotate(35deg);
-// }
-
-// // 自分以外のメッセージの吹き出し
-// .says {
-//   float: right;
-//   position: relative;
-//   width: calc(100% - 420px);
-//   padding: 16px;
-//   background: $gray;
-//   border-radius: 15px;
-//   line-height: 1.5;
-//   word-break: break-all;
-//   direction: flex;
-//   flex-direction: column;
-
-//   p{
-//     text-align: right;
-//   }
-// }
-// .says:after {
-//   content: "";
-//   display: inline-block;
-//   position: absolute;
-//   top: 3px;
-//   right: -19px;
-//   border: 8px solid transparent;
-//   border-right: 18px solid $gray;
-//   -webkit-transform: rotate(145deg);
-//   transform: rotate(145deg);
-// }
-
 .room-contain{
   width: 100%;
   display: flex;
 
 }
 
-.room-menber-contain{
+.room-member-contain{
   width: 20%;
   margin: 10px;
   color: $green;
@@ -87,7 +30,6 @@ $white: #f6f6f6;
 .chat-contain{
   width: 70%;
   margin: 5px;
-  // display: flex;
   justify-content: center;
 
   .profile-image{
@@ -115,13 +57,13 @@ $white: #f6f6f6;
       overflow-y: scroll;
     }
 
-    .menbers_chat {
-      width: 100%;
+    .members_chat {
       position: relative;
       display: block;
       margin-bottom: 5px;
       max-width: 75%;
       clear: both;
+      float: left;
 
       .chat_image {
         width: 50px;
@@ -204,12 +146,12 @@ $white: #f6f6f6;
 .btn-size{
   width: 80px;
   }
-  
+
 .room-box{
   width: 40%;
   margin: 20px auto;
 }
-  
+
 .room-index-contain{
   width: 80%;
   display: flex;

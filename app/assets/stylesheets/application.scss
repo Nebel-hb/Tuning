@@ -25,27 +25,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300&display=swap');
 
 
-
-
-
-// color
-// $main-color: #f9a939;
-// $green: #788d63;
-// $white: #fdeed7;
-// $brown: #9f5626;
-// $orange: #e38e39;
-// $light_grayish_orange: #d7a861;
-
-
-// $light-blue: #4db1ec;
-// $blue: #1665cc;
-// $purple: #b473bf;
-// $pink: #ffb2c1;
-// $yellow: #ffd673;
-// $light-green: #a2e29b;
-// $grey: #333;
-
-
 $main-color: #f9a939;
 $green: #788d63;
 $brown: #9f5626;
@@ -79,10 +58,6 @@ height: auto;
   font-size: 20px;
 
 }
-
-// #bg{
-//   height: 100%;
-// }
 
 #main{
   color:$white;
@@ -127,11 +102,12 @@ a{
     100% { background-color:$main_color; }
 }
 
-/*========= ナビゲーションドロップダウンのためのCSS ===============*/
+/*========= ナビゲーション ===============*/
 
 /*==ナビゲーション全体の設定*/
 nav{
-
+  position: absolute;
+  right: 100px;
 	color:#fff;
 	text-align: center;
 }
@@ -264,50 +240,6 @@ nav li.has-child ul ul li a:active{
 }
 
 
-/*==768px以下の形状*/
-
-@media screen and (max-width:768px){
-	nav{
-		padding: 0;
-	}
-
-	nav ul{
-		display: block;
-	}
-
-	nav li.has-child ul,
-	nav li.has-child ul ul{
-  	position: relative;
-	left:0;
-	top:0;
-	width: 100%;
-	visibility:visible;/*JSで制御するため一旦表示*/
-	opacity:1;/*JSで制御するため一旦表示*/
-	display: none;/*JSのslidetoggleで表示させるため非表示に*/
-	transition:none;/*JSで制御するためCSSのアニメーションを切る*/
-}
-
-nav ul li a{
-	border-bottom:1px solid #ccc;
-}
-
-/*矢印の位置と向き*/
-
-nav ul li.has-child::before{
-	left:20px;
-}
-
-nav ul ul li.has-child::before{
-    transform: rotate(135deg);
-	left:20px;
-}
-
-nav ul li.has-child.active::before{
-    transform: rotate(-45deg);
-}
-
-}
-
 #header{
 	height: 70px;/*高さ指定*/
 	width: 100%;/*横幅指定*/
@@ -353,7 +285,7 @@ nav ul li.has-child.active::before{
 
 // =====モーダル=====
 
-/*全て共通：hideエリアをはじめは非表示*/
+/*hideエリアをはじめは非表示*/
 .hide-area{
 	display: none;
 	p{
@@ -361,7 +293,7 @@ nav ul li.has-child.active::before{
 	}
 }
 
-/*全て共通：モーダルのボタンの色を変更したい場合*/
+/*モーダルのボタンの色を変更したい場合*/
 .modaal-close:after,
 .modaal-close:before{
 	background:#ccc;
@@ -372,13 +304,6 @@ nav ul li.has-child.active::before{
 .modaal-close:hover:after,
 .modaal-close:hover:before{
 	background:#666;
-}
-
-/*確認を促すモーダル：タイトルの色を変更したい場合*/
-#modaal-title{
-	font-size:1.2rem;
-	text-align: center;
-	margin: 0 0 20px 0;
 }
 
 // ==================
