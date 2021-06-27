@@ -10,7 +10,7 @@
            <% if user_room.activation == true %>
              <div>
                <%= link_to room_path(user_room.room_id) do %>
-               <%= user_room.room.room_name %>
+                 <%= user_room.room.room_name %>
                <% end %>
              </div>
            <% end %>
@@ -20,16 +20,14 @@
     <div class="index_title">
      <h3>未参加のトークルーム </h3>
       <% @user_rooms.each do |user_room| %>
-          <% if user_room.user_id == current_user.id %>
-             <% if user_room.activation == false %>
-              <div>
+        <% if user_room.user_id == current_user.id %>
+           <% if user_room.activation == false %>
+            <div>
               <%= link_to room_path(user_room.room_id) do %>
                 <%= user_room.room.room_name %>
               <% end %>
-
-            <% end %>
-
-          </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>

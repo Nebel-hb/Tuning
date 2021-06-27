@@ -19,8 +19,8 @@ before_action :authenticate_user!
 
     else
       flash[:notice] = "空欄の箇所を入力して下さい"
-    end
     #render 'public/rooms/show'
+    end
     render 'public/rooms/create'
   end
 
