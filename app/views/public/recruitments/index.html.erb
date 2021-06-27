@@ -26,48 +26,41 @@
 
         <% if current_user.role == "orchestra" %>
           <%= form_with model: @recruit_relation do |f| %>
-            <!--%= f.hidden_field :user_id, value:current_user.id %>-->
-            <%= f.submit "新規募集作成" ,class: "bgc-non"%>
+            <%= f.submit "募集作成" ,class: "bgc-non btn-size hover-shadow gray"%>
           <% end %>
         <% end %>
-      <!--<div id="calendar"></div>-->
     </div>
 
 
     <div class="users_index" >
       <span class="scroll-list jscroll">
       <% @recruitments.each do |recruit| %>
-        <%= link_to recruitment_path(recruit.id) do %>
-          <p><spanp class="title_strong"><%= recruit.title %></span>
+        <%= link_to recruitment_path(recruit.id), class: "p" do %>
+          <p class="title_strong"><%= recruit.title %></p>
+
+            <h4><p>募集者：<%= recruit.user.name %></br>
+              <%= recruit.area.area_name %></br>
+              <%= truncate(recruit.recruit_introduction, length:15) %></p></h4>
+        <% end %>
           <% recruit_instrument = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: recruit.id))%>
           <% if recruit_instrument.where(find_all: false).empty? %>
           <span class="orange">&nbsp;&nbsp;Found all members!</span>
           <% end %>
-          </p>
           <div class="index_event_contain">
             <div class="index_title">
               <p class="green">募集期間</p>
-              <p><%= recruit.recruit_start.strftime("%m月 %d日") %>〜
-                <%= recruit.recruit_end.strftime("%m月 %d日") %>
-              </p>
-              <p class="green">開催期間</p>
-              <p>
-                <%= recruit.recruit_event_start.strftime("%m月 %d日") %>〜
-
-                <%= recruit.recruit_event_end.strftime("%m月 %d日") %>
-              </p>
-              <p class="green">募集者</p>
-              <p><%= recruit.user.name %>
+              <p><%= recruit.recruit_start.strftime("%m月%d日") %>〜
+                <%= recruit.recruit_end.strftime("%m月%d日") %>
               </p>
             </div>
             <div class="index_item">
-              <p><%= recruit.area.area_name %>
-              </p>
-              <p><%= truncate(recruit.recruit_introduction, length:15) %>
+              <p class="green">開催期間</p>
+              <p>
+                <%= recruit.recruit_event_start.strftime("%m月%d日") %>〜
+                <%= recruit.recruit_event_end.strftime("%m月%d日") %>
               </p>
             </div>
           </div>
-        <% end %>
       <% end %>
       <%= paginate @recruitments %>
       </span>
@@ -139,4 +132,4 @@
       <% end %>
     </div>
   </div>
-  
+

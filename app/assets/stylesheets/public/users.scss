@@ -193,11 +193,11 @@ $white: #f6f6f6;
   width: calc(100% + 8px);
   box-sizing: border-box;
   z-index: 1;
-  height: 200px;
-  overflow: scroll;
 }
 
 .signup .sel__box {
+  height: 200px;
+  overflow: scroll;
   top: inherit;
   bottom: 0%;
 }
