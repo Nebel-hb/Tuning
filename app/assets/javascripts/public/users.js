@@ -2,7 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+/* global $*/
 
 //開閉ボタンを押した時には
 $(function(){
@@ -44,94 +44,168 @@ $(document).on('turbolinks:load', function () {
 
         }
     })
+
+    $('.sel').each(function() {
+      $(this).children('select').css('display', 'none');
+
+      var $current = $(this);
+
+      $(this).find('option').each(function(i) {
+        if (i == 0) {
+          $current.prepend($('<div>', {
+            class: $current.attr('class').replace(/sel/g, 'sel__box')
+          }));
+
+          var placeholder = $(this).text();
+          $current.prepend($('<span>', {
+            class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
+            text: placeholder,
+            'data-placeholder': placeholder
+          }));
+
+          return;
+        }
+
+        $current.children('div').append($('<span>', {
+          class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
+          text: $(this).text()
+        }));
+      });
+    });
+    $('.sel').click(function() {
+      $(this).toggleClass('active');
+    });
+    $('.sel__box__options').click(function() {
+      $('input[type=search]').val('');
+      var txt = $(this).text();
+      var index = $(this).index();
+
+      $(this).siblings('.sel__box__options').removeClass('selected');
+      $(this).addClass('selected');
+
+      var $currentSel = $(this).closest('.sel');
+      if ($(this).text() == "奏者一覧"  ) {
+        document.querySelector('.user_general').style.display = "block";
+        document.querySelector('.user_orchestra').style.display = "none";
+      } else if ($(this).text() == "オーケストラ一覧") {
+        document.querySelector('.user_orchestra').style.display = "block";
+        document.querySelector('.user_general').style.display = "none";
+      } else if ($(this).text() == "イベント検索"  ) {
+        document.querySelector('.search_title').style.display = "block";
+        document.querySelector('.search_user').style.display = "none";
+        document.querySelector('.search_other').style.display = "none";
+      } else if ($(this).text() == "募集者検索") {
+        document.querySelector('.search_title').style.display = "none";
+        document.querySelector('.search_user').style.display = "block";
+        document.querySelector('.search_other').style.display = "none";
+      } else if ($(this).text() == "楽器検索" ) {
+        document.querySelector('.search_title').style.display = "none";
+        document.querySelector('.search_user').style.display = "none";
+        document.querySelector('.search_other').style.display = "block";
+      } else if ($(this).text() ==  "投稿者検索") {
+        document.querySelector('.search_title').style.display = "none";
+        document.querySelector('.search_user').style.display = "block";
+        document.querySelector('.search_other').style.display = "none";
+      } else if ($(this).text() == "タグ検索") {
+        document.querySelector('.search_title').style.display = "none";
+        document.querySelector('.search_user').style.display = "none";
+        document.querySelector('.search_other').style.display = "block";
+
+
+      };
+
+      $currentSel.children('.sel__placeholder').text(txt);
+
+      $currentSel.children('select').prop('selectedIndex', index + 1);
+    });
 });
 
 
 /* ===== Logic for creating fake Select Boxes ===== */
 
-$(function(){
-$('.sel').each(function() {
-  $(this).children('select').css('display', 'none');
+// $(function(){
+// $('.sel').each(function() {
+//   $(this).children('select').css('display', 'none');
 
-  var $current = $(this);
+//   var $current = $(this);
 
-  $(this).find('option').each(function(i) {
-    if (i == 0) {
-      $current.prepend($('<div>', {
-        class: $current.attr('class').replace(/sel/g, 'sel__box')
-      }));
+//   $(this).find('option').each(function(i) {
+//     if (i == 0) {
+//       $current.prepend($('<div>', {
+//         class: $current.attr('class').replace(/sel/g, 'sel__box')
+//       }));
 
-      var placeholder = $(this).text();
-      $current.prepend($('<span>', {
-        class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
-        text: placeholder,
-        'data-placeholder': placeholder
-      }));
+//       var placeholder = $(this).text();
+//       $current.prepend($('<span>', {
+//         class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
+//         text: placeholder,
+//         'data-placeholder': placeholder
+//       }));
 
-      return;
-    }
+//       return;
+//     }
 
-    $current.children('div').append($('<span>', {
-      class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
-      text: $(this).text()
-    }));
-  });
-});
-// let type = document.getElementById('type');
-// type.value = document.querySelector('#user_search > div:nth-child(2) > span').innerText;
-});
+//     $current.children('div').append($('<span>', {
+//       class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
+//       text: $(this).text()
+//     }));
+//   });
+// });
+// // let type = document.getElementById('type');
+// // type.value = document.querySelector('#user_search > div:nth-child(2) > span').innerText;
+// });
 
-// Toggling the `.active` state on the `.sel`.
-$(function(){
-$('.sel').click(function() {
-  $(this).toggleClass('active');
-});
-});
+// // Toggling the `.active` state on the `.sel`.
+// $(function(){
+// $('.sel').click(function() {
+//   $(this).toggleClass('active');
+// });
+// });
 
-$(function(){
-// Toggling the `.selected` state on the options.
-$('.sel__box__options').click(function() {
-  $('input[type=search]').val('');
-  var txt = $(this).text();
-  var index = $(this).index();
+// $(function(){
+// // Toggling the `.selected` state on the options.
+// $('.sel__box__options').click(function() {
+//   $('input[type=search]').val('');
+//   var txt = $(this).text();
+//   var index = $(this).index();
 
-  $(this).siblings('.sel__box__options').removeClass('selected');
-  $(this).addClass('selected');
+//   $(this).siblings('.sel__box__options').removeClass('selected');
+//   $(this).addClass('selected');
 
-  var $currentSel = $(this).closest('.sel');
-  if ($(this).text() == "奏者一覧"  ) {
-    document.querySelector('.user_general').style.display = "block";
-    document.querySelector('.user_orchestra').style.display = "none";
-  } else if ($(this).text() == "オーケストラ一覧") {
-    document.querySelector('.user_orchestra').style.display = "block";
-    document.querySelector('.user_general').style.display = "none";
-  } else if ($(this).text() == "イベント検索"  ) {
-    document.querySelector('.search_title').style.display = "block";
-    document.querySelector('.search_user').style.display = "none";
-    document.querySelector('.search_other').style.display = "none";
-  } else if ($(this).text() == "募集者検索") {
-    document.querySelector('.search_title').style.display = "none";
-    document.querySelector('.search_user').style.display = "block";
-    document.querySelector('.search_other').style.display = "none";
-  } else if ($(this).text() == "楽器検索" ) {
-    document.querySelector('.search_title').style.display = "none";
-    document.querySelector('.search_user').style.display = "none";
-    document.querySelector('.search_other').style.display = "block";
-  } else if ($(this).text() ==  "投稿者検索") {
-    document.querySelector('.search_title').style.display = "none";
-    document.querySelector('.search_user').style.display = "block";
-    document.querySelector('.search_other').style.display = "none";
-  } else if ($(this).text() == "タグ検索") {
-    document.querySelector('.search_title').style.display = "none";
-    document.querySelector('.search_user').style.display = "none";
-    document.querySelector('.search_other').style.display = "block";
+//   var $currentSel = $(this).closest('.sel');
+//   if ($(this).text() == "奏者一覧"  ) {
+//     document.querySelector('.user_general').style.display = "block";
+//     document.querySelector('.user_orchestra').style.display = "none";
+//   } else if ($(this).text() == "オーケストラ一覧") {
+//     document.querySelector('.user_orchestra').style.display = "block";
+//     document.querySelector('.user_general').style.display = "none";
+//   } else if ($(this).text() == "イベント検索"  ) {
+//     document.querySelector('.search_title').style.display = "block";
+//     document.querySelector('.search_user').style.display = "none";
+//     document.querySelector('.search_other').style.display = "none";
+//   } else if ($(this).text() == "募集者検索") {
+//     document.querySelector('.search_title').style.display = "none";
+//     document.querySelector('.search_user').style.display = "block";
+//     document.querySelector('.search_other').style.display = "none";
+//   } else if ($(this).text() == "楽器検索" ) {
+//     document.querySelector('.search_title').style.display = "none";
+//     document.querySelector('.search_user').style.display = "none";
+//     document.querySelector('.search_other').style.display = "block";
+//   } else if ($(this).text() ==  "投稿者検索") {
+//     document.querySelector('.search_title').style.display = "none";
+//     document.querySelector('.search_user').style.display = "block";
+//     document.querySelector('.search_other').style.display = "none";
+//   } else if ($(this).text() == "タグ検索") {
+//     document.querySelector('.search_title').style.display = "none";
+//     document.querySelector('.search_user').style.display = "none";
+//     document.querySelector('.search_other').style.display = "block";
 
 
-  };
+//   };
 
-  $currentSel.children('.sel__placeholder').text(txt);
+//   $currentSel.children('.sel__placeholder').text(txt);
 
-  $currentSel.children('select').prop('selectedIndex', index + 1);
-});
-});
+//   $currentSel.children('select').prop('selectedIndex', index + 1);
+// });
+// });
 

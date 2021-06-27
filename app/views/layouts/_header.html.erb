@@ -14,8 +14,10 @@
                   <span class="orange"><%= unchecked_notifications.count %></span>件
                 <% end %>
               <% end %></li>
-              <% unless Orchestra.pluck(:user_id).include?(current_user.id) && current_user.role == "orchestra" %>
+              <% unless Orchestra.pluck(:user_id).include?(current_user.id) %>
+                <% if current_user.role == "genera" %>
                 <li><%= link_to "公式楽団申請", new_orchestra_path %></li>
+                <% end %>
               <% end %>
             </ul>
           </li>

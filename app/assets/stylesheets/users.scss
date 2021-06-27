@@ -24,20 +24,15 @@ $white: #f6f6f6;
 // $serif: 'Lora', serif;
 
 body {
-  // background-image: image-url('public/bg/old_score.jpg');
   width: 100%;
   height: 100%;
-  // background-color:#000;
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
 }
 
 /* div box styling */
 .form_container {
-  margin: 80px auto;
+  margin: 40px auto 0;
   width: 650px;
-  height: 550px;
+  height: 100vh;
   position: relative;
 
   .welcome {

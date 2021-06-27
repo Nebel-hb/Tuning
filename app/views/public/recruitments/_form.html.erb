@@ -30,7 +30,7 @@
 
           <div class="field">
             <%= f.label :area_id, '地域' %><br />
-            <span class=" sel">
+            <span class="sel signup">
               <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", placeholder: " "%>
             </span>
           </div>
@@ -93,8 +93,8 @@
     <div class="form-contain">
       <div class="field">
         <%= f.label :instrument_id, '楽器' %><br />
-        <span class=" sel">
-        <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "選択", required: "required"%>
+        <span class="sel signup">
+        <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "選択", required: "required" %>
         </span>
       </div>
       <div class="field">

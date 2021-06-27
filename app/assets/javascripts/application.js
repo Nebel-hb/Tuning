@@ -30,14 +30,6 @@
 
 
 
-  // $(function () {
-  //   $('.datepicker').datetimepicker({
-  //     format: 'YYYY-MM-DD HH:mm:ss'
-  //   });
-  // });
-
-
-
 //スクロールすると上部に固定させるための設定を関数でまとめる
 
 function FixedAnime() {
@@ -46,19 +38,13 @@ function FixedAnime() {
 	if (scroll >= headerH){//headerの高さ以上になったら
 			$('#header').addClass('fade-in');//fixedというクラス名を付与
 			$('#header').removeClass('fade-out');//fixedというクラス名を除去
-			// $('#header').fadeOut();//fixedというクラス名を付与
-			// $('.fixed').fadeIn();//fixedというクラス名を除去
 
 		}else{//それ以外は
 			$('#header').addClass('fade-out');//fixedというクラス名を付与
 			$('#header').removeClass('fade-in');//fixedというクラス名を除去
-			// $('#header').fadeIn();//fixedというクラス名を付与
-			// $('.fixed').fadeOut();//fixedというクラス名を除去
-
 
 		}
 }
-
 
 $(document).on('turbolinks:load', function () {
 // 画面をスクロールをしたら動かしたい場合の記述
@@ -82,43 +68,6 @@ $(".info").modaal({
 		$('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
 	}
 });
-});
-
-//. 確認を促すモーダル
-$(".confirm").modaal({
-  type:'confirm',
-  confirm_title: 'ログイン画面',//確認画面タイトル
-  confirm_button_text: 'ログイン', //確認画面ボタンのテキスト
-  confirm_cancel_button_text: 'キャンセル',//確認画面キャンセルボタンのテキスト
-  confirm_content: 'ログインが必要です。'
-// この画面はボタンを押さなければ閉じません。',//確認画面の内容
-});
-
-
-// 画像のモーダル
-$(".gallery").modaal({
-	type: 'image',
-	overlay_close:true,//モーダル背景クリック時に閉じるか
-	before_open:function(){// モーダルが開く前に行う動作
-		$('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
-	},
-	after_close:function(){// モーダルが閉じた後に行う動作
-		$('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
-	}
-});
-
-// iframeのモーダル
-$(".iframe-open").modaal({
-		type:'iframe',
-		width: 800,//iframe横幅
-		height:800,//iframe高さ
-		overlay_close:true,//モーダル背景クリック時に閉じるか
-	before_open:function(){// モーダルが開く前に行う動作
-		$('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
-	},
-	after_close:function(){// モーダルが閉じた後に行う動作
-		$('html').css('overflow-y','scroll');/*縦スクロールバーを出す*/
-	}
 });
 
 
@@ -159,3 +108,11 @@ $(window).on('scroll', function() {
     });
   }
 });
+
+
+let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
+ console.log(client_h)
+ //if client_h > 200px{
+ // height: 200px;
+ // overflow: scroll;
+ // }
