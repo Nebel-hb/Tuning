@@ -7,7 +7,7 @@
 
 <div class="show-contain">
   <div class="show-image">
-  <%= attachment_image_tag @event, :event_image, format: 'jpeg',class: "image", fallback: "public/image/no_image.png" %>
+  <%= attachment_image_tag @event, :event_image, format: 'jpeg',class: "radius image", fallback: "public/image/no_image.png" %>
   <% unless @recruit_relation.nil? %>
     <p>
       <%= link_to  recruitment_path(@recruit_relation.recruitment_id), class: "gray" do %>募集情報<% end %>
@@ -27,7 +27,7 @@
   　<% end %>
   </div>
   <div class="show-item">
-    <p class="green">募集者</p>
+    <p class="green">投稿者</p>
     <p><%= @event.user.name %>
     </p>
     <p><%= @event.area.area_name %>

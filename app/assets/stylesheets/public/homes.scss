@@ -56,3 +56,68 @@
     background-position: center;/*背景画像の位置を中央に*/
     background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
 }
+
+// =======about=======
+
+#right1 {
+    background-image: image-url('public/bg/entrance.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(50%);
+}
+
+#left2 {
+    background-image: image-url('public/bg/chem_tuning.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   filter: sepia(50%);
+}
+
+#right3 {
+    background-image: image-url('public/bg/rose.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   filter: grayscale(50%);
+}
+
+#left4 {
+    background-image: image-url('public/bg/chandelier.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: sepia(50%);
+}
+
+#right5 {
+    background-image: image-url('public/bg/talk.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(50%);
+}
+
+#left6 {
+    background-image: image-url('public/bg/orchestra_back.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(50%);
+}
+
+#right7 {
+    background-image: image-url('public/bg/thanks.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    filter: sepia(50%);
+}
+
+#left8 {
+    background-image: image-url('public/bg/ensemble.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

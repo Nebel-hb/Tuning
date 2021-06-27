@@ -2,55 +2,19 @@
 // // # All this logic will automatically be available in application.js.
 // // # You can use CoffeeScript in this file: http://coffeescript.org/
 
+/* global $*/
 
-
-
-// //スライド上の設定
-// $(document).on('turbolinks:load', function () {
-// 	$('.slider-top').slick({
-// 		accessibility: false,// 左右矢印ボタンでの切り替えなし
-// 		arrows: false,//左右矢印ボタン表示なし
-// 		autoplay: true,//自動的に動き出すか。初期値はfalse。
-// 		pauseOnHover: false,//オンマウスでスライドを一時停止させるかどうか。初期値はtrue。
-// 		pauseOnFocus: false,//フォーカスした際にスライドを一時停止させるかどうか。初期値はtrue。
-// 		slidesToShow: 1,//スライドを画面に1枚見せる
-// 		slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
-// 		vertical: true,
-// 		// swipe: false,//タッチスワイプに対応しない
-// 	});
-// 	});
-// //スライド下の設定
-// 	$(document).on('turbolinks:load', function () {
-// 	$('.slider-bottom').slick({
-// 		accessibility: false,// 左右矢印ボタンでの切り替えなし
-// 		arrows: false,//左右矢印ボタン表示なし
-// 		autoplay: true,//自動的に動き出すか。初期値はfalse。
-// 		pauseOnHover: false,//オンマウスでスライドを一時停止させるかどうか。初期値はtrue。
-// 		pauseOnFocus: false,//フォーカスした際にスライドを一時停止させるかどうか。初期値はtrue。
-// 		slidesToShow: 1,//スライドを画面に1枚見せる
-// 		slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
-// 		vertical: true,
-// 		// swipe: false,//タッチスワイプに対応しない
-// 		rtl: true,//スライダの表示方向を左⇒右に変更する
-// 	});
-// 	});
-	
-	
-// // 	about
-
-// 	$(document).on('turbolinks:load', function () {
-//   	$(function() {
-//       $('#pagepiling').pagepiling({
-//           menu: '#nav',
-//           sectionSelector: '.section',
-//           sectionsColor: ['#fff', '#eee', '#ddd', '#ccc'],
-//           anchors: ['page1', 'page2', 'page3', 'page4'],
-//           navigation: {
-//               'textColor': '#000',
-//               'bulletsColor': '#000',
-//               'position': 'right',
-//               'tooltips': ['page1', 'page2', 'page3', 'page4']
-//           },
-//       });
-//   });
-// });
+$(document).on('turbolinks:load', function () {
+  var wrapper = document.getElementById('wrapper');
+  if (wrapper != null) {
+    $('#wrapper').multiscroll({
+    	sectionsColor: ['#222', '#333', '#222','#333', '#444', '#333', '#222', '#111', '#000'],//セクションごとの背景色設定
+    	anchors: ['area1', 'area2', 'area3','area4','area5','area6','area7','area8'],//セクションとリンクするページ内アンカーになる名前
+    	menu: '#menu',//上部ナビゲーションのメニュー設定
+    	navigation: true,//右のナビゲーション出現、非表示は false
+    	navigationTooltips:['thanks your coming', 'welcome to Tuning', 'join member ','event','talk room','official orchestra','thank you comment','let`s find!'],//右のナビゲーション現在地時に入るテキスト
+    	loopTop: true,//最初のセクションを上にスクロールして最後のセクションまでスクロールするかどうかを定義します。
+    	loopBottom: true,//最後のセクションを下にスクロールして最初のセクションまでスクロールするかどうかを定義します。
+    });
+  }
+});

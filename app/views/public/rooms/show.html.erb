@@ -72,14 +72,14 @@
         <div class="chat_contents scroll" id="scroll">
           <% @chats.each do |chat| %>
             <% if chat.user_id != current_user.id %>
-            <div class="menbers_chat">
+            <div class="members_chat">
               <div class="chat_image">
                 <%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 30, 30, fallback: "public/image/no_image.png", size:'80x80', class:"profile-image"), user_path(chat.user) %>
               </div>
               <div class="left-text">
                 <div class="name"><%= chat.user.name%></div>
                 <div class="text"><%= chat.message%></div>
-                <span class="menbers_text_time"><%= chat.created_at.strftime("%H:%M")%></span>
+                <span class="members_text_time"><%= chat.created_at.strftime("%H:%M")%></span>
               </div>
             </div>
 
@@ -90,9 +90,6 @@
             </div>
             <% end %>
           <% end %>
-            <div class="my_chat">
-              <div id="last_message"></div>
-            </div>
         </div>
 
       <%= form_with model: @chat, remote: true do |f| %>
