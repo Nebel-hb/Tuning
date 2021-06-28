@@ -48,6 +48,8 @@ font-family: 'Cormorant Upright','Cormorant Upright', serif;
 *{
   margin: 0;
   padding: 0;
+  min-width: 0;
+  min-height: 0;
   box-sizing: border-box;
 }
 body {
@@ -107,7 +109,7 @@ a{
 /*==ナビゲーション全体の設定*/
 nav{
   position: absolute;
-  right: 100px;
+  right: 160px;
 	color:#fff;
 	text-align: center;
 }
@@ -324,6 +326,7 @@ nav li.has-child ul ul li a:active{
 .black{
   color:#000;
 }
+
 .image{
   width: 150px;
 }
@@ -436,4 +439,13 @@ nav.pagination {
 }
 .radius{
   border-radius: 20%;
+}
+
+.logo{
+  background-image: image-url('public/image/tuning_logo_white.png');
+  background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: contain;
+    width: 180px;
+  height: 60px;
 }

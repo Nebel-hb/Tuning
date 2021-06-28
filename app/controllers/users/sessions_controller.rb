@@ -10,9 +10,10 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    # super
+    redirect_to new_user_registration_path
+  end
 
   # POST /resource/sign_in
   # def create
