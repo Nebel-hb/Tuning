@@ -229,7 +229,7 @@
   animation: in 2.5s ease-in 1;
 }
 .fadeout_slow{
-  animation: slow-out 6s ease-in 1;
+  animation: slow-out 7s ease-in 1;
 }
 .fadein_slow{
   animation: slow-in 6s ease-in 1;
@@ -244,7 +244,6 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  // display: none;
 }
 
 @keyframes out{

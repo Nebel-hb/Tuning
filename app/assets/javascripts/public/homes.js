@@ -117,16 +117,10 @@ let data =[
             document.getElementById('top_contain_main').classList.add("fadein_slow");
       document.querySelector("#audio2").play();
             getTimer=setTimeout(function() {
-            getTimer=setTimeout(toppage,6200);
+            getTimer=setTimeout(toppage,6000);
           },false);
       }
     function toppage(){
-      // bell=new Audio();
-      //   bell.src= "clap.mp3";
-      //   bell.play();
-      //   bell.volume=1;
             document.querySelector("#top_contain_text").remove();
-            // document.querySelector("#top_contain").remove();
-            // document.getElementById('top_contain_main').classList.add("display_block");
 
     }
