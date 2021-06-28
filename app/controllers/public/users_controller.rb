@@ -8,16 +8,8 @@ class Public::UsersController < ApplicationController
       params[:q][:name_cont] = ""
       params[:q][:id_eq] = search_value
     end
-    @user_index = params[:user_filter]
-    if  @user_index == "奏者一覧"
-      @user = User.where(role: "general")
-    elsif @user_index == "オーケストラ一覧"
-      @user = User.where(role: "orchestra")
-    else
-      @user = User.all
-    end
 
-    @q = @user.ransack(params[:q])
+    @q = User.ransack(params[:q])
     @search = @q.result(distinct: true).page(params[:page]).per(5)
 
   end
@@ -59,5 +51,6 @@ class Public::UsersController < ApplicationController
 private
   def user_params
     params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
+    
   end
 end

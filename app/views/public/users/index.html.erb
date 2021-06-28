@@ -52,10 +52,6 @@
       <span class="search_users">
         <%= f.search_field :name_cont, placeholder: "search" %>
       </span>
-      <div class="sel sel--black-panther">
-        <%= select_tag :user_filter , options_for_select([['一覧切り替え'], ['奏者一覧'] ,['オーケストラ一覧']]) %>
-      </div>
-      
         <%= f.hidden_field :type, value: "", id: "type" %>
         <%= f.submit "" %>
       <% end %>
