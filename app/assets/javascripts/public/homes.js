@@ -117,7 +117,7 @@ let data =[
             document.getElementById('top_contain_main').classList.add("fadein_slow");
       document.querySelector("#audio2").play();
             getTimer=setTimeout(function() {
-            getTimer=setTimeout(toppage,6000);
+            getTimer=setTimeout(toppage,6200);
           },false);
       }
     function toppage(){
