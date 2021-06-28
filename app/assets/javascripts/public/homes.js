@@ -23,8 +23,7 @@ $(document).on('turbolinks:load', function () {
 
 // top slide
 
-$(document).on('turbolinks:load', function () {
-
+function slick_start (){
 	$('.slider').slick({
 		fade:true,//切り替えをフェードで行う。初期値はfalse。
 		autoplay: true,//自動的に動き出すか。初期値はfalse。
@@ -37,11 +36,11 @@ $(document).on('turbolinks:load', function () {
 		prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
 		nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
 		dots: true,//下部ドットナビゲーションの表示
-        pauseOnFocus: false,//フォーカスで一時停止を無効
-        pauseOnHover: false,//マウスホバーで一時停止を無効
-        pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
-});
-});
+    pauseOnFocus: false,//フォーカスで一時停止を無効
+    pauseOnHover: false,//マウスホバーで一時停止を無効
+    pauseOnDotsHover: false,//ドットナビゲーションをマウスホバーで一時停止を無効
+  });
+}
 
 // top
 
@@ -51,14 +50,13 @@ let data =[
       {str:"コンサートを開催するにあたり",},
       {str:"多くの方にご協力いただきました。",},
       {str:"私どもが共にTuningし",},
-      {str:"演奏する仲間に出会えたのは",},
-      {str:"”Tuning”のおかげです",last:"true"},
+      {str:"演奏する仲間に出会えたのは...",},
+      {str:"Tuning",last:"true"},
 
       ];
     let time,timerId,index=0,pos=0;
 
     let getTimer=0;
-
 
           function opening(){
 
@@ -104,29 +102,28 @@ let data =[
    let fin = data[index].last;
    if (fin == "true"){
           getTimer=setTimeout(function() {
- clearTimeout(getTimer);
+          clearInterval(timerId);
+          clearTimeout(getTimer);
             getTimer=setTimeout(textend,1000);
           },false);
-
   }
     }
 
     function textend(){
+      console.log('textend')
+            clearTimeout(getTimer)
             document.getElementById('top_contain_text').classList.add("fadeout_slow");
             document.getElementById('top_contain_main').classList.add("top_contain");
             document.getElementById('top_contain_main').classList.add("fadein_slow");
       document.querySelector("#audio2").play();
             getTimer=setTimeout(function() {
-            getTimer=setTimeout(toppage,6200);
+            getTimer=setTimeout(toppage,6000);
           },false);
       }
     function toppage(){
-      // bell=new Audio();
-      //   bell.src= "clap.mp3";
-      //   bell.play();
-      //   bell.volume=1;
+            console.log("toppage")
             document.querySelector("#top_contain_text").remove();
-            // document.querySelector("#top_contain").remove();
-            // document.getElementById('top_contain_main').classList.add("display_block");
-
+            clearTimeout(getTimer);
+            document.getElementById('top_black').classList.add("display_non");
+        slick_start();
     }

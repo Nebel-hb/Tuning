@@ -1,59 +1,42 @@
-<div  class="top_black">
-<div id ="top_contain" class="top_contain ">
+<div id="top_black" class="top_black">
+  <div id ="top_contain" class="top_contain ">
 
-
-<!--<p  id="nom" class="nom"></p>-->
-
-  <div id="gnavi" class="gnavi"><div class="gnavi-box">
+    <div id="gnavi" class="gnavi"><div class="gnavi-box">
       <%= audio_tag("bell.mp3",id: "audio") %>
-      
-   
-
-<p class="mx60" id="top"><a class="inline_close" href="#"><span class="">開演を待つ</span><span>トップページ</span></a></p>
-<p class="mx60"><%= link_to new_user_registration_path do %><span class="">演奏会準備へ</span><span>ログイン</span><% end %></p>
+    <p class="mx60" id="top"><a class="inline_close" href="#"><span class="">開演を待つ</span><span>トップページ</span></a></p>
+    <p class="mx60"><%= link_to new_user_registration_path do %><span class="">演奏会準備へ</span><span>ログイン</span><% end %></p>
+    </div>
+  </div>
 </div>
 
-</div>
-</div>
 <div id ="top_contain_text" class=" display_non ">
-<p id="read" class="read" onclick="read()"><a>read enter</a></p>
-<div id="text_box"  class="">
-      <h2  id="text"></h2>
-
+  <p id="read" class="read" onclick="read()"><a>read enter</a></p>
+  <div id="text_box"  class="">
+    <h2  id="text"></h2>
+  </div>
+  <%= audio_tag("clap.mp3",id: "audio2") %>
 </div>
-<%= audio_tag("clap.mp3",id: "audio2") %>
 </div>
 
 <div id ="top_contain_main" class=" display_non ">
+  <div class="top_logo"></div>
+  <p class="go_about"><%= link_to about_path do %>Tuningについて<% end %></p>
+  <p class="go_login"><%= link_to new_user_registration_path do %>start<% end %></p>
 
-<%= audio_tag("clap.mp3",id: "audio2") %>
-
-<div class="top_logo"></div>
-<p class="go_about"><%= link_to about_path do %>Tuningについて<% end %></p>
-
-
-<ul class="slider">
-<li class="slider-item slider-item01"></li>
-<li class="slider-item slider-item02"></li>
-<li class="slider-item slider-item03"></li>
-</ul>
-
+  <ul class="slider">
+  <li class="slider-item slider-item01"></li>
+  <li class="slider-item slider-item02"></li>
+  <li class="slider-item slider-item03"></li>
+  </ul>
 </div>
 
- <script>
-//  document.querySelector('.audioButton').onclick = function () {
-        let tops = document.getElementById("top")
-        tops.addEventListener("click",function() {
-        document.querySelector("#audio").play();
-        // bell=new Audio();
-        // bell.src= "/bell.mp3";
-        // bell.play();
-        // bell.volume=1;
-        document.getElementById('top_contain').classList.add("fadeout");
+<script>
+  let tops = document.getElementById("top")
+  tops.addEventListener("click",function() {
+  document.querySelector("#audio").play();
+  document.getElementById('top_contain').classList.add("fadeout");
+      clearTimeout(getTimer);
+      getTimer=setTimeout(opening,2500);
+    },false);
 
-            clearTimeout(getTimer);
-            getTimer=setTimeout(opening,2500);
-            // getTimer=setTimeout(toppage,2000);/
-          },false);
-
-    </script>
+</script>
