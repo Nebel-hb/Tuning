@@ -12,8 +12,6 @@
           <%= recruit_instrument.need_people%><%= "名" %></br>
         </p>
         <p>
-          <!--！！！-->
-          <%= link_to "編集", recruit_instrument_path(recruit_instrument.id) %>
           <%= link_to "削除", recruit_instrument_path(recruit_instrument.id), remote: true, method: :delete %>
         </p>
       <% end %>

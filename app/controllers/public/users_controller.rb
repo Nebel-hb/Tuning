@@ -48,8 +48,9 @@ class Public::UsersController < ApplicationController
   render "index"
   end
 
+private
   def user_params
     params.require(:user).permit(:name, :email, :area_id, :instrument_id, :introduction, :profile_image, :role)
+    
   end
-
 end

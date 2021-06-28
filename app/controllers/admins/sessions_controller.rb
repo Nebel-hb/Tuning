@@ -26,7 +26,7 @@ class Admins::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resouce)
-    admin_users_path
+    admin_orchestras_path
   end
   # def after_sign_out_path_for(resouce)
   #   new_admin_session_path
