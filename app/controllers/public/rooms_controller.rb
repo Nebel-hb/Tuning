@@ -16,7 +16,6 @@ before_action :authenticate_user!
     @notifications.where(room_id: @room, checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
-    
   end
 
 

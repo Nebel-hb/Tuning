@@ -31,7 +31,7 @@ class Public::EventsController < ApplicationController
     @comment = Comment.new
     @event_tags = @event.tags
     @recruit_relation = RecruitRelation.find_by(event_id: @event)
-    end
+  end
 
   def edit
     @event = Event.find(params[:id])
@@ -66,14 +66,11 @@ class Public::EventsController < ApplicationController
   end
 
   def search
-
-
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @events = Event.page(params[:page]).per(5)
     @events = Event.where(id: EventTag.where(tag_id: @tag.id).pluck(:event_id)).page(params[:page]).per(5)
     @q = Event.ransack(params[:q])
-
   end
 
  private
