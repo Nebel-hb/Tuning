@@ -1,4 +1,4 @@
-<div  class="top_black">
+<div id="top_black" class="top_black">
   <div id ="top_contain" class="top_contain ">
 
     <div id="gnavi" class="gnavi"><div class="gnavi-box">
@@ -16,11 +16,12 @@
   </div>
   <%= audio_tag("clap.mp3",id: "audio2") %>
 </div>
+</div>
 
 <div id ="top_contain_main" class=" display_non ">
   <div class="top_logo"></div>
   <p class="go_about"><%= link_to about_path do %>Tuningについて<% end %></p>
-  <p class="go_about"><%= link_to new_user_registration_path do %>start<% end %></p>
+  <p class="go_login"><%= link_to new_user_registration_path do %>start<% end %></p>
 
   <ul class="slider">
   <li class="slider-item slider-item01"></li>
