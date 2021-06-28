@@ -244,8 +244,8 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  // display: none;
 }
+
 
 @keyframes out{
   0%{
@@ -353,6 +353,7 @@ a{
 	z-index: 1;
 	/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
 	height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+	width: 100%;
 }
 /*　背景画像設定　*/
 .slider-item01 {
@@ -460,7 +461,13 @@ a{
   position: absolute;/*絶対配置*/
   z-index: 10;
   bottom: -40px;
-  right: 120px;
+  right: 130px;
+}
+.go_login{
+  position: absolute;/*絶対配置*/
+  z-index: 10;
+  bottom: -65px;
+  right: 130px;
 }
 
 .top_black{

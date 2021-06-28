@@ -16,8 +16,6 @@
 //= require turbolinks
 
 //= require moment
-//= require fullcalendar
-//= require fullcalendar/locale-all
 //= require jquery.jscroll.min.js
 
 
@@ -111,8 +109,3 @@ $(window).on('scroll', function() {
 
 
 let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
- console.log(client_h)
- //if client_h > 200px{
- // height: 200px;
- // overflow: scroll;
- // }
