@@ -1,5 +1,6 @@
 class Public::UserRoomsController < ApplicationController
   before_action :authenticate_user!
+  
   def create
     @user_room = UserRoom.new(user_room_params)
     user = User.find_by(id: @user_room.user_id)

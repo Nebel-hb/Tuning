@@ -21,7 +21,6 @@ class Public::RecruitUsersController < ApplicationController
 
   def index
     @recruit_users = RecruitUser.all
-    # @recruit_users = RecruitUser.page(params[:page]).per(5)
     @recruitment = Recruitment.find_by(id: params[:recruitment].to_i)
     @user_room = UserRoom.new
     @user_rooms = UserRoom.all

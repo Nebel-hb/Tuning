@@ -33,9 +33,6 @@ class User < ApplicationRecord
   validates :instrument_id,  presence: true
   # before_save :downcase_email
 
-
-
-
   def create_notification_join!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'join'])
     if temp.blank?

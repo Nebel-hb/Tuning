@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
      @event = Event.find(params[:event_id])
      @comments = Comment.all
@@ -23,6 +23,7 @@ before_action :authenticate_user!
     redirect_to event_path(params[:event_id])
   end
 
+　private
   def comment_params
     params.require(:comment).permit(:comment, :user_id, :event_id)
   end
