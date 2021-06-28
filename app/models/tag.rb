@@ -5,9 +5,6 @@ class Tag < ApplicationRecord
   
   validates :tag_name, presence: true
 
-
-
-
   def self.search_tag(word,search)
     if search == "タグ検索"
       Tag.where("tag_name LIKE?","%#{word}%")

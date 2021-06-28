@@ -9,7 +9,6 @@ class Recruitment < ApplicationRecord
   has_many :recruit_users, dependent: :destroy
   has_many :rooms
 
-
   validates :user_id, presence: true
   validates :area_id, presence: true
   validates :title, presence: true
@@ -33,7 +32,5 @@ class Recruitment < ApplicationRecord
       errors.add(:recruit_event_start, "は募集開始の日時より遅い時間を選択してください") if self.recruit_event_start < self.recruit_start
     end
   end
-
-
 
 end

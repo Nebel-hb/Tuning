@@ -1,7 +1,6 @@
 class Public::ChatsController < ApplicationController
 before_action :authenticate_user!
   def index
-    # @user = User.find(params[:id])
     @user_room = UserRoom.find(params[:id])
     #if文の中で定義した@roomに紐づくchatsテーブルのレコードを代入
     @chats = @user_room.chats
@@ -14,12 +13,8 @@ before_action :authenticate_user!
     room = @chat.room
     if @chat.save
       room.create_notification_chat!(current_user, @chat.id)
-      # redirect_to request.referer
-      # render 'room/show'
-
     else
       flash[:notice] = "空欄の箇所を入力して下さい"
-    #render 'public/rooms/show'
     end
     render 'public/rooms/create'
   end

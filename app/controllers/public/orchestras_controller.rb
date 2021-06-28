@@ -1,7 +1,7 @@
 class Public::OrchestrasController < ApplicationController
-  before_action :authenticate_user!
+  　before_action :authenticate_user!
+  
   def create
-
     @orchestra = Orchestra.new(orchestra_params)
     if @orchestra.save
       flash[:notice] = "申請を行いました"

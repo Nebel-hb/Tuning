@@ -12,7 +12,6 @@ class Public::ThankYouCommentsController < ApplicationController
     end
     if thank_you_comment.save!
       user = User.find_by(id: thank_you_comment.user_id)
-      # recruitment = thank_you_comment.recruitment_id
       user.create_notification_thanks!(current_user)
       flash[:notice] = "コメントを送信しました"
     redirect_to request.referer
