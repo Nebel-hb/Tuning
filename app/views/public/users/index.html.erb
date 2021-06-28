@@ -6,9 +6,6 @@
 
 <div class="index_contain">
     <div class="user_sort">
-      <div class="sel sel--black-panther sel-bg-none">
-        <%= select_tag :user_index , options_for_select([['一覧切り替え'], ['奏者一覧'] ,['オーケストラ一覧']]) %>
-      </div>
 
       <div class="sort_item">
         <div><%= sort_link(@q, :name, "名前順") %></div>
@@ -18,45 +15,24 @@
     </div>
 
   <div class="users_index ">
-      <span class="user_general scroll-list jscroll" >
-        <% @search.each do |user| %>
-          <% if user.role == "general" %>
-            <div class="index_user_contain">
-              <div class= "index_image_box">
-                <%= link_to user_path(user)  do %>
-                  <%= attachment_image_tag user, :profile_image, format: 'jpeg', class: "index_image",fallback: "public/image/no_image.png" %>
-                <% end %>
-              </div>
-              <p class="index_name"><%= user.name %></p>
-              <div class="index_item">
-                <p><%= user.instrument.instrument_name %></p>
-                <p><%= user.area.area_name %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-        <%= paginate @search %>
-      </span>
-      <span class="user_orchestra scroll-list jscroll" >
-        <% @search.each do |user| %>
-          <% if user.role == "orchestra" %>
-            <div class="index_user_contain">
-              <div class= "index_image_box">
-                <%= link_to user_path(user)  do %>
-                  <%= attachment_image_tag user, :profile_image, format: 'jpeg',class: "index_image", fallback: "public/image/no_image.png" %>
-                <% end %>
-              </div>
-              <p class="index_name"><%= user.name %></p>
-                 <div class="index_item">
-                  <p><%= user.instrument.instrument_name %></p>
-                  <p><%= user.area.area_name %></p>
-                </div>
-              </div>
-          <% end %>
-        <% end %>
-        <%= paginate @search %>
-      </span>
-    </div>
+    <span class="user_general scroll-list jscroll" >
+      <% @search.each do |user| %>
+        <div class="index_user_contain">
+          <div class= "index_image_box">
+            <%= link_to user_path(user)  do %>
+              <%= attachment_image_tag user, :profile_image, format: 'jpeg', class: "index_image",fallback: "public/image/no_image.png" %>
+            <% end %>
+          </div>
+          <p class="index_name"><%= user.name %></p>
+          <div class="index_item">
+            <p><%= user.instrument.instrument_name %></p>
+            <p><%= user.area.area_name %></p>
+          </div>
+        </div>
+      <% end %>
+      <%= paginate @search %>
+    </span>
+  </div>
 
   <div class="search-btn">
     <div class="open-btn"></div><!--開閉ボタン-->
@@ -76,9 +52,10 @@
       <span class="search_users">
         <%= f.search_field :name_cont, placeholder: "search" %>
       </span>
-      <!--<span class="search_id"><p>id</p>-->
-      <!--  %= f.search_field :id_eq , placeholder: "search" %>-->
-      <!--</span>-->
+      <div class="sel sel--black-panther">
+        <%= select_tag :user_filter , options_for_select([['一覧切り替え'], ['奏者一覧'] ,['オーケストラ一覧']]) %>
+      </div>
+      
         <%= f.hidden_field :type, value: "", id: "type" %>
         <%= f.submit "" %>
       <% end %>
