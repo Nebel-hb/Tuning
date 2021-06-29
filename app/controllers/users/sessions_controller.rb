@@ -9,6 +9,13 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to user_path(current_user.id), notice: 'ゲストユーザーとしてログインしました。'
   end
 
+  def new_orchestra
+    user = User.orchestra
+    sign_in user
+    redirect_to user_path(current_user.id), notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+
   # GET /resource/sign_in
   def new
     # super

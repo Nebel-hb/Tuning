@@ -1,4 +1,5 @@
-
+<p><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></p>
+<p><%= link_to 'ゲストオーケストラログイン', users_orchestra_sign_in_path, method: :post %></p>
 <%= render "users/shared/error_messages", resource: resource %>
 <div class="form_container">
   <div class="welcome">
@@ -77,4 +78,3 @@
 
     </div>
    </div>
-<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
