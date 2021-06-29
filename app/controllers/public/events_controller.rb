@@ -39,7 +39,9 @@ class Public::EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
     if @event.update(event_params)
+     @event.save_tag(tag_list)
       redirect_to event_path(@event.id)
     else
       render 'edit'

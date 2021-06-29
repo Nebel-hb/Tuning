@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_041206) do
     t.text "event_introduction"
     t.datetime "start"
     t.datetime "end"
-    t.integer "event_image"
+    t.string "event_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

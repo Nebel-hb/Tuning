@@ -111,3 +111,4 @@ $(window).on('scroll', function() {
 
 
 let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
+
