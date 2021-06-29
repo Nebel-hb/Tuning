@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.text :event_introduction
       t.datetime :start
       t.datetime :end
-      t.integer :event_image
+      t.string :event_image_id
       t.timestamps
     end
   end
