@@ -18,5 +18,6 @@ module Tuning
      config.time_zone = 'Asia/Tokyo'
      config.i18n.default_locale = :ja
      config.autoload_paths << Rails.root.join('lib')
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
   end
 end

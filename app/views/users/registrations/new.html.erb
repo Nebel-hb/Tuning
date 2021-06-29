@@ -41,7 +41,7 @@
 
             <div class="field">
               <%= f.label :instrument_id, 'main instrument' %><br />
-              <span class="sel sel--black-panther">
+              <span class="sel">
                 <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
               </span>
             </div>
