@@ -75,7 +75,19 @@ class User < ApplicationRecord
       user.area_id =  1
       user.role =  1
       user.introduction = 'Tuningに来て頂きありがとうございます。'
-      user.profile_image = 'public/bg/flute.jpg'
+    end
+  end
+  def self.orchestra
+    find_or_create_by!(email: 'guest.orchestra@music.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+
+      user.password_confirmation = user.password
+      user.name = 'ゲストオーケストラ'
+      user.instrument_id = 1
+      user.area_id =  1
+      user.role =  2
+      user.introduction = 'Tuningに来て頂きありがとうございます。
+      オーケストラステータスがあるアカウントなので、イベントだけでなく募集をかけたりトークルームを作成できるようになります。'
     end
   end
 
