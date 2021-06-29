@@ -35,7 +35,7 @@
         <div class="field">
           <%= f.label :event_image, 'EventImage' %><br />
           <%= f.file_field :event_image, class: "event_image"%>
-          <%= attachment_image_tag event, :event_image,format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.event_image').click()", class: "profile_image" %>
+          <%= attachment_image_tag event, :event_image,format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", class: "profile_image" %>
         </div>
 
         <div class="field">
