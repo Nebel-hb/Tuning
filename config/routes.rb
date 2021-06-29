@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
     post 'users/orchestra_sign_in', to: 'users/sessions#new_orchestra'
-    
+
   end
 
   devise_for :users, controllers: {
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :users, only: [:index, :show, :edit, :update]
     resources :orchestras, only: [:new, :create]
+    # patch 'events/:id', to: 'events#update',as: 'event'
     resources :events, only: [:index, :show, :new, :edit, :update, :create, :destroy] do
       resources :comments, only: [:create, :destroy]
     end

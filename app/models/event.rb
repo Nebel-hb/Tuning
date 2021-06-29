@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   has_many :tags, through: :event_tags
   has_many :comments, dependent: :destroy
   has_many :recruit_relations, dependent: :destroy
+  attachment :event_image
 
   validates :user_id, presence: true
   validates :area_id, presence: true
@@ -20,7 +21,7 @@ class Event < ApplicationRecord
     def start_end_check
       errors.add(:end, "は開始時刻より遅い時間を選択してください") if self.start > self.end
     end
-  
+
     def start_check
       errors.add(:start, "は現在の日時より遅い時間を選択してください") if self.start < Time.now
     end
