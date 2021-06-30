@@ -12,7 +12,7 @@
     <%= form_with model: @room do |f| %>
       <%= f.text_field :room_name,placeholder: "ルーム名" %>
       <%= f.hidden_field :user_id, value:current_user.id %>
-      <%= f.hidden_field :recruitment_id, value:@recruitment %>
+      <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
 
       <%= f.submit "作成", class: "btn-size", id: "btn"%>
     <% end %>
