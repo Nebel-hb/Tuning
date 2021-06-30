@@ -267,6 +267,11 @@ $white: #f6f6f6;
   display: flex;
 }
 
+.index_contain_flex_non{
+  width: 100%;
+  min-height: 100vh;
+}
+
 .user_sort {
   width: 25%;
   margin: 10px;
