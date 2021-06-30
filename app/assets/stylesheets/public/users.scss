@@ -330,6 +330,17 @@ $white: #f6f6f6;
   display:flex;
   width: 80%;
   margin: 0 auto;
+  .form{
+    margin: 40px 40px;
+    width: 50%;
+
+    textarea {
+      width: 200px;
+      height: 100px;
+      font-size: 15px;
+
+    }
+  }
 }
 
 .form-contain{
