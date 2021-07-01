@@ -10,7 +10,7 @@ class Public::UsersController < ApplicationController
       params[:q][:id_eq] = search_value
     end
     @q = User.ransack(params[:q])
-    @search = @q.result(distinct: true).page(params[:page]).per(5)
+    @search = @q.result(distinct: true).includes(:instrument, :area).page(params[:page]).per(5)
   end
 
   def show
