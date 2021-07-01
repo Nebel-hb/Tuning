@@ -8,7 +8,7 @@ class Public::ThankYouCommentsController < ApplicationController
     end
     score *= 50
     score += 50
-    @total_score = score /= @thank_you_comments.count
+    @total_score = score/@thank_you_comments.count
   end
 
   def create
