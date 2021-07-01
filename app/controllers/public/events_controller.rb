@@ -15,7 +15,7 @@ class Public::EventsController < ApplicationController
     @event = current_user.events.new
 
     @q = @event_search.ransack(params[:q])
-    @events = @q.result(distinct: true).page(params[:page]).per(5)
+    @events = @q.result(distinct: true).includes(:area).page(params[:page]).per(5)
     @tags = Tag.all
 
     @areas = Area.all
@@ -35,6 +35,7 @@ class Public::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @tag = @event.tags
   end
 
   def update

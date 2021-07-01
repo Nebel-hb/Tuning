@@ -43,3 +43,14 @@ $(document).on('turbolinks:load', function () {
     })
 });
 
+
+$(document).on('turbolinks:load',function(){
+  $('#event_event_image').on('change', function (e) {
+    // 既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#event_image").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+  });
+});

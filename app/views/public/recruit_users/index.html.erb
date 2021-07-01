@@ -5,9 +5,7 @@
 <div class="index_contain">
 
   <div class="user_sort">
-    <!--<h3>%= link_to  thank_you_comment_thanks_path(@recruitment) do %>-->
       <h3><a href="#info" class="info">thank youコメント</a></p>
-    <!--% end %></h3>-->
     <h3>トークルーム作成</h3>
     <%= form_with model: @room do |f| %>
       <%= f.text_field :room_name,placeholder: "ルーム名" %>

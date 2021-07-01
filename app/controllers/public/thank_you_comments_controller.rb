@@ -1,7 +1,14 @@
 class Public::ThankYouCommentsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @thank_you_comments = ThankYouComment.where(user_id:  params[:user])
+    @thank_you_comments = ThankYouComment.where(user_id: params[:user])
+    score = 0
+    @thank_you_comments.each do |comment|
+    score += comment.score
+    end
+    score *= 50
+    score += 50
+    @total_score = score / @thank_you_comments.count
   end
 
   def create
@@ -10,6 +17,10 @@ class Public::ThankYouCommentsController < ApplicationController
     unless RecruitUser.find_by(user_id: thank_you_comment.user_id, recruitment_id: thank_you_comment.recruitment_id, join: 2).nil?
       thank_you_comment.join = true
     end
+    thank_you_comment.score = Language.get_data(thank_you_comment_params[:thanks_comment]) #natural language
+    puts 3333
+    p thank_you_comment_params[:thanks_comment]
+    p thank_you_comment.score
     if thank_you_comment.save!
       user = User.find_by(id: thank_you_comment.user_id)
       user.create_notification_thanks!(current_user)
