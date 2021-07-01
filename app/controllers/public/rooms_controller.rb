@@ -1,7 +1,7 @@
 class Public::RoomsController < ApplicationController
 before_action :authenticate_user!
   def index
-    @user_rooms = UserRoom.all
+    @user_rooms = UserRoom.includes(:room)
   end
 
   def show
