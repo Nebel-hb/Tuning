@@ -1,7 +1,7 @@
  <div id="title">
     <h2>thank youコメント</h2>
   </div>
-  <h3 class="white"><span class="orange"><%= @thank_you_comments.count %></span> thanks</h3>
+  <h3 class="white"><span class="orange"><%= @thank_you_comments.count %></span> thanks<span><span class="orange">&nbsp;<%= @total_score.round %></span>point</span></h3>
   <div class="notification-contain">
   <% @thank_you_comments.each do |comment| %>
     <div class="mb10">
@@ -10,9 +10,9 @@
       </p>
       <p class="green">
         <%= link_to recruitment_path(comment.recruitment_id), class: "green" do %>
-          from：<%= Recruitment.find_by(id: comment.recruitment_id).title %>
+          from：<%= Recruitment.find_by(id: comment.recruitment_id).title %>&nbsp;&nbsp;
           <% end %>
-        <%= comment.created_at.strftime("%Y / %m / %d") %>
+        <%= comment.created_at.strftime("%Y / %m / %d") %><span>&nbsp;&nbsp;<%= (comment.score * 50 + 50).round %>point&nbsp;&nbsp;</span>
         <% if comment.join == true %>
           <% if Recruitment.find_by(id: comment.recruitment_id).recruit_event_start > Time.now %>
             参加予定

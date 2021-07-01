@@ -21,7 +21,7 @@ before_action :authenticate_user!
     @recruit_relation  = RecruitRelation.find(params[:recruit_relation])
     @recruit_instrument = RecruitInstrument.new
     @recruitment = Recruitment.new
-    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation.id)
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation.id).includes(:instrument)
     @event = Event.new
 
   end
@@ -33,7 +33,7 @@ before_action :authenticate_user!
     @count = RecruitUser.where(recruitment_id: @recruitment.id , join: 1).count
     @recruitment_user = RecruitUser.find_by(recruitment_id: @recruitment.id, user_id: current_user.id)
     @recruit_relation = RecruitRelation.find_by(recruitment_id: @recruitment.id)
-    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation)
+    @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation).includes(:instrument)
     @find_all = @recruit_instruments.where(find_all: false)
   end
 

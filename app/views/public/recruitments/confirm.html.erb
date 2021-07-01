@@ -42,7 +42,7 @@
             <div class="field">
               <%= f.text_area :recruit_comment, placeholder: "申請コメント"%>
             </div>
-            <%= f.hidden_field :recruitment_id, value:@recruitment.id %>
+             <%= f.hidden_field :recruitment_id, value: @recruitment.id %>
              <%= f.submit "送信" , id: "btn", class: "comment_btn" %>
           <% end %>
 
