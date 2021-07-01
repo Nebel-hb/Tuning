@@ -4,11 +4,11 @@ class Public::ThankYouCommentsController < ApplicationController
     @thank_you_comments = ThankYouComment.where(user_id: params[:user])
     score = 0
     @thank_you_comments.each do |comment|
-    score += comment.score
+      score += comment.score
     end
     score *= 50
     score += 50
-    @total_score = score
+    @total_score = score /= @thank_you_comments.count
   end
 
   def create
