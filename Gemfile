@@ -78,7 +78,7 @@ gem 'ransack'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'rails-i18n'
-
+gem 'dotenv-rails'
 
 gem 'dotenv-rails'
 group :production do

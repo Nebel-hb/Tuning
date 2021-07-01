@@ -4,7 +4,7 @@ class Public::RecruitUsersController < ApplicationController
     recruit_user = RecruitUser.new(recruit_user_params)
     recruitment = recruit_user.recruitment_id
     recruit_user.user_id = current_user.id
-    recruit_user.recruitment_id = params[:recruitment]
+
     # 申請通知用
     recruit = Recruitment.find_by(id: recruitment)
     recruitment_user = recruit.user_id
@@ -59,7 +59,7 @@ class Public::RecruitUsersController < ApplicationController
 
  private
   def recruit_user_params
-    params.require(:recruit_user).permit( :recruitment_id, :join, :recruit_comment, :instrument_id)
+    params.require(:recruit_user).permit(:recruitment_id, :join, :recruit_comment, :instrument_id)
   end
   def room_params
     params.require(:room).permit(:room_name, :user_id, :recruitment_id)
