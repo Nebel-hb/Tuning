@@ -35,6 +35,7 @@ class Public::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @tag = @event.tags
   end
 
   def update

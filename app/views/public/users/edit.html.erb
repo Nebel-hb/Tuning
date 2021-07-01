@@ -35,7 +35,7 @@
         <div class="field mb10">
           <%= f.label :profile_image, 'プロフィール写真', class: "mb10" %><br />
           <%= f.file_field :profile_image, class: "image-field", style: "display: none" %>
-          <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image" %>
+          <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image", id: "profile_image" %>
         </div>
 
         <div class="field mb10">
