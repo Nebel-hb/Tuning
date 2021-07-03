@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 2021_07_01_135212) do
     t.boolean "join", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "score", precision: 5, scale: 3
+    t.integer "score"
   end
 
   create_table "user_rooms", force: :cascade do |t|

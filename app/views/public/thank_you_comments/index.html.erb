@@ -12,7 +12,7 @@
         <%= link_to recruitment_path(comment.recruitment_id), class: "green" do %>
           from：<%= Recruitment.find_by(id: comment.recruitment_id).title %>&nbsp;&nbsp;
           <% end %>
-        <%= comment.created_at.strftime("%Y / %m / %d") %><span>&nbsp;&nbsp;<%= (comment.score * 50 + 50).round %>point&nbsp;&nbsp;</span>
+        <%= comment.created_at.strftime("%Y / %m / %d") %><span>&nbsp;&nbsp;<%= comment.score.round %>point&nbsp;&nbsp;</span>
         <% if comment.join == true %>
           <% if Recruitment.find_by(id: comment.recruitment_id).recruit_event_start > Time.now %>
             参加予定
