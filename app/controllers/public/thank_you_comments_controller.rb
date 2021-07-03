@@ -6,9 +6,11 @@ class Public::ThankYouCommentsController < ApplicationController
     @thank_you_comments.each do |comment|
     score += comment.score
     end
-    score *= 50
-    score += 50
-    @total_score = score / @thank_you_comments.count
+    if @thank_you_comments.count != 0
+      @total_score = score / @thank_you_comments.count
+    else
+      @total_score = 0
+    end
   end
 
   def create
