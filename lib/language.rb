@@ -26,7 +26,7 @@ module Language
       if (error = response_body['error']).present?
         raise error['message']
       else
-        response_body['documentSentiment']['score']
+        response_body['documentSentiment']['score']* 50 + 50
       end
     end
   end
