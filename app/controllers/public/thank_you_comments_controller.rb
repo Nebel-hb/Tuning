@@ -6,6 +6,7 @@ class Public::ThankYouCommentsController < ApplicationController
     @thank_you_comments.each do |comment|
     score += comment.score
     end
+
     if @thank_you_comments.count != 0
       @total_score = score / @thank_you_comments.count
     else
