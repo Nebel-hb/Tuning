@@ -20,7 +20,6 @@
 //= require fullcalendar/locale-all
 //= require jquery.jscroll.min.js
 
-
 //= require shards
 //= require modaal
 
@@ -108,7 +107,6 @@ $(window).on('scroll', function() {
     });
   }
 });
-
 
 let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
 
