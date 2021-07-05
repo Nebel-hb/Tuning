@@ -8,7 +8,7 @@
         過去の他楽団からのコメントを確認することができます。</br>
       </p>  
     </div>
-    <div class="user_sort">
+    <div class="orchestra-field">
       <%= form_with(model: @orchestra, local: true) do |f| %>
       <div class="field">
         <%= f.text_area :application_comment, rows: '5',placeholder: "申請コメントをここに", class: "comment-field" %>
