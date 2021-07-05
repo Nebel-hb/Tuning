@@ -285,6 +285,50 @@ nav li.has-child ul ul li a:active{
   100% {background:rgba(255, 255, 255, 0);}
 }
 
+@media screen and (max-width:768px){
+	nav{
+		padding: 0;
+		top: 0px;
+		right: 0px;
+	}
+
+	nav ul{
+		display: block;
+	}
+
+	nav li.has-child ul,
+	nav li.has-child ul ul{
+  	position: relative;
+	left:0;
+	top:0;
+	width:100%;
+	visibility:visible;/*JSで制御するため一旦表示*/
+	opacity:1;/*JSで制御するため一旦表示*/
+	display: none;/*JSのslidetoggleで表示させるため非表示に*/
+	transition:none;/*JSで制御するためCSSのアニメーションを切る*/
+}
+
+nav ul li a{
+	border-bottom:1px solid #ccc;
+}
+
+/*矢印の位置と向き*/
+
+nav ul li.has-child::before{
+	left:20px;
+}
+
+nav ul ul li.has-child::before{
+    transform: rotate(135deg);
+	left:20px;
+}
+
+nav ul li.has-child.active::before{
+    transform: rotate(-45deg);
+}
+
+}
+
 // =====モーダル=====
 
 /*hideエリアをはじめは非表示*/

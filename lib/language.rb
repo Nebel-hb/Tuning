@@ -27,7 +27,7 @@ module Language
         raise error['message']
       else
         response_body['documentSentiment']['score']* 50 + 50
-      end  
+      end
     end
   end
 end

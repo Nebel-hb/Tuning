@@ -13,7 +13,7 @@ before_action :authenticate_user!
     end
 
     @q =  @recruit.ransack(params[:q])
-    @recruitments = @q.result(distinct: true).page(params[:page]).per(5)
+    @recruitments = @q.result(distinct: true).includes(:area, :user).page(params[:page]).per(5)
 
   end
 

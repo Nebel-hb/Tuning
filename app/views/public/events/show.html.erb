@@ -21,10 +21,12 @@
     <p class="gray"> タグ</p>
     <% @event_tags.each do |tag| %>
     <p>
-      <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+      <%= link_to tag_event_search_path(tag_id: tag.id) do %>
+      <%= "##{tag.tag_name}" %>
       <%= "(#{tag.events.count})" %>
-  　</p>
   　<% end %>
+  　<% end %>
+  　</p>
   </div>
   <div class="show-item">
     <p class="green">投稿者</p>

@@ -14,8 +14,8 @@ $white: #f6f6f6;
 
 
 #calendar{
-  width:500px;
-  hight:400px;
+  width:200px;
+  hight:200px;
 }
 // [calendar.scss]
 .fc-day.fc-today {
@@ -227,3 +227,6 @@ a.p  h4 {
 	background: #000;
 }
 
+.show-image{
+  width: 35%;
+}
