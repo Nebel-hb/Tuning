@@ -154,20 +154,47 @@ input  {
 
 .show-contain{
   width: 80%;
-  height: 100vh;
   display: flex;
-  margin: 10px auto;
+  margin: 10px auto 0;
 
-  .show-item,
   .show-comments{
     margin-left: 20px;
     width: 40%;
   }
 }
+.show-item,{
+  height: 20%;
+    width: 40%;
+}
 
+.show-s-box{
+  display: flex;
+  margin-bottom: 15px;
+}
+.show-b-box{
+  width: 100%;
+}
+
+.event_comment_container {
+  padding: 0;
+  overflow: hidden;
+  // max-width: 80%;
+  margin: 20px auto;
+  font-size: 80%;
+
+  .event_comment_contents {
+    padding: 10px;
+    overflow: hidden;
+    line-height: 135%;
+    &.scroll {
+      height: 20vh;;
+      overflow-y: scroll;
+    }
+  }
+}
 
 #comment_comment{
-  width: 136px;
+  width: 240px;
 
 }
 .new-comment{
@@ -211,17 +238,27 @@ a.p:hover span,a.p:hover h4 {
 }
 .a_image{
 	position: absolute;
-	top: -145px;
+	top: -140px;
 	right: 60%;
 	width: 200px;
 	height: 200px;
 	border-radius: 20%;
 }
-a.p  h4 {
+a.p  .recruit_tooltip {
   font-size: 15px;
 	position: absolute;
 	top: -100%;
-	left: 110%;
+	left: 150%;
+	width: 200px;
+	border-radius: 20%;
+	background: #000;
+}
+
+a.p  .event_tooltip {
+  font-size: 15px;
+	position: absolute;
+	top: 0%;
+	left: 80%;
 	width: 200px;
 	border-radius: 20%;
 	background: #000;
