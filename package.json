@@ -1,5 +1,8 @@
 {
   "name": "Tuning",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "fullcalendar": "^5.8.0",
+    "jQuery": "^1.7.4"
+  }
 }

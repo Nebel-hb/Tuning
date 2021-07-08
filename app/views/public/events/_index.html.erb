@@ -8,7 +8,7 @@
           投稿者： <%= event.user.name  %></br>
           <%= truncate(event.event_introduction, length:15) %>
         </p></h4>
-      <div id="calendar"></div>
+      <div id='calendar'></div>
       </div>
       <p class="title_strong center">
         <%= event.title %>
@@ -36,3 +36,5 @@
     <% end %>
   <%= paginate events %>
 </span>
+
+
