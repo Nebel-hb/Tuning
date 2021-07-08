@@ -54,4 +54,3 @@ $(document).on('turbolinks:load',function(){
     reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
   });
 });
-
