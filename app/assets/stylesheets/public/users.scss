@@ -331,10 +331,9 @@ $white: #f6f6f6;
 }
 .form-contain_heightnon{
   display:flex;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   .form{
-    margin: 40px 40px;
     width: 50%;
 
     textarea {
@@ -343,6 +342,9 @@ $white: #f6f6f6;
       font-size: 15px;
 
     }
+  }
+  .chios_peaple{
+    width: 33%;
   }
 }
 
@@ -444,4 +446,8 @@ $white: #f6f6f6;
 
 .orchestra-item-s{
   width: 40%;
+}
+.orchestra-field{
+  width: 40%;
+  margin: 10px;
 }

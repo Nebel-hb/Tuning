@@ -1,7 +1,7 @@
 
   <div class="index_contain">
     <div class="user_sort">
-      <p class="mb10"><a href="#info" class="modal-open"><span class="green">募集人数の追加</span></a></p>
+      <p class="mb10"><a href="#info" class="modal-open"><span class="green">人数の追加</span></a></p>
       <p><%= link_to  "全削除", recruit_instruments_destroy_all_path(recruit_relation: @recruit_relation.id), method: :delete  %></p>
 
       <% recruit_instruments.each do |recruit_instrument| %>
@@ -9,9 +9,7 @@
           <%= recruit_instrument.instrument.instrument_name %>
         </p>
         <p>
-          <%= recruit_instrument.need_people%><%= "名" %></br>
-        </p>
-        <p>
+          <%= recruit_instrument.need_people%><%= "名" %>
           <%= link_to "削除", recruit_instrument_path(recruit_instrument.id), remote: true, method: :delete %>
         </p>
       <% end %>
@@ -22,12 +20,12 @@
       <div class="form-contain_heightnon">
         <div class="form">
           <div class="field">
-            <%= f.label :title, 'タイトル' %><br />
+            <%= f.label :title, 'タイトル' %><br/>
             <%= f.text_field :title %>
           </div>
 
           <div class="field">
-            <%= f.label :area_id, '地域' %><br />
+            <%= f.label :area_id, '地域' %><br/>
             <span class="sel signup">
               <%= f.collection_select :area_id, Area.all, :id, :area_name, prompt: "----", required: "required", placeholder: " "%>
             </span>
@@ -64,7 +62,7 @@
       </div>
           <div class="actions">
             <% if recruit_relation.event_id.blank? %>
-              <div class="pretty p-icon p-round p-pulse actions1" id="user_remember_me">
+              <div class="pretty p-round p-pulse actions1 radio_btn" id="user_remember_me">
                 <%= check_box_tag :with_event, true %>
                 <div class="state p-success">
                   <i class="icon mdi mdi-check"></i>
@@ -89,13 +87,13 @@
 
   <%= form_with url: recruit_instruments_path , local: true do |f| %>
     <div class="form-contain_heightnon">
-      <div class="field">
+      <div class="field chios_peaple">
         <%= f.label :instrument_id, '楽器' %><br />
         <span class="sel signup">
         <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "選択", required: "required" %>
         </span>
       </div>
-      <div class="field">
+      <div class="field chios_peaple">
         <%= f.label :need_people, '募集人数' %>
 　      <%= f.text_field :need_people, placeholder: "半角数字を入力", class: "add_need_people" %>
       </div>
