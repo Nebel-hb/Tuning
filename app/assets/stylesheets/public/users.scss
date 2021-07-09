@@ -273,8 +273,9 @@ $white: #f6f6f6;
 }
 
 .user_sort {
-  width: 25%;
-  margin: 10px;
+  width: 16%;
+  // width: 25%;
+  margin-top: 10px;
 
   a{
   text-align: center;
@@ -294,15 +295,17 @@ $white: #f6f6f6;
 
 .index_user_contain{
   margin: auto;
-  width: 100%;
-  height: 130px;
+  // width: 100%;
+  // height: 100%;
+  // height: 130px;
+  margin-bottom: 25px;
   background-position: center;
   background-size: cover;
   display:flex;
 }
 .index_image_box{
-  width: 12%;
-  height: 12%;
+  width: 80px;
+  height: 80px;
 }
 
 .index_image{
@@ -319,11 +322,11 @@ $white: #f6f6f6;
 
   font-size: 30px;
   margin: 0 20px;
-  width: 30%;
+  width: 55%;
 }
 
 .index_item{
-  width: 60%;
+  width: 20%;
 
 }
 .form-contain_heightnon{
@@ -438,10 +441,6 @@ $white: #f6f6f6;
 .orchestra-form{
   margin-bottom: 10px;
 }
-
-// .sel-bg-none{
-// background: rgba(255, 255, 255, 0);
-// }
 
 .orchestra-item-s{
   width: 40%;
