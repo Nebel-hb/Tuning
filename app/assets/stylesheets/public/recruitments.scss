@@ -39,7 +39,7 @@ $white: #f6f6f6;
   padding-left: 0;
   font-size: 18px;
   background: rgba(255, 255, 255, 0);
-  
+
 }
 
 .show-item-box{
@@ -65,5 +65,13 @@ $white: #f6f6f6;
   margin-bottom: 30px;
   margin-left: 30px;
   font-size: 15px;
+}
 
+.form-contain_heightnon{
+  display: flex;
+  justify-content:space-around;
+}
+
+.radio_btn{
+  margin: 10px  20%;
 }

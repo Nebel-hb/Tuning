@@ -4,43 +4,36 @@
 
 <div class="index_contain">
   <div class="user_sort">
-
     <h3>並び替え</h3>
       <p><%= sort_link(@q, :title, "タイトル") %></p>
       <p><%= sort_link(@q, :area_id, "地域") %></p>
       <p><%= sort_link(@q, :user_name, "開催者") %></p>
       <p><%= sort_link(@q, :start, "開催開始日") %></p>
       <p><%= sort_link(@q, :end, "終了日") %></p>
-
     <h3 class="info-list">
       <a href="#info-1" class="info">タグ一覧</a>
     </h3>
     <h3><%= link_to 'Event一覧', events_path %></h3>
-
   </div>
-<br>
+  <br>
 
-<div class="users_index">
-<p class="mb10"><%= "タグが#{@tag.tag_name}の投稿 #{@events.count}件"%></p>
-          <%= render partial: 'index', locals: { events: @events } %>
-        
-    </div>
+  <div class="users_index">
+    <p class="mb10"><%= "タグが#{@tag.tag_name}の投稿 #{@events.count}件"%></p>
+    <%= render partial: 'index', locals: { events: @events } %>
   </div>
-
 </div>
 
-
-    <div class="search-btn">
-      <div class="open-btn"></div><!--開閉ボタン-->
-      <div id="search-wrap"><!--表示エリアのHTML開閉ボタンをクリックするたび、search-wrap に表示用のクラス名が付与・除去されて付与の場合出現します。-->
-        <%= search_form_for(@q, url: events_path)   do |f| %>
-          <%= f.label :tags_tag_name_cont, "タグ検索", class: "gray" %>
-          <%= f.search_field :tags_tag_name_cont , placeholder: "search" %>
-          <%= f.hidden_field :type, value: "", id: "type" %>
-          <%= f.submit "" %>
-        <% end %>
-    </div>
+<div class="search-btn">
+  <div class="open-btn"></div><!--開閉ボタン-->
+  <div id="search-wrap"><!--表示エリアのHTML開閉ボタンをクリックするたび、search-wrap に表示用のクラス名が付与・除去されて付与の場合出現します。-->
+    <%= search_form_for(@q, url: events_path)   do |f| %>
+      <%= f.label :tags_tag_name_cont, "タグ検索", class: "gray" %>
+      <%= f.search_field :tags_tag_name_cont , placeholder: "search" %>
+      <%= f.hidden_field :type, value: "", id: "type" %>
+      <%= f.submit "" %>
+    <% end %>
   </div>
+</div>
 
 
 <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->

@@ -13,36 +13,20 @@
       <%= link_to  recruitment_path(@recruit_relation.recruitment_id), class: "gray" do %>募集情報<% end %>
     </p>
     <% end %>
-  <p class="info-list">
-    <a href="#info-1" class="info gray">
-     コメント投稿
-    </a>
-  </p>
+    <p class="info-list">
+      <a href="#info-1" class="info gray">
+       コメント投稿
+      </a>
+    </p>
     <p class="gray"> タグ</p>
     <% @event_tags.each do |tag| %>
     <p>
-      <%= link_to tag.tag_name, tag_event_search_path(tag_id: tag.id) %>
+      <%= link_to tag_event_search_path(tag_id: tag.id) do %>
+      <%= "##{tag.tag_name}" %>
       <%= "(#{tag.events.count})" %>
-  　</p>
+  　   <% end %>
   　<% end %>
-  </div>
-  <div class="show-item">
-    <p class="green">投稿者</p>
-    <p><%= @event.user.name %>
-    </p>
-    <p><%= @event.area.area_name %>
-    </p>
-    <p class="green">開催期間</p>
-    <p>
-      <%= l @event.start %>〜
-   </p>
-    <p>
-      <%= l @event.end %>
-   </p>
-    <p class="mb10">
-      <%= @event.event_introduction %>
-    </p>
-
+  　</p>
     <% if @event.user == current_user %>
       <p>
         <%= link_to edit_event_path(@event.id), class: "gray" do %>編集<% end %>
@@ -51,10 +35,29 @@
     <% end %>
   </div>
 
-  <div class="show-item">
+  <div class="show-b-box">
+    <div class="show-s-box">
+      <div class="show-item">
+        <p class="green">投稿者</p>
+        <p><%= @event.user.name %></p>
+        <p><%= @event.area.area_name %></p>
+      </div>
+      <div class="show-item">
+        <p class="green">開催期間</p>
+        <p>
+          <%= l @event.start %>〜
+        </p>
+        <p>
+          <%= l @event.end %>
+        </p>
+      </div>
+    </div>
+    <p class="mb10">
+      <%= @event.event_introduction %>
+    </p>
     <span class="gray">コメント<%= @event.comments.count %>件</span>
-    <div class="chat_container">
-      <div class="chat_contents scroll" id="scroll">
+    <div class="event_comment_container">
+      <div class="event_comment_contents scroll" id="scroll">
       <% @event.comments.each do |comment| %>
         <p class="mt10"><%= comment.comment %></p>
         <%= comment.user.name %>
@@ -77,7 +80,7 @@
         <%= f.hidden_field :user_id, value:current_user.id %>
         <%= f.hidden_field :event_id, value:@event.id %>
 
-        <%= f.submit "送信する" ,id: "btn"%>
+        <%= f.submit "送信" ,id: "btn", class: "btn-size" %>
       <% end %>
     </div>
   </div>

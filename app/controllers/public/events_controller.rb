@@ -15,7 +15,7 @@ class Public::EventsController < ApplicationController
     @event = current_user.events.new
 
     @q = @event_search.ransack(params[:q])
-    @events = @q.result(distinct: true).includes(:area).page(params[:page]).per(5)
+    @events = @q.result(distinct: true).includes(:area, :user).page(params[:page]).per(5)
     @tags = Tag.all
 
     @areas = Area.all
@@ -23,7 +23,7 @@ class Public::EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @tag_list = Tag.all
+    @tag_list = Tag.where(id: EventTag.where(event_id: Event.where(:id == nil?)).pluck(:tag_id))
   end
 
   def show

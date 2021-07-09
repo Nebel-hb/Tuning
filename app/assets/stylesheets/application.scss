@@ -12,9 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require fullcalendar
  *= require modaal
-
 
  */
 
@@ -284,6 +282,8 @@ nav li.has-child ul ul li a:active{
   0% {background: $dark-green;}
   100% {background:rgba(255, 255, 255, 0);}
 }
+
+
 
 // =====モーダル=====
 
