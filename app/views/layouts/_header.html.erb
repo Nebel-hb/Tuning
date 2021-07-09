@@ -4,7 +4,7 @@
       <% if user_signed_in? %>
       <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
       <li><%= link_to "top", root_path %></li>
-      <li class="has-child"><%= link_to "users", users_path %>
+      <li class="has-child"><%= link_to "user", users_path %>
         <ul>
           <li class="has-child"><%= link_to 'mypage', user_path(current_user.id) %>
             <ul>
@@ -22,11 +22,13 @@
             </ul>
           </li>
           <li><%= link_to "トークルーム", rooms_path %></li>
+          <li><%= link_to "一覧", users_path %></li>
         </ul>
       </li>
 
-      <li class="has-child"> <%= link_to "募集中", recruitments_path %>
+      <li class="has-child"> <%= link_to "find", recruitments_path %>
         <ul>
+          <li><%= link_to "募集中", recruitments_path %>
           <li><%= link_to "イベント", events_path %></li>
         </ul>
       </li>

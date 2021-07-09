@@ -16,8 +16,7 @@
 //= require turbolinks
 
 //= require moment
-//= require fullcalendar
-//= require fullcalendar/locale-all
+
 //= require jquery.jscroll.min.js
 
 //= require shards
@@ -26,7 +25,6 @@
 //= require_tree .
 
 /* global $*/
-
 
 
 //スクロールすると上部に固定させるための設定を関数でまとめる
@@ -136,3 +134,15 @@ $(window).on('scroll', function() {
 
 let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
 
+
+//カレンダー
+    // 画面遷移を検知
+    $(document).on('turbolinks:load', function () {
+       document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+});
