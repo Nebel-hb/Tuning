@@ -31,12 +31,13 @@
 </div>
 
 <script>
-  let t = document.getElementById("top")
-  t.addEventListener("click",function() {
-  document.querySelector("#audio").play();
-  document.getElementById('top_contain').classList.add("fadeout");
+  let top_start = document.getElementById("top")
+  top_start.addEventListener("click",function() {
+    $(document).on('turbolinks:load', function () {
+    document.querySelector("#audio").play();
+    document.getElementById('top_contain').classList.add("fadeout");
       clearTimeout(getTimer);
       getTimer=setTimeout(opening,2500);
+  });
     },false);
-
 </script>

@@ -43,7 +43,6 @@ function slick_start (){
 }
 
 // top
-
 let data =[
       {str:"皆さま、大変長らくお待たせいたしました。",},
       {str:"この度はご来場いただき、誠にありがとうございます。",},
@@ -64,7 +63,6 @@ let data =[
             text.classList.add("display_block");
             text.classList.add("top_contain");
             text.classList.remove("display_non");
-            // document.getElementById('gnavi').classList.add("display_non");
             let contain = document.querySelector("#top_contain");
             contain.remove();
             clearTimeout(getTimer);
@@ -73,8 +71,6 @@ let data =[
 
 
      function start(){
-      // document.getElementById("nom").textContent="";
-      // document.getElementById("gnavi").style.display="none";
       onkeydown=read;
       timerId=setInterval(tick,100);
     }
