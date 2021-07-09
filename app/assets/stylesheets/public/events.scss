@@ -106,7 +106,6 @@ input  {
       margin: auto;
       outline: none;
       display: block;
-      // color: $white;
       color: $green;
         &:hover {
         background: $dark-green;
@@ -124,6 +123,7 @@ input  {
 
 .show-contain{
   width: 80%;
+  height: 100vh;
   display: flex;
   margin: 10px auto 0;
 
