@@ -6,16 +6,16 @@
     <p class="mx60" id="top"><a class="inline_close" href="#"><span class="">開演を待つ</span><span>トップページ</span></a></p>
     <p class="mx60"><%= link_to new_user_registration_path do %><span class="">演奏会準備へ</span><span>ログイン</span><% end %></p>
     </div>
+    </div>
   </div>
-</div>
 
-<div id ="top_contain_text" class=" display_non ">
-  <p id="read" class="read" onclick="read()"><a>read enter</a></p>
-  <div id="text_box"  class="">
-    <h2  id="text"></h2>
+  <div id ="top_contain_text" class=" display_non ">
+    <p id="read" class="read" onclick="read()"><a>read enter</a></p>
+    <div id="text_box"  class="">
+      <h2  id="text"></h2>
+    </div>
+    <%= audio_tag("clap.mp3",id: "audio2") %>
   </div>
-  <%= audio_tag("clap.mp3",id: "audio2") %>
-</div>
 </div>
 
 <div id ="top_contain_main" class=" display_non ">
@@ -31,8 +31,8 @@
 </div>
 
 <script>
-  let tops = document.getElementById("top")
-  tops.addEventListener("click",function() {
+  let t = document.getElementById("top")
+  t.addEventListener("click",function() {
   document.querySelector("#audio").play();
   document.getElementById('top_contain').classList.add("fadeout");
       clearTimeout(getTimer);
