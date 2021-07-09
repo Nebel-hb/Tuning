@@ -23,7 +23,7 @@ class Public::EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @tag_list = Tag.all
+    @tag_list = Tag.where(id: EventTag.where(event_id: Event.where(:id == nil?)).pluck(:tag_id))
   end
 
   def show
