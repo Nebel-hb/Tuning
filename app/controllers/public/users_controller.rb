@@ -22,8 +22,6 @@ class Public::UsersController < ApplicationController
     @recruit = RecruitUser.pluck(:recruitment_id)
     @user_rooms = UserRoom.all
 
-
-
   end
 
   def edit
