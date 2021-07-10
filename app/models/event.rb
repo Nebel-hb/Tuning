@@ -44,5 +44,7 @@ class Event < ApplicationRecord
     end
   end
 
+  scope :endtime, -> { reorder(:end) }
+  scope :page, -> { page(params[:page]).per(5) }
 
 end
