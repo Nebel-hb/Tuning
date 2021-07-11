@@ -19,6 +19,9 @@
     <h3 class="info-list">
       <a href="#info-1" class="info">タグ一覧</a>
     </h3>
+
+    <!--<div id="calendar"></div>-->
+
   </div>
 
   <div class="users_index">
@@ -65,7 +68,7 @@
     <div class="sel sel--black-panther">
       <%= select_tag :search_past , options_for_select([['開催予定'], ['全てのイベント'],['過去のイベント']]) %>
     </div>
-    
+
     <%= f.hidden_field :type, value: "", id: "type" %>
     <%= f.submit "" %>
 
