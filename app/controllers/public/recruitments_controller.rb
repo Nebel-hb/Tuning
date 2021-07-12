@@ -13,7 +13,6 @@ before_action :set_recruitment, only: [:show, :edit, :update, :destroy, :confirm
     @recruit_instrument = RecruitInstrument.new
     @recruitment = Recruitment.new
     @event = Event.new
-
   end
 
   def show
@@ -32,17 +31,19 @@ before_action :set_recruitment, only: [:show, :edit, :update, :destroy, :confirm
   def update
     set_relation
     if @recruitment.update(recruitment_params)
-      with_event = params[:with_event]
-      if with_event == "true"
-        event = Event.new
-        event.title =  @recruitment.title
-        event.user_id =  @recruitment.user_id
-        event.area_id = @recruitment.area_id
-        event.event_introduction = @recruitment.recruit_introduction
-        event.start = @recruitment.recruit_event_start
-        event.end = @recruitment.recruit_event_end
-        event.save
-        @recruit_relation.update(event_id: event.id)
+      if params[:with_event] == "true"
+        @event = Event.new
+        set_recruit_event
+        @event.save
+        @recruit_relation.update(event_id: @event.id)
+      elsif params[:change_event] == "true"
+        Event.find(@recruit_relation.event_id).update(
+          title: @recruitment.title,
+          user_id: @recruitment.user_id,
+          area_id: @recruitment.area_id,
+          event_introduction: @recruitment.recruit_introduction,
+          start: @recruitment.recruit_event_start,
+          end: @recruitment.recruit_event_end)
       end
       redirect_to recruitment_path(@recruitment.id)
     else
@@ -54,18 +55,11 @@ before_action :set_recruitment, only: [:show, :edit, :update, :destroy, :confirm
     set_relation_params
     @recruitment = Recruitment.new(recruitment_params)
     if @recruitment.save
-      recruit_relation.recruitment_id = @recruitment.id
-     with_event = params[:with_event]
-      if with_event == "true"
-        event = Event.new
-        event.title =  @recruitment.title
-        event.user_id =  @recruitment.user_id
-        event.area_id = @recruitment.area_id
-        event.event_introduction = @recruitment.recruit_introduction
-        event.start = @recruitment.recruit_event_start
-        event.end = @recruitment.recruit_event_end
-        event.save
-        @recruit_relation.update(event_id: event.id)
+      if with_event = params[:with_event] == "true"
+        @event = Event.new
+        set_recruit_event
+        @event.save
+        @recruit_relation.update(event_id: @event.id)
       end
         @recruit_relation.update(recruitment_id: @recruitment.id )
         redirect_to recruitment_path(@recruitment.id)
@@ -101,6 +95,7 @@ private
 
   def with_event_params
     params.permit(:with_event)
+    params.permit(:change_event)
   end
 
   def set_recruitment
@@ -116,5 +111,13 @@ private
   end
   def set_recruit_instrument
     @recruit_instruments = RecruitInstrument.where(recruit_relation_id: @recruit_relation).includes(:instrument)
+  end
+  def set_recruit_event
+    @event.title =  @recruitment.title
+    @event.user_id =  @recruitment.user_id
+    @event.area_id = @recruitment.area_id
+    @event.event_introduction = @recruitment.recruit_introduction
+    @event.start = @recruitment.recruit_event_start
+    @event.end = @recruitment.recruit_event_end
   end
 end
