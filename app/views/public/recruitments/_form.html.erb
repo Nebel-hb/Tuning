@@ -69,6 +69,14 @@
              　　   <%= f.label "イベントにも登録しますか？"  %>
                 </div>
               </div>
+            <% else %>
+              <div class="pretty p-round p-pulse actions1 radio_btn" id="user_remember_me">
+                <%= check_box_tag :change_event, true %>
+                <div class="state p-success">
+                  <i class="icon mdi mdi-check"></i>
+             　　   <%= f.label "イベントも変更しますか？"  %>
+                </div>
+              </div>
             <% end %>
 
             <%= f.hidden_field :user_id, value:current_user.id %>
