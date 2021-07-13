@@ -1,10 +1,7 @@
 class Public::ThankYouCommentsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @thank_you_comments = ThankYouComment.where(user_id: params[:user_id])
-puts 23232323232
-p params[:user_id]
-
+    @thank_you_comments = ThankYouComment.where(user_id: params[:user])
     score = 0
     @thank_you_comments.each do |comment|
     score += comment.score
@@ -39,6 +36,6 @@ p params[:user_id]
       params.require(:thank_you_comment).permit(:recruitment_id, :user_id, :thanks_comment)
     end
     def user_params
-      params.permit(:user_id)
+      params.permit(:user)
     end
 end

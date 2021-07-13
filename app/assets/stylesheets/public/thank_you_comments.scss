@@ -3,14 +3,220 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// .thanks-contain{
-//     width: 80%;
-//     margin: 0 auto ;
-//     padding-bottom: 20px;
-//     display: flex;
+$main-color: #f9a939;
+$green: #788d63;
+$brown: #9f5626;
+$orange: #e38e39;
+$light_grayish_orange: #d7a861;
+$dark-green: darken($green, 20%);
+$gray: #8E9AAF;
+$white: #f6f6f6;
 
-// }
-// .thanks-comment{
-//   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-   
-// }
+h1 {
+  font-size: 25px;
+  font-weight: 100;
+  color: #2C2C2C;
+  margin: 20px 25px;
+}
+
+a {
+  text-decoration:none;
+  // color:#3476CA;
+}
+
+.open{
+
+  background: rgba(255, 255, 255, .1);
+  padding: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 15px;
+  border-radius: 10px;
+  outline: none;
+  display: block;
+  color: $green;
+  position:fixed;
+  width: 100px;
+  height: 40px;
+  left: 85%;
+  top: 50%;
+  margin-left:-80px;
+  margin-top:-230px;
+  transition:all ease-out .6s;
+  font-family: 'Cormorant Upright','Cormorant Upright', serif;
+
+  &:hover {
+    background: $dark-green;
+    color: $white;
+    transition: background-color 1s ease-out;
+    cursor:pointer;
+  }
+}
+
+.tool_contain {
+  position:fixed;
+  width:400px;
+  height:200px;
+  left: 77%;
+  // top: 50%;
+    top:-1200px;
+  margin-top:-288px;
+  margin-left:-200px;
+  background-color:#F3F3F3;
+  border-radius:6px;
+  box-shadow:0px 0px 24px rgba(0, 0, 0, 0.4);
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 28px;
+    border-style: solid;
+    border-width: 10px 14px 10px 0;
+    border-color: rgba(0, 0, 0, 0) #F3F3F3 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  }
+
+  & p {
+    width:350px;
+    font-size: 16px;
+    color: #a8aab2;
+    font-weight: 400;
+    line-height: 28px;
+    float:left;
+    margin:0;
+  }
+
+  & .bottom{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display:flex;
+    width: 100%;
+    bottom:0;
+    position:absolute;
+
+    & .step {
+      flex:3;
+      -webkit-flex:3;
+      -ms-flex:3;
+      width: 100%;
+      height:54px;
+      background-color:$gray;
+      border-bottom-left-radius:6px;
+      display:flex;
+
+      & span {
+        flex:1;
+        -webkit-flex:1;
+        -ms-flex:1;
+        line-height:54px;
+        color:#fff;
+        margin-left:25px;
+        font-size:18px;
+      }
+      & ul {
+        flex:2;
+        -webkit-flex:2;
+        -ms-flex:2;
+        list-style:none;
+        height: 10px;
+        margin: 23px 0;
+        padding-left: 15px;
+
+        & li {
+          position:relative;
+          height:7px;
+          width:7px;
+          margin:0 10px;
+          float:left;
+          border-radius: 50%;
+          background:none;
+          border:1px solid #535560;
+
+          &:first-child:before {
+            width:0;
+          }
+
+          &:before {
+           content: '';
+           position: absolute;
+           width: 20px;
+           border-top: 1px solid #535560;
+           left: -21px;
+           top: 3px;
+          }
+
+          &.true {
+            background-color:#7a7d86;
+          }
+
+          &.active {
+            background-color:#fff;
+            box-shadow:0 0 6px rgba(255, 255, 255, 0.78);
+          }
+        }
+      }
+    }
+  }
+}
+
+.close {
+  cursor:pointer;
+
+  &:before, &:after{
+    content: "";
+    position: absolute;
+    height: 13px;
+    width: 13px;
+    top: 26px;
+    right: 31px;
+    border-top: 2px solid #7c7c7c;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  &:before {
+    right: 40px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+.btn {
+  flex:1;
+  background-color:$orange;
+  border:0;
+  margin:0;
+  padding:0;
+  text-transform:uppercase;
+  color:#fff;
+  font-weight:bold;
+  border-bottom-right-radius:6px;
+  cursor:pointer;
+  transition:all .3s;
+}
+.btn:hover {
+  background-color:$main_color;
+  transition:all .3s;
+  color:#fff;
+}
+.btn:active {
+  background-color:$light_grayish_orange;
+  color:#fff;
+}
+
+.slider-container {
+  width:350px;
+  margin:0 25px;
+  overflow:hidden;
+}
+.slider-turn{
+  width:10000px;
+}

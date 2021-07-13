@@ -1,5 +1,5 @@
  <div id="title">
-    <h2>thank youコメント</h2>
+    <h2>Thank Youコメント</h2>
   </div>
   <h3 class="white"><span class="orange"><%= @thank_you_comments.count %></span> thanks<span><span class="orange">&nbsp;<%= @total_score.round %></span>point</span></h3>
   <div class="notification-contain">
@@ -30,3 +30,46 @@
   <% end %>
   </div>
 
+<div class="tool_contain">
+  <h1>Thank Youコメントについて</h1>
+  <span class="close"></span>
+
+  <div class="slider-container">
+    <div class="slider-turn">
+      <p>
+        ここでは応募した楽団からのコメントを</br>本人と公式楽団のみ確認することができます。
+      </p>
+
+      <p>
+        各コメントと共に募集先とポイント</br>参加したイベントか表示しています。
+      </p>
+
+      <p>
+        ポイントはコメントからAIが印象を自動的に</br>0〜100の数値で評価しています。
+      </p>
+
+      <p>
+        最上部にThanks数(総コメント数)とポイントの</br>平均値も表示しています。
+      </p>
+
+      <p>
+        応募してもらったら人にはThank Youコメントを送りましょう！
+      </p>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="step">
+      <span></span>
+      <ul>
+        <li data-num="1"></li>
+        <li data-num="2"></li>
+        <li data-num="3"></li>
+        <li data-num="4"></li>
+        <li data-num="5"></li>
+      </ul>
+    </div>
+    <%= submit_tag "Next", class: "btn" %>
+  </div>
+</div>
+<%= submit_tag "Hint", class: "open" %>
