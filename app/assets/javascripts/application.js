@@ -16,7 +16,6 @@
 //= require turbolinks
 
 //= require moment
-//= require fullcalendar
 
 //= require jquery.jscroll.min.js
 
