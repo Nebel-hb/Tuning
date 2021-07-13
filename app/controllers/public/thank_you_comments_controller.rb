@@ -2,9 +2,6 @@ class Public::ThankYouCommentsController < ApplicationController
   before_action :authenticate_user!
   def index
     @thank_you_comments = ThankYouComment.where(user_id: params[:user])
-puts 23232323232
-p params[:user]
-
     score = 0
     @thank_you_comments.each do |comment|
     score += comment.score
