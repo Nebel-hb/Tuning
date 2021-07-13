@@ -1,16 +1,15 @@
 class Public::RecruitUsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_recruit_user, only: [:update, :destroy]
+  
   def create
     recruit_user = RecruitUser.new(recruit_user_params)
-    recruitment = recruit_user.recruitment_id
     recruit_user.user_id = current_user.id
 
     # 申請通知用
-    recruit = Recruitment.find_by(id: recruitment)
-    recruitment_user = recruit.user_id
-    user = User.find_by(id: recruitment_user)
+    recruit = Recruitment.find_by(id: recruit_user.recruitment_id)
+    user = User.find_by(id: recruit.user_id)
     if recruit_user.save
-
       user.create_notification_join!(current_user)
       redirect_to recruitment_path(recruitment)
     else
@@ -29,19 +28,16 @@ class Public::RecruitUsersController < ApplicationController
     @users_room = Room.where(recruitment_id: @recruitment.id)
     @recruit_instruments = RecruitInstrument.where(recruit_relation_id: RecruitRelation.find_by(recruitment_id: @recruitment.id).id).pluck(:instrument_id)
     @instruments = Instrument.where(id: @recruit_instruments)
-    recruit_users = RecruitUser.where(recruitment_id: @recruitment)
-    @recruit_user = User.where(id: recruit_users.pluck(:user_id))
+    @recruit_user = User.where(id: RecruitUser.where(recruitment_id: @recruitment).pluck(:user_id))
     @thank_you_comment = ThankYouComment.new
   end
 
   def destroy
-    @recruit_user = RecruitUser.find(params[:id])
-    @recruit_user.destroy
+    @recruit.destroy
     redirect_to request.referer
   end
 
   def update
-    @recruit = RecruitUser.find(params[:id])
     @recruit_user = @recruit.update(recruit_user_params)
     recruitment = @recruit.recruitment_id
     instrument = RecruitInstrument.find_by(instrument_id: @recruit.instrument_id, recruit_relation_id: RecruitRelation.find_by(recruitment_id: recruitment).id)
@@ -53,7 +49,6 @@ class Public::RecruitUsersController < ApplicationController
     if instrument.need_people == instrument.finded_people
       instrument.update(find_all: true)
     end
-
     redirect_to request.referer
   end
 
@@ -75,5 +70,9 @@ class Public::RecruitUsersController < ApplicationController
   end
   def recruit_instrument_params
     params.permit(:recruit_instrument)
+  end
+  
+  def set_recruit_user
+    @recruit = RecruitUser.find(params[:id])
   end
 end

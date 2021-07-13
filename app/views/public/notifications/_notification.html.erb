@@ -12,7 +12,7 @@
         <%= "申請しました" %>
       <% when 'thanks' then %>
         <%= "あなたに" %>
-          <%= link_to "thank youメッセージ", thank_you_comments_path, user: current_user.id %>
+          <%= link_to "thank youメッセージ", thank_you_comments_path( user: current_user.id) %>
           <%= "を送信しました。" %>
       <% when 'add_room' then %>
           <%= link_to "チャットルーム", rooms_path %>

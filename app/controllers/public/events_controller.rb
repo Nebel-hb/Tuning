@@ -1,48 +1,36 @@
 class Public::EventsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_tag, only: [:update, :create]
+
   def index
-    @search_past = params[:search_past]
-
-    if  @search_past == "開催予定のイベント"
-      @event_search = Event.where("events.end > ?", DateTime.now).reorder(:end)
-    elsif @search_past == "過去のイベント"
-      @event_search = Event.where("events.end < ?", DateTime.now).reorder(:end)
-    else
-      @event_search = Event.all
-    end
-
+    set_ransack
+    @event_search = Event.search_time(@q, params[:search_past])
     @tag_list = Tag.all
     @event = current_user.events.new
-
-    @q = @event_search.ransack(params[:q])
-    @events = @q.result(distinct: true).includes(:area, :user).page(params[:page]).per(5)
-    @tags = Tag.all
-
+    @events = @event_search.result(distinct: true).includes(:area, :user).page(params[:page]).per(5)
     @areas = Area.all
   end
 
   def new
     @event = Event.new
-    @tag_list = Tag.where(id: EventTag.where(event_id: Event.where(:id == nil?)).pluck(:tag_id))
+    @tag_list = Tag.where(id: EventTag.pluck('tag_id').uniq)
+   
   end
 
   def show
-    @event = Event.find(params[:id])
     @comment = Comment.new
     @event_tags = @event.tags
     @recruit_relation = RecruitRelation.find_by(event_id: @event)
   end
 
   def edit
-    @event = Event.find(params[:id])
     @tag = @event.tags
   end
 
   def update
-    @event = Event.find(params[:id])
-    tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
     if @event.update(event_params)
-     @event.save_tag(tag_list)
+     @event.save_tag(@tag_list)
       redirect_to event_path(@event.id)
     else
       render 'edit'
@@ -51,10 +39,8 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
     if @event.save
-      @event.save_tag(tag_list)
-
+      @event.save_tag(@tag_list)
       redirect_to event_path(@event.id)
     else
       redirect_to request.referer
@@ -63,17 +49,14 @@ class Public::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     redirect_to events_path
   end
 
   def search
-    @tag_list = Tag.all
+    set_ransack
     @tag = Tag.find(params[:tag_id])
-    @events = Event.page(params[:page]).per(5)
-    @events = Event.where(id: EventTag.where(tag_id: @tag.id).pluck(:event_id)).page(params[:page]).per(5)
-    @q = Event.ransack(params[:q])
+    @events = @tag.events.page(params[:page]).per(5)
   end
 
  private
@@ -84,5 +67,18 @@ class Public::EventsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:tag_name)
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def set_tag
+    @tag_list = params[:event][:tag_name].split(/[[:blank:]]+/)
+  end
+
+  def set_ransack
+    @q = Event.ransack(params[:q])
+    @tags = Tag.all
   end
 end

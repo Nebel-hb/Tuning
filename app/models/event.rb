@@ -44,5 +44,16 @@ class Event < ApplicationRecord
     end
   end
 
+  def self.search_time(q, time)
+    if  time == "開催予定のイベント"
+      q.where("events.end > ?", DateTime.now).endtime
+    elsif time == "過去のイベント"
+      q.where("events.end < ?", DateTime.now).endtime
+    else
+      q
+    end
+  end
+
+  scope :endtime, -> { reorder(:end) }
 
 end
