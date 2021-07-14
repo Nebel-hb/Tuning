@@ -72,33 +72,13 @@
 
     <div class="chat-contain">
       <div class="chat_container">
-        <div class="chat_contents scroll" id="scroll last_message" data-room_id="<%= @room.id %>">
+        <div class="chat_contents scroll" id="scroll" data-room_id="<%= @room.id %>" data-room_id="<%= @room.id %>">
           <%= render "chat", chats: @chats %>
-          <!--% @chats.each do |chat| %>-->
-          <!--  % if chat.user_id != current_user.id %>-->
-          <!--  <div class="members_chat">-->
-          <!--    <div class="chat_image">-->
-          <!--      %= link_to attachment_image_tag(chat.user, :profile_image, :fill, 30, 30, fallback: "public/image/no_image.png", size:'80x80', class:"profile-image"), user_path(chat.user) %>-->
-          <!--    </div>-->
-          <!--    <div class="left-text">-->
-          <!--      <div class="name">%= chat.user.name%></div>-->
-          <!--      <div class="text">%= chat.message%></div>-->
-          <!--      <span class="members_text_time">%= chat.created_at.strftime("%H:%M")%></span>-->
-          <!--    </div>-->
-          <!--  </div>-->
-
-          <!--  % else %>-->
-          <!--  <div class="my_chat">-->
-          <!--    <div class="text">%= chat.message %></div>-->
-          <!--    <div class="my_text_time">%= chat.created_at.strftime("%H:%M")%></div>-->
-          <!--  </div>-->
-          <!--  % end %>-->
-          <!--% end %>-->
           <div  id="last_message" data-room_id="<%= @room.id %>" data-room_id="<%= @room.id %>">
 
           </div>
         </div>
-<input placeholder= "Aa" class="gray"id="chat-input" type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>" >
+    <input placeholder= "Aa" class="gray"id="chat-input" type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>" >
     <!--  %= form_with model: @chat, remote: true do |f| %>-->
     <!--    %= f.text_field :message ,placeholder: "Aa", class: "gray" %>-->
     <!--    %= f.hidden_field :room_id %>-->
