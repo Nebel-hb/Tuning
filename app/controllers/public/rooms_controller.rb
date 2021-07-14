@@ -6,9 +6,9 @@ before_action :authenticate_user!
 
   def show
     @room = Room.find(params[:id])
-    @chats = @room.chats
+    @chats = @room.chats.includes(:user)
     @chat = Chat.new(room_id: @room.id)
-    @users = UserRoom.where(room_id: @room)
+    @users = UserRoom.includes(:user).where(room_id: @room)
     @users22 = @users.pluck(:user_id)
     @user = User.search_user(params[:search])
     @user_room = UserRoom.new
