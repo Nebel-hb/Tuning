@@ -43,6 +43,11 @@
           <%= f.file_field :profile_image, class: "image-field", style: "display: none" %>
           <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image", id: "profile_image" %>
         </div>
+        
+        <div class="field">
+          <%= f.label :link %><br />
+          <%= f.text_field :link, autofocus: true, autocomplete: "link", type: "link", placeholder: "link" %>
+        </div>
 
         <div class="field mb10">
           <%= f.label :introduction, 'プロフィール', class: "mb10" %><br />

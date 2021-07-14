@@ -79,6 +79,7 @@ gem 'momentjs-rails'
 gem 'rails-i18n'
 gem 'dotenv-rails'
 gem "carrierwave"
+gem 'rinku'
 
 gem 'dotenv-rails'
 group :production do
