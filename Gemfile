@@ -78,6 +78,7 @@ gem 'ransack'
 gem 'momentjs-rails'
 gem 'rails-i18n'
 gem 'dotenv-rails'
+gem "carrierwave"
 
 gem 'dotenv-rails'
 group :production do

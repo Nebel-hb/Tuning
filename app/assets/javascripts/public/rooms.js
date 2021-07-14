@@ -4,21 +4,20 @@
 
 // チャット　最下部にスクロール
 document.addEventListener("turbolinks:load", () => {
-    // function scrollToEnd() {
-        if(document.URL.match(/rooms\/+\d/)){
-    //     ('#scroll').animate({ scrollEnd: $('#scroll')[0].scrollHeight});
-    //     var messageDetails = document.getElementById('scroll');
-    //     // const messageDetails = document.getElementById('scroll');
-    //     messageDetails.scrollTop = messageDetails.scrollHeight;
-    //     // }
-    // }
-    // scrollToEnd()
-    var element = document.getElementById('scroll'); // 移動させたい位置の要素を取得
-    var rect = element.getBoundingClientRect();
-    var position = rect.top;
-    setTimeout( function() {
-        scrollTo(0, position);}
-        , 1000);
+    if(document.URL.match(/rooms\/+\d/)){
+    function scrollToEnd() {
+        ('#scroll').animate({ scrollEnd: $('#scroll')[0].scrollHeight});
+        var messageDetails = document.getElementById('scroll');
+        messageDetails.scrollTop = messageDetails.scrollHeight;
+        // }
+    scrollToEnd()
+    }
+    // var element = document.getElementById('scroll'); // 移動させたい位置の要素を取得
+    // var rect = element.getBoundingClientRect();
+    // var position = rect.top;
+    // setTimeout( function() {
+    //     scrollTo(0, position);}
+    //     , 1000);
 }
 })
 
