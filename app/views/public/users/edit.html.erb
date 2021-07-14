@@ -2,7 +2,7 @@
   <h3>プロフィール編集</h3>
 </div>
 
-<div class="users_index">
+<!--<div class="users_index">-->
     <%= form_with(model: @user, url: user_path, local: true, method: :put) do |f| %>
     <div class="form-contain">
       <div class="form">
@@ -29,6 +29,12 @@
             <%= f.collection_select :instrument_id, Instrument.all, :id, :instrument_name, prompt: "----", required: "required", class: 'page-title' %>
           </span>
         </div>
+        
+        <div class="field">
+          <%= f.label :video %><br />
+          <%= f.file_field :video, :accept => 'video/*', class: "video-field" %>
+          <%= video_tag(@user.video.to_s, :controls => true ,class: "video", id: "video") %>
+        </div>
       </div>
 
       <div class="form">
@@ -37,10 +43,15 @@
           <%= f.file_field :profile_image, class: "image-field", style: "display: none" %>
           <%= attachment_image_tag @user, :profile_image,  format: 'jpeg', size: "80x80", fallback: "public/image/no_image.png", onClick: "$('.image-field').click()", class: "profile_image", id: "profile_image" %>
         </div>
+        
+        <div class="field">
+          <%= f.label :link %><br />
+          <%= f.text_field :link, autofocus: true, autocomplete: "link", type: "link", placeholder: "link" %>
+        </div>
 
         <div class="field mb10">
           <%= f.label :introduction, 'プロフィール', class: "mb10" %><br />
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction, class: "comment-field "%>
         </div>
 
         <div class="actions">
@@ -51,4 +62,4 @@
       </div>
     <% end %>
   </div>
-</div>
+<!--</div>-->
