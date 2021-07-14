@@ -8,8 +8,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
     # サーバーサイドから値を受け取る
-    $('#last_message').append("<div class='my_chat'><p class='text'>"+data["message"]+"</p><div class='my_text_time'></div></div>"); # 投稿を追加
-    
+    $('#last_message').append("<div class='my_chat'><p class='text'>"+data["message"]+"</p><div class='my_text_time'>" + data["time"] + "</div>"); # 投稿を追加
+
   speak: (message) ->
     @perform 'speak', message: message　#サーバーサイドのspeakアクションにmessageパラメータを渡す
 
@@ -18,5 +18,4 @@ jQuery(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     App.room.speak [event.target.value, $('[data-user]').attr('data-user'), $('[data-room]').attr('data-room')] # speak メソッド, event.target.valueを引数に.
     event.target.value = ''
     event.preventDefault()
-    
-    
+
