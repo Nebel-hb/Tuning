@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :profile_image
+  mount_uploader :video, VideoUploader
   enum role: { general: 1, orchestra: 2 }#cancancan
 
   has_many :comments, dependent: :destroy

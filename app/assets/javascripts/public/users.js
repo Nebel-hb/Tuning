@@ -130,3 +130,13 @@ $(document).on('turbolinks:load',function(){
     reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
   });
 });
+$(document).on('turbolinks:load',function(){
+  $('#user_video').on('change', function (e) {
+    // 既存の画像のurlの取得
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#video").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+  });
+});
