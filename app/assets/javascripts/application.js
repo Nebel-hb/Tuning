@@ -139,9 +139,9 @@ let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
 document.addEventListener("turbolinks:load", () => {
 	let chattimer = 0
 	if(document.URL.match(/rooms\/+\d/)){
-     chattimer = setInterval(function scrollToEnd() {
-     const messageDetails = document.getElementById('scroll');
-     messageDetails.scrollTop = messageDetails.scrollHeight;
+    chattimer = setInterval(function scrollToEnd() {
+    const messageDetails = document.getElementById('scroll');
+    messageDetails.scrollTop = messageDetails.scrollHeight;
       }, 200);
     }else{
     	clearInterval(chattimer);
