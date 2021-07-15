@@ -13,7 +13,7 @@ class RoomChannel < ApplicationCable::Channel
   def speak(message)
     chat = Chat.new(message: message['message'][0], user_id: message['message'][1].to_i, room_id: message['message'][2].to_i)
     chat.save
-    ActionCable.server.broadcast 'room_channel', message: message['message'][0], time: chat.created_at.strftime('%H:%M') # フロントへ返します
+    ActionCable.server.broadcast 'room_channel', message: message['message'][0], user_id: message['message'][2], id: chat.id, time: chat.created_at.strftime('%H:%M') # フロントへ返します
 
     # Chat.create! message: data['direct_message'], user_id: current_user.id, room_id: params['room']
 
