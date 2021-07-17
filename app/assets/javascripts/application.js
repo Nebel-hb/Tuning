@@ -137,13 +137,8 @@ let client_h = document.getElementsByClassName('.sel__box ').clientHeight;
 
 // チャット　最下部にスクロール
 document.addEventListener("turbolinks:load", () => {
-	let chattimer = 0
-	if(document.URL.match(/rooms\/+\d/)){
-    chattimer = setInterval(function scrollToEnd() {
-    const messageDetails = document.getElementById('scroll');
-    messageDetails.scrollTop = messageDetails.scrollHeight;
-      }, 200);
-    }else{
-    	clearInterval(chattimer);
-    }
+	// let chattimer = 0
+	if(document.URL.match(/rooms\/+\d/) && $("#message")){
+    $('#message').animate({scrollTop:$('#message').get(0).scrollHeight})
+   }
 })
