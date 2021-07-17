@@ -6,6 +6,9 @@ before_action :authenticate_user!
 
   def show
     @room = Room.find(params[:id])
+    # @direct_messages = @room.chats
+    # puts 121212121
+    # p @direct_messages
     @chats = @room.chats.includes(:user)
     @chat = Chat.new(room_id: @room.id)
     @users = UserRoom.includes(:user).where(room_id: @room)
