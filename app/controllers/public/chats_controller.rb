@@ -13,7 +13,7 @@ before_action :authenticate_user!
     room = @chat.room
     if @chat.save
       room.create_notification_chat!(current_user, @chat.id)
-      
+
     else
       flash[:notice] = "空欄の箇所を入力して下さい"
     end
