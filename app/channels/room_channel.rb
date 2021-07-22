@@ -15,8 +15,6 @@ class RoomChannel < ApplicationCable::Channel
     chat.save
     ActionCable.server.broadcast 'room_channel', message: render_message(chat), user_id: message['message'][2], id: chat.id, time: chat.created_at.strftime('%H:%M') # フロントへ返します
 
-    # Chat.create! message: data['direct_message'], user_id: current_user.id, room_id: params['room']
-
   end
   private
   def render_message(chat)

@@ -1,7 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:index, :create]
-  
+
   def index
      @comments = Comment.all
      @comment = Comment.new
@@ -12,8 +12,8 @@ class Public::CommentsController < ApplicationController
     if comment.save
       redirect_to event_path(@event)
     else
-      flash[:notice] = "空欄の箇所を入力して下さい"
-      render 'event/index'
+      flash[:notice] = "コメントを入力して下さい"
+      redirect_to event_path(@event)
     end
   end
 
